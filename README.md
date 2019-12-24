@@ -18,7 +18,8 @@ You can purchase the book using these links:
 
 * https://gumroad.com/l/js_regexp
 * https://leanpub.com/js_regexp
-* https://www.instamojo.com/learnbyexample/javascript-regexp/
+* You can also get the book as part of **Awesome Regex** bundle from https://leanpub.com/b/regex
+* See https://learnbyexample.github.io/books/ for list of other books
 
 For a preview of the book, see [sample chapters](https://github.com/learnbyexample/learn_js_regexp/blob/master/sample_chapters/js_regexp_sample_chapters.pdf)
 
