@@ -8,6 +8,8 @@ Example based guide to mastering JavaScript regexp.
 
 The book also includes exercises to test your understanding, which is presented together as a single file in this repo - [Exercises.md](./Exercises.md)
 
+For solutions to the exercises, see [Exercise_solutions.md](./Exercise_solutions.md).
+
 See [Version_changes.md](./Version_changes.md) to keep track of changes made to the book.
 
 <br>
@@ -48,18 +50,21 @@ Twitter: https://twitter.com/learn_byexample
 5. Alternation and Grouping
 6. Escaping metacharacters
 7. Dot metacharacter and Quantifiers
-8. Working with matched portions
-9. Character class
-10. Groupings and backreferences
-11. Lookarounds
-12. Unicode
-13. Further Reading
+8. Interlude: Tools for debugging and visualization
+9. Working with matched portions
+10. Character class
+11. Groupings and backreferences
+12. Interlude: Common tasks
+13. Lookarounds
+14. Unicode
+15. Further Reading
 
 <br>
 
 # Acknowledgements
 
 * [MDN: Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) — documentation and examples
+* [/r/learnjavascript/](https://www.reddit.com/r/learnjavascript/) and [/r/regex/](https://www.reddit.com/r/regex/) — helpful forums for beginners and experienced programmers alike
 * [stackoverflow](https://stackoverflow.com/) — for getting answers to pertinent questions on JavaScript and regular expressions
 * [tex.stackexchange](https://tex.stackexchange.com/) — for help on `pandoc` and `tex` related questions
 * Cover image: [LibreOffice Draw](https://www.libreoffice.org/discover/draw/) and [regulex](https://jex.im/regulex)
