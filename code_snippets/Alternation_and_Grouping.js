@@ -1,3 +1,5 @@
+// OR conditional
+
 const pets = /cat|dog/
 
 pets.test('I like cats')
@@ -10,6 +12,8 @@ pets.test('I like parrots')
 
 'cat dog bee parrot fox'.replace(/cat|dog|fox/g, 'mammal')
 
+// Grouping
+
 'red reform read arrest'.replace(/reform|rest/g, 'X')
 
 'red reform read arrest'.replace(/re(form|st)/g, 'X')
@@ -19,6 +23,8 @@ pets.test('I like parrots')
 'par spare part party'.replace(/\b(par|part)\b/g, 'X')
 
 'par spare part party'.replace(/\bpar(|t)\b/g, 'X')
+
+// Precedence rules
 
 let words = 'lion elephant are rope not'
 

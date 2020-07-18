@@ -1,3 +1,5 @@
+// Escaping with \
+
 /b^2/.test('a^2 + b^2 - C*3')
 
 /b\^2/.test('a^2 + b^2 - C*3')
@@ -6,8 +8,10 @@
 
 '\\learn\\by\\example'.replace(/\\/g, '/')
 
+// Dynamically escaping metacharacters
+
 function escapeRegExp(string) {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  return string.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&')
 }
 
 let eqn = 'f*(a^b) - 3*(a^b)'
@@ -21,6 +25,8 @@ pat
 eqn.replace(pat, 'c')
 
 eqn.replace(new RegExp(escapeRegExp(usr_str) + '$'), 'c')
+
+// Dynamically building alternation
 
 function unionRegExp(arr) {
   return arr.map(w => escapeRegExp(w)).join('|')
@@ -44,6 +50,8 @@ p2
 
 'handful handed handy hands hand'.replace(p2, 'X')
 
+// source and flags properties
+
 const p3 = /\bpar\b/
 
 const p4 = new RegExp(p3.source + '|cat', 'g')
@@ -56,9 +64,33 @@ p4.flags
 
 'cater cat concatenate par spare'.replace(p4, 'X')
 
-let path = '/foo/123/foo/baz/ip.txt'
+// Escaping delimiter
 
-path.replace(/^\/foo\/123\//, '~/')
+let path = '/abc/123/foo/baz/ip.txt'
 
-path.replace(new RegExp(`^/foo/123/`), '~/')
+path.replace(/^\/abc\/123\//, '~/')
+
+path.replace(new RegExp(`^/abc/123/`), '~/')
+
+// Escape sequences
+
+'a\tb\tc'.replace(/\t/g, ':')
+
+'1\n2\n3'.replace(/\n/g, ' ')
+
+new RegExp('123\tabc')
+
+new RegExp('123\\tabc')
+
+new RegExp('car\b')
+
+new RegExp('car\\b')
+
+/\e/.test('hello')
+
+'h e l l o'.replace(/\x20/g, '')
+
+'12|30'.replace(/2\x7c3/g, '5')
+
+'12|30'.replace(/2|3/g, '5')
 

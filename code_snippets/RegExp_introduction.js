@@ -1,3 +1,5 @@
+// test method
+
 let sentence = 'This is a sample string'
 
 sentence.includes('is')
@@ -26,11 +28,15 @@ words.every(w => /at/.test(w))
 
 words.some(w => /stat/.test(w))
 
+// Flags
+
 /cat/.test('CaT')
 
 /cat/i.test('CaT')
 
 ['Cat', 'cot', 'CATER', 'SCat', 'ScUtTLe'].filter(w => /cat/i.test(w))
+
+// RegExp constructor and reuse
 
 const pet = /dog/
 
@@ -52,13 +58,7 @@ pat1
 
 new RegExp(`${greeting.toUpperCase()} there`)
 
-new RegExp('123\tabc')
-
-new RegExp('123\\tabc')
-
-new RegExp('car\b')
-
-new RegExp('car\\b')
+// replace method
 
 '1,2,3,4'.replace(/,/, '-')
 

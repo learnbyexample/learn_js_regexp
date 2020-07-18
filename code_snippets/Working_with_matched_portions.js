@@ -1,3 +1,5 @@
+// match method
+
 'abc ac adc abbbc'.match(/ab*c/)
 
 'abc ac adc abbbc'.match(/ab*c/)[0]
@@ -12,9 +14,13 @@ s1.match(/dog/).input
 
 s1.match(/xyz/)
 
+// search method
+
 'cat and dog'.search(/dog/)
 
 'cat and dog'.search(/xyz/)
+
+// Capture groups
 
 'abc ac adc abbbc'.match(/a(.*)d(.*a)/)
 
@@ -23,6 +29,8 @@ s1.match(/xyz/)
 'abc ac adc abbbc'.match(/a(.*)d(.*a)/)[1]
 
 'abc ac adc abbbc'.match(/a(.*)d(.*a)/)[2]
+
+// Getting all matched portions
 
 'abc ac adc abbbc'.match(/ab*c/g)
 
@@ -35,6 +43,8 @@ s1.match(/xyz/)
 'that is quite a fabricated tale'.match(/t.*a/g)
 
 'that is quite a fabricated tale'.match(/t.*?a/g)
+
+// matchAll method
 
 'abc ac adc abbbc'.matchAll(/ab*c/g)
 
@@ -52,6 +62,22 @@ Array.from('abc ac adc abbbc'.matchAll(/ab*c/g), m => m.index)
 
 Array.from('xx:yyy x: x:yy :y'.matchAll(/(x*):(y*)/g), m => m.slice(1))
 
+// split with capture groups
+
+'31111111111251111426'.split(/1*4?2/)
+
+'31111111111251111426'.split(/(1*4?2)/)
+
+'31111111111251111426'.split(/(1*)4?2/)
+
+'3.14aabccc42'.split(/(a+)b+(c+)/)
+
+'31111111111251111426'.split(/(1*)(4)?2/)
+
+'3.14aabccc42abc88'.split(/(a+b+c+)(.*)/, 3)
+
+// Using function in replacement section
+
 function titleCase(m) {
     return m[0].toUpperCase() + m.substr(1).toLowerCase()
 }
@@ -68,6 +94,8 @@ function titleCase(m, g1, g2) {
 
 'aBc ac ADC aBbBC'.replace(/(a)(.*?c)/ig, titleCase)
 
+// Using dictionary in replacement section
+
 let h = { '1': 'one', '2': 'two', '4': 'four' }
 
 '9234012'.replace(/1|2|4/g, k => h[k])
@@ -78,11 +106,11 @@ let swap = { 'cat': 'tiger', 'tiger': 'cat' }
 
 'cat tiger dog tiger cat'.replace(/cat|tiger/g, k => swap[k])
 
-let d = { 'hand': 1, 'handy': 2, 'handful': 3 }
+let d = { 'hand': 1, 'handy': 2, 'handful': 3, 'a^b': 4 }
 
 const p = unionRegExp(Object.keys(d).sort((a, b) => b.length - a.length))
 
 console.log(p)
 
-'handful hand pin handy'.replace(new RegExp(p, 'g'), k => d[k])
+'handful hand pin handy (a^b)'.replace(new RegExp(p, 'g'), k => d[k])
 

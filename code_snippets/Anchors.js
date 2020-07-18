@@ -1,3 +1,5 @@
+// String anchors
+
 /^cat/.test('cater')
 
 /^cat/.test('concatenation')
@@ -28,6 +30,8 @@ words.filter(w => /t$/.test(w))
 
 'hack'.replace(/$/, 'er')
 
+// Line anchors
+
 /^top/m.test('hi hello\ntop spot')
 
 /er$/m.test('spare\npar\nera\ndare')
@@ -44,6 +48,8 @@ console.log(items.replace(/$/gm, '.'))
 
 '1\n2\n'.replace(/$/mg, ' baz')
 
+// Word anchors
+
 let sample = 'par spar apparent spare part'
 
 sample.replace(/par/g, 'X')
@@ -54,11 +60,15 @@ sample.replace(/par\b/g, 'X')
 
 sample.replace(/\bpar\b/g, 'X')
 
+let sample = 'par spar apparent spare part'
+
 console.log(sample.replace(/\b/g, '"').replace(/ /g, ','))
 
 'foo_baz=num1+35*42/num2'.replace(/\b/g, ' ')
 
 'foo_baz=num1+35*42/num2'.replace(/\b/g, ' ').trim()
+
+let sample = 'par spar apparent spare part'
 
 sample.replace(/\Bpar/g, 'X')
 

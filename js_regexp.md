@@ -10,15 +10,16 @@ A good understanding of basic-level programming concepts and prior experience wo
 
 ## Conventions
 
-* The examples presented here have been tested on Chrome/Chromium console (version 78+) and includes features not available in other browsers and platforms
-* Code snippets shown are copy pasted from console and modified for presentation purposes. Some commands are preceded by comments to provide context and explanations. Blank lines have been added to improve readability and output is skipped when it is `undefined` or otherwise unnecessary to be shown
-* Unless otherwise noted, all examples and explanations are meant for *ASCII* characters
-* External links are provided for further reading throughout the book. Not necessary to immediately visit them. They have been chosen with care and would help, especially during rereads
-* The [learn_js_regexp](https://github.com/learnbyexample/learn_js_regexp) repo has all the code snippets and exercises and other details related to the book. Click the **Clone or download** button to get the files
+* The examples presented here have been tested on Chrome/Chromium console (version 81+) and includes features not available in other browsers and platforms.
+* Code snippets shown are copy pasted from the console and modified for presentation purposes. Some of the commands are preceded by comments to provide context and explanations. Blank lines have been added to improve readability and output is skipped when it is `undefined` or otherwise unnecessary to be shown.
+* Unless otherwise noted, all examples and explanations are meant for *ASCII* characters.
+* External links are provided for further reading throughout the book. Not necessary to immediately visit them. They have been chosen with care and would help, especially during rereads.
+* The [learn_js_regexp](https://github.com/learnbyexample/learn_js_regexp) repo has all the code snippets and exercises and other details related to the book. Click the **Clone** button to get the files.
 
 ## Acknowledgements
 
 * [MDN: Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) — documentation and examples
+* [/r/learnjavascript/](https://www.reddit.com/r/learnjavascript/) and [/r/regex/](https://www.reddit.com/r/regex/) — helpful forums for beginners and experienced programmers alike
 * [stackoverflow](https://stackoverflow.com/) — for getting answers to pertinent questions on JavaScript and regular expressions
 * [tex.stackexchange](https://tex.stackexchange.com/) — for help on `pandoc` and `tex` related questions
 * Cover image: [LibreOffice Draw](https://www.libreoffice.org/discover/draw/) and [regulex](https://jex.im/regulex)
@@ -40,7 +41,7 @@ Twitter: https://twitter.com/learn_byexample
 
 Sundeep Agarwal is a freelance trainer, author and mentor. His previous experience includes working as a Design Engineer at Analog Devices for more than 5 years. You can find his other works, primarily focused on Linux command line, text processing, scripting languages and curated lists, at [https://github.com/learnbyexample](https://github.com/learnbyexample). He has also been a technical reviewer for [Command Line Fundamentals](https://www.packtpub.com/application-development/command-line-fundamentals) book and video course published by Packt.
 
-List of books: https://learnbyexample.github.io/books/
+**List of books:** https://learnbyexample.github.io/books/
 
 ## License
 
@@ -52,13 +53,13 @@ Resources mentioned in Acknowledgements section above are available under origin
 
 ## Book version
 
-1.0
+1.5
 
 See [Version_changes.md](https://github.com/learnbyexample/learn_js_regexp/blob/master/Version_changes.md) to track changes across book versions.
 
 # What's so special about Regular Expressions?
 
-Regular Expressions is a versatile tool for text processing. You'll find them included in standard library of most programming languages that are used for scripting purposes. If not, you can usually find a third-party library. Syntax and features of regular expressions vary from language to language. JavaScript's syntax is similar to that of Perl language, but there are significant feature differences.
+Regular Expressions is a versatile tool for text processing. You'll find them included in the standard library of most programming languages that are used for scripting purposes. If not, you can usually find a third-party library. Syntax and features of regular expressions vary from language to language. JavaScript's syntax is similar to that of Perl language, but there are significant feature differences.
 
 The [String object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) in JavaScript supports variety of methods to deal with text. So, what's so special about regular expressions and why would you need it? For learning and understanding purposes, one can view regular expressions as a mini programming language in itself, specialized for text processing. Parts of a regular expression can be saved for future use, analogous to variables. There are ways to perform AND, OR, NOT conditionals. Operations similar to range and repetition and so on.
 
@@ -68,7 +69,15 @@ Here's some common use cases:
 * Filtering or extracting portions on an abstract level like alphabets, numbers, punctuation and so on.
 * Qualified string replacement. For example, at the start or the end of a string, only whole words, based on surrounding text, etc.
 
-**Further Reading**
+You are likely to be familiar with graphical search and replace tool, like the screenshot shown below from LibreOffice Writer. **Match case**, **Whole words only**, **Replace** and **Replace All** are some of the basic features supported by regular expressions.
+
+![find and replace](images/find_replace.png)
+
+Another real world use case is password validation. The screenshot below is from GitHub sign up page. Performing multiple checks like **string length** and the **type of characters allowed** is another core feature of regular expressions.
+
+![password check](images/password_check.png)
+
+Here's some articles on regular expressions to know about its history and the type of problems it is suited for.
 
 * [The true power of regular expressions](https://nikic.github.io/2012/06/15/The-true-power-of-regular-expressions.html) — it also includes a nice explanation of what *regular* means in this context
 * [softwareengineering: Is it a must for every programmer to learn regular expressions?](https://softwareengineering.stackexchange.com/questions/133968/is-it-a-must-for-every-programmer-to-learn-regular-expressions)
@@ -76,19 +85,41 @@ Here's some common use cases:
 * [codinghorror: Now You Have Two Problems](https://blog.codinghorror.com/regular-expressions-now-you-have-two-problems/)
 * [wikipedia: Regular expression](https://en.wikipedia.org/wiki/Regular_expression) — this article includes discussion on regular expressions as a formal language as well as details on various implementations
 
+## How this book is organized
+
+The book introduces concepts one by one and exercises at the end of chapters will require only the features introduced until that chapter. Each concept is accompanied by multiple examples to cover various angles of usage and corner cases. As mentioned before, follow along the illustrations by typing out the code snippets manually. It is important to understand both the nature of the sample input string as well as the actual programming command used. There are two interlude chapters that give an overview of useful external resources and some more resources are collated in the final chapter.
+
+* [RegExp introduction](#regexp-introduction)
+* [Anchors](#anchors)
+* [Alternation and Grouping](#alternation-and-grouping)
+* [Escaping metacharacters](#escaping-metacharacters)
+* [Dot metacharacter and Quantifiers](#dot-metacharacter-and-quantifiers)
+* [Interlude: Tools for debugging and visualization](#interlude-tools-for-debugging-and-visualization)
+* [Working with matched portions](#working-with-matched-portions)
+* [Character class](#character-class)
+* [Groupings and backreferences](#groupings-and-backreferences)
+* [Interlude: Common tasks](#interlude-common-tasks)
+* [Lookarounds](#lookarounds)
+* [Unicode](#unicode)
+* [Further Reading](#further-reading)
+
+By the end of the book, you should be comfortable with both writing and reading regular expressions, how to debug them and know when to *avoid* them.
+
 # RegExp introduction
 
 This chapter will get you started with defining RegExp objects and using them inside string methods. To keep it simple, the examples will not use special characters related to regular expressions. The main focus will be to get you comfortable with syntax and text processing examples. Two methods will be introduced in this chapter. The `test` method to search if the input contains a string and the `replace` method to substitute a portion of the input with something else.
 
->![info](images/info.svg) This book will use **regular expressions** and **regexp** interchangeably. When specifically referring to a JavaScript object, **RegExp** will be used.
+>![info](images/info.svg) This book will use the terms **regular expressions** and **regexp** interchangeably. When specifically referring to a JavaScript object, **RegExp** will be used.
 
-## Console
+## Console and documentation
 
-As mentioned in the preface, examples presented in this book have been tested on Chrome/Chromium console. Other browsers based on Chromium may also work. Use `Ctrl+Shift+J` shortcut from a new tab to open a console. Some variable names are same across different chapters, so open another tab in such cases. See [MDN: Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) for documentation, examples and feature compatibility details.
+As mentioned in the [preface](#preface), examples presented in this book have been tested on Chrome/Chromium console. Other browsers based on Chromium may also work. Use `Ctrl+Shift+J` shortcut from a new tab to open a console. Some variable names are reused across different chapters, open another tab in such cases to avoid errors.
+
+See [MDN: Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) for documentation, examples and feature compatibility details.
 
 ## test method
 
-First up, a simple example to test whether a string is part of another string or not. Normally, you'd use the `includes` method and pass a string as argument. For regular expressions, use the `test` method on a RegExp object, which is defined by the search string enclosed within `//`.
+First up, a simple example to test whether a string is part of another string or not. Normally, you'd use the `includes` method and pass a string as argument. For regular expressions, use the `test` method on a RegExp object, which is defined by the search string enclosed within `//` delimiters.
 
 ```js
 > let sentence = 'This is a sample string'
@@ -142,7 +173,7 @@ And here's some array processing examples.
 
 ## Flags
 
-Some of the regular expression functionality is enabled by passing flags, represented by an alphabet character. If you have used command line, flags are similar to command options, for example `grep -i` will perform case insensitive matching.
+Some of the regular expressions functionality is enabled by passing flags, represented by an alphabet character. If you have used command line, flags are similar to command options, for example `grep -i` will perform case insensitive matching.
 
 In this chapter, two flags will be discussed:
 
@@ -199,30 +230,16 @@ The main advantage of the constructor over `//` literal is the ability to dynami
 < /HI there/
 ```
 
->![warning](images/warning.svg) Both strings and RegExp objects support special escape sequences. Some sequences like `\t` and `\n` mean the same but sequences like `\b` have completely different meaning. To avoid unexpected behavior, use `\\` instead of `\`.
-
-```js
-> new RegExp('123\tabc')
-< /123	abc/
-
-> new RegExp('123\\tabc')
-< /123\tabc/
-```
-
-Here's a console screenshot of another example.
-
-![Backslash in RegExp](images/backslash_in_RegExp.png)
-
 ## replace method
 
 The `replace` string method is used for search and replace operations.
 
 ```js
-// change only first match
+// change only the first match
 > '1,2,3,4'.replace(/,/, '-')
 < "1-2,3,4"
 
-// change all matches by adding 'g' flag
+// change all the matches by adding 'g' flag
 > '1,2,3,4'.replace(/,/g, '-')
 < "1-2-3-4"
 
@@ -231,10 +248,11 @@ The `replace` string method is used for search and replace operations.
 < "c2 P2 t2 m2"
 ```
 
->![warning](images/warning.svg) A common mistake is forgetting that strings are immutable. If you want to save changes to the same variable, you need to explicitly assign the result back to that variable.
+>![warning](images/warning.svg) A common mistake is forgetting that strings are immutable. If you want to save the changes to the same variable, you need to explicitly assign the result back to that variable.
 
 ```js
 > let word = 'cater'
+
 // this will return a string but won't modify the 'word' variable
 > word.replace(/cat/, 'hack')
 < "hacker"
@@ -248,6 +266,8 @@ The `replace` string method is used for search and replace operations.
 < "hacker"
 ```
 
+>![warning](images/warning.svg) The use of `g` flag with `test` method allows some additional functionality. See [MDN: test](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test#Examples) for examples. However, in my opinion, it is easy to fall into a habit of using `g` with `test` and get undesired results. I'd rather suggest to use [match method](#match-method) and explicitly write logic instead of relying on `test` with `g` flag.
+
 ## Cheatsheet and Summary
 
 | Note    | Description |
@@ -260,7 +280,7 @@ The `replace` string method is used for search and replace operations.
 | `i` | flag to ignore case when matching alphabets |
 | `g` | flag to match all occurrences |
 | `new RegExp('pat', 'i')` | construct RegExp from a string |
-| | second argument specifies flags |
+| | optional second argument specifies flags |
 | | use backtick strings with `${}` for interpolation |
 | `s.replace(/pat/, 'repl')` | method for search and replace |
 
@@ -270,6 +290,8 @@ This chapter introduced how to define RegExp objects and use them with `test` an
 
 >![info](images/info.svg) All the exercises are also collated together in one place at [Exercises.md](https://github.com/learnbyexample/learn_js_regexp/blob/master/Exercises.md).
 
+>![info](images/info.svg) For solutions, see [Exercise_solutions.md](https://github.com/learnbyexample/learn_js_regexp/blob/master/Exercise_solutions.md).
+
 **a)** Check if the given input strings contain `two` irrespective of case.
 
 ```js
@@ -277,17 +299,53 @@ This chapter introduced how to define RegExp objects and use them with `test` an
 > let s2 = 'one plus tw0 is not three'
 > let s3 = 'TRUSTWORTHY'
 
-> const p1 =        // add your solution here
+> const pat1 =      // add your solution here
 
-> p1.test(s1)
+> pat1.test(s1)
 < true
-> p1.test(s2)
+> pat1.test(s2)
 < false
-> p1.test(s3)
+> pat1.test(s3)
 < true
 ```
 
-**b)** For the given multiline input string, filter all lines NOT containing the string `2`.
+**b)** For the given array, filter all elements that do *not* contain `e`.
+
+```js
+> let items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
+
+> items.filter(w => test(w))       // add your solution here
+< ["goal", "sit"]
+```
+
+**c)** Replace first occurrence of `5` with `five` for the given string.
+
+```js
+> let ip = 'They ate 5 apples and 5 oranges'
+
+> ip.replace()       // add your solution here
+< "They ate five apples and 5 oranges"
+```
+
+**d)** Replace all occurrences of `5` with `five` for the given string.
+
+```js
+> let ip = 'They ate 5 apples and 5 oranges'
+
+> ip.replace()      // add your solution here
+< "They ate five apples and five oranges"
+```
+
+**e)** Replace all occurrences of `note` irrespective of case with `X`.
+
+```js
+> let ip = 'This note should not be NoTeD'
+
+> ip.replace()     // add your solution here
+< "This X should not be XD"
+```
+
+**f)** For the given multiline input string, filter all lines NOT containing the string `2`.
 
 ```js
 > let purchases = `items qty
@@ -300,7 +358,7 @@ water 10`
 > const num =       // add your solution here
 
 > console.log(purchases.split('\n')
-                       .filter()        // add your solution here
+                       .filter(e => test(e))       // add your solution here
                        .join('\n'))
 < items qty
   mango 50
@@ -310,23 +368,42 @@ water 10`
 
 >![info](images/info.svg) You'd be able to solve this using just `replace` method by the end of [Dot metacharacter and Quantifiers](#dot-metacharacter-and-quantifiers) chapter.
 
-**c)** Replace all occurrences of `0xA0` with `0x50` for the given input string.
+**g)** For the given array, filter all elements that contains either `a` or `w`.
 
 ```js
-> let h1 = 'start address: 0xA0, end address: 0xA0B'
-> h1.replace()      // add your solution here
-< "start address: 0x50, end address: 0x50B"
+> let items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
+
+> items.filter(w => test(w) || test(w))     // add your solution here
+< ["goal", "new", "eat"]
+```
+
+**h)** For the given array, filter all elements that contains both `e` and `n`.
+
+```js
+> let items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
+
+> items.filter(w => test(w) && test(w))     // add your solution here
+< ["new", "dinner"]
+```
+
+**i)** For the given string, replace `0xA0` with `0x7F` and `0xC0` with `0x1F`.
+
+```js
+> let ip = 'start address: 0xA0, func1 address: 0xC0'
+
+> ip.replace()        // add your solution here
+< "start address: 0x7F, func1 address: 0x1F"
 ```
 
 # Anchors
 
 In this chapter, you'll be learning about qualifying a pattern. Instead of matching anywhere in the given input string, restrictions can be specified. For now, you'll see the ones that are already part of regular expression features. In later chapters, you'll learn how to define your own rules for restriction.
 
-These restrictions are made possible by assigning special meaning to certain characters and escape sequences. The characters with special meaning are known as **metacharacters** in regexp parlance. In case you need to match those characters literally, you need to escape them with a `\` (discussed in [Escaping metacharacters](#escaping-metacharacters) chapter).
+These restrictions are made possible by assigning special meaning to certain characters and escape sequences. The characters with special meaning are known as **metacharacters** in regexp parlance. In case you need to match those characters literally, you need to escape them with a `\` character (discussed in [Escaping metacharacters](#escaping-metacharacters) chapter).
 
 ## String anchors
 
-This restriction is about qualifying a regexp to match only at start or end of an input string. These provide functionality similar to the string methods `startsWith` and `endsWith`. First up is `^` metacharacter, which restricts the matching to the start of string.
+This restriction is about qualifying a regexp to match only at the start or end of an input string. These provide functionality similar to the string methods `startsWith` and `endsWith`. First up is `^` metacharacter, which restricts the matching to the start of string.
 
 ```js
 // ^ is placed as a prefix to the pattern
@@ -382,7 +459,7 @@ The anchors can be used by themselves as a pattern. Helps to insert text at the 
 
 ## Line anchors
 
-A string input may contain single or multiple lines. The newline character `\n` is used as the line separator. When the `m` flag is used, the `^` and `$` anchors will match the start and end of every line respectively.
+A string input may contain single or multiple lines. The `\r`, `\n`, `\u2028` (line separator) and `\u2029` (paragraph separator) characters are considered as line separators. When the `m` flag is used, the `^` and `$` anchors will match the start and end of every line respectively.
 
 ```js
 // check if any line in the string starts with 'top'
@@ -414,7 +491,7 @@ Just like string anchors, you can use the line anchors by themselves as a patter
   cat.
 ```
 
->![warning](images/warning.svg) If there is a newline character at the end of string, there is an additional start/end of line match after the newline.
+>![warning](images/warning.svg) If there is a line separator character at the end of string, there is an additional start/end of line match after the separator.
 
 ```js
 // 'foo ' is inserted three times
@@ -429,7 +506,7 @@ Just like string anchors, you can use the line anchors by themselves as a patter
    baz"
 ```
 
->![warning](images/warning.svg) If you are dealing with Windows OS based text files, you'll have to convert `\r\n` line endings to `\n` first. Otherwise, you'll get end of line matches for both `\r `and `\n` characters. You can also handle this case in regexp by making `\r` as optional character with quantifiers (see [Greedy quantifiers](#greedy-quantifiers) section).
+>![warning](images/warning.svg) If you are dealing with Windows OS based text files, you may have to convert `\r\n` line endings to `\n` first. Otherwise, you'll get end of line matches for both `\r `and `\n` characters. You can also handle this case in regexp by making `\r` as optional character with quantifiers (see [Greedy quantifiers](#greedy-quantifiers) section).
 
 ## Word anchors
 
@@ -457,9 +534,9 @@ The escape sequence `\b` denotes a word boundary. This works for both the start 
 You can get lot more creative with using word boundary as a pattern by itself.
 
 ```js
-// sample = 'par spar apparent spare part'
 // space separated words to double quoted csv
 // note that 'replace' method is used twice here
+> let sample = 'par spar apparent spare part'
 > console.log(sample.replace(/\b/g, '"').replace(/ /g, ','))
 < "par","spar","apparent","spare","part"
 
@@ -473,10 +550,10 @@ You can get lot more creative with using word boundary as a pattern by itself.
 < "foo_baz = num1 + 35 * 42 / num2"
 ```
 
-The word boundary has an opposite anchor too. `\B` matches wherever `\b` doesn't match. This duality will be seen with some other escape sequences too. Negative logic is handy in many text processing situations. But use it with care as you might end up matching things you didn't intend!
+The word boundary has an opposite anchor too. `\B` matches wherever `\b` doesn't match. This duality will be seen later with some other escape sequences too.
 
 ```js
-// sample = 'par spar apparent spare part'
+> let sample = 'par spar apparent spare part'
 
 // replace 'par' if it is not start of word
 > sample.replace(/\Bpar/g, 'X')
@@ -506,21 +583,23 @@ Here's some standalone pattern usage to compare and contrast the two word anchor
 < " - - - - -h e l l o- - - - - "
 ```
 
+>![warning](images/warning.svg) Negative logic is handy in many text processing situations. But use it with care as you might end up matching things you didn't intend!
+
 ## Cheatsheet and Summary
 
 | Note    | Description |
 | ------- | ----------- |
 | metacharacter | characters with special meaning in regexp |
-| `^` | restricts the match to start of string |
-| `$` | restricts the match to end of string |
-| `\n` | line separator, dos-style files may need special attention |
-| | as they use `\r\n` as line endings |
+| `^` | restricts the match to the start of string |
+| `$` | restricts the match to the end of string |
 | `m` | flag to match the start/end of line with `^` and `$` anchors |
-| `\b` | restricts the match to start/end of words |
+| | `\r`, `\n`, `\u2028` and `\u2029` are line separators |
+| | dos-style files use `\r\n`, may need special attention |
+| `\b` | restricts the match to the start/end of words |
 |  | word characters: alphabets, digits, underscore |
 | `\B` | matches wherever `\b` doesn't match |
 
-In this chapter, you've begun to see building blocks of regular expressions and how they can be used in interesting ways. But at the same time, regular expression is but another tool in the land of text processing. Often, you'd get simpler solution by combining regular expressions with normal string methods. Practice, experience and imagination would help you construct creative solutions. In coming chapters, you'll see more applications of anchors with other regexp features.
+In this chapter, you've begun to see building blocks of regular expressions and how they can be used in interesting ways. But at the same time, regular expression is but another tool in the land of text processing. Often, you'd get simpler solution by combining regular expressions with normal string methods. Practice, experience and imagination would help you construct creative solutions. In coming chapters, you'll see more applications of anchors in combination with other regexp features.
 
 ## Exercises
 
@@ -532,43 +611,43 @@ In this chapter, you've begun to see building blocks of regular expressions and 
 > let str3 = 'the2 cats'
 > let str4 = 'switch on the light'
 
-> const p1 =        // add your solution here
-> const p2 =        // add your solution here
+> const pat1 =      // add your solution here
+> const pat2 =      // add your solution here
 
-> p1.test(str1) || p2.test(str1)
+> pat1.test(str1) || pat2.test(str1)
 < true
-> p1.test(str2) || p2.test(str2)
+> pat1.test(str2) || pat2.test(str2)
 < false
-> p1.test(str3) || p2.test(str3)
+> pat1.test(str3) || pat2.test(str3)
 < false
-> p1.test(str4) || p2.test(str4)
+> pat1.test(str4) || pat2.test(str4)
 < true
 ```
 
 **b)** For the given input string, change only whole word `red` to `brown`
 
 ```js
-> let s1 = 'bred red spread credible red;'
+> let ip = 'bred red spread credible red;'
 
-> s1.replace()      // add your solution here
+> ip.replace()       // add your solution here
 < "bred brown spread credible brown;"
 ```
 
-**c)** For the given input array, filter all elements that contains `42` surrounded by word characters.
+**c)** For the given array, filter all elements that contains `42` surrounded by word characters.
 
 ```js
-> let a1 = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', 'fake4b']
+> let items = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', 'fake4b']
 
-> a1.filter()       // add your solution here
+> items.filter(e => test(e))       // add your solution here
 < ["hi42bye", "nice1423", "cool_42a"]
 ```
 
-**d)** For the given input list, filter all elements that start with `den` or end with `ly`
+**d)** For the given input array, filter all elements that start with `den` or end with `ly`
 
 ```js
-> let a2 = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly away', 'dent']
+> let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
 
-> a2.filter()       // add your solution here
+> items.filter(e => test(e) || test(e))        // add your solution here
 < ["lovely", "2 lonely", "dent"]
 ```
 
@@ -580,16 +659,59 @@ mall call ball pall
 wall mall ball fall
 mallet wallet malls`
 
-> console.log(para.replace())       // add your solution here
+> console.log(para.replace())        // add your solution here
 < ball fall wall tall
   1234 call ball pall
   wall mall ball fall
   mallet wallet malls
 ```
 
+**f)** For the given array, filter all elements having a line starting with `den` or ending with `ly`.
+
+```js
+> let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
+
+> items.filter(e => test(e) || test(e))      // add your solution here
+< ["lovely", "1\ndentist", "2 lonely", "fly\nfar", "dent"]
+```
+
+**g)** For the given input array, filter all whole elements `12\nthree` irrespective of case.
+
+```js
+> let items = ['12\nthree\n', '12\nThree', '12\nthree\n4', '12\nthree']
+
+> items.filter(e => test(e))     // add your solution here
+< ["12\nThree", "12\nthree"]
+```
+
+**h)** For the given input array, replace `hand` with `X` for all words that start with `hand` followed by at least one word character.
+
+```js
+> let items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
+
+> items.map(w => w.replace())        // add your solution here
+< ["Xed", "hand", "Xy", "unhanded", "Xle", "hand-2"]
+```
+
+**i)** For the given input array, filter all elements starting with `h`. Additionally, replace `e` with `X` for these filtered elements.
+
+```js
+> let items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
+
+> items.filter(w => test(w)).map(w => w.replace())        // add your solution here
+< ["handXd", "hand", "handy", "handlX", "hand-2"]
+```
+
+**j)** Why does the following code show `false` instead of `true`?
+
+```js
+> /end$/.test('bend it\nand send\n')
+< false
+```
+
 # Alternation and Grouping
 
-Many a times, you want to check if the input string matches more than one pattern. For example, whether a car color is *green* or *blue* or *red*. In programming terms, you need to perform OR conditional. This chapter will discuss various ways to build a single regexp to match an input string against multiple conditions.
+Many a times, you want to check if the input string matches multiple patterns. For example, whether a car color is *green* or *blue* or *red*. In programming terms, you need to perform OR conditional. This chapter will show how to use alternation for such cases. These patterns can also have some common elements between them, in which case grouping helps to form terser regexps. This chapter will also discuss the precedence rules used to determine which alternation wins.
 
 ## OR conditional
 
@@ -613,6 +735,8 @@ In a conditional expression, you can use the logical operators to combine multip
 > 'cat dog bee parrot fox'.replace(/cat|dog|fox/g, 'mammal')
 < "mammal mammal bee parrot mammal"
 ```
+
+>![info](images/info.svg) You might infer from the above examples that there can be situations where many alternations are required. See [Dynamically building alternation](#dynamically-building-alternation) section for examples and details.
 
 ## Grouping
 
@@ -638,9 +762,11 @@ Often, there are some common things among the regexp alternatives. It could be c
 < "X spare X party"
 ```
 
+>![info](images/info.svg) There's plenty more features to grouping than just forming terser regexp. It will be discussed as they become relevant in coming chapters.
+
 ## Precedence rules
 
-There's some tricky situations when using alternation. If it is used for testing a match to get `true/false` against a string input, there is no ambiguity. However, for other things like string replacement without `g` flag, it depends on a few factors. Say, you want to replace either `are` or `spared` — which one should get precedence? The bigger word `spared` or the substring `are` inside it or based on something else?
+There's some tricky situations when using alternation. If it is used for testing a match to get `true/false` against a string input, there is no ambiguity. However, for other things like string replacement, it depends on a few factors. Say, you want to replace either `are` or `spared` — which one should get precedence? The bigger word `spared` or the substring `are` inside it or based on something else?
 
 The regexp alternative which matches earliest in the input string gets precedence.
 
@@ -693,52 +819,63 @@ Another example with `replace` to drive home the issue.
 | `()` | group pattern(s) |
 | `a(b\|c)d` | same as `abd\|acd` |
 | Alternation precedence | pattern which matches earliest in the input gets precedence |
-|   | tie-breaker is left to right if patterns have same starting location |
+|   | tie-breaker is left to right if matches have same starting location |
 
 So, this chapter was about specifying one or more alternate matches within the same regexp using `|` metacharacter. Which can further be simplified using `()` grouping if there are common aspects. Among the alternations, earliest matching pattern gets precedence. Left to right ordering is used as a tie-breaker if multiple alternations match starting from the same location. In the next chapter, you'll learn how to construct alternation from an array of strings taking care of precedence rules. Grouping has various other uses too, which will be discussed in coming chapters.
 
 ## Exercises
 
-**a)** For the given input list, filter all elements that start with `den` or end with `ly`
+**a)** For the given input array, filter all elements that start with `den` or end with `ly`
 
 ```js
-> let a1 = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly away', 'dent']
+> let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
 
-> a1.filter()       // add your solution here
+> items.filter()        // add your solution here
 < ["lovely", "2 lonely", "dent"]
 ```
 
-**b)** For the given input strings, replace all occurrences of `removed` or `reed` or `received` or `refused` with `X`.
+**b)** For the given array, filter all elements having a line starting with `den` or ending with `ly`
+
+```js
+> let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
+
+> items.filter()        // add your solution here
+< ["lovely", "1\ndentist", "2 lonely", "fly\nfar", "dent"]
+```
+
+**c)** For the given input strings, replace all occurrences of `removed` or `reed` or `received` or `refused` with `X`.
 
 ```js
 > let s1 = 'creed refuse removed read'
 > let s2 = 'refused reed redo received'
 
-> const p1 =        // add your solution here
+> const pat1 =      // add your solution here
 
-> s1.replace(p1, 'X')
+> s1.replace(pat1, 'X')
 < "cX refuse X read"
-> s2.replace(p1, 'X')
+> s2.replace(pat1, 'X')
 < "X X redo X"
 ```
 
-**c)** For the given input strings, replace `late` or `later` or `slated` with `A`.
+**d)** For the given input strings, replace `late` or `later` or `slated` with `A`.
 
 ```js
 > let str1 = 'plate full of slate'
 > let str2 = "slated for later, don't be late"
 
-> const p2 =        // add your solution here
+> const pat2 =      // add your solution here
 
-> str1.replace(p2, 'A')
+> str1.replace(pat2, 'A')
 < "pA full of sA"
-> str2.replace(p2, 'A')
+> str2.replace(pat2, 'A')
 < "A for A, don't be A"
 ```
 
 # Escaping metacharacters
 
 You have seen a few metacharacters and escape sequences that help to compose a RegExp literal. There's also the `/` character used as a delimiter for RegExp objects. This chapter will discuss how to remove the special meaning of such constructs. Also, you'll learn how to take care of special characters when you are building a RegExp literal from normal strings.
+
+## Escaping with \
 
 To match the metacharacters literally, i.e. to remove their special meaning, prefix those characters with a `\` character. To indicate a literal `\` character, use `\\`.
 
@@ -763,7 +900,7 @@ When you are defining the regexp yourself, you can manually escape the metachara
 
 ```js
 > function escapeRegExp(string) {
-    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    return string.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&')
   }
 ```
 
@@ -787,6 +924,8 @@ There are many things in the above regexp that you haven't learnt yet. They'll b
 > eqn.replace(new RegExp(escapeRegExp(usr_str) + '$'), 'c')
 "f*(a^b) - 3*c"
 ```
+
+>![info](images/info.svg) Note that the `/` delimiter character isn't escaped in the above function. Use `[.*+\-?^${}()|[\]\\\/]` to escape the delimiter as well.
 
 ## Dynamically building alternation
 
@@ -819,7 +958,7 @@ And here's some examples with `unionRegExp` function used to construct the requi
 > const p2 = new RegExp(`\\b(${unionRegExp(w2)})\\b`, 'g')
 > p2
 < /\b(handful|handy|hand)\b/g
-// note that 'hands' and 'handed' isn't replaced
+// note that 'hands' and 'handed' aren't replaced
 > 'handful handed handy hands hand'.replace(p2, 'X')
 < "X handed X hands X"
 ```
@@ -850,16 +989,64 @@ If you need the contents of a RegExp object, you can use `source` and `flags` pr
 Another character to keep track for escaping is the delimiter used to define the RegExp literal. Or depending upon the pattern, you can use the `new RegExp` constructor to avoid escaping.
 
 ```js
-> let path = '/foo/123/foo/baz/ip.txt'
+> let path = '/abc/123/foo/baz/ip.txt'
 
 // this is known as 'leaning toothpick syndrome'
-> path.replace(/^\/foo\/123\//, '~/')
+> path.replace(/^\/abc\/123\//, '~/')
 < "~/foo/baz/ip.txt"
 
 // using 'new RegExp' improves readability and can reduce typos
-> path.replace(new RegExp(`^/foo/123/`), '~/')
+> path.replace(new RegExp(`^/abc/123/`), '~/')
 < "~/foo/baz/ip.txt"
 ```
+
+## Escape sequences
+
+Certain characters like tab and newline can be expressed using escape sequences as `\t` and `\n` respectively. These are similar to how they are treated in normal string literals. However, `\b` is for word boundaries as seen earlier, whereas it stands for backspace character in normal string literals. Additionally, there are several sequences that are specific to regexps.
+
+The full list is mentioned in the **Using special characters** section of [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions). These are `\b \B \cX \d \D \f \n \p \P \r \s \S \t \uhhhh \uhhhhh \v \w \W \xhh \0`.
+
+```js
+> 'a\tb\tc'.replace(/\t/g, ':')
+< "a:b:c"
+
+> '1\n2\n3'.replace(/\n/g, ' ')
+< "1 2 3"
+
+// use \\ instead of \ when constructing regexp from string literals
+> new RegExp('123\tabc')
+< /123    abc/
+> new RegExp('123\\tabc')
+< /123\tabc/
+```
+
+Here's a console screenshot of another example.
+
+![Backslash in RegExp](images/backslash_in_RegExp.png)
+
+If an escape sequence is not defined, it will be treated as the character it escapes.
+
+```js
+// here \e is treated as e
+> /\e/.test('hello')
+< true
+```
+
+You can also represent a character using hexadecimal escape of the format `\xhh` where `hh` are exactly two hexadecimal characters. If you represent a metacharacter using escapes, it will be treated literally instead of its metacharacter feature. [Codepoints](#codepoints) section will discuss escapes for unicode characters.
+
+```js
+// \x20 is space character
+> 'h e l l o'.replace(/\x20/g, '')
+< "hello"
+
+// \x7c is '|' character
+> '12|30'.replace(/2\x7c3/g, '5')
+< "150"
+> '12|30'.replace(/2|3/g, '5')
+< "15|50"
+```
+
+>![info](images/info.svg) See [ASCII code table](https://ascii.cl/) for a handy cheatsheet with all the ASCII characters and their hexadecimal representation.
 
 ## Cheatsheet and Summary
 
@@ -871,7 +1058,7 @@ Another character to keep track for escaping is the delimiter used to define the
 | | helps to insert a RegExp inside another RegExp |
 | `flags` | property to get flags of a RegExp object |
 | `` RegExp(`pat`) `` | helps to avoid or reduce escaping the `/` delimiter character |
-| Alternation precedence | tie-breaker is left to right if patterns have same starting location |
+| Alternation precedence | tie-breaker is left to right if matches have same starting location |
 |   | robust solution: sort the alternations based on length, longest first |
 
 ## Exercises
@@ -882,38 +1069,89 @@ Another character to keep track for escaping is the delimiter used to define the
 > let str1 = '(9-2)*5+qty/3'
 > let str2 = '(qty+4)/2-(9-2)*5+pq/4'
 
-> const p1 =        // add your solution here
-> str1.replace(p1, '35')
+> const pat1 =      // add your solution here
+> str1.replace()        // add your solution here
 < "35+qty/3"
-> str2.replace(p1, '35')
+> str2.replace()        // add your solution here
 < "(qty+4)/2-35+pq/4"
 ```
 
-**b)** Replace any matching item from given array with `X` for the given input strings.
+**b)** Replace `(4)\|` with `2` only at the start or end of given input strings.
+
+```js
+> let s1 = '2.3/(4)\\|6 foo 5.3-(4)\\|'
+> let s2 = '(4)\\|42 - (4)\\|3'
+> let s3 = 'two - (4)\\|\n'
+
+> const pat2 =      // add your solution here
+
+> s1.replace()      // add your solution here
+< "2.3/(4)\|6 foo 5.3-2"
+> s2.replace()      // add your solution here
+< "242 - (4)\|3"
+> s3.replace()      // add your solution here
+< "two - (4)\|
+  "
+```
+
+**c)** Replace any matching item from given array with `X` for the given input strings.
 
 ```js
 > let items = ['a.b', '3+n', 'x\\y\\z', 'qty||price', '{n}']
-> const p2 =        // add your solution here
 
-> '0a.bcd'.replace(p2, 'X')
+// add your solution here
+> const pat3 =      // add your solution here
+
+> '0a.bcd'.replace(pat3, 'X')
 < "0Xcd"
-> 'E{n}AMPLE'.replace(p2, 'X')
+> 'E{n}AMPLE'.replace(pat3, 'X')
 < "EXAMPLE"
-> '43+n2 ax\\y\\ze'.replace(p2, 'X')
+> '43+n2 ax\\y\\ze'.replace(pat3, 'X')
 < "4X2 aXe"
+```
+
+**d)** Replace backspace character `\b` with a single space character for the given input string.
+
+```js
+> let ip = '123\b456'
+
+> ip.replace()      // add your solution here
+< "123 456"
+```
+
+**e)** Replace all occurrences of `\e` with `e`.
+
+```js
+> let ip = 'th\\er\\e ar\\e common asp\\ects among th\\e alt\\ernations'
+
+> ip.replace()      // add your solution here
+< "there are common aspects among the alternations"
+```
+
+**f)** Replace any matching item from the array `eqns` with `X` for given the string `ip`. Match the items from `eqns` literally.
+
+```js
+> let ip = '3-(a^b)+2*(a^b)-(a/b)+3'
+> let eqns = ['(a^b)', '(a/b)', '(a^b)+2']
+
+// add your solution here
+> const pat4 =      // add your solution here
+
+> ip.replace(pat4, 'X')
+< "3-X*X-X+3"
 ```
 
 # Dot metacharacter and Quantifiers
 
-This chapter introduces several more metacharacters. Similar to the `repeat` string method, quantifiers allow to repeat a portion of regular expression pattern and thus make it compact and improve readability. Quantifiers can also be specified as both bounded and unbounded ranges to match varying quantities of the pattern. Previously, you used alternation to construct OR conditional. Adding dot metacharacter and quantifiers to the mix, you can construct AND conditional.
+This chapter introduces several more metacharacters. Similar to the `repeat` string method, quantifiers allow to repeat a portion of regular expression pattern and thus make it compact and improve readability. Quantifiers can also be specified as both bounded and unbounded ranges to match varying quantities of the pattern. Previously, alternation was used to construct OR conditional. Adding dot metacharacter and quantifiers to the mix, you can construct AND conditional.
 
 ## Dot metacharacter
 
-The dot metacharacter serves as a placeholder to match any character except `\r` and `\n` characters. The [s flag](#s-flag) section will show how to include those characters as well.
+The dot metacharacter serves as a placeholder to match *any* character except `\r`, `\n`, `\u2028` (line separator) and `\u2029` (paragraph separator) characters.
 
 ```js
 // matches character 'c', any character and then character 't'
-> 'tac tin cat abc;tuv acute'.replace(/c.t/g, 'X')
+> 'tac tin c.t abc;tuv acute'.replace(/c.t/g, 'X')
 < "taXin X abXuv aXe"
 
 // matches character 'r', any two characters and then character 'd'
@@ -924,6 +1162,27 @@ The dot metacharacter serves as a placeholder to match any character except `\r`
 > '42\t33'.replace(/2.3/, '8')
 < "483"
 ```
+
+The [s flag](#s-flag) section will show how to include line separators as well. Chapter [Character class](#character-class) will discuss how to define your own custom placeholder for limited set of characters.
+
+## split method
+
+This chapter will additionally use `split` method to illustrate examples. The `split` method separates the string based on given regexp (or string) and returns an array of strings.
+
+```js
+> 'apple-85-mango-70'.split(/-/)
+< ["apple", "85", "mango", "70"]
+
+// use optional 'limit' argument to specify max no. of output elements
+> 'apple-85-mango-70'.split(/-/, 2)
+< ["apple", "85"]
+
+// example with dot metacharacter
+> 'bus:3:car:5:van'.split(/:.:/)
+< ["bus", "car", "van"]
+```
+
+See [split with capture groups](#split-with-capture-groups) section for details of how capture groups affect the output of `split` method.
 
 ## Greedy quantifiers
 
@@ -952,7 +1211,7 @@ First up, the `?` metacharacter which quantifies a character or group to match `
 < "par X X X"
 ```
 
-The `*` metacharacter quantifies a character or group to match `0` or more times. There is no upper bound, more details will be discussed later in this section.
+The `*` metacharacter quantifies a character or group to match `0` or more times. There is no upper bound, more details will be discussed later in this chapter.
 
 ```js
 // match 't' followed by zero or more of 'a' followed by 'r'
@@ -968,7 +1227,7 @@ The `*` metacharacter quantifies a character or group to match `0` or more times
 < "3X511114X"
 ```
 
-The `split` method separates the string based on given pattern and returns an array of strings. See [Non-capturing groups](#non-capturing-groups) section if you need the string matched by the separator pattern as well in the output.
+Here's some more examples with `split` method.
 
 ```js
 // last element is empty because there is nothing after '2' at the end of string
@@ -1019,6 +1278,8 @@ You can specify a range of integer numbers, both bounded and unbounded, using `{
 
 >![info](images/info.svg) The `{}` metacharacters have to be escaped to match them literally. However, unlike `()` metacharacters, these have lot more leeway. For example, escaping `{` alone is enough, or if it doesn't conform strictly to any of the forms listed above, escaping is not needed at all.
 
+## AND Conditional
+
 Next up, how to construct AND conditional using dot metacharacter and quantifiers.
 
 ```js
@@ -1030,7 +1291,7 @@ Next up, how to construct AND conditional using dot metacharacter and quantifier
 < false
 ```
 
-To allow matching in any order, you'll have to bring in alternation as well. That is somewhat manageable for 2 or 3 patterns. [Lookarounds](#and-conditional) provide a comparatively easier approach.
+To allow matching in any order, you'll have to bring in alternation as well. That is somewhat manageable for 2 or 3 patterns. See [AND conditional with lookarounds](#and-conditional-with-lookarounds) section for an easier approach.
 
 ```js
 > /cat.*dog|dog.*cat/.test('cat and dog')
@@ -1046,7 +1307,9 @@ To allow matching in any order, you'll have to bring in alternation as well. Tha
 < true
 ```
 
-So, how much do these greedy quantifiers match? When you are using `?` how does JavaScript decide to match `0` or `1` times, if both quantities can satisfy the regexp? For example, consider `'foot'.replace(/f.?o/, 'X')` — should `foo` be replaced or `fo`? It will always replace `foo`, because these are **greedy** quantifiers.
+## What does greedy mean?
+
+When you are using `?` how does JavaScript decide to match `0` or `1` times, if both quantities can satisfy the regexp? For example, consider `'foot'.replace(/f.?o/, 'X')` — should `foo` be replaced or `fo`? It will always replace `foo`, because these are **greedy** quantifiers, meaning they try to match as much as possible.
 
 ```js
 > 'foot'.replace(/f.?o/, 'X')
@@ -1096,12 +1359,16 @@ As the name implies, these quantifiers will try to match as minimally as possibl
 
 > '123456789'.replace(/.{2,5}?/, 'X')
 < "X3456789"
+
+> 'green:3.14:teal::brown:oh!:blue'.split(/:.*?:/)
+< ["green", "teal", "brown", "blue"]
 ```
 
 Like greedy quantifiers, lazy quantifiers will try to satisfy the overall regexp.
 
 ```js
-// sentence = 'that is quite a fabricated tale'
+> let sentence = 'that is quite a fabricated tale'
+
 // t.*?a will always match from first 't' to first 'a'
 > sentence.replace(/t.*?a/, 'X')
 < "Xt is quite a fabricated tale"
@@ -1116,38 +1383,25 @@ Like greedy quantifiers, lazy quantifiers will try to satisfy the overall regexp
 
 ## s flag
 
-Use `s` flag to allow `.` metacharacter to match `\r` and `\n` characters as well.
+Use `s` flag to allow `.` metacharacter to match `\r`, `\n` and line/paragraph separator characters as well.
 
 ```js
-// by default, the . metacharacter doesn't match newline
+// by default, the . metacharacter doesn't match line separators
 > 'Hi there\nHave a Nice Day'.replace(/the.*ice/, 'X')
 < "Hi there
   Have a Nice Day"
-// 's' flag will allow newline character to be matched as well
+
+// 's' flag will allow line separators to be matched as well
 > 'Hi there\nHave a Nice Day'.replace(/the.*ice/s, 'X')
 < "Hi X Day"
 ```
-
->![warning](images/warning.svg) Not yet supported in Firefox. Use `[^]` instead of `.` metacharacter and `s` flag as a workaround. See [Character class](#character-class) chapter for `[]` explanation.
-
-## Debugging and Visualization tools
-
-As your regexp gets complicated, it can get difficult to debug if you run into issues. Building your regexp step by step from scratch and testing against input strings will go a long way in correcting the problem. To aid in such a process, you could use [various online regexp tools](https://news.ycombinator.com/item?id=20614847).
-
-[regex101](https://regex101.com/r/HSeO0z/1) is a popular site to test your regexp. You'll have first choose the flavor as JavaScript. Then you can add your regexp, input strings, choose flags and an optional replacement string. Matching portions will be highlighted and explanation is offered in separate panes. There's also a quick reference and other features like sharing, code generator, quiz, etc.
-
-![regex101 example](images/regex101.png)
-
-Another useful tool is [jex: regulex](https://jex.im/regulex/#!flags=&re=%5Cbpar(en%7Cro)%3Ft%5Cb) which converts your regexp to a rail road diagram, thus providing a visual aid to understanding the pattern.
-
-![regulex example](images/regulex.png)
 
 ## Cheatsheet and Summary
 
 | Note    | Description |
 | ------- | ----------- |
-| `.` | match any character except `\r` and `\n` characters |
-| `s` | flag to match `\r` and `\n` characters with `.` metacharacter |
+| `.` | match any character except line separators |
+| `s` | flag to match line separators as well with `.` metacharacter |
 | greedy | match as much as possible |
 | `?` | greedy quantifier, match `0` or `1` times |
 | `*` | greedy quantifier, match `0` or more times |
@@ -1160,37 +1414,69 @@ Another useful tool is [jex: regulex](https://jex.im/regulex/#!flags=&re=%5Cbpar
 | non-greedy | append `?` to greedy quantifier |
 | | match as minimally as possible |
 | `s.split(/pat/)` | split a string based on regexp |
-| debugging | use tools like [regex101](https://regex101.com) and [jex: regulex](https://jex.im/regulex) |
 
-This chapter introduced the concept of specifying a placeholder instead of fixed string. Combined with quantifiers, you've seen a glimpse of how a simple regexp can match wide range of text. If the regexp gets too complicated, you can debug it with the help of [various online regexp tools](https://news.ycombinator.com/item?id=20614847). In coming chapters, you'll learn how to create your own restricted set of placeholder characters.
+This chapter introduced the concept of specifying a placeholder instead of fixed string. When combined with quantifiers, you've seen a glimpse of how a simple regexp can match wide range of text. In coming chapters, you'll learn how to create your own restricted set of placeholder characters.
 
 ## Exercises
 
->![info](images/info.svg) Some exercises are intentionally designed to be complicated to solve with regular expressions alone. Try to use normal string methods, break down the problem into multiple steps, etc. Some exercises will become easier to solve with techniques presented in chapters to come. Going through the exercises a second time after finishing entire book will be fruitful as well.
+>![info](images/info.svg) Use `s` flag for these exercises depending upon the contents of input strings.
 
-**a)** Use regular expression to get the output as shown for the given strings.
+**a)** Replace `42//5` or `42/5` with `8` for the given input.
+
+```js
+> let ip = 'a+42//5-c pressure*3+42/5-14256'
+
+// add your solution here
+< "a+8-c pressure*3+8-14256"
+```
+
+**b)** For the array `items`, filter all elements starting with `hand` and ending with at most one more character or `le`.
+
+```js
+> let items = ['handed', 'hand', 'handled', 'handy', 'unhand', 'hands', 'handle']
+
+// add your solution here
+< ["hand", "handy", "hands", "handle"]
+```
+
+**c)** Use `split` method to get the output as shown for the given input strings.
 
 ```js
 > let eqn1 = 'a+42//5-c'
 > let eqn2 = 'pressure*3+42/5-14256'
 > let eqn3 = 'r*42-5/3+42///5-42/53+a'
 
-> const expr =      // add your solution here
+> const pat1 =      // add your solution here
 
-> eqn1              // add your solution here
+> eqn1.split(pat1)
 < ["a+", "-c"]
-> eqn2              // add your solution here
+> eqn2.split(pat1)
 < ["pressure*3+", "-14256"]
-> eqn3              // add your solution here
+> eqn3.split(pat1)
 < ["r*42-5/3+42///5-", "3+a"]
 ```
 
-**b)** For the given strings, construct a regexp to get output as shown.
+**d)** For the given input strings, remove everything from the first occurrence of `i` till end of the string.
+
+```js
+> let s1 = 'remove the special meaning of such constructs'
+> let s2 = 'characters while constructing'
+
+> const pat2 =      // add your solution here
+
+> s1.replace(pat2, '')
+< "remove the spec"
+> s2.replace(pat2, '')
+< "characters wh"
+```
+
+**e)** For the given strings, construct a regexp to get output as shown.
 
 ```js
 > let str1 = 'a+b(addition)'
 > let str2 = 'a/b(division) + c%d(#modulo)'
 > let str3 = 'Hi there(greeting). Nice day(a(b)'
+
 > const remove_parentheses =        // add your solution here
 
 > str1.replace(remove_parentheses, '')
@@ -1201,43 +1487,75 @@ This chapter introduced the concept of specifying a placeholder instead of fixed
 < "Hi there. Nice day"
 ```
 
-**c)** Remove leading/trailing whitespaces from all the individual fields of these csv strings.
+**f)** Correct the given regexp to get the expected output.
 
 ```js
-> let csv1 = ' comma  ,separated ,values '
-> let csv2 = 'good bad,nice  ice  , 42 , ,   stall   small'
-
-> csv1          // add your solution here
-< "comma,separated,values"
-> csv2          // add your solution here
-< "good bad,nice  ice,42,,stall   small"
-```
-
-**d)** Correct the given regexp to get the expected output.
-
-```js
-> let str4 = 'plink incoming tint winter in caution sentient'
+> let words = 'plink incoming tint winter in caution sentient'
 
 // wrong output
-> const pat1 = /int|in|ion|ing|inco|inter|ink/g
-> str4.replace(pat1, 'X')
+> const w1 = /int|in|ion|ing|inco|inter|ink/g
+> words.replace(w1, 'X')
 "plXk XcomXg tX wXer X cautX sentient"
 
 // expected output
-> const pat2 =      // add your solution here
-> str4.replace(pat2, 'X')
+> const w2 =        // add your solution here
+> words.replace(w2, 'X')
 "plX XmX tX wX X cautX sentient"
 ```
 
-**e)** For the given greedy quantifiers, what would be the equivalent form using `{m,n}` representation?
+**g)** For the given greedy quantifiers, what would be the equivalent form using `{m,n}` representation?
 
 * `?` is same as
 * `*` is same as
 * `+` is same as
 
-**f)** `(a*|b*)` is same as `(a|b)*` — true or false?
+**h)** `(a*|b*)` is same as `(a|b)*` — true or false?
 
-**g)** Delete from the string `start` if it is at beginning of a line up to the next occurrence of the string `end` at end of a line. Match these keywords irrespective of case.
+**i)** For the given input strings, remove everything from the first occurrence of `test` (irrespective of case) till end of the string, provided `test` isn't at the end of the string.
+
+```js
+> let s1 = 'this is a Test'
+> let s2 = 'always test your regexp for corner\ncases'
+> let s3 = 'a TEST of skill tests?'
+
+> let pat3 =        // add your solution here
+
+> s1.replace(pat3, '')
+< "this is a Test"
+> s2.replace(pat3, '')
+< "always "
+> s3.replace(pat3, '')
+< "a "
+```
+
+**j)** For the input array `words`, filter all elements starting with `s` and containing `e` and `t` in any order.
+
+```js
+> let words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
+
+// add your solution here
+< ["subtle", "sets", "site"]
+```
+
+**k)** For the input array `words`, remove all elements having less than `6` characters.
+
+```js
+> let words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
+
+// add your solution here
+< ["sequoia", "subtle", "exhibit"]
+```
+
+**l)** For the input array `words`, filter all elements starting with `s` or `t` and having a maximum of `6` characters.
+
+```js
+> let words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
+
+// add your solution here
+< ["subtle", "sets", "tests", "site"]
+```
+
+**m)** Delete from the string `start` if it is at beginning of a line up to the next occurrence of the string `end` at end of a line. Match these keywords irrespective of case.
 
 ```js
 > let para = `good start
@@ -1262,9 +1580,71 @@ bye`
   bye
 ```
 
+**n)** Can you reason out why this code results in the output shown? The aim was to remove all `<characters>` patterns but not the `<>` ones. The expected result was `'a 1<> b 2<> c'`.
+
+```js
+> let ip = 'a<apple> 1<> b<bye> 2<> c<cat>'
+
+> ip.replace(/<.+?>/g, '')
+< "a 1 2"
+```
+
+**o)** Use `split` method to get the output as shown below for given input strings.
+
+```js
+> let s1 = 'go there  ::   this :: that'
+> let s2 = 'a::b :: c::d e::f :: 4::5'
+> let s3 = '42:: hi::bye::see :: carefully'
+
+> const pat4 =      // add your solution here
+
+> s1.split()        // add your solution here
+< ["go there", "this :: that"]
+> s2.split()        // add your solution here
+< ["a::b", "c::d e::f :: 4::5"]
+> s3.split()        // add your solution here
+< ["42:: hi::bye::see", "carefully"]
+```
+
+# Interlude: Tools for debugging and visualization
+
+As your regexp gets complicated, it can get difficult to debug if you run into issues. Building your regexp step by step from scratch and testing against input strings will go a long way in correcting the problem. To aid in such a process, you could use [various online regexp tools](https://news.ycombinator.com/item?id=20614847).
+
+## regex101
+
+[regex101](https://regex101.com/) is a popular site to test your regexp. You'll have first choose the flavor as JavaScript. Then you can add your regexp, input strings, choose flags and an optional replacement string. Matching portions will be highlighted and explanation is offered in separate panes. There's also a quick reference and other features like sharing, code generator, quiz, etc.
+
+The below image is a screenshot from this link — [regex101: `/ab{0,2}c/g`](https://regex101.com/r/HSeO0z/1)
+
+![regex101 example](images/regex101.png)
+
+>![info](images/info.svg) [regexr](https://regexr.com/) is another site that offers similar functionality.
+
+## regulex
+
+Another useful tool is [jex: regulex](https://jex.im/regulex/) which converts your regexp to a rail road diagram, thus providing a visual aid to understanding the pattern.
+
+The below image is a screenshot from this link — [regulex: `/\bpar(en|ro)?t\b/`](https://jex.im/regulex/#!flags=&re=%5Cbpar(en%7Cro)%3Ft%5Cb)
+
+![regulex example](images/regulex.png)
+
+>![info](images/info.svg) [debuggex](https://www.debuggex.com/) is another site that offers similar functionality.
+
+## regexcrossword
+
+For practice, [regexcrossword](https://regexcrossword.com/) is often recommended. This site supports only JavaScript flavor. See [regexcrossword: howtoplay](https://regexcrossword.com/howtoplay) for help.
+
+The below image is a screenshot from this link — [regexcrossword: tutorial puzzle 5](https://regexcrossword.com/challenges/tutorial/puzzles/5)
+
+![regexcrossword example](images/regexcrossword.png)
+
+## Summary
+
+This chapter briefly presented three online tools that can help you with understanding and interactively solving/debugging regular expressions. Syntax and features can vary, sometimes significantly, between various tools and programming languages. So, ensure that the program you are using supports the flavor of regular expressions you are using.
+
 # Working with matched portions
 
-Having seen a few regexp features that can match varying text, you'll learn how to extract and work with those matching portions in this chapter.
+Having seen a few regexp features that can match varying text, you'll learn how to extract and work with those matching portions in this chapter. Three new methods are introduced. You'll also learn a few tricks like using functions and dictionaries in replacement section of `replace` method.
 
 ## match method
 
@@ -1357,7 +1737,6 @@ It is a useful method for debugging purposes as well, for example to see what is
 ```js
 > 'that is quite a fabricated tale'.match(/t.*a/g)
 < ["that is quite a fabricated ta"]
-
 > 'that is quite a fabricated tale'.match(/t.*?a/g)
 < ["tha", "t is quite a", "ted ta"]
 ```
@@ -1411,6 +1790,49 @@ You can also use [Array.from()](https://developer.mozilla.org/en-US/docs/Web/Jav
 
 >![info](images/info.svg) Before the introduction of `matchAll` method, `exec` method had to be used. See [MDN: exec](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec) details and examples.
 
+## split with capture groups
+
+Capture groups affects `split` method as well. If the pattern used to split contains capture groups, the portions matched by those groups will also be a part of the output array.
+
+```js
+// without capture group
+> '31111111111251111426'.split(/1*4?2/)
+< ["3", "5", "6"]
+
+// to include the matching portions of the pattern as well in the output
+> '31111111111251111426'.split(/(1*4?2)/)
+< ["3", "11111111112", "5", "111142", "6"]
+```
+
+If part of the pattern is outside a capture group, the text thus matched won't be in the output. If a capture group didn't participate, it will be represented by `undefined` in the output array.
+
+```js
+// here 4?2 is outside capture group, so that portion won't be in output
+> '31111111111251111426'.split(/(1*)4?2/)
+< ["3", "1111111111", "5", "1111", "6"]
+
+// multiple capture groups example
+// note that the portion matched by b+ isn't present in the output
+> '3.14aabccc42'.split(/(a+)b+(c+)/)
+< ["3.14", "aa", "ccc", "42"]
+
+// here (4)? matches zero times on the first occasion
+> '31111111111251111426'.split(/(1*)(4)?2/)
+< ["3", "1111111111", undefined, "5", "1111", "4", "6"]
+```
+
+Use of capture groups and optional `limit` argument can help you partition an input string into three parts:
+
+* portion before the first match
+* portion matched by the pattern itself
+* portion after the pattern
+
+```js
+// use 's' flag as well if needed
+> '3.14aabccc42abc88'.split(/(a+b+c+)(.*)/, 3)
+< ["3.14", "aabccc", "42abc88"]
+```
+
 ## Using function in replacement section
 
 Sometimes, simple replacement string isn't enough and you need to do some processing on the matched portion. For such cases, you can use function in the replacement section. The arguments available to the function are similar to the details provided by `match` method. The first one is entire matched portion. If capture groups are used, portions matched by those groups will be next. Then comes index of matched portion and finally the input string. Depending on the complexity, you can use fully defined function or arrow function expressions.
@@ -1431,7 +1853,7 @@ Sometimes, simple replacement string isn't enough and you need to do some proces
 < "ABC AC adc ABBBC"
 
 // \d will be covered later
-// for now, it is enough to know that it will match all digits
+// for now, it is enough to know that it will match all digit characters
 > '1 42 317'.replace(/\d+/g, m => m*2)
 < "2 84 634"
 ```
@@ -1474,13 +1896,13 @@ For swapping two or more strings without using intermediate result, using a dict
 For a dictionary that has many entries and likely to undergo changes during development, building alternation list manually is not a good choice. Also, recall that as per precedence rules, longest length string should come first. The `unionRegExp` function, introduced in [Dynamically building alternation](#dynamically-building-alternation) section, is helpful here.
 
 ```js
-> let d = { 'hand': 1, 'handy': 2, 'handful': 3 }
+> let d = { 'hand': 1, 'handy': 2, 'handful': 3, 'a^b': 4 }
 
 > const p = unionRegExp(Object.keys(d).sort((a, b) => b.length - a.length))
 > console.log(p)
-< handful|handy|hand
-> 'handful hand pin handy'.replace(new RegExp(p, 'g'), k => d[k])
-< "3 1 pin 2"
+< handful|handy|hand|a\^b
+> 'handful hand pin handy (a^b)'.replace(new RegExp(p, 'g'), k => d[k])
+< "3 1 pin 2 (4)"
 ```
 
 ## Cheatsheet and Summary
@@ -1505,10 +1927,10 @@ For a dictionary that has many entries and likely to undergo changes during deve
 | `s.replace(/pat/, func)` | you can use a function to provide replacement string |
 | | each matched portion details gets passed as arguments |
 | | similarly, dictionary can be used for replacement |
-| `s.search(/pat/)` | gives starting location of the match if regexp succeeds |
+| `s.search(/pat/)` | gives starting location of first match if regexp succeeds |
 | | `-1` if regexp fails |
 
-This chapter introduced `match` and `matchAll` methods, which allows you to work with various matching portions of input string. The `replace` method allows you to use a function as replacement, which helps to process the matching portions before being used as replacement string. You can also use a dictionary to provide replacement string based on matched portion as key. You learnt about capture groups and you'll see even more uses of groupings in coming chapters.
+This chapter introduced `match` and `matchAll` methods, which allows you to work with various matching portions of input string. The `search` method is handy if you just need the starting location of the first match. The `replace` method allows you to use a function as replacement, which helps to process the matching portions before being used as replacement string. You can also use a dictionary to provide replacement string based on matched portion as key. You learnt about capture groups and you'll see even more uses of groupings in coming chapters.
 
 ## Exercises
 
@@ -1518,27 +1940,133 @@ This chapter introduced `match` and `matchAll` methods, which allows you to work
 > let str1 = 'What is the biggest fruit you have seen?'
 > let str2 = 'Your mission is to read and practice consistently'
 
-> const p1 =        // add your solution here
-> str1.match()      // add your solution here
+> const pat1 =      // add your solution here
+
+// add your solution here for str1
 < "is the biggest fruit"
-> str2.match()      // add your solution here
+// add your solution here for str2
 < "ission is to read and practice consistent"
 ```
 
-**b)** Transform the given input strings to expected output as shown.
+**b)** Find the starting index of first occurrence of `is` or `the` or `was` or `to` for the given input strings. Assume that there will be at least one match for each input string.
 
 ```js
-> let row1 = '-2,5 4,+3 +42,-53 '
-> let row2 = '1.32,-3.14 634,5.63 '
+> let s1 = 'match after the last newline character'
+> let s2 = 'and then you want to test'
+> let s3 = 'this is good bye then'
+> let s4 = 'who was there to see?'
 
-> Array.from(row1)      // add your solution here
-< [3, 7, -11]
+> const pat2 =      // add your solution here
 
-> Array.from(row2)      // add your solution here
-< [-1.82, 639.63]
+// add your solution here for s1
+< 12
+// add your solution here for s2
+< 4
+// add your solution here for s3
+< 2
+// add your solution here for s4
+< 4
 ```
 
-**c)** Write a string function that changes given input to alternate case. The first alphabet should be changed to lowercase, the next one to uppercase and then lowercase and so on. Characters other than alphabets should be left alone and not affect case changing.
+**c)** Find the starting index of last occurrence of `is` or `the` or `was` or `to` for the given input strings. Assume that there will be at least one match for each input string.
+
+```js
+> let s1 = 'match after the last newline character'
+> let s2 = 'and then you want to test'
+> let s3 = 'this is good bye then'
+> let s4 = 'who was there to see?'
+
+> const pat3 =      // add your solution here
+
+// add your solution here for s1
+< 12
+// add your solution here for s2
+< 18
+// add your solution here for s3
+< 17
+// add your solution here for s4
+< 14
+```
+
+**d)** The given input string contains `:` exactly once. Extract all characters after the `:` as output.
+
+```js
+> let ip = 'fruits:apple, mango, guava, blueberry'
+
+// add your solution here
+< "apple, mango, guava, blueberry"
+```
+
+**e)** Extract all words between `(` and `)` from the given input string as an array (including the parentheses). Assume that the input will not contain any broken parentheses.
+
+```js
+> let ip = 'another (way) to reuse (portion) matched (by) capture groups'
+
+// add your solution here
+< ["(way)", "(portion)", "(by)"]
+```
+
+**f)** Extract all occurrences of `<` up to next occurrence of `>`, provided there is at least one character in between `<` and `>`.
+
+```js
+> let ip = 'a<apple> 1<> b<bye> 2<> c<cat>'
+
+// add your solution here
+< ["<apple>", "<> b<bye>", "<> c<cat>"]
+```
+
+**g)** Use `matchAll` to get the output as shown below for the given input strings. Note the characters used in the input strings carefully.
+
+```js
+> let row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
+> let row2 = '1.32,-3.14 634,5.63 63.3e3,9907809345343.235 '
+
+> const pat4 =      // add your solution here
+
+// add your solution here for row1
+< (4) [Array(2), Array(2), Array(2), Array(2)]
+  0: (2) ["-2", "5"]
+  1: (2) ["4", "+3"]
+  2: (2) ["+42", "-53"]
+  3: (2) ["4356246", "-357532354"]
+  length: 4
+  __proto__: Array(0)
+
+// add your solution here for row2
+< (3) [Array(2), Array(2), Array(2)]
+  0: (2) ["1.32", "-3.14"]
+  1: (2) ["634", "5.63"]
+  2: (2) ["63.3e3", "9907809345343.235"]
+  length: 3
+  __proto__: Array(0)
+```
+
+**h)** This is an extension to previous question. Sum each pair of numbers that are separated by a comma.
+
+```js
+> let row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
+> let row2 = '1.32,-3.14 634,5.63 63.3e3,9907809345343.235 '
+
+// should be same as previous question
+> const pat5 =      // add your solution here
+
+// add your solution here for row1
+< [3, 7, -11, -353176108]
+
+// add your solution here for row2
+< [-1.82, 639.63, 9907809408643.234]
+```
+
+**i)** Use `split` method to get the output as shown below.
+
+```js
+> let ip = '42:no-output;1000:car-truck;SQEX49801'
+
+// add your solution here
+< ["42", "output", "1000", "truck", "SQEX49801"]
+```
+
+**j)** Write a string function that changes given input to alternate case. The first alphabet should be changed to lowercase, the next one to uppercase and then lowercase and so on. Characters other than alphabets should be left alone and not affect case changing.
 
 ```js
 > function aLtErNaTeCaSe(ip) {
@@ -1553,21 +2081,21 @@ This chapter introduced `match` and `matchAll` methods, which allows you to work
 < "sAmPlE123sTrInG42wItH777nUmBeRs"
 ```
 
-**d)** Replace the string `par` with `spar`, `spare` with `extra` and `park` with `garden`
+**k)** Replace the string `par` with `spar`, `spare` with `extra` and `park` with `garden`
 
 ```js
-> let str3 = 'apartment has a park'
-> let str4 = 'do you have a spare cable'
-> let str5 = 'write a parser'
+> let s1 = 'apartment has a park'
+> let s2 = 'do you have a spare cable'
+> let s3 = 'write a parser'
 
 > let d1 =          // add your solution here
-> const p2 =        // add your solution here
+> const pat6 =      // add your solution here
 
-> str3.replace(p2, k => d1[k])
+> s1.replace(pat6, k => d1[k])
 < "aspartment has a garden"
-> str4.replace(p2, k => d1[k])
+> s2.replace(pat6, k => d1[k])
 < "do you have a extra cable"
-> str5.replace(p2, k => d1[k])
+> s3.replace(pat6, k => d1[k])
 < "write a sparser"
 ```
 
@@ -1592,7 +2120,7 @@ Characters enclosed inside `[]` metacharacters is a character class (or set). It
 < ["123", "42", "777"]
 ```
 
-## Character class metacharacters
+## Range of characters
 
 Character classes have their own metacharacters to help define the sets succinctly. Metacharacters outside of character classes like `^`, `$`, `()` etc either don't have special meaning or have completely different one inside the character classes. First up, the `-` metacharacter that helps to define a range of characters instead of having to specify them all individually.
 
@@ -1614,33 +2142,7 @@ Character classes have their own metacharacters to help define the sets succinct
 < ["best"]
 ```
 
-Character classes can also be used to construct numeric ranges.
-
-```js
-// numbers between 10 to 29
-> '23 154 12 26 98234'.match(/\b[12][0-9]\b/g)
-< ["23", "12", "26"]
-
-// numbers >= 100
-> '23 154 12 26 98234'.match(/\b[0-9]{3,}\b/g)
-< ["154", "98234"]
-// numbers >= 100 if there are leading zeros
-> '0501 035 154 12 26 98234'.match(/\b0*[1-9][0-9]{2,}\b/g)
-< ["0501", "154", "98234"]
-```
-
-However, it is easy to miss corner cases and some ranges are complicated to design. In such cases, it is better to match all the numbers and then add code to use actual numeric operations.
-
-```js
-// numbers < 350
-> '45 349 651 593 4 204'.match(/[0-9]+/g).filter(n => n < 350)
-< ["45", "349", "4", "204"]
-> '45 349 651 593 4 204'.replace(/[0-9]+/g, m => m < 350 ? 0 : 1)
-< "0 0 1 1 0 0"
-// numbers between 200 and 650
-> '45 349 651 593 4 204'.match(/[0-9]+/g).filter(n => n >= 200 && n <= 650)
-< ["349", "593", "204"]
-```
+## Negating character sets
 
 The `^` metacharacter has to specified as the first character of the character class. It negates the set, so all characters other than those specified will be matched.
 
@@ -1665,31 +2167,50 @@ As highlighted earlier, handle negative logic with care, as you might end up mat
 ```js
 > let words = ['tryst', 'fun', 'glyph', 'pity', 'why']
 
+// elements not containing vowel characters
 > words.filter(w => /^[^aeiou]+$/.test(w))
 < ["tryst", "glyph", "why"]
+
+// easier to write and maintain, note the use of '!' operator
+// but this'll match empty strings too unlike the previous solution
 > words.filter(w => !/[aeiou]/.test(w))
 < ["tryst", "glyph", "why"]
 ```
 
+## Matching metacharacters literally
+
 Similar to other metacharacters, prefix `\` to character class metacharacters to match them literally. Some of them can be achieved by different placement as well.
 
+`-` should be first or last character or escaped using `\`.
+
 ```js
-// - should be first or last character or escaped using \
 > 'ab-cd gh-c 12-423'.match(/\b[a-z-]{2,}\b/g)
 < ["ab-cd", "gh-c"]
+
 > 'ab-cd gh-c 12-423'.match(/\b[a-z\-0-9]{2,}\b/g)
 < ["ab-cd", "gh-c", "12-423"]
+```
 
-// ^ should be other than first character or escaped using \
+`^` should be other than first character or escaped using `\`.
+
+```js
 > 'f*(a^b) - 3*(a+b)'.match(/a[+^]b/g)
 < ["a^b", "a+b"]
+
 > 'f*(a^b) - 3*(a+b)'.match(/a[\^+]b/g)
 < ["a^b", "a+b"]
+```
 
-// [ doesn't need escaping, but you can escape it if you wish
-// ] and \ should be escaped using \
+`[` doesn't need escaping, but you can escape it if you wish. `]` should be escaped with `\`.
+
+```js
 > 'words[5] = tea'.match(/[a-z[\]0-9]+/)[0]
 < "words[5]"
+```
+
+`\` should be escaped using `\`.
+
+```js
 > console.log('5ba\\babc2'.match(/[a\\b]+/)[0])
 < ba\bab
 ```
@@ -1702,7 +2223,7 @@ Commonly used character sets have predefined escape sequences:
 * `\d` is similar to `[0-9]` for matching digit characters
 * `\s` is similar to `[ \t\r\n\f\v]` for matching whitespace characters
 
-These escape sequences can be used as a standalone sequence or inside a character class. As mentioned before, the examples and description will assume input made up of ASCII characters only. Use `\W`, `\D` and `\S` respectively for their negated set.
+These escape sequences can be used as a standalone sequence or inside a character class. As mentioned before, the examples and description will assume that the input is made up of ASCII characters only. Use `\W`, `\D` and `\S` respectively for their negated set.
 
 ```js
 > 'Sample123string42with777numbers'.split(/\d+/)
@@ -1720,6 +2241,39 @@ These escape sequences can be used as a standalone sequence or inside a characte
 > '   1..3  \v\f  foo_baz 42\tzzz   \r\n1-2-3  '.match(/\S+/g)
 < ["1..3", "foo_baz", "42", "zzz", "1-2-3"]
 ```
+
+## Numeric ranges
+
+Character classes can also be used to construct numeric ranges.
+
+```js
+// numbers between 10 to 29
+> '23 154 12 26 98234'.match(/\b[12]\d\b/g)
+< ["23", "12", "26"]
+
+// numbers >= 100
+> '23 154 12 26 98234'.match(/\b\d{3,}\b/g)
+< ["154", "98234"]
+// numbers >= 100 if there are leading zeros
+> '0501 035 154 12 26 98234'.match(/\b0*[1-9]\d{2,}\b/g)
+< ["0501", "154", "98234"]
+```
+
+However, it is easy to miss corner cases and some ranges are complicated to design. In such cases, it is better to match all the numbers and then add code to use actual numeric operations.
+
+```js
+// numbers < 350
+> '45 349 651 593 4 204'.match(/\d+/g).filter(n => n < 350)
+< ["45", "349", "4", "204"]
+> '45 349 651 593 4 204'.replace(/\d+/g, m => m < 350 ? 0 : 1)
+< "0 0 1 1 0 0"
+
+// numbers between 200 and 650
+> '45 349 651 593 4 204'.match(/\d+/g).filter(n => n >= 200 && n <= 650)
+< ["349", "593", "204"]
+```
+
+>![info](images/info.svg) See [regular-expressions: matching numeric ranges](https://www.regular-expressions.info/numericranges.html) for more examples.
 
 ## Cheatsheet and Summary
 
@@ -1739,11 +2293,61 @@ These escape sequences can be used as a standalone sequence or inside a characte
 | | assumes input encoding is ASCII |
 | | use `\W`, `\D`, and `\S` for their opposites respectively |
 
-This chapter focused on how to create custom placeholders for limited set of characters. Grouping and character classes can be considered as two levels of abstractions. On the one hand, you can have character sets inside `[]` and on the other, you can have multiple alternations grouped inside `()` including character classes. As anchoring and quantifiers can be applied to both these abstractions, you can begin to see how regular expressions is considered a mini-programming language. In coming chapters, you'll even see how to negate groupings similar to negated character class in certain scenarios.
+This chapter focused on how to create custom placeholders to match limited set of characters. Grouping and character classes can be considered as two levels of abstractions. On the one hand, you can have character sets inside `[]` and on the other hand, you can have multiple alternations grouped inside `()` including character classes. As anchoring and quantifiers can be applied to both these abstractions, you can begin to see how regular expressions is considered a mini-programming language. In coming chapters, you'll even see how to negate groupings similar to negated character class in certain scenarios.
 
 ## Exercises
 
-**a)** Delete all pair of parentheses, unless they contain a parentheses character.
+**a)** For the array `items`, filter all elements starting with `hand` and ending with `s` or `y` or `le`. No other character in between, for example, `hands` should match but not `hand-has`.
+
+```js
+> let items = ['-handy', 'hand', 'handy', 'handled', 'hands', 'handle']
+
+// add your solution here
+< ["handy", "hands", "handle"]
+```
+
+**b)** Replace all whole words `reed` or `read` or `red` with `X`.
+
+```js
+> let ip = 'redo red credible :read: rod reed bred'
+
+// add your solution here
+< "redo X credible :X: rod X bred"
+```
+
+**c)** For the array `words`, filter all elements containing `e` or `i` followed by `l` or `n`. Note that the order mentioned should be followed.
+
+```js
+> let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
+
+// add your solution here
+< ["surrender", "unicorn", "eel"]
+```
+
+**d)** For the array `words`, filter all elements containing `e` or `i` and `l` or `n` in any order.
+
+```js
+> let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
+
+// add your solution here
+< ["surrender", "unicorn", "newer", "eel"]
+```
+
+**e)** Extract all hex character sequences, with `0x` optional prefix. Match the characters case insensitively, and the sequences shouldn't be surrounded by other word characters.
+
+```js
+> let str1 = '128A foo 0xfe32 34 0xbar'
+> let str2 = '0XDEADBEEF place 0x0ff1ce bad'
+
+> const hex_seq =       // add your solution here
+
+> str1.match(hex_seq)
+< ["128A", "0xfe32", "34"]
+> str2.match(hex_seq)
+< ["0XDEADBEEF", "0x0ff1ce", "bad"]
+```
+
+**f)** Delete from `(` to the next occurrence of `)` unless they contain parentheses characters in between.
 
 ```js
 > let str1 = 'def factorial()'
@@ -1751,6 +2355,7 @@ This chapter focused on how to create custom placeholders for limited set of cha
 > let str3 = 'Hi there(greeting). Nice day(a(b)'
 
 > const remove_parentheses =        // add your solution here
+
 > str1.replace(remove_parentheses, '')
 < "def factorial"
 > str2.replace(remove_parentheses, '')
@@ -1759,58 +2364,114 @@ This chapter focused on how to create custom placeholders for limited set of cha
 < "Hi there. Nice day(a"
 ```
 
-**b)** Output true/false depending upon input string containing any number sequence that is greater than `624`
+**g)** For the array `words`, filter all elements not starting with `e` or `p` or `u`.
 
 ```js
-> let n1 = 'hi0000432abcd'
-> let n2 = '42_624 0512'
-> let n3 = '3.14 96 2 foo1234baz'
+> let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
 
-> n1.match()        // add your solution here
-< false
-> n2.match()        // add your solution here
-< false
-> n3.match()        // add your solution here
-< true
+// add your solution here
+< ["surrender", "newer", "door"]
 ```
 
-**c)** Split the given strings based on consecutive sequence of digit or whitespace characters.
+**h)** For the array `words`, filter all elements not containing `u` or `w` or `ee` or `-`.
+
+```js
+> let words = ['p-t', 'you', 'tea', 'heel', 'owe', 'new', 'reed', 'ear']
+
+// add your solution here
+< ["tea", "ear"]
+```
+
+**i)** The given input strings contain fields separated by `,` and fields can be empty too. Replace last three fields with `WHTSZ323`.
+
+```js
+> let row1 = '(2),kite,12,,D,C,,'
+> let row2 = 'hi,bye,sun,moon'
+
+> const pat1 =      // add your solution here
+
+// add your solution here for row1
+< "(2),kite,12,,D,WHTSZ323"
+// add your solution here for row2
+< "hi,WHTSZ323"
+```
+
+**j)** Split the given strings based on consecutive sequence of digit or whitespace characters.
 
 ```js
 > let s1 = 'lion \t Ink32onion Nice'
 > let s2 = '**1\f2\n3star\t7 77\r**'
 
-> const p1 =        // add your solution here
-> s1.split(p1)
+> const pat2 =      // add your solution here
+
+> s1.split(pat2)
 < ["lion", "Ink", "onion", "Nice"]
-> s2.split(p1)
+> s2.split(pat2)
 < ["**", "star", "**"]
 ```
 
-**d)** Extract all hex character sequences, with optional `0x` prefix. Match the characters case insensitively, and sequences surrounded by other word characters shouldn't be matched.
+**k)** Delete all occurrences of the sequence `<characters>` where `characters` is one or more non `>` characters and cannot be empty.
 
 ```js
-> const hex_seq =       // add your solution here
+> let ip = 'a<apple> 1<> b<bye> 2<> c<cat>'
 
-> '128A foo 0xfe32 34 0xbar'.match(hex_seq)
-< ["128A", "0xfe32", "34"]
-
-> '0XDEADBEEF lace 0x0ff1ce bad'.match(hex_seq)
-< ["0XDEADBEEF", "0x0ff1ce", "bad"]
+// add your solution here
+< "a 1<> b 2<> c"
 ```
 
-**e)** For the given string, surround all whole words with `{}` except for whole words `par` and `cat`.
+**l)** `\b[a-z](on|no)[a-z]\b` is same as `\b[a-z][on]{2}[a-z]\b`. True or False? Sample input lines shown below might help to understand the differences, if any.
 
 ```js
-> let w1 = 'part; cat {super} rest_42 par scatter'
+> console.log('known\nmood\nknow\npony\ninns')
+  known
+  mood
+  know
+  pony
+  inns
+```
 
-> w1.replace()          // add your solution here
+**m)** For the given array, filter all elements containing any number sequence greater than `624`.
+
+```js
+> let items = ['h0000432ab', 'car00625', '42_624 0512', '3.14 96 2 foo1234baz']
+
+// add your solution here
+< ["car00625", "3.14 96 2 foo1234baz"]
+```
+
+**n)** Convert the given input string to two different arrays as shown below.
+
+```js
+> let ip = 'price_42 roast^\t\n^-ice==cat\neast'
+
+// add your solution here
+< ["price_42", "roast", "ice", "cat", "east"]
+
+// add your solution here
+< ["price_42", " ", "roast", "^	\n^-", "ice", "==", "cat", "\n", "east"]
+```
+
+**o)** Filter all elements whose first non-whitespace character is not a `#` character. Any element made up of only whitespace characters should be ignored as well.
+
+```js
+> let items = ['    #comment', '\t\napple #42', '#oops', 'sure', 'no#1', '\t\r\f']
+
+// add your solution here
+< ["	\napple #42", "sure", "no#1"]
+```
+
+**p)** For the given string, surround all whole words with `{}` except for whole words `par` and `cat`.
+
+```js
+> let ip = 'part; cat {super} rest_42 par scatter'
+
+// add your solution here
 < "{part}; cat {{super}} {rest_42} par {scatter}"
 ```
 
 # Groupings and backreferences
 
-You've been patiently hearing more awesome stuff to come regarding groupings. Well, here they come in various forms. And some more will come in next chapter!
+This chapter will show how to reuse portion matched by capture groups via backreferences within regexp definition and replacement section. You'll also learn some special grouping syntax for cases where plain capture groups isn't enough.
 
 ## Backreferences
 
@@ -1824,8 +2485,8 @@ First up, how to refer to capture group portions directly in regexp definition a
 
 ```js
 // remove square brackets that surround digit characters
-> '[52] apples and [31] mangoes'.replace(/\[(\d+)\]/g, '$1')
-< "52 apples and 31 mangoes"
+> '[52] apples [and] [31] mangoes'.replace(/\[(\d+)\]/g, '$1')
+< "52 apples [and] 31 mangoes"
 
 // replace __ with _ and delete _ if it is alone
 > '_foo_ __123__ _baz_'.replace(/(_)?_/g, '$1')
@@ -1860,6 +2521,7 @@ And here's some examples for using backreferences within regexp definition.
 
 // remove any number of consecutive duplicate words separated by space
 // note the use of quantifier on backreference
+// use \W+ instead of space to cover cases like 'a;a<-;a'
 > 'aa a a a 42 f_1 f_1 f_13.14'.replace(/\b(\w+)( \1)+\b/g, '$1')
 < "aa a 42 f_1 f_13.14"
 ```
@@ -1881,7 +2543,21 @@ Since `$` is special in replacement section, there's an issue to place it litera
 < "c{$1}t"
 ```
 
-Another issue is how to avoid ambiguity when you have normal digits immediately following a backreference? It'll depend on how many backreferences are present in the pattern and whether you need to avoid ambiguity in regexp definition or replacement section. For example, if there are less than 10 groups, then something like `$12` will refer to 1st capture group and `2` as a character. If there are no capture groups, then something like `$5` will get inserted literally as `$` and `5`.
+Another issue is how to avoid ambiguity when you have normal digits immediately following a backreference? It'll depend on how many backreferences are present in the pattern and whether you need to avoid ambiguity in regexp definition or replacement section. For example, if there are less than 10 groups, then something like `$12` will refer to first capture group and `2` as a character. If there are no capture groups, then something like `$5` will get inserted literally as `$` and `5`.
+
+```js
+// $15 here will backreference 1st group and use 5 as a character
+> '[52] apples and [31] mangoes'.replace(/\[(\d+)\]/g, '($15)')
+< "(525) apples and (315) mangoes"
+
+// $3 will be inserted literally since there is only one capture group
+> '[52] apples and [31] mangoes'.replace(/\[(\d+)\]/g, '$3')
+< "$3 apples and $3 mangoes"
+
+// $1 will be inserted literally since there are no capture groups
+> '[52] apples and [31] mangoes'.replace(/\[\d+\]/g, '$1')
+< "$1 apples and $1 mangoes"
+```
 
 On the other hand, if you have more than `9` but less than `100` groups, then there would be an issue if you want to refer to single digit group followed by literal digit characters. The workaround is to prefix `0` such that number of digits after `$` equals the number of digits required for the highest capture group. So, if you have more than `9` but less than `100` groups, `$05` will refer to 5th capture group and any digit after that will be treated literally.
 
@@ -1900,7 +2576,7 @@ On the other hand, if you have more than `9` but less than `100` groups, then th
 < "a1mn"
 ```
 
-The workaround is simpler in regexp definition. The `0` prefix trick doesn't work, but using ASCII code with `\xhh` works. For example, `\1\x31` will refer to 1st capture group followed by `1` as a character.
+The workaround is simpler in regexp definition. The `0` prefix trick doesn't work, but using ASCII code with `\xhh` works. For example, `\1\x31` will refer to first capture group followed by `1` as a character.
 
 ```js
 > 'abcdefghijklmna1d'.replace(/(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.).*\1\x31/, 'X')
@@ -1909,21 +2585,22 @@ The workaround is simpler in regexp definition. The `0` prefix trick doesn't wor
 
 ## Non-capturing groups
 
-Grouping has many uses like applying quantifier on a regexp portion, creating terse regexp by factoring common portions and so on. It also affects the output of `split` method.
+Grouping has many uses like applying quantifier on a regexp portion, creating terse regexp by factoring common portions and so on. It also affects the output of `split` method as seen in [split with capture groups](#split-with-capture-groups) section. Unlike similar methods in other languages, `match` method with `g` flag isn't affected by capture groups and returns entire matched portions.
 
 ```js
-// without capture group
+// split method without capture group
 > 'Sample123string42with777numbers'.split(/\d+/)
 < ["Sample", "string", "with", "numbers"]
-
-// use capture group to include the portion that caused the split as well
+// split method with capture group
 > 'Sample123string42with777numbers'.split(/(\d+)/)
 < ["Sample", "123", "string", "42", "with", "777", "numbers"]
 
-// unlike similar methods in other languages, match method with 'g' flag
-// isn't affected by capture groups and returns entire matched portions
+// match method example with 'g' flag and capture groups
 > 'effort flee facade oddball rat tool'.match(/\b\w*(\w)\1\w*\b/g)
 < ["effort", "flee", "oddball", "tool"]
+// here's another example
+> 'hi 123123123 bye 456123456'.match(/(123)+/g)
+< ["123123123", "123"]
 ```
 
 When backreferencing is not required, you can use a non-capturing group to avoid behavior change of `split` method. It also helps to avoid keeping a track of capture group numbers when that particular group is not needed for backreferencing. The syntax is `(?:pat)` to define a non-capturing group, where `pat` is an abbreviation for a portion of regular expression pattern. More such special groups starting with `(?` syntax will be discussed later on.
@@ -1959,10 +2636,15 @@ Referring to text matched by a capture group with a quantifier will give only th
 
 ## Named capture groups
 
-Regexp can get cryptic and difficult to maintain, even for seasoned programmers. There are a few constructs to help add clarity. One such is naming the capture groups and using that name for backreferencing instead of plain numbers. The syntax is `(?<name>pat)` for naming the capture groups, `\k<name>` for backreferencing in regexp definition and `$<name>` in replacement section.
+Regexp can get cryptic and difficult to maintain, even for seasoned programmers. There are a few constructs to help add clarity. One such is naming the capture groups and using that name for backreferencing instead of plain numbers. In addition, the named capture group portions can be extracted as key-value pairs using the `groups` property. The syntax is:
+
+* `(?<name>pat)` for naming the capture groups
+* `\k<name>` for backreferencing in regexp definition
+* `$<name>` for backreferencing in replacement section
 
 ```js
 > let row = 'today,2008-03-24,food,2008-03-24,nice,2018-10-25,5632'
+
 // same as: /(\d{4}-\d{2}-\d{2}).*\1/
 > row.match(/(?<date>\d{4}-\d{2}-\d{2}).*\k<date>/)[0]
 < "2008-03-24,food,2008-03-24"
@@ -1973,7 +2655,7 @@ Regexp can get cryptic and difficult to maintain, even for seasoned programmers.
 < "bad,good 24,42"
 ```
 
-Named capture groups are also accessible via the `groups` property.
+Here's an example with `groups` property.
 
 ```js
 > let m = '2018-10-25,car'.match(/(?<date>[^,]+),(?<product>[^,]+)/)
@@ -2005,40 +2687,41 @@ Named capture groups are also accessible via the `groups` property.
 | | use `$<name>` for backreferencing in replacement section |
 | | named captures are also accessible via `groups` property |
 
-This chapter covered many more features related to grouping — backreferencing to get matched portion of capture groups and naming the groups to add clarity. When backreference is not needed for a particular group, use non-capturing group. You'll see more such special groups in the next chapter.
+This chapter covered many more features related to grouping — backreferencing to get matched portion of capture groups and naming the groups to add clarity. When capture groups results in unwanted behavior change (ex: `split` method), you can use non-capturing groups instead. You'll see more such special groups in [Lookarounds](#lookarounds) chapter.
 
 ## Exercises
 
-**a)** The given string has fields separated by `:` and each field has a floating point number followed by a `,` and a string. If the floating point number has only one digit precision, append `0` and swap the strings separated by `,` for that particular field.
+**a)** Replace the space character that occurs after a word ending with `a` or `r` with a newline character.
 
 ```js
-> let row = '3.14,hi:42.5,bye:1056.1,cool:00.9,fool'
+> let ip = 'area not a _a2_ roar took 22'
 
-> row.replace()         // add your solution here
-< "3.14,hi:bye,42.50:cool,1056.10:fool,00.90"
+> console.log()     // add your solution here
+  area
+  not a
+  _a2_ roar
+  took 22
 ```
 
-**b)** Check if given input strings have at least two consecutive repeated alphabets irrespective of case. For example, words like `stillnesS` and `Committee` should return `true` but words like `root` or `readable` or `rotational` should return `false`. Consider word to be as defined in regular expression parlance.
+**b)** Add `[]` around words starting with `s` and containing `e` and `t` in any order.
 
 ```js
-> let s1 = 'readable COMMItTEe'
-> let s2 = 'rotational sti1lness _foot_'
-> let s3 = 'needed repeated'
-> let s4 = 'offsh00t'
+> let ip = 'sequoia subtle exhibit asset sets tests site'
 
-> const p1 =        // add your solution here
-
-> p1.test(s1)
-true
-> p1.test(s2)
-false
-> p1.test(s3)
-false
-> p1.test(s4)
-true
+// add your solution here
+< "sequoia [subtle] exhibit asset [sets] tests [site]"
 ```
 
-**c)** Convert the given **markdown** headers to corresponding **anchor** tag. Consider the input to start with one or more `#` characters followed by space and word characters. The `name` attribute is constructed by converting the header to lowercase and replacing spaces with hyphens. Can you do it without using a capture group?
+**c)** Replace all whole words with `X` that start and end with the same word character. Single character word should get replaced with `X` too, as it satisfies the stated condition.
+
+```js
+> let ip = 'oreo not a _a2_ roar took 22'
+
+// add your solution here
+< "X not X X X took X"
+```
+
+**d)** Convert the given **markdown** headers to corresponding **anchor** tag. Consider the input to start with one or more `#` characters followed by space and word characters. The `name` attribute is constructed by converting the header to lowercase and replacing spaces with hyphens. Can you do it without using a capture group?
 
 ```js
 > let header1 = '# Regular Expressions'
@@ -2048,17 +2731,18 @@ true
       // add your solution here
   }
 
-> header1.replace()         // add your solution here
+> header1.replace()     // add your solution here
 < "# <a name='regular-expressions'></a>Regular Expressions"
-> header2.replace()         // add your solution here
+> header2.replace()     // add your solution here
 < "## <a name='named-capture-groups'></a>Named capture groups"
 ```
 
-**d)** Convert the given **markdown** anchors to corresponding **hyperlinks**.
+**e)** Convert the given **markdown** anchors to corresponding **hyperlinks**.
 
 ```js
 > let anchor1 = "# <a name='regular-expressions'></a>Regular Expressions"
 > let anchor2 = "## <a name='subexpression-calls'></a>Subexpression calls"
+
 > const hyperlink =         // add your solution here
 
 > anchor1.replace()         // add your solution here
@@ -2067,22 +2751,157 @@ true
 < "[Subexpression calls](#subexpression-calls)"
 ```
 
-**e)** Use appropriate regular expression method to get the expected output for given string.
+**f)** Check if given input strings have words with at least two consecutive repeated alphabets irrespective of case. For example, words like `stillnesS` and `Committee` should return `true` but words like `root` or `readable` or `rotational` should return `false`. Consider word to be as defined in regular expression parlance.
 
 ```js
-> let str1 = 'price_42 roast: :-ice==cat east'
+> let s1 = 'readable COMMItTEe'
+> let s2 = 'rotational sti1lness _foot_'
+> let s3 = 'needed repeated'
+> let s4 = 'offsh00t'
 
-> str1.split()          // add your solution here
-< ["price_42", " ", "roast", ": :-", "ice", "==", "cat", " ", "east"]
+> const pat1 =      // add your solution here
+
+> pat1.test(s1)
+true
+> pat1.test(s2)
+false
+> pat1.test(s3)
+false
+> pat1.test(s4)
+true
 ```
+
+**g)** For the given input string, replace all occurrences of digit sequences with only the unique non-repeating sequence. For example, `232323` should be changed to `23` and `897897` should be changed to `897`. If there no repeats (for example `1234`) or if the repeats end prematurely (for example `12121`), it should not be changed.
+
+```js
+> let ip = '1234 2323 453545354535 9339 11 60260260'
+
+// add your solution here
+< "1234 23 4535 9339 1 60260260"
+```
+
+**h)** Replace sequences made up of words separated by `:` or `.` by the first word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.
+
+```js
+> let ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
+
+// add your solution here
+< "wow hi-2 bye kite"
+```
+
+**i)** Replace sequences made up of words separated by `:` or `.` by the last word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.
+
+```js
+> let ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
+
+// add your solution here
+< "five hi-2 bye water"
+```
+
+**j)** Split the given input string on one or more repeated sequence of `cat`.
+
+```js
+> let ip = 'firecatlioncatcatcatbearcatcatparrot'
+
+// add your solution here
+< ["fire", "lion", "bear", "parrot"]
+```
+
+**k)** For the given input string, find all occurrences of digit sequences with at least one repeating sequence. For example, `232323` and `897897`. If the repeats end prematurely, for example `12121`, it should not be matched.
+
+```js
+> let ip = '1234 2323 453545354535 9339 11 60260260'
+
+> const pat2 =      // add your solution here
+
+// entire sequences in the output
+// add your solution here
+< ["2323", "453545354535", "11"]
+
+// only the unique sequence in the output
+// add your solution here
+< ["23", "4535", "1"]
+```
+
+**l)** Convert the comma separated strings to corresponding key-value pair mapping as shown below. The keys are `name`, `maths` and `phy` for the three fields in the input strings.
+
+```js
+> let row1 = 'rohan,75,89'
+> let row2 = 'rose,88,92'
+
+> const pat3 =      // add your solution here
+
+// add your solution here for row1
+< {name: "rohan", maths: "75", phy: "89"}
+
+// add your solution here for row2
+< {name: "rose", maths: "88", phy: "92"}
+```
+
+**m)** Surround all whole words with `()`. Additionally, if the whole word is `imp` or `ant`, delete them. Can you do it with single substitution?
+
+```js
+> let ip = 'tiger imp goat eagle ant important'
+
+// add your solution here
+< "(tiger) () (goat) (eagle) () (important)"
+```
+
+# Interlude: Common tasks
+
+Tasks like matching phone numbers, ip addresses, dates, etc are so common that you can often find them collected as a library. This chapter shows some examples for [CommonRegexJS](https://github.com/talyssonoc/CommonRegexJS). See also [Awesome Regex: Collections](https://github.com/aloisdg/awesome-regex#collections).
+
+## CommonRegexJS
+
+There are several ways to use the patterns, see [CommonRegexJS: Usage](https://github.com/talyssonoc/CommonRegexJS#usage) for details. You can also go through [commonregex.js](https://github.com/talyssonoc/CommonRegexJS/blob/master/lib/commonregex.js) and choose the regular expression you need.
+
+```js
+> let data = 'hello 255.21.255.22 okay'
+
+> const comm = new CommonRegex(data)
+
+> comm.IPv4
+< ["255.21.255.22"]
+```
+
+Make sure to test these patterns for your use case. For example, the below data has a valid IPv4 address followed by another number separated by a dot character. If such cases should be ignored, then you'll have to create your own version of the pattern or change the input accordingly.
+
+```js
+> let new_data = '23.14.2.4.2 255.21.255.22 567.12.2.1'
+
+> const ip = new CommonRegex(new_data)
+
+> ip.IPv4
+< ["23.14.2.4", "255.21.255.22"]
+```
+
+## Summary
+
+Some patterns are quite complex and not easy to build and validate from scratch. Libraries like **CommonRegexJS** are helpful to reduce your time and effort needed for commonly known tasks. However, you do need to **test** the solution for *your* use case. See also [stackoverflow: validating email addresses](https://stackoverflow.com/questions/201323/how-to-validate-an-email-address-using-a-regular-expression).
 
 # Lookarounds
 
-Having seen how to create custom character classes and various avatars of groupings, it is time for learning how to create custom anchors and add conditions to a pattern within regexp definition. These assertions are also known as **zero-width patterns** because they add restrictions similar to anchors and are not part of matched portions. Also, you will learn how to negate a grouping similar to negated character sets.
+You've already seen how to create custom character classes and various avatars of special groupings. In this chapter you'll learn more groupings, known as lookarounds, that help to create custom anchors and add conditions within regexp definition. These assertions are also known as **zero-width patterns** because they add restrictions similar to anchors and are not part of the matched portions. Also, you will learn how to negate a grouping similar to negated character sets.
+
+## Conditional expressions
+
+Before you get used to lookarounds too much, it is good to remember that JavaScript is a programming language. You have control structures and you can combine multiple conditions using logical operators, methods like `every/some`, etc. Also, do not forget that regexp is only one of the tools available for string processing.
+
+```js
+> let items = ['1,2,3,4', 'a,b,c,d', '#foo 123']
+
+// filter elements containing digit and '#' characters
+> items.filter(s => /\d/.test(s) && s.includes('#'))
+< ["#foo 123"]
+
+// modify elements only if it doesn't start with '#'
+> items.filter(s => s[0] != '#').map(s => s.replace(/,.+,/, ' '))
+< ["1 4", "a d"]
+```
 
 ## Negative lookarounds
 
-Lookaround assertions can be added to a pattern in two ways — as a prefix known as **lookbehind** and as a suffix known as **lookahead**. Syntax wise, these two ways are differentiated by adding a `<` for the lookbehind version. Lookarounds can be used to construct both positive and negative assertions. Negative lookarounds use `!` and `=` is used for positive lookarounds. Complete syntax for negative assertions is:
+Lookaround assertions can be added in two ways — **lookbehind** and **lookahead**. Each of these can be a **positive** or a **negative** assertion. Syntax wise, lookbehind has an extra `<` compared to the lookahead version. Negative lookarounds can be identified by the use of `!` whereas `=` is used for positive lookarounds. This section is about negative lookarounds, whose complete syntax is shown below.
 
 * `(?!pat)` for negative lookahead assertion
 * `(?<!pat)` for negative lookbehind assertion
@@ -2121,11 +2940,35 @@ Can be mixed with anchors and other regexp features to define truly powerful res
 < "foo_baz = num1 + 35 * 42 / num2"
 ```
 
->![warning](images/warning.svg) Lookbehind isn't supported in Firefox yet. See [this Q&A](https://stackoverflow.com/questions/50011366/javascript-regex-negative-lookbehind-not-working-in-firefox) for a workaround.
+In all the examples so far, lookahead grouping was placed as a suffix and lookbehind as a prefix. This is how they are used most of the time, but not the only way to use them. Lookarounds can be placed anywhere and multiple lookarounds can be combined in any order. They do not consume characters nor do they play a role in matched portions. They just let you know whether the condition you want to test is satisfied from the current location in the input string.
+
+```js
+// these two are equivalent
+// replace a character as long as it is not preceded by 'p' or 'r'
+> 'spare'.replace(/(?<![pr])./g, '*')
+< "**a*e"
+> 'spare'.replace(/.(?<![pr].)/g, '*')
+< "**a*e"
+
+// replace 'par' as long as 's' is not present later in the input
+// this assumes that the lookaround doesn't conflict with search pattern
+// i.e. 's' will not conflict 'par' but would affect if it was 'r' and 'par'
+> 'par spare part party'.replace(/par(?!.*s)/g, 'X')
+< "par sXe Xt Xty"
+> 'par spare part party'.replace(/(?!.*s)par/g, 'X')
+< "par sXe Xt Xty"
+
+// since the three assertions used here are all zero-width,
+// all of the 6 possible combinations will be equivalent
+> 'foo_baz=num1+35*42/num2'.replace(/(?!$)\b(?<!^)/g, ' ')
+< "foo_baz = num1 + 35 * 42 / num2"
+```
+
+>![info](images/info.svg) See [this stackoverflow Q&A](https://stackoverflow.com/questions/50011366/javascript-regex-negative-lookbehind-not-working-in-firefox) for a workaround if lookbehind isn't supported.
 
 ## Positive lookarounds
 
-Positive lookaround syntax uses `=` similar to `!` for negative lookaround. The complete syntax looks like:
+Unlike negative lookarounds, absence of the pattern will not satisfy positive lookarounds. Instead, for the condition to satisfy, the pattern has to match actual characters and/or zero-width assertions. Positive lookaround can be identified by use of `=` in the grouping. The complete syntax looks like:
 
 * `(?=pat)` for positive lookahead assertion
 * `(?<=pat)` for positive lookbehind assertion
@@ -2142,6 +2985,10 @@ Positive lookaround syntax uses `=` similar to `!` for negative lookaround. The 
 // same as: match(/\b\w/g).join('')
 > 'sea eat car rat eel tea'.replace(/(?<=\b\w)\w*\W*/g, '')
 < "secret"
+
+// replace 'par' as long as 'part' occurs as a whole word later in the line
+> 'par spare part party'.replace(/par(?=.*\bpart\b)/g, 'X')
+< "X sXe part party"
 ```
 
 Lookarounds are quite handy in dealing with field based processing.
@@ -2167,7 +3014,9 @@ Lookarounds are quite handy in dealing with field based processing.
 < "{},{cat},{tiger}"
 ```
 
-Even though lookarounds are not part of matched portions, capture groups can be used inside positive lookarounds.
+## Capture groups inside positive lookarounds
+
+Even though lookarounds are not part of matched portions, capture groups can be used inside positive lookarounds. Can you reason out why it won't work for negative lookarounds?
 
 ```js
 > console.log('a b c d e'.replace(/(\S+\s+)(?=(\S+)\s)/g, '$1$2\n'))
@@ -2177,7 +3026,7 @@ Even though lookarounds are not part of matched portions, capture groups can be 
   d e
 ```
 
-## AND conditional
+## AND conditional with lookarounds
 
 As promised earlier, here's how lookarounds make it simpler to construct AND conditionals.
 
@@ -2188,9 +3037,14 @@ As promised earlier, here's how lookarounds make it simpler to construct AND con
 // same as: /b.*e.*t|b.*t.*e|e.*b.*t|e.*t.*b|t.*b.*e|t.*e.*b/
 > words.filter(w => /(?=.*b)(?=.*e).*t/.test(w))
 < ["subtle", "questionable", "exhibit"]
+
 // words containing all vowels in any order
 > words.filter(w => /(?=.*a)(?=.*e)(?=.*i)(?=.*o).*u/.test(w))
 < ["sequoia", "questionable", "equation"]
+
+// words containing 'a' and 'q' but not 'n' at the end of the element
+> words.filter(w => /(?=.*a)(?=.*q)(?!.*n$)/.test(w))
+< ["sequoia", "questionable"]
 ```
 
 ## Variable length lookbehind
@@ -2220,13 +3074,18 @@ You've seen a few cases where negated character class was useful than a positive
 
 ```js
 // cannot use /at(?<!go)par/ as lookarounds do not consume characters
+// match if 'go' is not there between 'at' and 'par'
 > /at((?!go).)*par/.test('fox,cat,dog,parrot')
 < true
+// match if 'do' is not there between 'at' and 'par'
 > /at((?!do).)*par/.test('fox,cat,dog,parrot')
 < false
-// if it gets confusing, use 'match' method to see the matching portion
+
+// if it gets confusing, use 'match' method to see the matching portions
 > 'fox,cat,dog,parrot'.match(/at((?!go).)*par/)[0]
 < "at,dog,par"
+> 'at,baz,a2z,bad-zoo'.match(/a((?!\d).)*z/g)
+< ["at,baz", "ad-z"]
 ```
 
 ## Cheatsheet and Summary
@@ -2248,20 +3107,104 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 
 ## Exercises
 
-**a)** Remove leading and trailing whitespaces from all the individual fields of these csv strings. This time use regular expressions instead of chaining normal string methods.
+>![info](images/info.svg) Please use lookarounds for solving the following exercises even if you can do it without lookarounds.
+
+**a)** Replace all whole words with `X` unless it is preceded by `(` character.
+
+```js
+> let ip = '(apple) guava berry) apple (mango) (grape'
+
+// add your solution here
+< "(apple) X X) X (mango) (grape"
+```
+
+**b)** Replace all whole words with `X` unless it is followed by `)` character.
+
+```js
+> let ip = '(apple) guava berry) apple (mango) (grape'
+
+// add your solution here
+< "(apple) X berry) X (mango) (X"
+```
+
+**c)** Replace all whole words with `X` unless it is preceded by `(` or followed by `)` characters.
+
+```js
+> let ip = '(apple) guava berry) apple (mango) (grape'
+
+// add your solution here
+< "(apple) X berry) X (mango) (grape"
+```
+
+**d)** Extract all whole words that do not end with `e` or `n`.
+
+```js
+> let ip = 'at row on urn e note dust n'
+
+// add your solution here
+< ["at", "row", "dust"]
+```
+
+**e)** Extract all whole words that do not start with `a` or `d` or `n`.
+
+```js
+> let ip = 'at row on urn e note dust n'
+
+// add your solution here
+< ["row", "on", "urn", "e"]
+```
+
+**f)** Extract all whole words only if they are followed by `:` or `,` or `-`.
+
+```js
+> let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+
+// add your solution here
+< ["poke", "so", "ever"]
+```
+
+**g)** Extract all whole words only if they are preceded by `=` or `/` or `-`.
+
+```js
+> let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+
+// add your solution here
+< ["so", "is", "sit"]
+```
+
+**h)** Extract all whole words only if they are preceded by `=` or `:` and followed by `:` or `.`.
+
+```js
+> let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+
+// add your solution here
+< ["so", "ink"]
+```
+
+**i)** Extract all whole words only if they are preceded by `=` or `:` or `.` or `(` or `-` and not followed by `.` or `/`.
+
+```js
+> let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+
+// add your solution here
+< ["so", "vast", "sit"]
+```
+
+**j)** Remove leading and trailing whitespaces from all the individual fields where `,` is the field separator.
 
 ```js
 > let csv1 = ' comma  ,separated ,values '
 > let csv2 = 'good bad,nice  ice  , 42 , ,   stall   small'
 
 > const trim_whitespace =       // add your solution here
+
 > csv1.replace(trim_whitespace, '')
 < "comma,separated,values"
 > csv2.replace(trim_whitespace, '')
 < "good bad,nice  ice,42,,stall   small"
 ```
 
-**b)** Filter all elements that satisfy all of these rules:
+**k)** Filter all elements that satisfy all of these rules:
 
 * should have at least two alphabets
 * should have at least 3 digits
@@ -2271,11 +3214,69 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 ```js
 > let pwds = ['hunter2', 'F2h3u%9', '*X3Yz3.14\t', 'r2_d2_42', 'A $B C1234']
 
-> pwds.filter()         // add your solution here
+// add your solution here
 < ["F2h3u%9", "A $B C1234"]
 ```
 
-**c)** Match strings if it contains `qty` followed by `price` but not if there is **whitespace** or the string `error` between them.
+**l)** For the given string, surround all whole words with `{}` except for whole words `par` and `cat` and `apple`.
+
+```js
+> let ip = 'part; cat {super} rest_42 par scatter apple spar'
+
+// add your solution here
+< "{part}; cat {{super}} {rest_42} par {scatter} apple {spar}"
+```
+
+**m)** Extract integer portion of floating-point numbers for the given string. A number ending with `.` and no further digits should not be considered.
+
+```js
+> let ip = '12 ab32.4 go 5 2. 46.42 5'
+
+// add your solution here
+< ["32", "46"]
+```
+
+**n)** For the given input strings, extract all overlapping two character sequences.
+
+```js
+> let s1 = 'apple'
+> let s2 = '1.2-3:4'
+
+> const pat1 =      // add your solution here
+
+// add your solution here for s1
+< ["ap", "pp", "pl", "le"]
+// add your solution here for s2
+< ["1.", ".2", "2-", "-3", "3:", ":4"]
+```
+
+**o)** The given input strings contain fields separated by `:` character. Delete `:` and the last field if there is a digit character anywhere before the last field.
+
+```js
+> let s1 = '42:cat'
+> let s2 = 'twelve:a2b'
+> let s3 = 'we:be:he:0:a:b:bother'
+
+> const pat2 =      // add your solution here
+
+> s1.replace(pat2, '')
+< "42"
+> s2.replace(pat2, '')
+< "twelve:a2b"
+> s3.replace(pat2, '')
+< "we:be:he:0:a:b"
+```
+
+**p)** Extract all whole words unless they are preceded by `:` or `<=>` or `----` or `#`.
+
+```js
+> let ip = '::very--at<=>row|in.a_b#b2c=>lion----east'
+
+// add your solution here
+< ["at", "in", "a_b", "lion"]
+```
+
+**q)** Match strings if it contains `qty` followed by `price` but not if there is **whitespace** or the string `error` between them.
 
 ```js
 > let str1 = '23,qty,price,42'
@@ -2284,7 +3285,8 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 > let str4 = '42\nqty-6,apple-56,price-234,error'
 > let str5 = '4,price,3.14,qty,4'
 
-> const neg =           // add your solution here
+> const neg =       // add your solution here
+
 > neg.test(str1)
 < true
 > neg.test(str2)
@@ -2297,37 +3299,48 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 < false
 ```
 
-**d)** For the given string, surround all whole words with `{}` except for whole words `par` and `cat`. Can you solve it with lookarounds and not having to use function in replacement section?
+**r)** Can you reason out why the output shown is different for these two regular expressions?
 
 ```js
-> let w1 = 'part; cat {super} rest_42 par scatter spar'
+> let ip = 'I have 12, he has 2!'
 
-> w1.replace()          // add your solution here
-< "{part}; cat {{super}} {rest_42} par {scatter} {spar}"
+> ip.replace(/\b..\b/g, '{$&}')
+< "{I }have {12}{, }{he} has{ 2}!"
+
+> ip.replace(/(?<!\w)..(?!\w)/g, '{$&}')
+< "I have {12}, {he} has {2!}"
 ```
 
-**e)** Simulate string partitioning to get an array of three elements — string before separator, portion matched by separator and string after separator. For the first case, split the given input string on first occurrence of digits. For the second case, split based on last occurrence of digits.
+**s)** Simulate string partitioning to get an array of three elements — string before separator, portion matched by separator and string after separator. For the first case, split the given input string on first occurrence of digits. For the second case, split based on last occurrence of digits.
 
 ```js
 > let w2 = 'Sample123string42with777numbers'
 
-> w2.split()            // add your solution here
+// add your solution here for splitting based on first occurrence
 < ["Sample", "123", "string42with777numbers"]
 
-> w2.split()            // add your solution here
+// add your solution here for splitting based on last occurrence
 < ["Sample123string42with", "777", "numbers"]
 ```
 
-**Bonus**: Can you solve this exercise without lookarounds?
+**t)** Find the starting index of last occurrence of `is` or `the` or `was` or `to` for the given input strings using `search` method. Assume that there will be at least one match for each input string.
 
 ```js
-// w2 = 'Sample123string42with777numbers'
+> let s1 = 'match after the last newline character'
+> let s2 = 'and then you want to test'
+> let s3 = 'this is good bye then'
+> let s4 = 'who was there to see?'
 
-> w2.match()            // add your solution here
-< ["Sample", "123", "string42with777numbers"]
+> const pat3 =      // add your solution here
 
-> w2.match()            // add your solution here
-< ["Sample123string42with", "777", "numbers"]
+> s1.search(pat3)
+< 12
+> s2.search(pat3)
+< 18
+> s3.search(pat3)
+< 17
+> s4.search(pat3)
+< 14
 ```
 
 # Unicode
@@ -2396,22 +3409,22 @@ A comprehensive discussion on regexp usage with Unicode characters is out of sco
 > let str2 = 'good fοοd'
 > let str3 = 'happy learning!'
 
-> const p1 =        // add your solution here
+> const pat1 =      // add your solution here
 
-> p1.test(str1)
+> pat1.test(str1)
 < false
-> p1.test(str2)
+> pat1.test(str2)
 < false
-> p1.test(str3)
+> pat1.test(str3)
 < true
 ```
 
 **b)** Retain only punctuation characters for the given string.
 
 ```js
-> let s1 = '❨a❩❪1❫❬b❭❮2❯❰c❱❲3❳❴xyz❵⟅123⟆⟦⟧⟨like⟩⟪3.14⟫'
+> let ip = '❨a❩❪1❫❬b❭❮2❯❰c❱❲3❳❴xyz❵⟅123⟆⟦⟧⟨like⟩⟪3.14⟫'
 
-> s1.replace()      // add your solution here
+// add your solution here
 < "❨❩❪❫❬❭❮❯❰❱❲❳❴❵⟅⟆⟦⟧⟨⟩⟪.⟫"
 ```
 
@@ -2426,10 +3439,12 @@ A comprehensive discussion on regexp usage with Unicode characters is out of sco
 
 Note that some of these resources are not specific to JavaScript, so use them with caution and check if they apply to JavaScript's syntax and features.
 
-* [regex101](https://regex101.com/) — visual aid and online testing tool for regular expressions, select flavor as JavaScript before use
-* [regulex](https://jex.im/regulex) — for visualization of regexp as rail road diagrams
+* [regex101](https://regex101.com/) and [regexr](https://regexr.com/) — visual aid and online testing tool for regular expressions, select flavor as JavaScript before use
+* [regulex](https://jex.im/regulex) and [debuggex](https://www.debuggex.com/) — for visualization of regexp as rail road diagrams
 * [XRegExp](https://github.com/slevithan/xregexp) — utility with features like metacharacter escaping, recursive matching, etc
+* [JSVerbalExpressions](https://github.com/VerbalExpressions/JSVerbalExpressions) — construct regexp with natural language terms
 * [CommonRegexJS](https://github.com/talyssonoc/CommonRegexJS) — collection of common regular expressions
+* [Awesome Regex](https://github.com/aloisdg/awesome-regex) — curated collection of libraries, tools, frameworks and software
 * [randexp.js](https://github.com/fent/randexp.js) — Generate strings that match a given regular expression
 * [stackoverflow: JavaScript regexp](https://stackoverflow.com/questions/tagged/javascript+regex?sort=votes&pageSize=15)
 * [stackoverflow: regex FAQ](https://stackoverflow.com/questions/22937618/reference-what-does-this-regex-mean)

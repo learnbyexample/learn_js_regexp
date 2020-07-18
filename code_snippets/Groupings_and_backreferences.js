@@ -1,4 +1,6 @@
-'[52] apples and [31] mangoes'.replace(/\[(\d+)\]/g, '$1')
+// Backreferences
+
+'[52] apples [and] [31] mangoes'.replace(/\[(\d+)\]/g, '$1')
 
 '_foo_ __123__ _baz_'.replace(/(_)?_/g, '$1')
 
@@ -16,11 +18,19 @@ words.filter(w => /(\w)\1/.test(w))
 
 'aa a a a 42 f_1 f_1 f_13.14'.replace(/\b(\w+)( \1)+\b/g, '$1')
 
+// Backreference oddities
+
 'cat'.replace(/a/, '{$1}')
 
 'cat'.replace(/(a)/, '{\$1}')
 
 'cat'.replace(/(a)/, '{$$1}')
+
+'[52] apples and [31] mangoes'.replace(/\[(\d+)\]/g, '($15)')
+
+'[52] apples and [31] mangoes'.replace(/\[(\d+)\]/g, '$3')
+
+'[52] apples and [31] mangoes'.replace(/\[\d+\]/g, '$1')
 
 'abcdefghijklmn'.replace(/(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)/, '$11')
 
@@ -30,11 +40,15 @@ words.filter(w => /(\w)\1/.test(w))
 
 'abcdefghijklmna1d'.replace(/(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.).*\1\x31/, 'X')
 
+// Non-capturing groups
+
 'Sample123string42with777numbers'.split(/\d+/)
 
 'Sample123string42with777numbers'.split(/(\d+)/)
 
 'effort flee facade oddball rat tool'.match(/\b\w*(\w)\1\w*\b/g)
+
+'hi 123123123 bye 456123456'.match(/(123)+/g)
 
 '123hand42handy777handful500'.split(/hand(y|ful)?/)
 
@@ -47,6 +61,8 @@ words.filter(w => /(\w)\1/.test(w))
 'so:cat:rest:in:put:to'.replace(/^([^:]+:){4}/, '($1)')
 
 'so:cat:rest:in:put:to'.replace(/^((?:[^:]+:){4})/, '($1)')
+
+// Named capture groups
 
 let row = 'today,2008-03-24,food,2008-03-24,nice,2018-10-25,5632'
 

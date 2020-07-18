@@ -1,7 +1,5 @@
 # RegExp introduction
 
->![info](images/info.svg) For solutions, see [Exercise_solutions.md](https://github.com/learnbyexample/learn_js_regexp/blob/master/Exercise_solutions.md).
-
 **a)** Check if the given input strings contain `two` irrespective of case.
 
 ```js
@@ -9,7 +7,7 @@
 > let s2 = 'one plus tw0 is not three'
 > let s3 = 'TRUSTWORTHY'
 
-> const pat1 =      // add your solution here
+> const pat1 = /two/i
 
 > pat1.test(s1)
 < true
@@ -24,7 +22,7 @@
 ```js
 > let items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
 
-> items.filter(w => test(w))       // add your solution here
+> items.filter(w => !/e/.test(w))
 < ["goal", "sit"]
 ```
 
@@ -33,7 +31,7 @@
 ```js
 > let ip = 'They ate 5 apples and 5 oranges'
 
-> ip.replace()       // add your solution here
+> ip.replace(/5/, 'five')
 < "They ate five apples and 5 oranges"
 ```
 
@@ -42,7 +40,7 @@
 ```js
 > let ip = 'They ate 5 apples and 5 oranges'
 
-> ip.replace()      // add your solution here
+> ip.replace(/5/g, 'five')
 < "They ate five apples and five oranges"
 ```
 
@@ -51,7 +49,7 @@
 ```js
 > let ip = 'This note should not be NoTeD'
 
-> ip.replace()     // add your solution here
+> ip.replace(/note/ig, 'X')
 < "This X should not be XD"
 ```
 
@@ -65,10 +63,10 @@ guava 42
 onion 31
 water 10`
 
-> const num =       // add your solution here
+> const num = /2/
 
 > console.log(purchases.split('\n')
-                       .filter(e => test(e))       // add your solution here
+                       .filter(e => !num.test(e))
                        .join('\n'))
 < items qty
   mango 50
@@ -83,7 +81,7 @@ water 10`
 ```js
 > let items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
 
-> items.filter(w => test(w) || test(w))     // add your solution here
+> items.filter(w => /a/.test(w) || /w/.test(w))
 < ["goal", "new", "eat"]
 ```
 
@@ -92,7 +90,7 @@ water 10`
 ```js
 > let items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
 
-> items.filter(w => test(w) && test(w))     // add your solution here
+> items.filter(w => /e/.test(w) && /n/.test(w))
 < ["new", "dinner"]
 ```
 
@@ -101,7 +99,7 @@ water 10`
 ```js
 > let ip = 'start address: 0xA0, func1 address: 0xC0'
 
-> ip.replace()        // add your solution here
+> ip.replace(/0xA0/, '0x7F').replace(/0xC0/, '0x1F')
 < "start address: 0x7F, func1 address: 0x1F"
 ```
 
@@ -117,8 +115,8 @@ water 10`
 > let str3 = 'the2 cats'
 > let str4 = 'switch on the light'
 
-> const pat1 =      // add your solution here
-> const pat2 =      // add your solution here
+> const pat1 = /\bis\b/
+> const pat2 = /\bthe\b/
 
 > pat1.test(str1) || pat2.test(str1)
 < true
@@ -135,7 +133,7 @@ water 10`
 ```js
 > let ip = 'bred red spread credible red;'
 
-> ip.replace()       // add your solution here
+> ip.replace(/\bred\b/g, 'brown')
 < "bred brown spread credible brown;"
 ```
 
@@ -144,7 +142,7 @@ water 10`
 ```js
 > let items = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', 'fake4b']
 
-> items.filter(e => test(e))       // add your solution here
+> items.filter(e => /\B42\B/.test(e))
 < ["hi42bye", "nice1423", "cool_42a"]
 ```
 
@@ -153,7 +151,7 @@ water 10`
 ```js
 > let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
 
-> items.filter(e => test(e) || test(e))        // add your solution here
+> items.filter(e => /^den/.test(e) || /ly$/.test(e))
 < ["lovely", "2 lonely", "dent"]
 ```
 
@@ -165,7 +163,7 @@ mall call ball pall
 wall mall ball fall
 mallet wallet malls`
 
-> console.log(para.replace())        // add your solution here
+> console.log(para.replace(/^mall\b/gm, '1234'))
 < ball fall wall tall
   1234 call ball pall
   wall mall ball fall
@@ -177,7 +175,7 @@ mallet wallet malls`
 ```js
 > let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
 
-> items.filter(e => test(e) || test(e))      // add your solution here
+> items.filter(e => /^den/m.test(e) || /ly$/m.test(e))
 < ["lovely", "1\ndentist", "2 lonely", "fly\nfar", "dent"]
 ```
 
@@ -186,7 +184,7 @@ mallet wallet malls`
 ```js
 > let items = ['12\nthree\n', '12\nThree', '12\nthree\n4', '12\nthree']
 
-> items.filter(e => test(e))     // add your solution here
+> items.filter(e => /^12\nthree$/i.test(e))
 < ["12\nThree", "12\nthree"]
 ```
 
@@ -195,7 +193,7 @@ mallet wallet malls`
 ```js
 > let items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
 
-> items.map(w => w.replace())        // add your solution here
+> items.map(w => w.replace(/\bhand\B/, 'X'))
 < ["Xed", "hand", "Xy", "unhanded", "Xle", "hand-2"]
 ```
 
@@ -204,15 +202,20 @@ mallet wallet malls`
 ```js
 > let items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
 
-> items.filter(w => test(w)).map(w => w.replace())        // add your solution here
+> items.filter(w => /^h/.test(w)).map(w => w.replace(/e/g, 'X'))
 < ["handXd", "hand", "handy", "handlX", "hand-2"]
 ```
 
 **j)** Why does the following code show `false` instead of `true`?
 
+Because `$` matches only the end of string. You'll have to use the `m` flag to enable matching at the end of line separators. Some regular expression engines do allow `$` to match just before `\n` if it is the last character in the string, not but JavaScript.
+
 ```js
 > /end$/.test('bend it\nand send\n')
 < false
+
+> /end$/m.test('bend it\nand send\n')
+< true
 ```
 
 <br>
@@ -224,7 +227,7 @@ mallet wallet malls`
 ```js
 > let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
 
-> items.filter()        // add your solution here
+> items.filter(e => /^den|ly$/.test(e))
 < ["lovely", "2 lonely", "dent"]
 ```
 
@@ -233,7 +236,7 @@ mallet wallet malls`
 ```js
 > let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
 
-> items.filter()        // add your solution here
+> items.filter(e => /^den|ly$/m.test(e))
 < ["lovely", "1\ndentist", "2 lonely", "fly\nfar", "dent"]
 ```
 
@@ -243,7 +246,7 @@ mallet wallet malls`
 > let s1 = 'creed refuse removed read'
 > let s2 = 'refused reed redo received'
 
-> const pat1 =      // add your solution here
+> const pat1 = /re(mov|ceiv|fus|)ed/g
 
 > s1.replace(pat1, 'X')
 < "cX refuse X read"
@@ -257,7 +260,7 @@ mallet wallet malls`
 > let str1 = 'plate full of slate'
 > let str2 = "slated for later, don't be late"
 
-> const pat2 =      // add your solution here
+> const pat2 = /slated|late(r|)/g
 
 > str1.replace(pat2, 'A')
 < "pA full of sA"
@@ -275,10 +278,10 @@ mallet wallet malls`
 > let str1 = '(9-2)*5+qty/3'
 > let str2 = '(qty+4)/2-(9-2)*5+pq/4'
 
-> const pat1 =      // add your solution here
-> str1.replace()        // add your solution here
+> const pat1 = /\(9-2\)\*5/g
+> str1.replace(pat1, '35')
 < "35+qty/3"
-> str2.replace()        // add your solution here
+> str2.replace(pat1, '35')
 < "(qty+4)/2-35+pq/4"
 ```
 
@@ -289,13 +292,13 @@ mallet wallet malls`
 > let s2 = '(4)\\|42 - (4)\\|3'
 > let s3 = 'two - (4)\\|\n'
 
-> const pat2 =      // add your solution here
+> const pat2 = /^\(4\)\\\||\(4\)\\\|$/g
 
-> s1.replace()      // add your solution here
+> s1.replace(pat2, '2')
 < "2.3/(4)\|6 foo 5.3-2"
-> s2.replace()      // add your solution here
+> s2.replace(pat2, '2')
 < "242 - (4)\|3"
-> s3.replace()      // add your solution here
+> s3.replace(pat2, '2')
 < "two - (4)\|
   "
 ```
@@ -305,8 +308,15 @@ mallet wallet malls`
 ```js
 > let items = ['a.b', '3+n', 'x\\y\\z', 'qty||price', '{n}']
 
-// add your solution here
-> const pat3 =      // add your solution here
+> function escapeRegExp(string) {
+    return string.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&')
+  }
+
+> function unionRegExp(arr) {
+    return arr.map(w => escapeRegExp(w)).join('|')
+  }
+
+> const pat3 = new RegExp(unionRegExp(items), 'g')
 
 > '0a.bcd'.replace(pat3, 'X')
 < "0Xcd"
@@ -321,7 +331,7 @@ mallet wallet malls`
 ```js
 > let ip = '123\b456'
 
-> ip.replace()      // add your solution here
+> ip.replace(/\x08/, ' ')
 < "123 456"
 ```
 
@@ -330,7 +340,7 @@ mallet wallet malls`
 ```js
 > let ip = 'th\\er\\e ar\\e common asp\\ects among th\\e alt\\ernations'
 
-> ip.replace()      // add your solution here
+> ip.replace(/\\e/g, 'e')
 < "there are common aspects among the alternations"
 ```
 
@@ -340,8 +350,21 @@ mallet wallet malls`
 > let ip = '3-(a^b)+2*(a^b)-(a/b)+3'
 > let eqns = ['(a^b)', '(a/b)', '(a^b)+2']
 
-// add your solution here
-> const pat4 =      // add your solution here
+// note that '/' is also escaped here
+> function escapeRegExp(string) {
+    return string.replace(/[.*+\-?^${}()|[\]\\\/]/g, '\\$&')
+  }
+
+> function unionRegExp(arr) {
+    return arr.map(w => escapeRegExp(w)).join('|')
+  }
+
+> eqns.sort((a, b) => b.length - a.length)
+< ["(a^b)+2", "(a^b)", "(a/b)"]
+
+> const pat4 = new RegExp(unionRegExp(eqns), 'g')
+> pat4
+< /\(a\^b\)\+2|\(a\^b\)|\(a\/b\)/g
 
 > ip.replace(pat4, 'X')
 < "3-X*X-X+3"
@@ -358,7 +381,7 @@ mallet wallet malls`
 ```js
 > let ip = 'a+42//5-c pressure*3+42/5-14256'
 
-// add your solution here
+> ip.replace(/42\/\/?5/g, '8')
 < "a+8-c pressure*3+8-14256"
 ```
 
@@ -367,7 +390,7 @@ mallet wallet malls`
 ```js
 > let items = ['handed', 'hand', 'handled', 'handy', 'unhand', 'hands', 'handle']
 
-// add your solution here
+> items.filter(w => /^hand(.|le)?$/.test(w))
 < ["hand", "handy", "hands", "handle"]
 ```
 
@@ -378,7 +401,7 @@ mallet wallet malls`
 > let eqn2 = 'pressure*3+42/5-14256'
 > let eqn3 = 'r*42-5/3+42///5-42/53+a'
 
-> const pat1 =      // add your solution here
+> const pat1 = new RegExp(`42//?5`)
 
 > eqn1.split(pat1)
 < ["a+", "-c"]
@@ -394,7 +417,7 @@ mallet wallet malls`
 > let s1 = 'remove the special meaning of such constructs'
 > let s2 = 'characters while constructing'
 
-> const pat2 =      // add your solution here
+> const pat2 = /i.*/
 
 > s1.replace(pat2, '')
 < "remove the spec"
@@ -409,7 +432,7 @@ mallet wallet malls`
 > let str2 = 'a/b(division) + c%d(#modulo)'
 > let str3 = 'Hi there(greeting). Nice day(a(b)'
 
-> const remove_parentheses =        // add your solution here
+> const remove_parentheses = /\(.*?\)/g
 
 > str1.replace(remove_parentheses, '')
 < "a+b"
@@ -430,18 +453,20 @@ mallet wallet malls`
 "plXk XcomXg tX wXer X cautX sentient"
 
 // expected output
-> const w2 =        // add your solution here
+> const w2 = /in(ter|co|g|k|t)?|ion/g
 > words.replace(w2, 'X')
 "plX XmX tX wX X cautX sentient"
 ```
 
 **g)** For the given greedy quantifiers, what would be the equivalent form using `{m,n}` representation?
 
-* `?` is same as
-* `*` is same as
-* `+` is same as
+* `?` is same as `{0,1}`
+* `*` is same as `{0,}`
+* `+` is same as `{1,}`
 
 **h)** `(a*|b*)` is same as `(a|b)*` — true or false?
+
+False. Because `(a*|b*)` will match only sequences like `a`, `aaa`, `bb`, `bbbbbbbb`. But `(a|b)*` can match a mixed sequence like `ababbba` too.
 
 **i)** For the given input strings, remove everything from the first occurrence of `test` (irrespective of case) till end of the string, provided `test` isn't at the end of the string.
 
@@ -450,7 +475,7 @@ mallet wallet malls`
 > let s2 = 'always test your regexp for corner\ncases'
 > let s3 = 'a TEST of skill tests?'
 
-> let pat3 =        // add your solution here
+> let pat3 = /test.+/is
 
 > s1.replace(pat3, '')
 < "this is a Test"
@@ -465,7 +490,7 @@ mallet wallet malls`
 ```js
 > let words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
 
-// add your solution here
+> words.filter(w => /^s.*(e.*t|t.*e)/.test(w))
 < ["subtle", "sets", "site"]
 ```
 
@@ -474,7 +499,7 @@ mallet wallet malls`
 ```js
 > let words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
 
-// add your solution here
+> words.filter(w => /.{6,}/.test(w))
 < ["sequoia", "subtle", "exhibit"]
 ```
 
@@ -483,7 +508,7 @@ mallet wallet malls`
 ```js
 > let words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
 
-// add your solution here
+> words.filter(w => /^(s|t).{0,5}$/.test(w))
 < ["subtle", "sets", "tests", "site"]
 ```
 
@@ -501,7 +526,7 @@ Start and try to
 finish the End
 bye`
 
-> const pat3 =      // add your solution here
+> const pat3 = /^start.*?end$/igms
 > console.log(para.replace(pat3, ''))
 < good start
   
@@ -513,6 +538,8 @@ bye`
 ```
 
 **n)** Can you reason out why this code results in the output shown? The aim was to remove all `<characters>` patterns but not the `<>` ones. The expected result was `'a 1<> b 2<> c'`.
+
+The use of `.+` quantifier after `<` means that `<>` cannot be a possible match to satisfy `<.+?>`. So, after matching `<` (which occurs after `1` and `2` in the given input string) the regular expression engine will look for next occurrence of `>` character to satisfy the given pattern. To solve such cases, you need to use character classes, which is discussed in a later chapter, to specify which particular set of characters should be matched by the `+` quantifier instead of `.` metacharacter.
 
 ```js
 > let ip = 'a<apple> 1<> b<bye> 2<> c<cat>'
@@ -528,13 +555,13 @@ bye`
 > let s2 = 'a::b :: c::d e::f :: 4::5'
 > let s3 = '42:: hi::bye::see :: carefully'
 
-> const pat4 =      // add your solution here
+> const pat4 = / +:: +(.+)/
 
-> s1.split()        // add your solution here
+> s1.split(pat4, 2)
 < ["go there", "this :: that"]
-> s2.split()        // add your solution here
+> s2.split(pat4, 2)
 < ["a::b", "c::d e::f :: 4::5"]
-> s3.split()        // add your solution here
+> s3.split(pat4, 2)
 < ["42:: hi::bye::see", "carefully"]
 ```
 
@@ -548,11 +575,11 @@ bye`
 > let str1 = 'What is the biggest fruit you have seen?'
 > let str2 = 'Your mission is to read and practice consistently'
 
-> const pat1 =      // add your solution here
+> const pat1 = /is.*t/
 
-// add your solution here for str1
+> str1.match(pat1)[0]
 < "is the biggest fruit"
-// add your solution here for str2
+> str2.match(pat1)[0]
 < "ission is to read and practice consistent"
 ```
 
@@ -564,15 +591,15 @@ bye`
 > let s3 = 'this is good bye then'
 > let s4 = 'who was there to see?'
 
-> const pat2 =      // add your solution here
+> const pat2 = /is|the|was|to/
 
-// add your solution here for s1
+> s1.search(pat2)
 < 12
-// add your solution here for s2
+> s2.search(pat2)
 < 4
-// add your solution here for s3
+> s3.search(pat2)
 < 2
-// add your solution here for s4
+> s4.search(pat2)
 < 4
 ```
 
@@ -584,15 +611,15 @@ bye`
 > let s3 = 'this is good bye then'
 > let s4 = 'who was there to see?'
 
-> const pat3 =      // add your solution here
+> const pat3 = /is|the|was|to/g
 
-// add your solution here for s1
+> Array.from(s1.matchAll(pat3), m => m.index).pop()
 < 12
-// add your solution here for s2
+> Array.from(s2.matchAll(pat3), m => m.index).pop()
 < 18
-// add your solution here for s3
+> Array.from(s3.matchAll(pat3), m => m.index).pop()
 < 17
-// add your solution here for s4
+> Array.from(s4.matchAll(pat3), m => m.index).pop()
 < 14
 ```
 
@@ -601,7 +628,7 @@ bye`
 ```js
 > let ip = 'fruits:apple, mango, guava, blueberry'
 
-// add your solution here
+> ip.match(/:(.*)/)[1]
 < "apple, mango, guava, blueberry"
 ```
 
@@ -610,7 +637,7 @@ bye`
 ```js
 > let ip = 'another (way) to reuse (portion) matched (by) capture groups'
 
-// add your solution here
+> ip.match(/\(.*?\)/g)
 < ["(way)", "(portion)", "(by)"]
 ```
 
@@ -619,7 +646,7 @@ bye`
 ```js
 > let ip = 'a<apple> 1<> b<bye> 2<> c<cat>'
 
-// add your solution here
+> ip.match(/<.+?>/g)
 < ["<apple>", "<> b<bye>", "<> c<cat>"]
 ```
 
@@ -629,9 +656,9 @@ bye`
 > let row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
 > let row2 = '1.32,-3.14 634,5.63 63.3e3,9907809345343.235 '
 
-> const pat4 =      // add your solution here
+> const pat4 = /(.+?),(.+?) /g
 
-// add your solution here for row1
+> Array.from(row1.matchAll(pat4), m => [m[1], m[2]])
 < (4) [Array(2), Array(2), Array(2), Array(2)]
   0: (2) ["-2", "5"]
   1: (2) ["4", "+3"]
@@ -640,7 +667,7 @@ bye`
   length: 4
   __proto__: Array(0)
 
-// add your solution here for row2
+> Array.from(row2.matchAll(pat4), m => [m[1], m[2]])
 < (3) [Array(2), Array(2), Array(2)]
   0: (2) ["1.32", "-3.14"]
   1: (2) ["634", "5.63"]
@@ -656,12 +683,12 @@ bye`
 > let row2 = '1.32,-3.14 634,5.63 63.3e3,9907809345343.235 '
 
 // should be same as previous question
-> const pat5 =      // add your solution here
+> const pat5 = /(.+?),(.+?) /g
 
-// add your solution here for row1
+> Array.from(row1.matchAll(pat5), m => +m[1] + +m[2])
 < [3, 7, -11, -353176108]
 
-// add your solution here for row2
+> Array.from(row2.matchAll(pat5), m => +m[1] + +m[2])
 < [-1.82, 639.63, 9907809408643.234]
 ```
 
@@ -670,7 +697,7 @@ bye`
 ```js
 > let ip = '42:no-output;1000:car-truck;SQEX49801'
 
-// add your solution here
+> ip.split(/:.+?-(.+?);/)
 < ["42", "output", "1000", "truck", "SQEX49801"]
 ```
 
@@ -678,7 +705,8 @@ bye`
 
 ```js
 > function aLtErNaTeCaSe(ip) {
-      // add your solution here
+      let b = true
+      return ip.replace(/[a-z]/ig, m => (b = !b) ? m.toUpperCase() : m.toLowerCase())
   }
 
 > aLtErNaTeCaSe('HI THERE!')
@@ -696,8 +724,8 @@ bye`
 > let s2 = 'do you have a spare cable'
 > let s3 = 'write a parser'
 
-> let d1 =          // add your solution here
-> const pat6 =      // add your solution here
+> let d1 = {'par': 'spar', 'spare': 'extra', 'park': 'garden'}
+> const pat6 = /spare|park?/g
 
 > s1.replace(pat6, k => d1[k])
 < "aspartment has a garden"
@@ -716,7 +744,7 @@ bye`
 ```js
 > let items = ['-handy', 'hand', 'handy', 'handled', 'hands', 'handle']
 
-// add your solution here
+> items.filter(w => /^hand([sy]|le)$/.test(w))
 < ["handy", "hands", "handle"]
 ```
 
@@ -725,7 +753,7 @@ bye`
 ```js
 > let ip = 'redo red credible :read: rod reed bred'
 
-// add your solution here
+> ip.replace(/\bre[ae]?d\b/g, 'X')
 < "redo X credible :X: rod X bred"
 ```
 
@@ -734,7 +762,7 @@ bye`
 ```js
 > let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
 
-// add your solution here
+> words.filter(w => /[ei].*[ln]/.test(w))
 < ["surrender", "unicorn", "eel"]
 ```
 
@@ -743,7 +771,7 @@ bye`
 ```js
 > let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
 
-// add your solution here
+> words.filter(w => /[ei].*[ln]|[ln].*[ei]/.test(w))
 < ["surrender", "unicorn", "newer", "eel"]
 ```
 
@@ -753,7 +781,7 @@ bye`
 > let str1 = '128A foo 0xfe32 34 0xbar'
 > let str2 = '0XDEADBEEF place 0x0ff1ce bad'
 
-> const hex_seq =       // add your solution here
+> const hex_seq = /\b(0x)?[\da-f]+\b/ig
 
 > str1.match(hex_seq)
 < ["128A", "0xfe32", "34"]
@@ -768,7 +796,7 @@ bye`
 > let str2 = 'a/b(division) + c%d(#modulo) - (e+(j/k-3)*4)'
 > let str3 = 'Hi there(greeting). Nice day(a(b)'
 
-> const remove_parentheses =        // add your solution here
+> const remove_parentheses = /\([^()]*\)/g
 
 > str1.replace(remove_parentheses, '')
 < "def factorial"
@@ -783,7 +811,7 @@ bye`
 ```js
 > let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
 
-// add your solution here
+> words.filter(w => /^[^epu]/.test(w))
 < ["surrender", "newer", "door"]
 ```
 
@@ -792,7 +820,7 @@ bye`
 ```js
 > let words = ['p-t', 'you', 'tea', 'heel', 'owe', 'new', 'reed', 'ear']
 
-// add your solution here
+> words.filter(w => !/[uw-]|ee/.test(w))
 < ["tea", "ear"]
 ```
 
@@ -802,11 +830,11 @@ bye`
 > let row1 = '(2),kite,12,,D,C,,'
 > let row2 = 'hi,bye,sun,moon'
 
-> const pat1 =      // add your solution here
+> const pat1 = /(,[^,]*){3}$/g
 
-// add your solution here for row1
+> row1.replace(pat1, ',WHTSZ323')
 < "(2),kite,12,,D,WHTSZ323"
-// add your solution here for row2
+> row2.replace(pat1, ',WHTSZ323')
 < "hi,WHTSZ323"
 ```
 
@@ -816,7 +844,7 @@ bye`
 > let s1 = 'lion \t Ink32onion Nice'
 > let s2 = '**1\f2\n3star\t7 77\r**'
 
-> const pat2 =      // add your solution here
+> const pat2 = /[\d\s]+/
 
 > s1.split(pat2)
 < ["lion", "Ink", "onion", "Nice"]
@@ -829,11 +857,13 @@ bye`
 ```js
 > let ip = 'a<apple> 1<> b<bye> 2<> c<cat>'
 
-// add your solution here
+> ip.replace(/<[^>]+>/g, '')
 < "a 1<> b 2<> c"
 ```
 
 **l)** `\b[a-z](on|no)[a-z]\b` is same as `\b[a-z][on]{2}[a-z]\b`. True or False? Sample input lines shown below might help to understand the differences, if any.
+
+False. `[on]{2}` will also match `oo` and `nn`.
 
 ```js
 > console.log('known\nmood\nknow\npony\ninns')
@@ -849,7 +879,7 @@ bye`
 ```js
 > let items = ['h0000432ab', 'car00625', '42_624 0512', '3.14 96 2 foo1234baz']
 
-// add your solution here
+> items.filter(e => e.match(/\d+/g).some(m => m > 624))
 < ["car00625", "3.14 96 2 foo1234baz"]
 ```
 
@@ -858,10 +888,10 @@ bye`
 ```js
 > let ip = 'price_42 roast^\t\n^-ice==cat\neast'
 
-// add your solution here
+> ip.split(/[\s^=-]+/)
 < ["price_42", "roast", "ice", "cat", "east"]
 
-// add your solution here
+> ip.split(/([\s^=-]+)/)
 < ["price_42", " ", "roast", "^	\n^-", "ice", "==", "cat", "\n", "east"]
 ```
 
@@ -870,7 +900,7 @@ bye`
 ```js
 > let items = ['    #comment', '\t\napple #42', '#oops', 'sure', 'no#1', '\t\r\f']
 
-// add your solution here
+> items.filter(e => /^\s*[^#\s]/.test(e))
 < ["	\napple #42", "sure", "no#1"]
 ```
 
@@ -879,7 +909,7 @@ bye`
 ```js
 > let ip = 'part; cat {super} rest_42 par scatter'
 
-// add your solution here
+> ip.replace(/\w+/g, w => /\b(par|cat)\b/.test(w) ? w : `{${w}}`)
 < "{part}; cat {{super}} {rest_42} par {scatter}"
 ```
 
@@ -892,7 +922,7 @@ bye`
 ```js
 > let ip = 'area not a _a2_ roar took 22'
 
-> console.log()     // add your solution here
+> console.log(ip.replace(/([ar]) /g, '$1\n'))
   area
   not a
   _a2_ roar
@@ -904,7 +934,7 @@ bye`
 ```js
 > let ip = 'sequoia subtle exhibit asset sets tests site'
 
-// add your solution here
+> ip.replace(/\bs\w*(t\w*e|e\w*t)\w*/g, '[$&]')
 < "sequoia [subtle] exhibit asset [sets] tests [site]"
 ```
 
@@ -913,7 +943,7 @@ bye`
 ```js
 > let ip = 'oreo not a _a2_ roar took 22'
 
-// add your solution here
+> ip.replace(/\b(\w|(\w)\w*\2)\b/g, 'X')
 < "X not X X X took X"
 ```
 
@@ -924,12 +954,12 @@ bye`
 > let header2 = '## Named capture groups'
 
 > function hyphenify(m) {
-      // add your solution here
+      return `<a name='${m.toLowerCase().replace(/ /g, '-')}'></a>${m}`
   }
 
-> header1.replace()     // add your solution here
+> header1.replace(/\w.*/, hyphenify)
 < "# <a name='regular-expressions'></a>Regular Expressions"
-> header2.replace()     // add your solution here
+> header2.replace(/\w.*/, hyphenify)
 < "## <a name='named-capture-groups'></a>Named capture groups"
 ```
 
@@ -939,11 +969,11 @@ bye`
 > let anchor1 = "# <a name='regular-expressions'></a>Regular Expressions"
 > let anchor2 = "## <a name='subexpression-calls'></a>Subexpression calls"
 
-> const hyperlink =         // add your solution here
+> const hyperlink = /[^']+'([^']+)'><\/a>(.*)/
 
-> anchor1.replace()         // add your solution here
+> anchor1.replace(hyperlink, '[$2](#$1)')
 < "[Regular Expressions](#regular-expressions)"
-> anchor2.replace()         // add your solution here
+> anchor2.replace(hyperlink, '[$2](#$1)')
 < "[Subexpression calls](#subexpression-calls)"
 ```
 
@@ -955,7 +985,7 @@ bye`
 > let s3 = 'needed repeated'
 > let s4 = 'offsh00t'
 
-> const pat1 =      // add your solution here
+> const pat1 = /(?:(\w)\1\w*){2}/i
 
 > pat1.test(s1)
 true
@@ -972,7 +1002,7 @@ true
 ```js
 > let ip = '1234 2323 453545354535 9339 11 60260260'
 
-// add your solution here
+> ip.replace(/\b(\d+)\1+\b/g, '$1')
 < "1234 23 4535 9339 1 60260260"
 ```
 
@@ -981,7 +1011,7 @@ true
 ```js
 > let ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
 
-// add your solution here
+> ip.replace(/(\w+)[:.](\w+[:.])+/g, '$1')
 < "wow hi-2 bye kite"
 ```
 
@@ -990,7 +1020,7 @@ true
 ```js
 > let ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
 
-// add your solution here
+> ip.replace(/((\w+)[:.])+/g, '$2')
 < "five hi-2 bye water"
 ```
 
@@ -999,7 +1029,7 @@ true
 ```js
 > let ip = 'firecatlioncatcatcatbearcatcatparrot'
 
-// add your solution here
+> ip.split(/(?:cat)+/)
 < ["fire", "lion", "bear", "parrot"]
 ```
 
@@ -1008,14 +1038,14 @@ true
 ```js
 > let ip = '1234 2323 453545354535 9339 11 60260260'
 
-> const pat2 =      // add your solution here
+> const pat2 = /\b(\d+)\1+\b/g
 
 // entire sequences in the output
-// add your solution here
+> ip.match(pat2)
 < ["2323", "453545354535", "11"]
 
 // only the unique sequence in the output
-// add your solution here
+> Array.from(ip.matchAll(pat2), m => m[1])
 < ["23", "4535", "1"]
 ```
 
@@ -1025,12 +1055,12 @@ true
 > let row1 = 'rohan,75,89'
 > let row2 = 'rose,88,92'
 
-> const pat3 =      // add your solution here
+> const pat3 = /(?<name>[^,]+),(?<maths>[^,]+),(?<phy>[^,]+)/
 
-// add your solution here for row1
+> row1.match(pat3).groups
 < {name: "rohan", maths: "75", phy: "89"}
 
-// add your solution here for row2
+> row2.match(pat3).groups
 < {name: "rose", maths: "88", phy: "92"}
 ```
 
@@ -1039,7 +1069,7 @@ true
 ```js
 > let ip = 'tiger imp goat eagle ant important'
 
-// add your solution here
+> ip.replace(/\b(?:imp|ant|(\w+))\b/g, '($1)')
 < "(tiger) () (goat) (eagle) () (important)"
 ```
 
@@ -1054,7 +1084,7 @@ true
 ```js
 > let ip = '(apple) guava berry) apple (mango) (grape'
 
-// add your solution here
+> ip.replace(/(?<!\()\b\w+/g, 'X')
 < "(apple) X X) X (mango) (grape"
 ```
 
@@ -1063,7 +1093,7 @@ true
 ```js
 > let ip = '(apple) guava berry) apple (mango) (grape'
 
-// add your solution here
+> ip.replace(/\b\w+\b(?!\))/g, 'X')
 < "(apple) X berry) X (mango) (X"
 ```
 
@@ -1072,7 +1102,7 @@ true
 ```js
 > let ip = '(apple) guava berry) apple (mango) (grape'
 
-// add your solution here
+> ip.replace(/(?<!\()\b\w+\b(?!\))/g, 'X')
 < "(apple) X berry) X (mango) (grape"
 ```
 
@@ -1081,7 +1111,7 @@ true
 ```js
 > let ip = 'at row on urn e note dust n'
 
-// add your solution here
+> ip.match(/\b\w+\b(?<![en])/g)
 < ["at", "row", "dust"]
 ```
 
@@ -1090,7 +1120,7 @@ true
 ```js
 > let ip = 'at row on urn e note dust n'
 
-// add your solution here
+> ip.match(/(?![adn])\b\w+\b/g)
 < ["row", "on", "urn", "e"]
 ```
 
@@ -1099,7 +1129,7 @@ true
 ```js
 > let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
 
-// add your solution here
+> ip.match(/\w+(?=[:,-])/g)
 < ["poke", "so", "ever"]
 ```
 
@@ -1108,7 +1138,7 @@ true
 ```js
 > let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
 
-// add your solution here
+> ip.match(/(?<=[=\/-])\w+/g)
 < ["so", "is", "sit"]
 ```
 
@@ -1117,7 +1147,7 @@ true
 ```js
 > let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
 
-// add your solution here
+> ip.match(/(?<=[=:])\w+(?=[:.])/g)
 < ["so", "ink"]
 ```
 
@@ -1126,7 +1156,7 @@ true
 ```js
 > let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
 
-// add your solution here
+> ip.match(/(?<=[=:.(-])\w+\b(?![\/.])/g)
 < ["so", "vast", "sit"]
 ```
 
@@ -1136,7 +1166,7 @@ true
 > let csv1 = ' comma  ,separated ,values '
 > let csv2 = 'good bad,nice  ice  , 42 , ,   stall   small'
 
-> const trim_whitespace =       // add your solution here
+> const trim_whitespace = /(?<=^|,)\s+|\s+(?=,|$)/g
 
 > csv1.replace(trim_whitespace, '')
 < "comma,separated,values"
@@ -1154,7 +1184,7 @@ true
 ```js
 > let pwds = ['hunter2', 'F2h3u%9', '*X3Yz3.14\t', 'r2_d2_42', 'A $B C1234']
 
-// add your solution here
+> pwds.filter(p => /(?!.*\s$)(?=(.*[a-z]){2})(?=(.*\d){3}).*[%*#$]/i.test(p))
 < ["F2h3u%9", "A $B C1234"]
 ```
 
@@ -1163,7 +1193,7 @@ true
 ```js
 > let ip = 'part; cat {super} rest_42 par scatter apple spar'
 
-// add your solution here
+> ip.replace(/\b(?!(?:par|cat|apple)\b)\w+\b/g, '{$&}')
 < "{part}; cat {{super}} {rest_42} par {scatter} apple {spar}"
 ```
 
@@ -1172,7 +1202,7 @@ true
 ```js
 > let ip = '12 ab32.4 go 5 2. 46.42 5'
 
-// add your solution here
+> ip.match(/\d+(?=\.\d+)/g)
 < ["32", "46"]
 ```
 
@@ -1182,11 +1212,11 @@ true
 > let s1 = 'apple'
 > let s2 = '1.2-3:4'
 
-> const pat1 =      // add your solution here
+> const pat1 = /.(?=(.))/g
 
-// add your solution here for s1
+> Array.from(s1.matchAll(pat1), m => m[0] + m[1])
 < ["ap", "pp", "pl", "le"]
-// add your solution here for s2
+> Array.from(s2.matchAll(pat1), m => m[0] + m[1])
 < ["1.", ".2", "2-", "-3", "3:", ":4"]
 ```
 
@@ -1197,7 +1227,7 @@ true
 > let s2 = 'twelve:a2b'
 > let s3 = 'we:be:he:0:a:b:bother'
 
-> const pat2 =      // add your solution here
+> const pat2 = /(?<=\d.*):[^:]*$/
 
 > s1.replace(pat2, '')
 < "42"
@@ -1212,7 +1242,7 @@ true
 ```js
 > let ip = '::very--at<=>row|in.a_b#b2c=>lion----east'
 
-// add your solution here
+> ip.match(/(?<![:#]|<=>|-{4})\b\w+/g)
 < ["at", "in", "a_b", "lion"]
 ```
 
@@ -1225,7 +1255,7 @@ true
 > let str4 = '42\nqty-6,apple-56,price-234,error'
 > let str5 = '4,price,3.14,qty,4'
 
-> const neg =       // add your solution here
+> const neg = /qty((?!\s|error).)*price/
 
 > neg.test(str1)
 < true
@@ -1240,6 +1270,10 @@ true
 ```
 
 **r)** Can you reason out why the output shown is different for these two regular expressions?
+
+`\b` matches both the start and end of word locations. In the below example, `\b..\b` doesn't necessarily mean that first `\b` will match only the start of word location and second `\b` will match only the end of word location. They can be any combination! For example, `I` followed by space in the input string here is using start of word location for both whereas space followed by `2` is using end of word location for both.
+
+In contrast, the negative lookarounds only ensure that there are no word characters around any two characters. And these assertions will always be satisfied at the start of string and the end of string respectively. But `\b` depends on the presence of word characters. So, `!` at the end of the input string here matches the lookaround assertion but not word boundary.
 
 ```js
 > let ip = 'I have 12, he has 2!'
@@ -1256,10 +1290,10 @@ true
 ```js
 > let w2 = 'Sample123string42with777numbers'
 
-// add your solution here for splitting based on first occurrence
+> w2.split(/(?<!\d.*)(\d+)/)
 < ["Sample", "123", "string42with777numbers"]
 
-// add your solution here for splitting based on last occurrence
+> w2.split(/(\d+)(?!.*\d)/)
 < ["Sample123string42with", "777", "numbers"]
 ```
 
@@ -1271,7 +1305,7 @@ true
 > let s3 = 'this is good bye then'
 > let s4 = 'who was there to see?'
 
-> const pat3 =      // add your solution here
+> const pat3 = /(is|the|was|to)(?!.*(is|the|was|to))/
 
 > s1.search(pat3)
 < 12
@@ -1294,7 +1328,8 @@ true
 > let str2 = 'good fοοd'
 > let str3 = 'happy learning!'
 
-> const pat1 =      // add your solution here
+// const pat1 = /^[\x00-\x7f]+$/
+> const pat1 = /^\p{ASCII}+$/u
 
 > pat1.test(str1)
 < false
@@ -1309,11 +1344,13 @@ true
 ```js
 > let ip = '❨a❩❪1❫❬b❭❮2❯❰c❱❲3❳❴xyz❵⟅123⟆⟦⟧⟨like⟩⟪3.14⟫'
 
-// add your solution here
+> ip.replace(/\P{P}+/gu, '')
 < "❨❩❪❫❬❭❮❯❰❱❲❳❴❵⟅⟆⟦⟧⟨⟩⟪.⟫"
 ```
 
 **c)** Is the following code snippet showing the correct output?
+
+Yes. Some regular expression engines allow escape sequences like `\d`, `\b`, `\s`, `\w`, etc to be Unicode aware.
 
 ```js
 > 'fox:αλεπού'.match(/\w+/g)
