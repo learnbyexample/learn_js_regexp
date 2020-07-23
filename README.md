@@ -27,6 +27,8 @@ For a preview of the book, see [sample chapters](https://github.com/learnbyexamp
 
 The book can also be [viewed as a single markdown file in this repo](./js_regexp.md). See my blogpost on [generating pdf from markdown using pandoc](https://learnbyexample.github.io/tutorial/ebook-generation/customizing-pandoc/) if you are interested in the ebook creation process.
 
+For online `html` version of the book, visit https://learnbyexample.github.io/learn_js_regexp/
+
 <br>
 
 # Feedback
@@ -69,6 +71,7 @@ Twitter: https://twitter.com/learn_byexample
 * [tex.stackexchange](https://tex.stackexchange.com/) — for help on `pandoc` and `tex` related questions
 * Cover image: [LibreOffice Draw](https://www.libreoffice.org/discover/draw/) and [regulex](https://jex.im/regulex)
 * [Warning](https://commons.wikimedia.org/wiki/File:Warning_icon.svg) and [Info](https://commons.wikimedia.org/wiki/File:Info_icon_002.svg) icons by [Amada44](https://commons.wikimedia.org/wiki/User:Amada44) under public domain
+* [mdBook](https://github.com/rust-lang/mdBook) — for `html` version of the book
 
 <br>
 
