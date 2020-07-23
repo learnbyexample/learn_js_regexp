@@ -1,0 +1,1242 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Exercise Solutions - JavaScript RegExp</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Example based guide to mastering JavaScript regexp">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="custom.css">
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover.html">Cover</a></li><li class="chapter-item expanded affix "><a href="buy.html">Buy PDF/EPUB versions</a></li><li class="chapter-item expanded "><a href="preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="whats-so-special-about-regular-expressions.html"><strong aria-hidden="true">2.</strong> What's so special about Regular Expressions?</a></li><li class="chapter-item expanded "><a href="regexp-introduction.html"><strong aria-hidden="true">3.</strong> RegExp introduction</a></li><li class="chapter-item expanded "><a href="anchors.html"><strong aria-hidden="true">4.</strong> Anchors</a></li><li class="chapter-item expanded "><a href="alternation-and-grouping.html"><strong aria-hidden="true">5.</strong> Alternation and Grouping</a></li><li class="chapter-item expanded "><a href="escaping-metacharacters.html"><strong aria-hidden="true">6.</strong> Escaping metacharacters</a></li><li class="chapter-item expanded "><a href="dot-metacharacter-and-quantifiers.html"><strong aria-hidden="true">7.</strong> Dot metacharacter and Quantifiers</a></li><li class="chapter-item expanded "><a href="interlude-tools-for-debugging-and-visualization.html"><strong aria-hidden="true">8.</strong> Interlude: Tools for debugging and visualization</a></li><li class="chapter-item expanded "><a href="working-with-matched-portions.html"><strong aria-hidden="true">9.</strong> Working with matched portions</a></li><li class="chapter-item expanded "><a href="character-class.html"><strong aria-hidden="true">10.</strong> Character class</a></li><li class="chapter-item expanded "><a href="groupings-and-backreferences.html"><strong aria-hidden="true">11.</strong> Groupings and backreferences</a></li><li class="chapter-item expanded "><a href="interlude-common-tasks.html"><strong aria-hidden="true">12.</strong> Interlude: Common tasks</a></li><li class="chapter-item expanded "><a href="lookarounds.html"><strong aria-hidden="true">13.</strong> Lookarounds</a></li><li class="chapter-item expanded "><a href="unicode.html"><strong aria-hidden="true">14.</strong> Unicode</a></li><li class="chapter-item expanded "><a href="further-reading.html"><strong aria-hidden="true">15.</strong> Further Reading</a></li><li class="chapter-item expanded "><a href="Exercise_solutions.html" class="active"><strong aria-hidden="true">16.</strong> Exercise Solutions</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">JavaScript RegExp</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="https://github.com/learnbyexample/learn_js_regexp" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#regexp-introduction" id="regexp-introduction">RegExp introduction</a></h1>
+<p><strong>a)</strong> Check if the given input strings contain <code>two</code> irrespective of case.</p>
+<pre><code class="language-js">&gt; let s1 = 'Their artwork is exceptional'
+&gt; let s2 = 'one plus tw0 is not three'
+&gt; let s3 = 'TRUSTWORTHY'
+
+&gt; const pat1 = /two/i
+
+&gt; pat1.test(s1)
+&lt; true
+&gt; pat1.test(s2)
+&lt; false
+&gt; pat1.test(s3)
+&lt; true
+</code></pre>
+<p><strong>b)</strong> For the given array, filter all elements that do <em>not</em> contain <code>e</code>.</p>
+<pre><code class="language-js">&gt; let items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
+
+&gt; items.filter(w =&gt; !/e/.test(w))
+&lt; [&quot;goal&quot;, &quot;sit&quot;]
+</code></pre>
+<p><strong>c)</strong> Replace first occurrence of <code>5</code> with <code>five</code> for the given string.</p>
+<pre><code class="language-js">&gt; let ip = 'They ate 5 apples and 5 oranges'
+
+&gt; ip.replace(/5/, 'five')
+&lt; &quot;They ate five apples and 5 oranges&quot;
+</code></pre>
+<p><strong>d)</strong> Replace all occurrences of <code>5</code> with <code>five</code> for the given string.</p>
+<pre><code class="language-js">&gt; let ip = 'They ate 5 apples and 5 oranges'
+
+&gt; ip.replace(/5/g, 'five')
+&lt; &quot;They ate five apples and five oranges&quot;
+</code></pre>
+<p><strong>e)</strong> Replace all occurrences of <code>note</code> irrespective of case with <code>X</code>.</p>
+<pre><code class="language-js">&gt; let ip = 'This note should not be NoTeD'
+
+&gt; ip.replace(/note/ig, 'X')
+&lt; &quot;This X should not be XD&quot;
+</code></pre>
+<p><strong>f)</strong> For the given multiline input string, filter all lines NOT containing the string <code>2</code>.</p>
+<pre><code class="language-js">&gt; let purchases = `items qty
+apple 24
+mango 50
+guava 42
+onion 31
+water 10`
+
+&gt; const num = /2/
+
+&gt; console.log(purchases.split('\n')
+                       .filter(e =&gt; !num.test(e))
+                       .join('\n'))
+&lt; items qty
+  mango 50
+  onion 31
+  water 10
+</code></pre>
+<blockquote>
+<p><img src="images/info.svg" alt="info" /> You'd be able to solve this using just <code>replace</code> method by the end of <a href="#dot-metacharacter-and-quantifiers">Dot metacharacter and Quantifiers</a> chapter.</p>
+</blockquote>
+<p><strong>g)</strong> For the given array, filter all elements that contains either <code>a</code> or <code>w</code>.</p>
+<pre><code class="language-js">&gt; let items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
+
+&gt; items.filter(w =&gt; /a/.test(w) || /w/.test(w))
+&lt; [&quot;goal&quot;, &quot;new&quot;, &quot;eat&quot;]
+</code></pre>
+<p><strong>h)</strong> For the given array, filter all elements that contains both <code>e</code> and <code>n</code>.</p>
+<pre><code class="language-js">&gt; let items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
+
+&gt; items.filter(w =&gt; /e/.test(w) &amp;&amp; /n/.test(w))
+&lt; [&quot;new&quot;, &quot;dinner&quot;]
+</code></pre>
+<p><strong>i)</strong> For the given string, replace <code>0xA0</code> with <code>0x7F</code> and <code>0xC0</code> with <code>0x1F</code>.</p>
+<pre><code class="language-js">&gt; let ip = 'start address: 0xA0, func1 address: 0xC0'
+
+&gt; ip.replace(/0xA0/, '0x7F').replace(/0xC0/, '0x1F')
+&lt; &quot;start address: 0x7F, func1 address: 0x1F&quot;
+</code></pre>
+<br>
+<h1><a class="header" href="#anchors" id="anchors">Anchors</a></h1>
+<p><strong>a)</strong> Check if the given input strings contain <code>is</code> or <code>the</code> as whole words.</p>
+<pre><code class="language-js">&gt; let str1 = 'is; (this)'
+&gt; let str2 = &quot;The food isn't good&quot;
+&gt; let str3 = 'the2 cats'
+&gt; let str4 = 'switch on the light'
+
+&gt; const pat1 = /\bis\b/
+&gt; const pat2 = /\bthe\b/
+
+&gt; pat1.test(str1) || pat2.test(str1)
+&lt; true
+&gt; pat1.test(str2) || pat2.test(str2)
+&lt; false
+&gt; pat1.test(str3) || pat2.test(str3)
+&lt; false
+&gt; pat1.test(str4) || pat2.test(str4)
+&lt; true
+</code></pre>
+<p><strong>b)</strong> For the given input string, change only whole word <code>red</code> to <code>brown</code></p>
+<pre><code class="language-js">&gt; let ip = 'bred red spread credible red;'
+
+&gt; ip.replace(/\bred\b/g, 'brown')
+&lt; &quot;bred brown spread credible brown;&quot;
+</code></pre>
+<p><strong>c)</strong> For the given array, filter all elements that contains <code>42</code> surrounded by word characters.</p>
+<pre><code class="language-js">&gt; let items = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', 'fake4b']
+
+&gt; items.filter(e =&gt; /\B42\B/.test(e))
+&lt; [&quot;hi42bye&quot;, &quot;nice1423&quot;, &quot;cool_42a&quot;]
+</code></pre>
+<p><strong>d)</strong> For the given input array, filter all elements that start with <code>den</code> or end with <code>ly</code></p>
+<pre><code class="language-js">&gt; let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
+
+&gt; items.filter(e =&gt; /^den/.test(e) || /ly$/.test(e))
+&lt; [&quot;lovely&quot;, &quot;2 lonely&quot;, &quot;dent&quot;]
+</code></pre>
+<p><strong>e)</strong> For the given input string, change whole word <code>mall</code> to <code>1234</code> only if it is at the start of line.</p>
+<pre><code class="language-js">&gt; let para = `ball fall wall tall
+mall call ball pall
+wall mall ball fall
+mallet wallet malls`
+
+&gt; console.log(para.replace(/^mall\b/gm, '1234'))
+&lt; ball fall wall tall
+  1234 call ball pall
+  wall mall ball fall
+  mallet wallet malls
+</code></pre>
+<p><strong>f)</strong> For the given array, filter all elements having a line starting with <code>den</code> or ending with <code>ly</code>.</p>
+<pre><code class="language-js">&gt; let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
+
+&gt; items.filter(e =&gt; /^den/m.test(e) || /ly$/m.test(e))
+&lt; [&quot;lovely&quot;, &quot;1\ndentist&quot;, &quot;2 lonely&quot;, &quot;fly\nfar&quot;, &quot;dent&quot;]
+</code></pre>
+<p><strong>g)</strong> For the given input array, filter all whole elements <code>12\nthree</code> irrespective of case.</p>
+<pre><code class="language-js">&gt; let items = ['12\nthree\n', '12\nThree', '12\nthree\n4', '12\nthree']
+
+&gt; items.filter(e =&gt; /^12\nthree$/i.test(e))
+&lt; [&quot;12\nThree&quot;, &quot;12\nthree&quot;]
+</code></pre>
+<p><strong>h)</strong> For the given input array, replace <code>hand</code> with <code>X</code> for all words that start with <code>hand</code> followed by at least one word character.</p>
+<pre><code class="language-js">&gt; let items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
+
+&gt; items.map(w =&gt; w.replace(/\bhand\B/, 'X'))
+&lt; [&quot;Xed&quot;, &quot;hand&quot;, &quot;Xy&quot;, &quot;unhanded&quot;, &quot;Xle&quot;, &quot;hand-2&quot;]
+</code></pre>
+<p><strong>i)</strong> For the given input array, filter all elements starting with <code>h</code>. Additionally, replace <code>e</code> with <code>X</code> for these filtered elements.</p>
+<pre><code class="language-js">&gt; let items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
+
+&gt; items.filter(w =&gt; /^h/.test(w)).map(w =&gt; w.replace(/e/g, 'X'))
+&lt; [&quot;handXd&quot;, &quot;hand&quot;, &quot;handy&quot;, &quot;handlX&quot;, &quot;hand-2&quot;]
+</code></pre>
+<p><strong>j)</strong> Why does the following code show <code>false</code> instead of <code>true</code>?</p>
+<p>Because <code>$</code> matches only the end of string. You'll have to use the <code>m</code> flag to enable matching at the end of line separators. Some regular expression engines do allow <code>$</code> to match just before <code>\n</code> if it is the last character in the string, not but JavaScript.</p>
+<pre><code class="language-js">&gt; /end$/.test('bend it\nand send\n')
+&lt; false
+
+&gt; /end$/m.test('bend it\nand send\n')
+&lt; true
+</code></pre>
+<br>
+<h1><a class="header" href="#alternation-and-grouping" id="alternation-and-grouping">Alternation and Grouping</a></h1>
+<p><strong>a)</strong> For the given input array, filter all elements that start with <code>den</code> or end with <code>ly</code></p>
+<pre><code class="language-js">&gt; let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
+
+&gt; items.filter(e =&gt; /^den|ly$/.test(e))
+&lt; [&quot;lovely&quot;, &quot;2 lonely&quot;, &quot;dent&quot;]
+</code></pre>
+<p><strong>b)</strong> For the given array, filter all elements having a line starting with <code>den</code> or ending with <code>ly</code></p>
+<pre><code class="language-js">&gt; let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
+
+&gt; items.filter(e =&gt; /^den|ly$/m.test(e))
+&lt; [&quot;lovely&quot;, &quot;1\ndentist&quot;, &quot;2 lonely&quot;, &quot;fly\nfar&quot;, &quot;dent&quot;]
+</code></pre>
+<p><strong>c)</strong> For the given input strings, replace all occurrences of <code>removed</code> or <code>reed</code> or <code>received</code> or <code>refused</code> with <code>X</code>.</p>
+<pre><code class="language-js">&gt; let s1 = 'creed refuse removed read'
+&gt; let s2 = 'refused reed redo received'
+
+&gt; const pat1 = /re(mov|ceiv|fus|)ed/g
+
+&gt; s1.replace(pat1, 'X')
+&lt; &quot;cX refuse X read&quot;
+&gt; s2.replace(pat1, 'X')
+&lt; &quot;X X redo X&quot;
+</code></pre>
+<p><strong>d)</strong> For the given input strings, replace <code>late</code> or <code>later</code> or <code>slated</code> with <code>A</code>.</p>
+<pre><code class="language-js">&gt; let str1 = 'plate full of slate'
+&gt; let str2 = &quot;slated for later, don't be late&quot;
+
+&gt; const pat2 = /slated|late(r|)/g
+
+&gt; str1.replace(pat2, 'A')
+&lt; &quot;pA full of sA&quot;
+&gt; str2.replace(pat2, 'A')
+&lt; &quot;A for A, don't be A&quot;
+</code></pre>
+<br>
+<h1><a class="header" href="#escaping-metacharacters" id="escaping-metacharacters">Escaping metacharacters</a></h1>
+<p><strong>a)</strong> Transform given input strings to expected output using same logic on both strings.</p>
+<pre><code class="language-js">&gt; let str1 = '(9-2)*5+qty/3'
+&gt; let str2 = '(qty+4)/2-(9-2)*5+pq/4'
+
+&gt; const pat1 = /\(9-2\)\*5/g
+&gt; str1.replace(pat1, '35')
+&lt; &quot;35+qty/3&quot;
+&gt; str2.replace(pat1, '35')
+&lt; &quot;(qty+4)/2-35+pq/4&quot;
+</code></pre>
+<p><strong>b)</strong> Replace <code>(4)\|</code> with <code>2</code> only at the start or end of given input strings.</p>
+<pre><code class="language-js">&gt; let s1 = '2.3/(4)\\|6 foo 5.3-(4)\\|'
+&gt; let s2 = '(4)\\|42 - (4)\\|3'
+&gt; let s3 = 'two - (4)\\|\n'
+
+&gt; const pat2 = /^\(4\)\\\||\(4\)\\\|$/g
+
+&gt; s1.replace(pat2, '2')
+&lt; &quot;2.3/(4)\|6 foo 5.3-2&quot;
+&gt; s2.replace(pat2, '2')
+&lt; &quot;242 - (4)\|3&quot;
+&gt; s3.replace(pat2, '2')
+&lt; &quot;two - (4)\|
+  &quot;
+</code></pre>
+<p><strong>c)</strong> Replace any matching item from given array with <code>X</code> for the given input strings.</p>
+<pre><code class="language-js">&gt; let items = ['a.b', '3+n', 'x\\y\\z', 'qty||price', '{n}']
+
+&gt; function escapeRegExp(string) {
+    return string.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&amp;')
+  }
+
+&gt; function unionRegExp(arr) {
+    return arr.map(w =&gt; escapeRegExp(w)).join('|')
+  }
+
+&gt; const pat3 = new RegExp(unionRegExp(items), 'g')
+
+&gt; '0a.bcd'.replace(pat3, 'X')
+&lt; &quot;0Xcd&quot;
+&gt; 'E{n}AMPLE'.replace(pat3, 'X')
+&lt; &quot;EXAMPLE&quot;
+&gt; '43+n2 ax\\y\\ze'.replace(pat3, 'X')
+&lt; &quot;4X2 aXe&quot;
+</code></pre>
+<p><strong>d)</strong> Replace backspace character <code>\b</code> with a single space character for the given input string.</p>
+<pre><code class="language-js">&gt; let ip = '123\b456'
+
+&gt; ip.replace(/\x08/, ' ')
+&lt; &quot;123 456&quot;
+</code></pre>
+<p><strong>e)</strong> Replace all occurrences of <code>\e</code> with <code>e</code>.</p>
+<pre><code class="language-js">&gt; let ip = 'th\\er\\e ar\\e common asp\\ects among th\\e alt\\ernations'
+
+&gt; ip.replace(/\\e/g, 'e')
+&lt; &quot;there are common aspects among the alternations&quot;
+</code></pre>
+<p><strong>f)</strong> Replace any matching item from the array <code>eqns</code> with <code>X</code> for given the string <code>ip</code>. Match the items from <code>eqns</code> literally.</p>
+<pre><code class="language-js">&gt; let ip = '3-(a^b)+2*(a^b)-(a/b)+3'
+&gt; let eqns = ['(a^b)', '(a/b)', '(a^b)+2']
+
+// note that '/' is also escaped here
+&gt; function escapeRegExp(string) {
+    return string.replace(/[.*+\-?^${}()|[\]\\\/]/g, '\\$&amp;')
+  }
+
+&gt; function unionRegExp(arr) {
+    return arr.map(w =&gt; escapeRegExp(w)).join('|')
+  }
+
+&gt; eqns.sort((a, b) =&gt; b.length - a.length)
+&lt; [&quot;(a^b)+2&quot;, &quot;(a^b)&quot;, &quot;(a/b)&quot;]
+
+&gt; const pat4 = new RegExp(unionRegExp(eqns), 'g')
+&gt; pat4
+&lt; /\(a\^b\)\+2|\(a\^b\)|\(a\/b\)/g
+
+&gt; ip.replace(pat4, 'X')
+&lt; &quot;3-X*X-X+3&quot;
+</code></pre>
+<br>
+<h1><a class="header" href="#dot-metacharacter-and-quantifiers" id="dot-metacharacter-and-quantifiers">Dot metacharacter and Quantifiers</a></h1>
+<blockquote>
+<p><img src="images/info.svg" alt="info" /> Use <code>s</code> flag for these exercises depending upon the contents of input strings.</p>
+</blockquote>
+<p><strong>a)</strong> Replace <code>42//5</code> or <code>42/5</code> with <code>8</code> for the given input.</p>
+<pre><code class="language-js">&gt; let ip = 'a+42//5-c pressure*3+42/5-14256'
+
+&gt; ip.replace(/42\/\/?5/g, '8')
+&lt; &quot;a+8-c pressure*3+8-14256&quot;
+</code></pre>
+<p><strong>b)</strong> For the array <code>items</code>, filter all elements starting with <code>hand</code> and ending with at most one more character or <code>le</code>.</p>
+<pre><code class="language-js">&gt; let items = ['handed', 'hand', 'handled', 'handy', 'unhand', 'hands', 'handle']
+
+&gt; items.filter(w =&gt; /^hand(.|le)?$/.test(w))
+&lt; [&quot;hand&quot;, &quot;handy&quot;, &quot;hands&quot;, &quot;handle&quot;]
+</code></pre>
+<p><strong>c)</strong> Use <code>split</code> method to get the output as shown for the given input strings.</p>
+<pre><code class="language-js">&gt; let eqn1 = 'a+42//5-c'
+&gt; let eqn2 = 'pressure*3+42/5-14256'
+&gt; let eqn3 = 'r*42-5/3+42///5-42/53+a'
+
+&gt; const pat1 = new RegExp(`42//?5`)
+
+&gt; eqn1.split(pat1)
+&lt; [&quot;a+&quot;, &quot;-c&quot;]
+&gt; eqn2.split(pat1)
+&lt; [&quot;pressure*3+&quot;, &quot;-14256&quot;]
+&gt; eqn3.split(pat1)
+&lt; [&quot;r*42-5/3+42///5-&quot;, &quot;3+a&quot;]
+</code></pre>
+<p><strong>d)</strong> For the given input strings, remove everything from the first occurrence of <code>i</code> till end of the string.</p>
+<pre><code class="language-js">&gt; let s1 = 'remove the special meaning of such constructs'
+&gt; let s2 = 'characters while constructing'
+
+&gt; const pat2 = /i.*/
+
+&gt; s1.replace(pat2, '')
+&lt; &quot;remove the spec&quot;
+&gt; s2.replace(pat2, '')
+&lt; &quot;characters wh&quot;
+</code></pre>
+<p><strong>e)</strong> For the given strings, construct a regexp to get output as shown.</p>
+<pre><code class="language-js">&gt; let str1 = 'a+b(addition)'
+&gt; let str2 = 'a/b(division) + c%d(#modulo)'
+&gt; let str3 = 'Hi there(greeting). Nice day(a(b)'
+
+&gt; const remove_parentheses = /\(.*?\)/g
+
+&gt; str1.replace(remove_parentheses, '')
+&lt; &quot;a+b&quot;
+&gt; str2.replace(remove_parentheses, '')
+&lt; &quot;a/b + c%d&quot;
+&gt; str3.replace(remove_parentheses, '')
+&lt; &quot;Hi there. Nice day&quot;
+</code></pre>
+<p><strong>f)</strong> Correct the given regexp to get the expected output.</p>
+<pre><code class="language-js">&gt; let words = 'plink incoming tint winter in caution sentient'
+
+// wrong output
+&gt; const w1 = /int|in|ion|ing|inco|inter|ink/g
+&gt; words.replace(w1, 'X')
+&quot;plXk XcomXg tX wXer X cautX sentient&quot;
+
+// expected output
+&gt; const w2 = /in(ter|co|g|k|t)?|ion/g
+&gt; words.replace(w2, 'X')
+&quot;plX XmX tX wX X cautX sentient&quot;
+</code></pre>
+<p><strong>g)</strong> For the given greedy quantifiers, what would be the equivalent form using <code>{m,n}</code> representation?</p>
+<ul>
+<li><code>?</code> is same as <code>{0,1}</code></li>
+<li><code>*</code> is same as <code>{0,}</code></li>
+<li><code>+</code> is same as <code>{1,}</code></li>
+</ul>
+<p><strong>h)</strong> <code>(a*|b*)</code> is same as <code>(a|b)*</code> — true or false?</p>
+<p>False. Because <code>(a*|b*)</code> will match only sequences like <code>a</code>, <code>aaa</code>, <code>bb</code>, <code>bbbbbbbb</code>. But <code>(a|b)*</code> can match a mixed sequence like <code>ababbba</code> too.</p>
+<p><strong>i)</strong> For the given input strings, remove everything from the first occurrence of <code>test</code> (irrespective of case) till end of the string, provided <code>test</code> isn't at the end of the string.</p>
+<pre><code class="language-js">&gt; let s1 = 'this is a Test'
+&gt; let s2 = 'always test your regexp for corner\ncases'
+&gt; let s3 = 'a TEST of skill tests?'
+
+&gt; let pat3 = /test.+/is
+
+&gt; s1.replace(pat3, '')
+&lt; &quot;this is a Test&quot;
+&gt; s2.replace(pat3, '')
+&lt; &quot;always &quot;
+&gt; s3.replace(pat3, '')
+&lt; &quot;a &quot;
+</code></pre>
+<p><strong>j)</strong> For the input array <code>words</code>, filter all elements starting with <code>s</code> and containing <code>e</code> and <code>t</code> in any order.</p>
+<pre><code class="language-js">&gt; let words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
+
+&gt; words.filter(w =&gt; /^s.*(e.*t|t.*e)/.test(w))
+&lt; [&quot;subtle&quot;, &quot;sets&quot;, &quot;site&quot;]
+</code></pre>
+<p><strong>k)</strong> For the input array <code>words</code>, remove all elements having less than <code>6</code> characters.</p>
+<pre><code class="language-js">&gt; let words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
+
+&gt; words.filter(w =&gt; /.{6,}/.test(w))
+&lt; [&quot;sequoia&quot;, &quot;subtle&quot;, &quot;exhibit&quot;]
+</code></pre>
+<p><strong>l)</strong> For the input array <code>words</code>, filter all elements starting with <code>s</code> or <code>t</code> and having a maximum of <code>6</code> characters.</p>
+<pre><code class="language-js">&gt; let words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
+
+&gt; words.filter(w =&gt; /^(s|t).{0,5}$/.test(w))
+&lt; [&quot;subtle&quot;, &quot;sets&quot;, &quot;tests&quot;, &quot;site&quot;]
+</code></pre>
+<p><strong>m)</strong> Delete from the string <code>start</code> if it is at beginning of a line up to the next occurrence of the string <code>end</code> at end of a line. Match these keywords irrespective of case.</p>
+<pre><code class="language-js">&gt; let para = `good start
+start working on that
+project you always wanted
+to, do not let it end
+hi there
+start and end the end
+42
+Start and try to
+finish the End
+bye`
+
+&gt; const pat3 = /^start.*?end$/igms
+&gt; console.log(para.replace(pat3, ''))
+&lt; good start
+  
+  hi there
+  
+  42
+  
+  bye
+</code></pre>
+<p><strong>n)</strong> Can you reason out why this code results in the output shown? The aim was to remove all <code>&lt;characters&gt;</code> patterns but not the <code>&lt;&gt;</code> ones. The expected result was <code>'a 1&lt;&gt; b 2&lt;&gt; c'</code>.</p>
+<p>The use of <code>.+</code> quantifier after <code>&lt;</code> means that <code>&lt;&gt;</code> cannot be a possible match to satisfy <code>&lt;.+?&gt;</code>. So, after matching <code>&lt;</code> (which occurs after <code>1</code> and <code>2</code> in the given input string) the regular expression engine will look for next occurrence of <code>&gt;</code> character to satisfy the given pattern. To solve such cases, you need to use character classes, which is discussed in a later chapter, to specify which particular set of characters should be matched by the <code>+</code> quantifier instead of <code>.</code> metacharacter.</p>
+<pre><code class="language-js">&gt; let ip = 'a&lt;apple&gt; 1&lt;&gt; b&lt;bye&gt; 2&lt;&gt; c&lt;cat&gt;'
+
+&gt; ip.replace(/&lt;.+?&gt;/g, '')
+&lt; &quot;a 1 2&quot;
+</code></pre>
+<p><strong>o)</strong> Use <code>split</code> method to get the output as shown below for given input strings.</p>
+<pre><code class="language-js">&gt; let s1 = 'go there  ::   this :: that'
+&gt; let s2 = 'a::b :: c::d e::f :: 4::5'
+&gt; let s3 = '42:: hi::bye::see :: carefully'
+
+&gt; const pat4 = / +:: +(.+)/
+
+&gt; s1.split(pat4, 2)
+&lt; [&quot;go there&quot;, &quot;this :: that&quot;]
+&gt; s2.split(pat4, 2)
+&lt; [&quot;a::b&quot;, &quot;c::d e::f :: 4::5&quot;]
+&gt; s3.split(pat4, 2)
+&lt; [&quot;42:: hi::bye::see&quot;, &quot;carefully&quot;]
+</code></pre>
+<br>
+<h1><a class="header" href="#working-with-matched-portions" id="working-with-matched-portions">Working with matched portions</a></h1>
+<p><strong>a)</strong> For the given strings, extract the matching portion from first <code>is</code> to last <code>t</code></p>
+<pre><code class="language-js">&gt; let str1 = 'What is the biggest fruit you have seen?'
+&gt; let str2 = 'Your mission is to read and practice consistently'
+
+&gt; const pat1 = /is.*t/
+
+&gt; str1.match(pat1)[0]
+&lt; &quot;is the biggest fruit&quot;
+&gt; str2.match(pat1)[0]
+&lt; &quot;ission is to read and practice consistent&quot;
+</code></pre>
+<p><strong>b)</strong> Find the starting index of first occurrence of <code>is</code> or <code>the</code> or <code>was</code> or <code>to</code> for the given input strings. Assume that there will be at least one match for each input string.</p>
+<pre><code class="language-js">&gt; let s1 = 'match after the last newline character'
+&gt; let s2 = 'and then you want to test'
+&gt; let s3 = 'this is good bye then'
+&gt; let s4 = 'who was there to see?'
+
+&gt; const pat2 = /is|the|was|to/
+
+&gt; s1.search(pat2)
+&lt; 12
+&gt; s2.search(pat2)
+&lt; 4
+&gt; s3.search(pat2)
+&lt; 2
+&gt; s4.search(pat2)
+&lt; 4
+</code></pre>
+<p><strong>c)</strong> Find the starting index of last occurrence of <code>is</code> or <code>the</code> or <code>was</code> or <code>to</code> for the given input strings. Assume that there will be at least one match for each input string.</p>
+<pre><code class="language-js">&gt; let s1 = 'match after the last newline character'
+&gt; let s2 = 'and then you want to test'
+&gt; let s3 = 'this is good bye then'
+&gt; let s4 = 'who was there to see?'
+
+&gt; const pat3 = /is|the|was|to/g
+
+&gt; Array.from(s1.matchAll(pat3), m =&gt; m.index).pop()
+&lt; 12
+&gt; Array.from(s2.matchAll(pat3), m =&gt; m.index).pop()
+&lt; 18
+&gt; Array.from(s3.matchAll(pat3), m =&gt; m.index).pop()
+&lt; 17
+&gt; Array.from(s4.matchAll(pat3), m =&gt; m.index).pop()
+&lt; 14
+</code></pre>
+<p><strong>d)</strong> The given input string contains <code>:</code> exactly once. Extract all characters after the <code>:</code> as output.</p>
+<pre><code class="language-js">&gt; let ip = 'fruits:apple, mango, guava, blueberry'
+
+&gt; ip.match(/:(.*)/)[1]
+&lt; &quot;apple, mango, guava, blueberry&quot;
+</code></pre>
+<p><strong>e)</strong> Extract all words between <code>(</code> and <code>)</code> from the given input string as an array (including the parentheses). Assume that the input will not contain any broken parentheses.</p>
+<pre><code class="language-js">&gt; let ip = 'another (way) to reuse (portion) matched (by) capture groups'
+
+&gt; ip.match(/\(.*?\)/g)
+&lt; [&quot;(way)&quot;, &quot;(portion)&quot;, &quot;(by)&quot;]
+</code></pre>
+<p><strong>f)</strong> Extract all occurrences of <code>&lt;</code> up to next occurrence of <code>&gt;</code>, provided there is at least one character in between <code>&lt;</code> and <code>&gt;</code>.</p>
+<pre><code class="language-js">&gt; let ip = 'a&lt;apple&gt; 1&lt;&gt; b&lt;bye&gt; 2&lt;&gt; c&lt;cat&gt;'
+
+&gt; ip.match(/&lt;.+?&gt;/g)
+&lt; [&quot;&lt;apple&gt;&quot;, &quot;&lt;&gt; b&lt;bye&gt;&quot;, &quot;&lt;&gt; c&lt;cat&gt;&quot;]
+</code></pre>
+<p><strong>g)</strong> Use <code>matchAll</code> to get the output as shown below for the given input strings. Note the characters used in the input strings carefully.</p>
+<pre><code class="language-js">&gt; let row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
+&gt; let row2 = '1.32,-3.14 634,5.63 63.3e3,9907809345343.235 '
+
+&gt; const pat4 = /(.+?),(.+?) /g
+
+&gt; Array.from(row1.matchAll(pat4), m =&gt; [m[1], m[2]])
+&lt; (4) [Array(2), Array(2), Array(2), Array(2)]
+  0: (2) [&quot;-2&quot;, &quot;5&quot;]
+  1: (2) [&quot;4&quot;, &quot;+3&quot;]
+  2: (2) [&quot;+42&quot;, &quot;-53&quot;]
+  3: (2) [&quot;4356246&quot;, &quot;-357532354&quot;]
+  length: 4
+  __proto__: Array(0)
+
+&gt; Array.from(row2.matchAll(pat4), m =&gt; [m[1], m[2]])
+&lt; (3) [Array(2), Array(2), Array(2)]
+  0: (2) [&quot;1.32&quot;, &quot;-3.14&quot;]
+  1: (2) [&quot;634&quot;, &quot;5.63&quot;]
+  2: (2) [&quot;63.3e3&quot;, &quot;9907809345343.235&quot;]
+  length: 3
+  __proto__: Array(0)
+</code></pre>
+<p><strong>h)</strong> This is an extension to previous question. Sum each pair of numbers that are separated by a comma.</p>
+<pre><code class="language-js">&gt; let row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
+&gt; let row2 = '1.32,-3.14 634,5.63 63.3e3,9907809345343.235 '
+
+// should be same as previous question
+&gt; const pat5 = /(.+?),(.+?) /g
+
+&gt; Array.from(row1.matchAll(pat5), m =&gt; +m[1] + +m[2])
+&lt; [3, 7, -11, -353176108]
+
+&gt; Array.from(row2.matchAll(pat5), m =&gt; +m[1] + +m[2])
+&lt; [-1.82, 639.63, 9907809408643.234]
+</code></pre>
+<p><strong>i)</strong> Use <code>split</code> method to get the output as shown below.</p>
+<pre><code class="language-js">&gt; let ip = '42:no-output;1000:car-truck;SQEX49801'
+
+&gt; ip.split(/:.+?-(.+?);/)
+&lt; [&quot;42&quot;, &quot;output&quot;, &quot;1000&quot;, &quot;truck&quot;, &quot;SQEX49801&quot;]
+</code></pre>
+<p><strong>j)</strong> Write a string function that changes given input to alternate case. The first alphabet should be changed to lowercase, the next one to uppercase and then lowercase and so on. Characters other than alphabets should be left alone and not affect case changing.</p>
+<pre><code class="language-js">&gt; function aLtErNaTeCaSe(ip) {
+      let b = true
+      return ip.replace(/[a-z]/ig, m =&gt; (b = !b) ? m.toUpperCase() : m.toLowerCase())
+  }
+
+&gt; aLtErNaTeCaSe('HI THERE!')
+&lt; &quot;hI tHeRe!&quot;
+&gt; aLtErNaTeCaSe('good morning')
+&lt; &quot;gOoD mOrNiNg&quot;
+&gt; aLtErNaTeCaSe('Sample123string42with777numbers')
+&lt; &quot;sAmPlE123sTrInG42wItH777nUmBeRs&quot;
+</code></pre>
+<p><strong>k)</strong> Replace the string <code>par</code> with <code>spar</code>, <code>spare</code> with <code>extra</code> and <code>park</code> with <code>garden</code></p>
+<pre><code class="language-js">&gt; let s1 = 'apartment has a park'
+&gt; let s2 = 'do you have a spare cable'
+&gt; let s3 = 'write a parser'
+
+&gt; let d1 = {'par': 'spar', 'spare': 'extra', 'park': 'garden'}
+&gt; const pat6 = /spare|park?/g
+
+&gt; s1.replace(pat6, k =&gt; d1[k])
+&lt; &quot;aspartment has a garden&quot;
+&gt; s2.replace(pat6, k =&gt; d1[k])
+&lt; &quot;do you have a extra cable&quot;
+&gt; s3.replace(pat6, k =&gt; d1[k])
+&lt; &quot;write a sparser&quot;
+</code></pre>
+<br>
+<h1><a class="header" href="#character-class" id="character-class">Character class</a></h1>
+<p><strong>a)</strong> For the array <code>items</code>, filter all elements starting with <code>hand</code> and ending with <code>s</code> or <code>y</code> or <code>le</code>. No other character in between, for example, <code>hands</code> should match but not <code>hand-has</code>.</p>
+<pre><code class="language-js">&gt; let items = ['-handy', 'hand', 'handy', 'handled', 'hands', 'handle']
+
+&gt; items.filter(w =&gt; /^hand([sy]|le)$/.test(w))
+&lt; [&quot;handy&quot;, &quot;hands&quot;, &quot;handle&quot;]
+</code></pre>
+<p><strong>b)</strong> Replace all whole words <code>reed</code> or <code>read</code> or <code>red</code> with <code>X</code>.</p>
+<pre><code class="language-js">&gt; let ip = 'redo red credible :read: rod reed bred'
+
+&gt; ip.replace(/\bre[ae]?d\b/g, 'X')
+&lt; &quot;redo X credible :X: rod X bred&quot;
+</code></pre>
+<p><strong>c)</strong> For the array <code>words</code>, filter all elements containing <code>e</code> or <code>i</code> followed by <code>l</code> or <code>n</code>. Note that the order mentioned should be followed.</p>
+<pre><code class="language-js">&gt; let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
+
+&gt; words.filter(w =&gt; /[ei].*[ln]/.test(w))
+&lt; [&quot;surrender&quot;, &quot;unicorn&quot;, &quot;eel&quot;]
+</code></pre>
+<p><strong>d)</strong> For the array <code>words</code>, filter all elements containing <code>e</code> or <code>i</code> and <code>l</code> or <code>n</code> in any order.</p>
+<pre><code class="language-js">&gt; let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
+
+&gt; words.filter(w =&gt; /[ei].*[ln]|[ln].*[ei]/.test(w))
+&lt; [&quot;surrender&quot;, &quot;unicorn&quot;, &quot;newer&quot;, &quot;eel&quot;]
+</code></pre>
+<p><strong>e)</strong> Extract all hex character sequences, with <code>0x</code> optional prefix. Match the characters case insensitively, and the sequences shouldn't be surrounded by other word characters.</p>
+<pre><code class="language-js">&gt; let str1 = '128A foo 0xfe32 34 0xbar'
+&gt; let str2 = '0XDEADBEEF place 0x0ff1ce bad'
+
+&gt; const hex_seq = /\b(0x)?[\da-f]+\b/ig
+
+&gt; str1.match(hex_seq)
+&lt; [&quot;128A&quot;, &quot;0xfe32&quot;, &quot;34&quot;]
+&gt; str2.match(hex_seq)
+&lt; [&quot;0XDEADBEEF&quot;, &quot;0x0ff1ce&quot;, &quot;bad&quot;]
+</code></pre>
+<p><strong>f)</strong> Delete from <code>(</code> to the next occurrence of <code>)</code> unless they contain parentheses characters in between.</p>
+<pre><code class="language-js">&gt; let str1 = 'def factorial()'
+&gt; let str2 = 'a/b(division) + c%d(#modulo) - (e+(j/k-3)*4)'
+&gt; let str3 = 'Hi there(greeting). Nice day(a(b)'
+
+&gt; const remove_parentheses = /\([^()]*\)/g
+
+&gt; str1.replace(remove_parentheses, '')
+&lt; &quot;def factorial&quot;
+&gt; str2.replace(remove_parentheses, '')
+&lt; &quot;a/b + c%d - (e+*4)&quot;
+&gt; str3.replace(remove_parentheses, '')
+&lt; &quot;Hi there. Nice day(a&quot;
+</code></pre>
+<p><strong>g)</strong> For the array <code>words</code>, filter all elements not starting with <code>e</code> or <code>p</code> or <code>u</code>.</p>
+<pre><code class="language-js">&gt; let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
+
+&gt; words.filter(w =&gt; /^[^epu]/.test(w))
+&lt; [&quot;surrender&quot;, &quot;newer&quot;, &quot;door&quot;]
+</code></pre>
+<p><strong>h)</strong> For the array <code>words</code>, filter all elements not containing <code>u</code> or <code>w</code> or <code>ee</code> or <code>-</code>.</p>
+<pre><code class="language-js">&gt; let words = ['p-t', 'you', 'tea', 'heel', 'owe', 'new', 'reed', 'ear']
+
+&gt; words.filter(w =&gt; !/[uw-]|ee/.test(w))
+&lt; [&quot;tea&quot;, &quot;ear&quot;]
+</code></pre>
+<p><strong>i)</strong> The given input strings contain fields separated by <code>,</code> and fields can be empty too. Replace last three fields with <code>WHTSZ323</code>.</p>
+<pre><code class="language-js">&gt; let row1 = '(2),kite,12,,D,C,,'
+&gt; let row2 = 'hi,bye,sun,moon'
+
+&gt; const pat1 = /(,[^,]*){3}$/g
+
+&gt; row1.replace(pat1, ',WHTSZ323')
+&lt; &quot;(2),kite,12,,D,WHTSZ323&quot;
+&gt; row2.replace(pat1, ',WHTSZ323')
+&lt; &quot;hi,WHTSZ323&quot;
+</code></pre>
+<p><strong>j)</strong> Split the given strings based on consecutive sequence of digit or whitespace characters.</p>
+<pre><code class="language-js">&gt; let s1 = 'lion \t Ink32onion Nice'
+&gt; let s2 = '**1\f2\n3star\t7 77\r**'
+
+&gt; const pat2 = /[\d\s]+/
+
+&gt; s1.split(pat2)
+&lt; [&quot;lion&quot;, &quot;Ink&quot;, &quot;onion&quot;, &quot;Nice&quot;]
+&gt; s2.split(pat2)
+&lt; [&quot;**&quot;, &quot;star&quot;, &quot;**&quot;]
+</code></pre>
+<p><strong>k)</strong> Delete all occurrences of the sequence <code>&lt;characters&gt;</code> where <code>characters</code> is one or more non <code>&gt;</code> characters and cannot be empty.</p>
+<pre><code class="language-js">&gt; let ip = 'a&lt;apple&gt; 1&lt;&gt; b&lt;bye&gt; 2&lt;&gt; c&lt;cat&gt;'
+
+&gt; ip.replace(/&lt;[^&gt;]+&gt;/g, '')
+&lt; &quot;a 1&lt;&gt; b 2&lt;&gt; c&quot;
+</code></pre>
+<p><strong>l)</strong> <code>\b[a-z](on|no)[a-z]\b</code> is same as <code>\b[a-z][on]{2}[a-z]\b</code>. True or False? Sample input lines shown below might help to understand the differences, if any.</p>
+<p>False. <code>[on]{2}</code> will also match <code>oo</code> and <code>nn</code>.</p>
+<pre><code class="language-js">&gt; console.log('known\nmood\nknow\npony\ninns')
+  known
+  mood
+  know
+  pony
+  inns
+</code></pre>
+<p><strong>m)</strong> For the given array, filter all elements containing any number sequence greater than <code>624</code>.</p>
+<pre><code class="language-js">&gt; let items = ['h0000432ab', 'car00625', '42_624 0512', '3.14 96 2 foo1234baz']
+
+&gt; items.filter(e =&gt; e.match(/\d+/g).some(m =&gt; m &gt; 624))
+&lt; [&quot;car00625&quot;, &quot;3.14 96 2 foo1234baz&quot;]
+</code></pre>
+<p><strong>n)</strong> Convert the given input string to two different arrays as shown below.</p>
+<pre><code class="language-js">&gt; let ip = 'price_42 roast^\t\n^-ice==cat\neast'
+
+&gt; ip.split(/[\s^=-]+/)
+&lt; [&quot;price_42&quot;, &quot;roast&quot;, &quot;ice&quot;, &quot;cat&quot;, &quot;east&quot;]
+
+&gt; ip.split(/([\s^=-]+)/)
+&lt; [&quot;price_42&quot;, &quot; &quot;, &quot;roast&quot;, &quot;^	\n^-&quot;, &quot;ice&quot;, &quot;==&quot;, &quot;cat&quot;, &quot;\n&quot;, &quot;east&quot;]
+</code></pre>
+<p><strong>o)</strong> Filter all elements whose first non-whitespace character is not a <code>#</code> character. Any element made up of only whitespace characters should be ignored as well.</p>
+<pre><code class="language-js">&gt; let items = ['    #comment', '\t\napple #42', '#oops', 'sure', 'no#1', '\t\r\f']
+
+&gt; items.filter(e =&gt; /^\s*[^#\s]/.test(e))
+&lt; [&quot;	\napple #42&quot;, &quot;sure&quot;, &quot;no#1&quot;]
+</code></pre>
+<p><strong>p)</strong> For the given string, surround all whole words with <code>{}</code> except for whole words <code>par</code> and <code>cat</code>.</p>
+<pre><code class="language-js">&gt; let ip = 'part; cat {super} rest_42 par scatter'
+
+&gt; ip.replace(/\w+/g, w =&gt; /\b(par|cat)\b/.test(w) ? w : `{${w}}`)
+&lt; &quot;{part}; cat {{super}} {rest_42} par {scatter}&quot;
+</code></pre>
+<br>
+<h1><a class="header" href="#groupings-and-backreferences" id="groupings-and-backreferences">Groupings and backreferences</a></h1>
+<p><strong>a)</strong> Replace the space character that occurs after a word ending with <code>a</code> or <code>r</code> with a newline character.</p>
+<pre><code class="language-js">&gt; let ip = 'area not a _a2_ roar took 22'
+
+&gt; console.log(ip.replace(/([ar]) /g, '$1\n'))
+  area
+  not a
+  _a2_ roar
+  took 22
+</code></pre>
+<p><strong>b)</strong> Add <code>[]</code> around words starting with <code>s</code> and containing <code>e</code> and <code>t</code> in any order.</p>
+<pre><code class="language-js">&gt; let ip = 'sequoia subtle exhibit asset sets tests site'
+
+&gt; ip.replace(/\bs\w*(t\w*e|e\w*t)\w*/g, '[$&amp;]')
+&lt; &quot;sequoia [subtle] exhibit asset [sets] tests [site]&quot;
+</code></pre>
+<p><strong>c)</strong> Replace all whole words with <code>X</code> that start and end with the same word character. Single character word should get replaced with <code>X</code> too, as it satisfies the stated condition.</p>
+<pre><code class="language-js">&gt; let ip = 'oreo not a _a2_ roar took 22'
+
+&gt; ip.replace(/\b(\w|(\w)\w*\2)\b/g, 'X')
+&lt; &quot;X not X X X took X&quot;
+</code></pre>
+<p><strong>d)</strong> Convert the given <strong>markdown</strong> headers to corresponding <strong>anchor</strong> tag. Consider the input to start with one or more <code>#</code> characters followed by space and word characters. The <code>name</code> attribute is constructed by converting the header to lowercase and replacing spaces with hyphens. Can you do it without using a capture group?</p>
+<pre><code class="language-js">&gt; let header1 = '# Regular Expressions'
+&gt; let header2 = '## Named capture groups'
+
+&gt; function hyphenify(m) {
+      return `&lt;a name='${m.toLowerCase().replace(/ /g, '-')}'&gt;&lt;/a&gt;${m}`
+  }
+
+&gt; header1.replace(/\w.*/, hyphenify)
+&lt; &quot;# &lt;a name='regular-expressions'&gt;&lt;/a&gt;Regular Expressions&quot;
+&gt; header2.replace(/\w.*/, hyphenify)
+&lt; &quot;## &lt;a name='named-capture-groups'&gt;&lt;/a&gt;Named capture groups&quot;
+</code></pre>
+<p><strong>e)</strong> Convert the given <strong>markdown</strong> anchors to corresponding <strong>hyperlinks</strong>.</p>
+<pre><code class="language-js">&gt; let anchor1 = &quot;# &lt;a name='regular-expressions'&gt;&lt;/a&gt;Regular Expressions&quot;
+&gt; let anchor2 = &quot;## &lt;a name='subexpression-calls'&gt;&lt;/a&gt;Subexpression calls&quot;
+
+&gt; const hyperlink = /[^']+'([^']+)'&gt;&lt;\/a&gt;(.*)/
+
+&gt; anchor1.replace(hyperlink, '[$2](#$1)')
+&lt; &quot;[Regular Expressions](#regular-expressions)&quot;
+&gt; anchor2.replace(hyperlink, '[$2](#$1)')
+&lt; &quot;[Subexpression calls](#subexpression-calls)&quot;
+</code></pre>
+<p><strong>f)</strong> Check if given input strings have words with at least two consecutive repeated alphabets irrespective of case. For example, words like <code>stillnesS</code> and <code>Committee</code> should return <code>true</code> but words like <code>root</code> or <code>readable</code> or <code>rotational</code> should return <code>false</code>. Consider word to be as defined in regular expression parlance.</p>
+<pre><code class="language-js">&gt; let s1 = 'readable COMMItTEe'
+&gt; let s2 = 'rotational sti1lness _foot_'
+&gt; let s3 = 'needed repeated'
+&gt; let s4 = 'offsh00t'
+
+&gt; const pat1 = /(?:(\w)\1\w*){2}/i
+
+&gt; pat1.test(s1)
+true
+&gt; pat1.test(s2)
+false
+&gt; pat1.test(s3)
+false
+&gt; pat1.test(s4)
+true
+</code></pre>
+<p><strong>g)</strong> For the given input string, replace all occurrences of digit sequences with only the unique non-repeating sequence. For example, <code>232323</code> should be changed to <code>23</code> and <code>897897</code> should be changed to <code>897</code>. If there no repeats (for example <code>1234</code>) or if the repeats end prematurely (for example <code>12121</code>), it should not be changed.</p>
+<pre><code class="language-js">&gt; let ip = '1234 2323 453545354535 9339 11 60260260'
+
+&gt; ip.replace(/\b(\d+)\1+\b/g, '$1')
+&lt; &quot;1234 23 4535 9339 1 60260260&quot;
+</code></pre>
+<p><strong>h)</strong> Replace sequences made up of words separated by <code>:</code> or <code>.</code> by the first word of the sequence. Such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character.</p>
+<pre><code class="language-js">&gt; let ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
+
+&gt; ip.replace(/(\w+)[:.](\w+[:.])+/g, '$1')
+&lt; &quot;wow hi-2 bye kite&quot;
+</code></pre>
+<p><strong>i)</strong> Replace sequences made up of words separated by <code>:</code> or <code>.</code> by the last word of the sequence. Such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character.</p>
+<pre><code class="language-js">&gt; let ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
+
+&gt; ip.replace(/((\w+)[:.])+/g, '$2')
+&lt; &quot;five hi-2 bye water&quot;
+</code></pre>
+<p><strong>j)</strong> Split the given input string on one or more repeated sequence of <code>cat</code>.</p>
+<pre><code class="language-js">&gt; let ip = 'firecatlioncatcatcatbearcatcatparrot'
+
+&gt; ip.split(/(?:cat)+/)
+&lt; [&quot;fire&quot;, &quot;lion&quot;, &quot;bear&quot;, &quot;parrot&quot;]
+</code></pre>
+<p><strong>k)</strong> For the given input string, find all occurrences of digit sequences with at least one repeating sequence. For example, <code>232323</code> and <code>897897</code>. If the repeats end prematurely, for example <code>12121</code>, it should not be matched.</p>
+<pre><code class="language-js">&gt; let ip = '1234 2323 453545354535 9339 11 60260260'
+
+&gt; const pat2 = /\b(\d+)\1+\b/g
+
+// entire sequences in the output
+&gt; ip.match(pat2)
+&lt; [&quot;2323&quot;, &quot;453545354535&quot;, &quot;11&quot;]
+
+// only the unique sequence in the output
+&gt; Array.from(ip.matchAll(pat2), m =&gt; m[1])
+&lt; [&quot;23&quot;, &quot;4535&quot;, &quot;1&quot;]
+</code></pre>
+<p><strong>l)</strong> Convert the comma separated strings to corresponding key-value pair mapping as shown below. The keys are <code>name</code>, <code>maths</code> and <code>phy</code> for the three fields in the input strings.</p>
+<pre><code class="language-js">&gt; let row1 = 'rohan,75,89'
+&gt; let row2 = 'rose,88,92'
+
+&gt; const pat3 = /(?&lt;name&gt;[^,]+),(?&lt;maths&gt;[^,]+),(?&lt;phy&gt;[^,]+)/
+
+&gt; row1.match(pat3).groups
+&lt; {name: &quot;rohan&quot;, maths: &quot;75&quot;, phy: &quot;89&quot;}
+
+&gt; row2.match(pat3).groups
+&lt; {name: &quot;rose&quot;, maths: &quot;88&quot;, phy: &quot;92&quot;}
+</code></pre>
+<p><strong>m)</strong> Surround all whole words with <code>()</code>. Additionally, if the whole word is <code>imp</code> or <code>ant</code>, delete them. Can you do it with single substitution?</p>
+<pre><code class="language-js">&gt; let ip = 'tiger imp goat eagle ant important'
+
+&gt; ip.replace(/\b(?:imp|ant|(\w+))\b/g, '($1)')
+&lt; &quot;(tiger) () (goat) (eagle) () (important)&quot;
+</code></pre>
+<br>
+<h1><a class="header" href="#lookarounds" id="lookarounds">Lookarounds</a></h1>
+<blockquote>
+<p><img src="images/info.svg" alt="info" /> Please use lookarounds for solving the following exercises even if you can do it without lookarounds.</p>
+</blockquote>
+<p><strong>a)</strong> Replace all whole words with <code>X</code> unless it is preceded by <code>(</code> character.</p>
+<pre><code class="language-js">&gt; let ip = '(apple) guava berry) apple (mango) (grape'
+
+&gt; ip.replace(/(?&lt;!\()\b\w+/g, 'X')
+&lt; &quot;(apple) X X) X (mango) (grape&quot;
+</code></pre>
+<p><strong>b)</strong> Replace all whole words with <code>X</code> unless it is followed by <code>)</code> character.</p>
+<pre><code class="language-js">&gt; let ip = '(apple) guava berry) apple (mango) (grape'
+
+&gt; ip.replace(/\b\w+\b(?!\))/g, 'X')
+&lt; &quot;(apple) X berry) X (mango) (X&quot;
+</code></pre>
+<p><strong>c)</strong> Replace all whole words with <code>X</code> unless it is preceded by <code>(</code> or followed by <code>)</code> characters.</p>
+<pre><code class="language-js">&gt; let ip = '(apple) guava berry) apple (mango) (grape'
+
+&gt; ip.replace(/(?&lt;!\()\b\w+\b(?!\))/g, 'X')
+&lt; &quot;(apple) X berry) X (mango) (grape&quot;
+</code></pre>
+<p><strong>d)</strong> Extract all whole words that do not end with <code>e</code> or <code>n</code>.</p>
+<pre><code class="language-js">&gt; let ip = 'at row on urn e note dust n'
+
+&gt; ip.match(/\b\w+\b(?&lt;![en])/g)
+&lt; [&quot;at&quot;, &quot;row&quot;, &quot;dust&quot;]
+</code></pre>
+<p><strong>e)</strong> Extract all whole words that do not start with <code>a</code> or <code>d</code> or <code>n</code>.</p>
+<pre><code class="language-js">&gt; let ip = 'at row on urn e note dust n'
+
+&gt; ip.match(/(?![adn])\b\w+\b/g)
+&lt; [&quot;row&quot;, &quot;on&quot;, &quot;urn&quot;, &quot;e&quot;]
+</code></pre>
+<p><strong>f)</strong> Extract all whole words only if they are followed by <code>:</code> or <code>,</code> or <code>-</code>.</p>
+<pre><code class="language-js">&gt; let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+
+&gt; ip.match(/\w+(?=[:,-])/g)
+&lt; [&quot;poke&quot;, &quot;so&quot;, &quot;ever&quot;]
+</code></pre>
+<p><strong>g)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>/</code> or <code>-</code>.</p>
+<pre><code class="language-js">&gt; let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+
+&gt; ip.match(/(?&lt;=[=\/-])\w+/g)
+&lt; [&quot;so&quot;, &quot;is&quot;, &quot;sit&quot;]
+</code></pre>
+<p><strong>h)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>:</code> and followed by <code>:</code> or <code>.</code>.</p>
+<pre><code class="language-js">&gt; let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+
+&gt; ip.match(/(?&lt;=[=:])\w+(?=[:.])/g)
+&lt; [&quot;so&quot;, &quot;ink&quot;]
+</code></pre>
+<p><strong>i)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>:</code> or <code>.</code> or <code>(</code> or <code>-</code> and not followed by <code>.</code> or <code>/</code>.</p>
+<pre><code class="language-js">&gt; let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+
+&gt; ip.match(/(?&lt;=[=:.(-])\w+\b(?![\/.])/g)
+&lt; [&quot;so&quot;, &quot;vast&quot;, &quot;sit&quot;]
+</code></pre>
+<p><strong>j)</strong> Remove leading and trailing whitespaces from all the individual fields where <code>,</code> is the field separator.</p>
+<pre><code class="language-js">&gt; let csv1 = ' comma  ,separated ,values '
+&gt; let csv2 = 'good bad,nice  ice  , 42 , ,   stall   small'
+
+&gt; const trim_whitespace = /(?&lt;=^|,)\s+|\s+(?=,|$)/g
+
+&gt; csv1.replace(trim_whitespace, '')
+&lt; &quot;comma,separated,values&quot;
+&gt; csv2.replace(trim_whitespace, '')
+&lt; &quot;good bad,nice  ice,42,,stall   small&quot;
+</code></pre>
+<p><strong>k)</strong> Filter all elements that satisfy all of these rules:</p>
+<ul>
+<li>should have at least two alphabets</li>
+<li>should have at least 3 digits</li>
+<li>should have at least one special character among <code>%</code> or <code>*</code> or <code>#</code> or <code>$</code></li>
+<li>should not end with a whitespace character</li>
+</ul>
+<pre><code class="language-js">&gt; let pwds = ['hunter2', 'F2h3u%9', '*X3Yz3.14\t', 'r2_d2_42', 'A $B C1234']
+
+&gt; pwds.filter(p =&gt; /(?!.*\s$)(?=(.*[a-z]){2})(?=(.*\d){3}).*[%*#$]/i.test(p))
+&lt; [&quot;F2h3u%9&quot;, &quot;A $B C1234&quot;]
+</code></pre>
+<p><strong>l)</strong> For the given string, surround all whole words with <code>{}</code> except for whole words <code>par</code> and <code>cat</code> and <code>apple</code>.</p>
+<pre><code class="language-js">&gt; let ip = 'part; cat {super} rest_42 par scatter apple spar'
+
+&gt; ip.replace(/\b(?!(?:par|cat|apple)\b)\w+\b/g, '{$&amp;}')
+&lt; &quot;{part}; cat {{super}} {rest_42} par {scatter} apple {spar}&quot;
+</code></pre>
+<p><strong>m)</strong> Extract integer portion of floating-point numbers for the given string. A number ending with <code>.</code> and no further digits should not be considered.</p>
+<pre><code class="language-js">&gt; let ip = '12 ab32.4 go 5 2. 46.42 5'
+
+&gt; ip.match(/\d+(?=\.\d+)/g)
+&lt; [&quot;32&quot;, &quot;46&quot;]
+</code></pre>
+<p><strong>n)</strong> For the given input strings, extract all overlapping two character sequences.</p>
+<pre><code class="language-js">&gt; let s1 = 'apple'
+&gt; let s2 = '1.2-3:4'
+
+&gt; const pat1 = /.(?=(.))/g
+
+&gt; Array.from(s1.matchAll(pat1), m =&gt; m[0] + m[1])
+&lt; [&quot;ap&quot;, &quot;pp&quot;, &quot;pl&quot;, &quot;le&quot;]
+&gt; Array.from(s2.matchAll(pat1), m =&gt; m[0] + m[1])
+&lt; [&quot;1.&quot;, &quot;.2&quot;, &quot;2-&quot;, &quot;-3&quot;, &quot;3:&quot;, &quot;:4&quot;]
+</code></pre>
+<p><strong>o)</strong> The given input strings contain fields separated by <code>:</code> character. Delete <code>:</code> and the last field if there is a digit character anywhere before the last field.</p>
+<pre><code class="language-js">&gt; let s1 = '42:cat'
+&gt; let s2 = 'twelve:a2b'
+&gt; let s3 = 'we:be:he:0:a:b:bother'
+
+&gt; const pat2 = /(?&lt;=\d.*):[^:]*$/
+
+&gt; s1.replace(pat2, '')
+&lt; &quot;42&quot;
+&gt; s2.replace(pat2, '')
+&lt; &quot;twelve:a2b&quot;
+&gt; s3.replace(pat2, '')
+&lt; &quot;we:be:he:0:a:b&quot;
+</code></pre>
+<p><strong>p)</strong> Extract all whole words unless they are preceded by <code>:</code> or <code>&lt;=&gt;</code> or <code>----</code> or <code>#</code>.</p>
+<pre><code class="language-js">&gt; let ip = '::very--at&lt;=&gt;row|in.a_b#b2c=&gt;lion----east'
+
+&gt; ip.match(/(?&lt;![:#]|&lt;=&gt;|-{4})\b\w+/g)
+&lt; [&quot;at&quot;, &quot;in&quot;, &quot;a_b&quot;, &quot;lion&quot;]
+</code></pre>
+<p><strong>q)</strong> Match strings if it contains <code>qty</code> followed by <code>price</code> but not if there is <strong>whitespace</strong> or the string <code>error</code> between them.</p>
+<pre><code class="language-js">&gt; let str1 = '23,qty,price,42'
+&gt; let str2 = 'qty price,oh'
+&gt; let str3 = '3.14,qty,6,errors,9,price,3'
+&gt; let str4 = '42\nqty-6,apple-56,price-234,error'
+&gt; let str5 = '4,price,3.14,qty,4'
+
+&gt; const neg = /qty((?!\s|error).)*price/
+
+&gt; neg.test(str1)
+&lt; true
+&gt; neg.test(str2)
+&lt; false
+&gt; neg.test(str3)
+&lt; false
+&gt; neg.test(str4)
+&lt; true
+&gt; neg.test(str5)
+&lt; false
+</code></pre>
+<p><strong>r)</strong> Can you reason out why the output shown is different for these two regular expressions?</p>
+<p><code>\b</code> matches both the start and end of word locations. In the below example, <code>\b..\b</code> doesn't necessarily mean that first <code>\b</code> will match only the start of word location and second <code>\b</code> will match only the end of word location. They can be any combination! For example, <code>I</code> followed by space in the input string here is using start of word location for both whereas space followed by <code>2</code> is using end of word location for both.</p>
+<p>In contrast, the negative lookarounds only ensure that there are no word characters around any two characters. And these assertions will always be satisfied at the start of string and the end of string respectively. But <code>\b</code> depends on the presence of word characters. So, <code>!</code> at the end of the input string here matches the lookaround assertion but not word boundary.</p>
+<pre><code class="language-js">&gt; let ip = 'I have 12, he has 2!'
+
+&gt; ip.replace(/\b..\b/g, '{$&amp;}')
+&lt; &quot;{I }have {12}{, }{he} has{ 2}!&quot;
+
+&gt; ip.replace(/(?&lt;!\w)..(?!\w)/g, '{$&amp;}')
+&lt; &quot;I have {12}, {he} has {2!}&quot;
+</code></pre>
+<p><strong>s)</strong> Simulate string partitioning to get an array of three elements — string before separator, portion matched by separator and string after separator. For the first case, split the given input string on first occurrence of digits. For the second case, split based on last occurrence of digits.</p>
+<pre><code class="language-js">&gt; let w2 = 'Sample123string42with777numbers'
+
+&gt; w2.split(/(?&lt;!\d.*)(\d+)/)
+&lt; [&quot;Sample&quot;, &quot;123&quot;, &quot;string42with777numbers&quot;]
+
+&gt; w2.split(/(\d+)(?!.*\d)/)
+&lt; [&quot;Sample123string42with&quot;, &quot;777&quot;, &quot;numbers&quot;]
+</code></pre>
+<p><strong>t)</strong> Find the starting index of last occurrence of <code>is</code> or <code>the</code> or <code>was</code> or <code>to</code> for the given input strings using <code>search</code> method. Assume that there will be at least one match for each input string.</p>
+<pre><code class="language-js">&gt; let s1 = 'match after the last newline character'
+&gt; let s2 = 'and then you want to test'
+&gt; let s3 = 'this is good bye then'
+&gt; let s4 = 'who was there to see?'
+
+&gt; const pat3 = /(is|the|was|to)(?!.*(is|the|was|to))/
+
+&gt; s1.search(pat3)
+&lt; 12
+&gt; s2.search(pat3)
+&lt; 18
+&gt; s3.search(pat3)
+&lt; 17
+&gt; s4.search(pat3)
+&lt; 14
+</code></pre>
+<br>
+<h1><a class="header" href="#unicode" id="unicode">Unicode</a></h1>
+<p><strong>a)</strong> Check if given input strings are made up of ASCII characters only. Consider the input to be non-empty strings and any character that isn't part of 7-bit ASCII set should result in <code>false</code> as output.</p>
+<pre><code class="language-js">&gt; let str1 = '123 × 456'
+&gt; let str2 = 'good fοοd'
+&gt; let str3 = 'happy learning!'
+
+// const pat1 = /^[\x00-\x7f]+$/
+&gt; const pat1 = /^\p{ASCII}+$/u
+
+&gt; pat1.test(str1)
+&lt; false
+&gt; pat1.test(str2)
+&lt; false
+&gt; pat1.test(str3)
+&lt; true
+</code></pre>
+<p><strong>b)</strong> Retain only punctuation characters for the given string.</p>
+<pre><code class="language-js">&gt; let ip = '❨a❩❪1❫❬b❭❮2❯❰c❱❲3❳❴xyz❵⟅123⟆⟦⟧⟨like⟩⟪3.14⟫'
+
+&gt; ip.replace(/\P{P}+/gu, '')
+&lt; &quot;❨❩❪❫❬❭❮❯❰❱❲❳❴❵⟅⟆⟦⟧⟨⟩⟪.⟫&quot;
+</code></pre>
+<p><strong>c)</strong> Is the following code snippet showing the correct output?</p>
+<p>Yes. Some regular expression engines allow escape sequences like <code>\d</code>, <code>\b</code>, <code>\s</code>, <code>\w</code>, etc to be Unicode aware.</p>
+<pre><code class="language-js">&gt; 'fox:αλεπού'.match(/\w+/g)
+&lt; [&quot;fox&quot;]
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="further-reading.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="further-reading.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

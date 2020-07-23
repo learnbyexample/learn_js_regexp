@@ -1,0 +1,598 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Dot metacharacter and Quantifiers - JavaScript RegExp</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Example based guide to mastering JavaScript regexp">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="custom.css">
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover.html">Cover</a></li><li class="chapter-item expanded affix "><a href="buy.html">Buy PDF/EPUB versions</a></li><li class="chapter-item expanded "><a href="preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="whats-so-special-about-regular-expressions.html"><strong aria-hidden="true">2.</strong> What's so special about Regular Expressions?</a></li><li class="chapter-item expanded "><a href="regexp-introduction.html"><strong aria-hidden="true">3.</strong> RegExp introduction</a></li><li class="chapter-item expanded "><a href="anchors.html"><strong aria-hidden="true">4.</strong> Anchors</a></li><li class="chapter-item expanded "><a href="alternation-and-grouping.html"><strong aria-hidden="true">5.</strong> Alternation and Grouping</a></li><li class="chapter-item expanded "><a href="escaping-metacharacters.html"><strong aria-hidden="true">6.</strong> Escaping metacharacters</a></li><li class="chapter-item expanded "><a href="dot-metacharacter-and-quantifiers.html" class="active"><strong aria-hidden="true">7.</strong> Dot metacharacter and Quantifiers</a></li><li class="chapter-item expanded "><a href="interlude-tools-for-debugging-and-visualization.html"><strong aria-hidden="true">8.</strong> Interlude: Tools for debugging and visualization</a></li><li class="chapter-item expanded "><a href="working-with-matched-portions.html"><strong aria-hidden="true">9.</strong> Working with matched portions</a></li><li class="chapter-item expanded "><a href="character-class.html"><strong aria-hidden="true">10.</strong> Character class</a></li><li class="chapter-item expanded "><a href="groupings-and-backreferences.html"><strong aria-hidden="true">11.</strong> Groupings and backreferences</a></li><li class="chapter-item expanded "><a href="interlude-common-tasks.html"><strong aria-hidden="true">12.</strong> Interlude: Common tasks</a></li><li class="chapter-item expanded "><a href="lookarounds.html"><strong aria-hidden="true">13.</strong> Lookarounds</a></li><li class="chapter-item expanded "><a href="unicode.html"><strong aria-hidden="true">14.</strong> Unicode</a></li><li class="chapter-item expanded "><a href="further-reading.html"><strong aria-hidden="true">15.</strong> Further Reading</a></li><li class="chapter-item expanded "><a href="Exercise_solutions.html"><strong aria-hidden="true">16.</strong> Exercise Solutions</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">JavaScript RegExp</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="https://github.com/learnbyexample/learn_js_regexp" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#dot-metacharacter-and-quantifiers" id="dot-metacharacter-and-quantifiers">Dot metacharacter and Quantifiers</a></h1>
+<p>This chapter introduces several more metacharacters. Similar to the <code>repeat</code> string method, quantifiers allow to repeat a portion of regular expression pattern and thus make it compact and improve readability. Quantifiers can also be specified as both bounded and unbounded ranges to match varying quantities of the pattern. Previously, alternation was used to construct OR conditional. Adding dot metacharacter and quantifiers to the mix, you can construct AND conditional.</p>
+<h2><a class="header" href="#dot-metacharacter" id="dot-metacharacter">Dot metacharacter</a></h2>
+<p>The dot metacharacter serves as a placeholder to match <em>any</em> character except <code>\r</code>, <code>\n</code>, <code>\u2028</code> (line separator) and <code>\u2029</code> (paragraph separator) characters.</p>
+<pre><code class="language-js">// matches character 'c', any character and then character 't'
+&gt; 'tac tin c.t abc;tuv acute'.replace(/c.t/g, 'X')
+&lt; &quot;taXin X abXuv aXe&quot;
+
+// matches character 'r', any two characters and then character 'd'
+&gt; 'breadth markedly reported overrides'.replace(/r..d/g, 'X')
+&lt; &quot;bXth maXly repoX oveXes&quot;
+
+// matches character '2', any character and then character '3'
+&gt; '42\t33'.replace(/2.3/, '8')
+&lt; &quot;483&quot;
+</code></pre>
+<p>The <a href="./dot-metacharacter-and-quantifiers.html#s-flag">s flag</a> section will show how to include line separators as well. Chapter <a href="./character-class.html#character-class">Character class</a> will discuss how to define your own custom placeholder for limited set of characters.</p>
+<h2><a class="header" href="#split-method" id="split-method">split method</a></h2>
+<p>This chapter will additionally use <code>split</code> method to illustrate examples. The <code>split</code> method separates the string based on given regexp (or string) and returns an array of strings.</p>
+<pre><code class="language-js">&gt; 'apple-85-mango-70'.split(/-/)
+&lt; [&quot;apple&quot;, &quot;85&quot;, &quot;mango&quot;, &quot;70&quot;]
+
+// use optional 'limit' argument to specify max no. of output elements
+&gt; 'apple-85-mango-70'.split(/-/, 2)
+&lt; [&quot;apple&quot;, &quot;85&quot;]
+
+// example with dot metacharacter
+&gt; 'bus:3:car:5:van'.split(/:.:/)
+&lt; [&quot;bus&quot;, &quot;car&quot;, &quot;van&quot;]
+</code></pre>
+<p>See <a href="./working-with-matched-portions.html#split-with-capture-groups">split with capture groups</a> section for details of how capture groups affect the output of <code>split</code> method.</p>
+<h2><a class="header" href="#greedy-quantifiers" id="greedy-quantifiers">Greedy quantifiers</a></h2>
+<p>Quantifiers helps you to repeat a portion of regexp. They can be applied to literal characters, groupings and other features that you'll learn later. Apart from ability to specify exact quantity and bounded range, these can also match unbounded varying quantities. If the input string can satisfy a pattern with varying quantities in multiple ways, you can choose among two types of quantifiers to narrow down the possibilities. In this section, <strong>greedy</strong> type of quantifiers is covered.</p>
+<p>First up, the <code>?</code> metacharacter which quantifies a character or group to match <code>0</code> or <code>1</code> times. This helps to define optional patterns and build terser regexps.</p>
+<pre><code class="language-js">// same as: /ear|ar/g
+&gt; 'far feat flare fear'.replace(/e?ar/g, 'X')
+&lt; &quot;fX feat flXe fX&quot;
+
+// same as: /\bpar(t|)\b/g
+&gt; 'par spare part party'.replace(/\bpart?\b/g, 'X')
+&lt; &quot;X spare X party&quot;
+
+// same as: /\b(re.d|red)\b/
+&gt; ['red', 'ready', 're;d', 'redo', 'reed'].filter(w =&gt; /\bre.?d\b/.test(w))
+&lt; [&quot;red&quot;, &quot;re;d&quot;, &quot;reed&quot;]
+
+// same as: /part|parrot/g
+&gt; 'par part parrot parent'.replace(/par(ro)?t/g, 'X')
+&lt; &quot;par X X parent&quot;
+// same as: /part|parrot|parent/g
+&gt; 'par part parrot parent'.replace(/par(en|ro)?t/g, 'X')
+&lt; &quot;par X X X&quot;
+</code></pre>
+<p>The <code>*</code> metacharacter quantifies a character or group to match <code>0</code> or more times. There is no upper bound, more details will be discussed later in this chapter.</p>
+<pre><code class="language-js">// match 't' followed by zero or more of 'a' followed by 'r'
+&gt; 'tr tear tare steer sitaara'.replace(/ta*r/g, 'X')
+&lt; &quot;X tear Xe steer siXa&quot;
+
+// match 't' followed by zero or more of 'e' or 'a' followed by 'r'
+&gt; 'tr tear tare steer sitaara'.replace(/t(e|a)*r/g, 'X')
+&lt; &quot;X X Xe sX siXa&quot;
+
+// match zero or more of '1' followed by '2'
+&gt; '3111111111125111142'.replace(/1*2/g, 'X')
+&lt; &quot;3X511114X&quot;
+</code></pre>
+<p>Here's some more examples with <code>split</code> method.</p>
+<pre><code class="language-js">// last element is empty because there is nothing after '2' at the end of string
+&gt; '3111111111125111142'.split(/1*2/)
+&lt; [&quot;3&quot;, &quot;511114&quot;, &quot;&quot;]
+
+// note how '25' and '42' gets split, there is '1' zero times in between them
+&gt; '3111111111125111142'.split(/1*/)
+&lt; [&quot;3&quot;, &quot;2&quot;, &quot;5&quot;, &quot;4&quot;, &quot;2&quot;]
+</code></pre>
+<p>The <code>+</code> metacharacter quantifies a character or group to match <code>1</code> or more times. Similar to <code>*</code> quantifier, there is no upper bound. More importantly, this doesn't have surprises like matching empty string.</p>
+<pre><code class="language-js">&gt; 'tr tear tare steer sitaara'.replace(/ta+r/g, 'X')
+&lt; &quot;tr tear Xe steer siXa&quot;
+&gt; 'tr tear tare steer sitaara'.replace(/t(e|a)+r/g, 'X')
+&lt; &quot;tr X Xe sX siXa&quot;
+
+&gt; '3111111111125111142'.replace(/1+2/g, 'X')
+&lt; &quot;3X5111142&quot;
+&gt; '3111111111125111142'.split(/1+/)
+&lt; [&quot;3&quot;, &quot;25&quot;, &quot;42&quot;]
+</code></pre>
+<p>You can specify a range of integer numbers, both bounded and unbounded, using <code>{}</code> metacharacters. There are three ways to use this quantifier as listed below.</p>
+<table><thead><tr><th>Pattern</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>{m,n}</code></td><td>match <code>m</code> to <code>n</code> times</td></tr>
+<tr><td><code>{m,}</code></td><td>match at least <code>m</code> times</td></tr>
+<tr><td><code>{n}</code></td><td>match exactly <code>n</code> times</td></tr>
+</tbody></table>
+<pre><code class="language-js">&gt; let demo = ['abc', 'ac', 'abbc', 'xabbbcz', 'bc', 'abbbbbc']
+
+&gt; demo.filter(w =&gt; /ab{1,4}c/.test(w))
+&lt; [&quot;abc&quot;, &quot;abbc&quot;, &quot;xabbbcz&quot;]
+&gt; demo.filter(w =&gt; /ab{0,2}c/.test(w))
+&lt; [&quot;abc&quot;, &quot;ac&quot;, &quot;abbc&quot;]
+
+&gt; demo.filter(w =&gt; /ab{3,}c/.test(w))
+&lt; [&quot;xabbbcz&quot;, &quot;abbbbbc&quot;]
+
+&gt; demo.filter(w =&gt; /ab{3}c/.test(w))
+&lt; [&quot;xabbbcz&quot;]
+</code></pre>
+<blockquote>
+<p><img src="images/info.svg" alt="info" /> The <code>{}</code> metacharacters have to be escaped to match them literally. However, unlike <code>()</code> metacharacters, these have lot more leeway. For example, escaping <code>{</code> alone is enough, or if it doesn't conform strictly to any of the forms listed above, escaping is not needed at all.</p>
+</blockquote>
+<h2><a class="header" href="#and-conditional" id="and-conditional">AND Conditional</a></h2>
+<p>Next up, how to construct AND conditional using dot metacharacter and quantifiers.</p>
+<pre><code class="language-js">// match 'Error' followed by zero or more characters followed by 'valid'
+&gt; /Error.*valid/.test('Error: not a valid input')
+&lt; true
+
+&gt; /Error.*valid/.test('Error: key not found')
+&lt; false
+</code></pre>
+<p>To allow matching in any order, you'll have to bring in alternation as well. That is somewhat manageable for 2 or 3 patterns. See <a href="./lookarounds.html#and-conditional-with-lookarounds">AND conditional with lookarounds</a> section for an easier approach.</p>
+<pre><code class="language-js">&gt; /cat.*dog|dog.*cat/.test('cat and dog')
+&lt; true
+&gt; /cat.*dog|dog.*cat/.test('dog and cat')
+&lt; true
+
+// if you just need true/false result, this would be a scalable approach
+&gt; let patterns = [/cat/, /dog/]
+&gt; patterns.every(p =&gt; p.test('cat and dog'))
+&lt; true
+&gt; patterns.every(p =&gt; p.test('dog and cat'))
+&lt; true
+</code></pre>
+<h2><a class="header" href="#what-does-greedy-mean" id="what-does-greedy-mean">What does greedy mean?</a></h2>
+<p>When you are using <code>?</code> how does JavaScript decide to match <code>0</code> or <code>1</code> times, if both quantities can satisfy the regexp? For example, consider <code>'foot'.replace(/f.?o/, 'X')</code> — should <code>foo</code> be replaced or <code>fo</code>? It will always replace <code>foo</code>, because these are <strong>greedy</strong> quantifiers, meaning they try to match as much as possible.</p>
+<pre><code class="language-js">&gt; 'foot'.replace(/f.?o/, 'X')
+&lt; &quot;Xt&quot;
+
+// a more practical example
+// prefix '&lt;' with '\' if it is not already prefixed
+&gt; console.log('blah &lt; foo \\&lt; bar &lt; baz'.replace(/\\?&lt;/g, '\\&lt;'))
+&lt; blah \&lt; foo \&lt; bar \&lt; baz
+
+// say goodbye to /handful|handy|hand/ shenanigans
+&gt; 'hand handy handful'.replace(/hand(y|ful)?/g, 'X')
+&lt; &quot;X X X&quot;
+</code></pre>
+<p>But wait, how did the <code>/Error.*valid/</code> example work? Shouldn't <code>.*</code> consume all the characters after <code>Error</code>? Good question. The regexp engine actually does consume all the characters. Then realizing that the regexp fails, it gives back one character from end of string and checks again if regexp is satisfied. This process is repeated until a match is found or failure is confirmed. In regular expression parlance, this is called <strong>backtracking</strong>.</p>
+<pre><code class="language-js">&gt; let sentence = 'that is quite a fabricated tale'
+
+// t.*a will always match from first 't' to last 'a'
+&gt; sentence.replace(/t.*a/, 'X')
+&lt; &quot;Xle&quot;
+&gt; 'star'.replace(/t.*a/, 'X')
+&lt; &quot;sXr&quot;
+
+// matching first 't' to last 'a' for t.*a won't work for these cases
+// the regexp engine backtracks until .*q matches and so on
+&gt; sentence.replace(/t.*a.*q.*f/, 'X')
+&lt; &quot;Xabricated tale&quot;
+&gt; sentence.replace(/t.*a.*u/, 'X')
+&lt; &quot;Xite a fabricated tale&quot;
+</code></pre>
+<blockquote>
+<p><img src="images/warning.svg" alt="warning" /> Backtracking can be quite time consuming for certain corner cases. Or even catastrophic (see <a href="https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/">cloudflare: Details of the Cloudflare outage on July 2, 2019</a>).</p>
+</blockquote>
+<h2><a class="header" href="#non-greedy-quantifiers" id="non-greedy-quantifiers">Non-greedy quantifiers</a></h2>
+<p>As the name implies, these quantifiers will try to match as minimally as possible. Also known as <strong>lazy</strong> or <strong>reluctant</strong> quantifiers. Appending a <code>?</code> to greedy quantifiers makes them non-greedy.</p>
+<pre><code class="language-js">&gt; 'foot'.replace(/f.??o/, 'X')
+&lt; &quot;Xot&quot;
+
+&gt; 'frost'.replace(/f.??o/, 'X')
+&lt; &quot;Xst&quot;
+
+&gt; '123456789'.replace(/.{2,5}?/, 'X')
+&lt; &quot;X3456789&quot;
+
+&gt; 'green:3.14:teal::brown:oh!:blue'.split(/:.*?:/)
+&lt; [&quot;green&quot;, &quot;teal&quot;, &quot;brown&quot;, &quot;blue&quot;]
+</code></pre>
+<p>Like greedy quantifiers, lazy quantifiers will try to satisfy the overall regexp.</p>
+<pre><code class="language-js">&gt; let sentence = 'that is quite a fabricated tale'
+
+// t.*?a will always match from first 't' to first 'a'
+&gt; sentence.replace(/t.*?a/, 'X')
+&lt; &quot;Xt is quite a fabricated tale&quot;
+&gt; 'star'.replace(/t.*?a/, 'X')
+&lt; &quot;sXr&quot;
+
+// matching first 't' to first 'a' for t.*?a won't work for this case
+// so, regexp engine will move forward until .*?f matches and so on
+&gt; sentence.replace(/t.*?a.*?f/, 'X')
+&lt; &quot;Xabricated tale&quot;
+</code></pre>
+<h2><a class="header" href="#s-flag" id="s-flag">s flag</a></h2>
+<p>Use <code>s</code> flag to allow <code>.</code> metacharacter to match <code>\r</code>, <code>\n</code> and line/paragraph separator characters as well.</p>
+<pre><code class="language-js">// by default, the . metacharacter doesn't match line separators
+&gt; 'Hi there\nHave a Nice Day'.replace(/the.*ice/, 'X')
+&lt; &quot;Hi there
+  Have a Nice Day&quot;
+
+// 's' flag will allow line separators to be matched as well
+&gt; 'Hi there\nHave a Nice Day'.replace(/the.*ice/s, 'X')
+&lt; &quot;Hi X Day&quot;
+</code></pre>
+<h2><a class="header" href="#cheatsheet-and-summary" id="cheatsheet-and-summary">Cheatsheet and Summary</a></h2>
+<table><thead><tr><th>Note</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>.</code></td><td>match any character except line separators</td></tr>
+<tr><td><code>s</code></td><td>flag to match line separators as well with <code>.</code> metacharacter</td></tr>
+<tr><td>greedy</td><td>match as much as possible</td></tr>
+<tr><td><code>?</code></td><td>greedy quantifier, match <code>0</code> or <code>1</code> times</td></tr>
+<tr><td><code>*</code></td><td>greedy quantifier, match <code>0</code> or more times</td></tr>
+<tr><td><code>+</code></td><td>greedy quantifier, match <code>1</code> or more times</td></tr>
+<tr><td><code>{m,n}</code></td><td>greedy quantifier, match <code>m</code> to <code>n</code> times</td></tr>
+<tr><td><code>{m,}</code></td><td>greedy quantifier, match at least <code>m</code> times</td></tr>
+<tr><td><code>{n}</code></td><td>greedy quantifier, match exactly <code>n</code> times</td></tr>
+<tr><td><code>pat1.*pat2</code></td><td>any number of characters between <code>pat1</code> and <code>pat2</code></td></tr>
+<tr><td><code>pat1.*pat2\|pat2.*pat1</code></td><td>match both <code>pat1</code> and <code>pat2</code> in any order</td></tr>
+<tr><td>non-greedy</td><td>append <code>?</code> to greedy quantifier</td></tr>
+<tr><td></td><td>match as minimally as possible</td></tr>
+<tr><td><code>s.split(/pat/)</code></td><td>split a string based on regexp</td></tr>
+</tbody></table>
+<p>This chapter introduced the concept of specifying a placeholder instead of fixed string. When combined with quantifiers, you've seen a glimpse of how a simple regexp can match wide range of text. In coming chapters, you'll learn how to create your own restricted set of placeholder characters.</p>
+<h2><a class="header" href="#exercises" id="exercises">Exercises</a></h2>
+<blockquote>
+<p><img src="images/info.svg" alt="info" /> Use <code>s</code> flag for these exercises depending upon the contents of input strings.</p>
+</blockquote>
+<p><strong>a)</strong> Replace <code>42//5</code> or <code>42/5</code> with <code>8</code> for the given input.</p>
+<pre><code class="language-js">&gt; let ip = 'a+42//5-c pressure*3+42/5-14256'
+
+// add your solution here
+&lt; &quot;a+8-c pressure*3+8-14256&quot;
+</code></pre>
+<p><strong>b)</strong> For the array <code>items</code>, filter all elements starting with <code>hand</code> and ending with at most one more character or <code>le</code>.</p>
+<pre><code class="language-js">&gt; let items = ['handed', 'hand', 'handled', 'handy', 'unhand', 'hands', 'handle']
+
+// add your solution here
+&lt; [&quot;hand&quot;, &quot;handy&quot;, &quot;hands&quot;, &quot;handle&quot;]
+</code></pre>
+<p><strong>c)</strong> Use <code>split</code> method to get the output as shown for the given input strings.</p>
+<pre><code class="language-js">&gt; let eqn1 = 'a+42//5-c'
+&gt; let eqn2 = 'pressure*3+42/5-14256'
+&gt; let eqn3 = 'r*42-5/3+42///5-42/53+a'
+
+&gt; const pat1 =      // add your solution here
+
+&gt; eqn1.split(pat1)
+&lt; [&quot;a+&quot;, &quot;-c&quot;]
+&gt; eqn2.split(pat1)
+&lt; [&quot;pressure*3+&quot;, &quot;-14256&quot;]
+&gt; eqn3.split(pat1)
+&lt; [&quot;r*42-5/3+42///5-&quot;, &quot;3+a&quot;]
+</code></pre>
+<p><strong>d)</strong> For the given input strings, remove everything from the first occurrence of <code>i</code> till end of the string.</p>
+<pre><code class="language-js">&gt; let s1 = 'remove the special meaning of such constructs'
+&gt; let s2 = 'characters while constructing'
+
+&gt; const pat2 =      // add your solution here
+
+&gt; s1.replace(pat2, '')
+&lt; &quot;remove the spec&quot;
+&gt; s2.replace(pat2, '')
+&lt; &quot;characters wh&quot;
+</code></pre>
+<p><strong>e)</strong> For the given strings, construct a regexp to get output as shown.</p>
+<pre><code class="language-js">&gt; let str1 = 'a+b(addition)'
+&gt; let str2 = 'a/b(division) + c%d(#modulo)'
+&gt; let str3 = 'Hi there(greeting). Nice day(a(b)'
+
+&gt; const remove_parentheses =        // add your solution here
+
+&gt; str1.replace(remove_parentheses, '')
+&lt; &quot;a+b&quot;
+&gt; str2.replace(remove_parentheses, '')
+&lt; &quot;a/b + c%d&quot;
+&gt; str3.replace(remove_parentheses, '')
+&lt; &quot;Hi there. Nice day&quot;
+</code></pre>
+<p><strong>f)</strong> Correct the given regexp to get the expected output.</p>
+<pre><code class="language-js">&gt; let words = 'plink incoming tint winter in caution sentient'
+
+// wrong output
+&gt; const w1 = /int|in|ion|ing|inco|inter|ink/g
+&gt; words.replace(w1, 'X')
+&quot;plXk XcomXg tX wXer X cautX sentient&quot;
+
+// expected output
+&gt; const w2 =        // add your solution here
+&gt; words.replace(w2, 'X')
+&quot;plX XmX tX wX X cautX sentient&quot;
+</code></pre>
+<p><strong>g)</strong> For the given greedy quantifiers, what would be the equivalent form using <code>{m,n}</code> representation?</p>
+<ul>
+<li><code>?</code> is same as</li>
+<li><code>*</code> is same as</li>
+<li><code>+</code> is same as</li>
+</ul>
+<p><strong>h)</strong> <code>(a*|b*)</code> is same as <code>(a|b)*</code> — true or false?</p>
+<p><strong>i)</strong> For the given input strings, remove everything from the first occurrence of <code>test</code> (irrespective of case) till end of the string, provided <code>test</code> isn't at the end of the string.</p>
+<pre><code class="language-js">&gt; let s1 = 'this is a Test'
+&gt; let s2 = 'always test your regexp for corner\ncases'
+&gt; let s3 = 'a TEST of skill tests?'
+
+&gt; let pat3 =        // add your solution here
+
+&gt; s1.replace(pat3, '')
+&lt; &quot;this is a Test&quot;
+&gt; s2.replace(pat3, '')
+&lt; &quot;always &quot;
+&gt; s3.replace(pat3, '')
+&lt; &quot;a &quot;
+</code></pre>
+<p><strong>j)</strong> For the input array <code>words</code>, filter all elements starting with <code>s</code> and containing <code>e</code> and <code>t</code> in any order.</p>
+<pre><code class="language-js">&gt; let words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
+
+// add your solution here
+&lt; [&quot;subtle&quot;, &quot;sets&quot;, &quot;site&quot;]
+</code></pre>
+<p><strong>k)</strong> For the input array <code>words</code>, remove all elements having less than <code>6</code> characters.</p>
+<pre><code class="language-js">&gt; let words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
+
+// add your solution here
+&lt; [&quot;sequoia&quot;, &quot;subtle&quot;, &quot;exhibit&quot;]
+</code></pre>
+<p><strong>l)</strong> For the input array <code>words</code>, filter all elements starting with <code>s</code> or <code>t</code> and having a maximum of <code>6</code> characters.</p>
+<pre><code class="language-js">&gt; let words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
+
+// add your solution here
+&lt; [&quot;subtle&quot;, &quot;sets&quot;, &quot;tests&quot;, &quot;site&quot;]
+</code></pre>
+<p><strong>m)</strong> Delete from the string <code>start</code> if it is at beginning of a line up to the next occurrence of the string <code>end</code> at end of a line. Match these keywords irrespective of case.</p>
+<pre><code class="language-js">&gt; let para = `good start
+start working on that
+project you always wanted
+to, do not let it end
+hi there
+start and end the end
+42
+Start and try to
+finish the End
+bye`
+
+&gt; const pat3 =      // add your solution here
+&gt; console.log(para.replace(pat3, ''))
+&lt; good start
+  
+  hi there
+  
+  42
+  
+  bye
+</code></pre>
+<p><strong>n)</strong> Can you reason out why this code results in the output shown? The aim was to remove all <code>&lt;characters&gt;</code> patterns but not the <code>&lt;&gt;</code> ones. The expected result was <code>'a 1&lt;&gt; b 2&lt;&gt; c'</code>.</p>
+<pre><code class="language-js">&gt; let ip = 'a&lt;apple&gt; 1&lt;&gt; b&lt;bye&gt; 2&lt;&gt; c&lt;cat&gt;'
+
+&gt; ip.replace(/&lt;.+?&gt;/g, '')
+&lt; &quot;a 1 2&quot;
+</code></pre>
+<p><strong>o)</strong> Use <code>split</code> method to get the output as shown below for given input strings.</p>
+<pre><code class="language-js">&gt; let s1 = 'go there  ::   this :: that'
+&gt; let s2 = 'a::b :: c::d e::f :: 4::5'
+&gt; let s3 = '42:: hi::bye::see :: carefully'
+
+&gt; const pat4 =      // add your solution here
+
+&gt; s1.split()        // add your solution here
+&lt; [&quot;go there&quot;, &quot;this :: that&quot;]
+&gt; s2.split()        // add your solution here
+&lt; [&quot;a::b&quot;, &quot;c::d e::f :: 4::5&quot;]
+&gt; s3.split()        // add your solution here
+&lt; [&quot;42:: hi::bye::see&quot;, &quot;carefully&quot;]
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="escaping-metacharacters.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="interlude-tools-for-debugging-and-visualization.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="escaping-metacharacters.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="interlude-tools-for-debugging-and-visualization.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
