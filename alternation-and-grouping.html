@@ -17,8 +17,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        
         <link rel="icon" href="favicon.svg">
+        
+        
         <link rel="shortcut icon" href="favicon.png">
+        
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
@@ -242,10 +246,10 @@
 </code></pre>
 <h2><a class="header" href="#cheatsheet-and-summary" id="cheatsheet-and-summary">Cheatsheet and Summary</a></h2>
 <table><thead><tr><th>Note</th><th>Description</th></tr></thead><tbody>
-<tr><td><code>pat1\|pat2\|pat3</code></td><td>multiple regexp combined as OR conditional</td></tr>
+<tr><td><code>pat1|pat2|pat3</code></td><td>multiple regexp combined as OR conditional</td></tr>
 <tr><td></td><td>each alternative can have independent anchors</td></tr>
 <tr><td><code>()</code></td><td>group pattern(s)</td></tr>
-<tr><td><code>a(b\|c)d</code></td><td>same as <code>abd\|acd</code></td></tr>
+<tr><td><code>a(b|c)d</code></td><td>same as <code>abd|acd</code></td></tr>
 <tr><td>Alternation precedence</td><td>pattern which matches earliest in the input gets precedence</td></tr>
 <tr><td></td><td>tie-breaker is left to right if matches have same starting location</td></tr>
 </tbody></table>
