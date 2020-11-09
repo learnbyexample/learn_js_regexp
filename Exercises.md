@@ -1,6 +1,10 @@
-# RegExp introduction
+# Exercises
 
 >![info](images/info.svg) For solutions, see [Exercise_solutions.md](https://github.com/learnbyexample/learn_js_regexp/blob/master/Exercise_solutions.md).
+
+<br>
+
+# RegExp introduction
 
 **a)** Check if the given input strings contain `two` irrespective of case.
 
