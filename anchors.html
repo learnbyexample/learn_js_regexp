@@ -1,60 +1,7 @@
-<!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
-    <head>
-        <!-- Book generated using mdBook -->
-        <meta charset="UTF-8">
-        <title>Anchors - JavaScript RegExp</title>
-        
-        
-
-
-        <!-- Custom HTML head -->
-        
-
-
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="Example based guide to mastering JavaScript regexp">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
-
-        
-        <link rel="icon" href="favicon.svg">
-        
-        
-        <link rel="shortcut icon" href="favicon.png">
-        
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        
-        <link rel="stylesheet" href="fonts/fonts.css">
-        
-
-        <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
-
-        <!-- Custom theme stylesheets -->
-        
-        <link rel="stylesheet" href="custom.css">
-        
-
-        
-    </head>
-    <body>
-        <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+<!DOCTYPE HTML><html lang=en class="sidebar-visible no-js light"><head><meta charset=UTF-8><title>Anchors - JavaScript RegExp</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta name=description content="Example based guide to mastering JavaScript regexp"><meta name=viewport content="width=device-width, initial-scale=1"><meta name=theme-color content=#ffffff><link rel=icon href=favicon.svg><link rel="shortcut icon"href=favicon.png><link rel=stylesheet href=css/variables.css><link rel=stylesheet href=css/general.css><link rel=stylesheet href=css/chrome.css><link rel=stylesheet href=FontAwesome/css/font-awesome.css><link rel=stylesheet href=fonts/fonts.css><link rel=stylesheet href=highlight.css><link rel=stylesheet href=tomorrow-night.css><link rel=stylesheet href=ayu-highlight.css><link rel=stylesheet href=style.css><body><script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script>
-
-        <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        </script><script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -67,10 +14,7 @@
                     localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
             } catch (e) { }
-        </script>
-
-        <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        </script><script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -79,10 +23,7 @@
             html.classList.remove('light')
             html.classList.add(theme);
             html.classList.add('js');
-        </script>
-
-        <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        </script><script>
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
@@ -91,387 +32,185 @@
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
-        </script>
-
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover.html">Cover</a></li><li class="chapter-item expanded affix "><a href="buy.html">Buy PDF/EPUB versions</a></li><li class="chapter-item expanded "><a href="preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="whats-so-special-about-regular-expressions.html"><strong aria-hidden="true">2.</strong> What's so special about Regular Expressions?</a></li><li class="chapter-item expanded "><a href="regexp-introduction.html"><strong aria-hidden="true">3.</strong> RegExp introduction</a></li><li class="chapter-item expanded "><a href="anchors.html" class="active"><strong aria-hidden="true">4.</strong> Anchors</a></li><li class="chapter-item expanded "><a href="alternation-and-grouping.html"><strong aria-hidden="true">5.</strong> Alternation and Grouping</a></li><li class="chapter-item expanded "><a href="escaping-metacharacters.html"><strong aria-hidden="true">6.</strong> Escaping metacharacters</a></li><li class="chapter-item expanded "><a href="dot-metacharacter-and-quantifiers.html"><strong aria-hidden="true">7.</strong> Dot metacharacter and Quantifiers</a></li><li class="chapter-item expanded "><a href="interlude-tools-for-debugging-and-visualization.html"><strong aria-hidden="true">8.</strong> Interlude: Tools for debugging and visualization</a></li><li class="chapter-item expanded "><a href="working-with-matched-portions.html"><strong aria-hidden="true">9.</strong> Working with matched portions</a></li><li class="chapter-item expanded "><a href="character-class.html"><strong aria-hidden="true">10.</strong> Character class</a></li><li class="chapter-item expanded "><a href="groupings-and-backreferences.html"><strong aria-hidden="true">11.</strong> Groupings and backreferences</a></li><li class="chapter-item expanded "><a href="interlude-common-tasks.html"><strong aria-hidden="true">12.</strong> Interlude: Common tasks</a></li><li class="chapter-item expanded "><a href="lookarounds.html"><strong aria-hidden="true">13.</strong> Lookarounds</a></li><li class="chapter-item expanded "><a href="unicode.html"><strong aria-hidden="true">14.</strong> Unicode</a></li><li class="chapter-item expanded "><a href="further-reading.html"><strong aria-hidden="true">15.</strong> Further Reading</a></li><li class="chapter-item expanded "><a href="Exercise_solutions.html"><strong aria-hidden="true">16.</strong> Exercise Solutions</a></li></ol>
-            </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
-        </nav>
-
-        <div id="page-wrapper" class="page-wrapper">
-
-            <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
-                    <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
-                        </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                        </ul>
-                        
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
-                        </button>
-                        
-                    </div>
-
-                    <h1 class="menu-title">JavaScript RegExp</h1>
-
-                    <div class="right-buttons">
-                        
-                        <a href="https://github.com/learnbyexample/learn_js_regexp" title="Git repository" aria-label="Git repository">
-                            <i id="git-repository-button" class="fa fa-github"></i>
-                        </a>
-                        
-                    </div>
-                </div>
-
-                
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                    </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
-                        </ul>
-                    </div>
-                </div>
-                
-
-                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+        </script><nav id=sidebar class=sidebar aria-label="Table of contents"><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=whats-so-special-about-regular-expressions.html><strong aria-hidden=true>2.</strong> What's so special about Regular Expressions?</a><li class="chapter-item expanded"><a href=regexp-introduction.html><strong aria-hidden=true>3.</strong> RegExp introduction</a><li class="chapter-item expanded"><a href=anchors.html class=active><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>14.</strong> Unicode</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>15.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>16.</strong> Exercise Solutions</a></ol></div><div id=sidebar-resize-handle class=sidebar-resize-handle></div></nav><div id=page-wrapper class=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div id=menu-bar class="menu-bar sticky bordered"><div class=left-buttons><button id=sidebar-toggle class=icon-button type=button title="Toggle Table of Contents"aria-label="Toggle Table of Contents"aria-controls=sidebar><i class="fa fa-bars"></i></button><button id=theme-toggle class=icon-button type=button title="Change theme"aria-label="Change theme"aria-haspopup=true aria-expanded=false aria-controls=theme-list><i class="fa fa-paint-brush"></i></button><ul id=theme-list class=theme-popup aria-label=Themes role=menu><li role=none><button role=menuitem class=theme id=light>Light (default)</button><li role=none><button role=menuitem class=theme id=rust>Rust</button><li role=none><button role=menuitem class=theme id=coal>Coal</button><li role=none><button role=menuitem class=theme id=navy>Navy</button><li role=none><button role=menuitem class=theme id=ayu>Ayu</button></ul><button id=search-toggle class=icon-button type=button title="Search. (Shortkey: s)"aria-label="Toggle Searchbar"aria-expanded=false aria-keyshortcuts=S aria-controls=searchbar><i class="fa fa-search"></i></button></div><h1 class=menu-title>JavaScript RegExp</h1><div class=right-buttons><a href=https://github.com/learnbyexample/learn_js_regexp title="Git repository"aria-label="Git repository"> <i id=git-repository-button class="fa fa-github"></i> </a></div></div><div id=search-wrapper class=hidden><form id=searchbar-outer class=searchbar-outer><input type=search name=search id=searchbar name=searchbar placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header></form><div id=searchresults-outer class="searchresults-outer hidden"><div id=searchresults-header class=searchresults-header></div><ul id=searchresults></ul></div></div><script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
-                </script>
+                </script><div id=content class=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1><a class=header href=#anchors id=anchors>Anchors</a></h1><p>In this chapter, you'll be learning about qualifying a pattern. Instead of matching anywhere in the given input string, restrictions can be specified. For now, you'll see the ones that are already part of regular expression features. In later chapters, you'll learn how to define your own rules for restriction.<p>These restrictions are made possible by assigning special meaning to certain characters and escape sequences. The characters with special meaning are known as <strong>metacharacters</strong> in regexp parlance. In case you need to match those characters literally, you need to escape them with a <code>\</code> character (discussed in <a href=./escaping-metacharacters.html#escaping-metacharacters>Escaping metacharacters</a> chapter).<h2><a class=header href=#string-anchors id=string-anchors>String anchors</a></h2><p>This restriction is about qualifying a regexp to match only at the start or end of an input string. These provide functionality similar to the string methods <code>startsWith</code> and <code>endsWith</code>. First up is <code>^</code> metacharacter, which restricts the matching to the start of string.<pre><code class=language-js>// ^ is placed as a prefix to the pattern
+> /^cat/.test('cater')
+< true
+> /^cat/.test('concatenation')
+< false
 
-                <div id="content" class="content">
-                    <main>
-                        <h1><a class="header" href="#anchors" id="anchors">Anchors</a></h1>
-<p>In this chapter, you'll be learning about qualifying a pattern. Instead of matching anywhere in the given input string, restrictions can be specified. For now, you'll see the ones that are already part of regular expression features. In later chapters, you'll learn how to define your own rules for restriction.</p>
-<p>These restrictions are made possible by assigning special meaning to certain characters and escape sequences. The characters with special meaning are known as <strong>metacharacters</strong> in regexp parlance. In case you need to match those characters literally, you need to escape them with a <code>\</code> character (discussed in <a href="./escaping-metacharacters.html#escaping-metacharacters">Escaping metacharacters</a> chapter).</p>
-<h2><a class="header" href="#string-anchors" id="string-anchors">String anchors</a></h2>
-<p>This restriction is about qualifying a regexp to match only at the start or end of an input string. These provide functionality similar to the string methods <code>startsWith</code> and <code>endsWith</code>. First up is <code>^</code> metacharacter, which restricts the matching to the start of string.</p>
-<pre><code class="language-js">// ^ is placed as a prefix to the pattern
-&gt; /^cat/.test('cater')
-&lt; true
-&gt; /^cat/.test('concatenation')
-&lt; false
+> /^hi/.test('hi hello\ntop spot')
+< true
+> /^top/.test('hi hello\ntop spot')
+< false
+</code></pre><p>To restrict the match to the end of string, <code>$</code> metacharacter is used.<pre><code class=language-js>// $ is placed as a suffix to the pattern
+> /are$/.test('spare')
+< true
+> /are$/.test('nearest')
+< false
 
-&gt; /^hi/.test('hi hello\ntop spot')
-&lt; true
-&gt; /^top/.test('hi hello\ntop spot')
-&lt; false
-</code></pre>
-<p>To restrict the match to the end of string, <code>$</code> metacharacter is used.</p>
-<pre><code class="language-js">// $ is placed as a suffix to the pattern
-&gt; /are$/.test('spare')
-&lt; true
-&gt; /are$/.test('nearest')
-&lt; false
+> let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
+> words.filter(w => /er$/.test(w))
+< ["surrender", "newer"]
+> words.filter(w => /t$/.test(w))
+< ["pest"]
+</code></pre><p>Combining both the start and end string anchors, you can restrict the matching to the whole string. Similar to comparing strings using the <code>==</code> operator.<pre><code class=language-js>> /^cat$/.test('cat')
+< true
+> /^cat$/.test('cater')
+< false
+</code></pre><p>The anchors can be used by themselves as a pattern. Helps to insert text at the start or end of string, emulating string concatenation operations. These might not feel like useful capability, but combined with other regexp features they become quite a handy tool.<pre><code class=language-js>> 'live'.replace(/^/, 're')
+< "relive"
+> 'send'.replace(/^/, 're')
+< "resend"
 
-&gt; let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
-&gt; words.filter(w =&gt; /er$/.test(w))
-&lt; [&quot;surrender&quot;, &quot;newer&quot;]
-&gt; words.filter(w =&gt; /t$/.test(w))
-&lt; [&quot;pest&quot;]
-</code></pre>
-<p>Combining both the start and end string anchors, you can restrict the matching to the whole string. Similar to comparing strings using the <code>==</code> operator.</p>
-<pre><code class="language-js">&gt; /^cat$/.test('cat')
-&lt; true
-&gt; /^cat$/.test('cater')
-&lt; false
-</code></pre>
-<p>The anchors can be used by themselves as a pattern. Helps to insert text at the start or end of string, emulating string concatenation operations. These might not feel like useful capability, but combined with other regexp features they become quite a handy tool.</p>
-<pre><code class="language-js">&gt; 'live'.replace(/^/, 're')
-&lt; &quot;relive&quot;
-&gt; 'send'.replace(/^/, 're')
-&lt; &quot;resend&quot;
-
-&gt; 'cat'.replace(/$/, 'er')
-&lt; &quot;cater&quot;
-&gt; 'hack'.replace(/$/, 'er')
-&lt; &quot;hacker&quot;
-</code></pre>
-<h2><a class="header" href="#line-anchors" id="line-anchors">Line anchors</a></h2>
-<p>A string input may contain single or multiple lines. The <code>\r</code>, <code>\n</code>, <code>\u2028</code> (line separator) and <code>\u2029</code> (paragraph separator) characters are considered as line separators. When the <code>m</code> flag is used, the <code>^</code> and <code>$</code> anchors will match the start and end of every line respectively.</p>
-<pre><code class="language-js">// check if any line in the string starts with 'top'
-&gt; /^top/m.test('hi hello\ntop spot')
-&lt; true
+> 'cat'.replace(/$/, 'er')
+< "cater"
+> 'hack'.replace(/$/, 'er')
+< "hacker"
+</code></pre><h2><a class=header href=#line-anchors id=line-anchors>Line anchors</a></h2><p>A string input may contain single or multiple lines. The <code>\r</code>, <code>\n</code>, <code>\u2028</code> (line separator) and <code>\u2029</code> (paragraph separator) characters are considered as line separators. When the <code>m</code> flag is used, the <code>^</code> and <code>$</code> anchors will match the start and end of every line respectively.<pre><code class=language-js>// check if any line in the string starts with 'top'
+> /^top/m.test('hi hello\ntop spot')
+< true
 
 // check if any line in the string ends with 'er'
-&gt; /er$/m.test('spare\npar\nera\ndare')
-&lt; false
+> /er$/m.test('spare\npar\nera\ndare')
+< false
 
 // check if any complete line in the string is 'par'
-&gt; /^par$/m.test('spare\npar\nera\ndare')
-&lt; true
-</code></pre>
-<p>Just like string anchors, you can use the line anchors by themselves as a pattern.</p>
-<pre><code class="language-js">&gt; let items = 'catapults\nconcatenate\ncat'
+> /^par$/m.test('spare\npar\nera\ndare')
+< true
+</code></pre><p>Just like string anchors, you can use the line anchors by themselves as a pattern.<pre><code class=language-js>> let items = 'catapults\nconcatenate\ncat'
 
-&gt; console.log(items.replace(/^/gm, '* '))
-&lt; * catapults
+> console.log(items.replace(/^/gm, '* '))
+< * catapults
   * concatenate
   * cat
 
-&gt; console.log(items.replace(/$/gm, '.'))
-&lt; catapults.
+> console.log(items.replace(/$/gm, '.'))
+< catapults.
   concatenate.
   cat.
-</code></pre>
-<blockquote>
-<p><img src="images/warning.svg" alt="warning" /> If there is a line separator character at the end of string, there is an additional start/end of line match after the separator.</p>
-</blockquote>
-<pre><code class="language-js">// 'foo ' is inserted three times
-&gt; '1\n2\n'.replace(/^/mg, 'foo ')
-&lt; &quot;foo 1
+</code></pre><blockquote><p><img src=images/warning.svg alt=warning> If there is a line separator character at the end of string, there is an additional start/end of line match after the separator.</blockquote><pre><code class=language-js>// 'foo ' is inserted three times
+> '1\n2\n'.replace(/^/mg, 'foo ')
+< "foo 1
   foo 2
-  foo &quot;
+  foo "
 
-&gt; '1\n2\n'.replace(/$/mg, ' baz')
-&lt; &quot;1 baz
+> '1\n2\n'.replace(/$/mg, ' baz')
+< "1 baz
   2 baz
-   baz&quot;
-</code></pre>
-<blockquote>
-<p><img src="images/warning.svg" alt="warning" /> If you are dealing with Windows OS based text files, you may have to convert <code>\r\n</code> line endings to <code>\n</code> first. Otherwise, you'll get end of line matches for both <code>\r </code>and <code>\n</code> characters. You can also handle this case in regexp by making <code>\r</code> as optional character with quantifiers (see <a href="./dot-metacharacter-and-quantifiers.html#greedy-quantifiers">Greedy quantifiers</a> section).</p>
-</blockquote>
-<h2><a class="header" href="#word-anchors" id="word-anchors">Word anchors</a></h2>
-<p>The third type of restriction is word anchors. Alphabets (irrespective of case), digits and the underscore character qualify as word characters. You might wonder why there are digits and underscores as well, why not only alphabets? This comes from variable and function naming conventions — typically alphabets, digits and underscores are allowed. So, the definition is more oriented to programming languages than natural ones.</p>
-<p>The escape sequence <code>\b</code> denotes a word boundary. This works for both the start of word and end of word anchoring. Start of word means either the character prior to the word is a non-word character or there is no character (start of string). Similarly, end of word means the character after the word is a non-word character or no character (end of string). This implies that you cannot have word boundary <code>\b</code> without a word character.</p>
-<pre><code class="language-js">&gt; let sample = 'par spar apparent spare part'
+   baz"
+</code></pre><blockquote><p><img src=images/warning.svg alt=warning> If you are dealing with Windows OS based text files, you may have to convert <code>\r\n</code> line endings to <code>\n</code> first. Otherwise, you'll get end of line matches for both <code>\r </code>and <code>\n</code> characters. You can also handle this case in regexp by making <code>\r</code> as optional character with quantifiers (see <a href=./dot-metacharacter-and-quantifiers.html#greedy-quantifiers>Greedy quantifiers</a> section).</blockquote><h2><a class=header href=#word-anchors id=word-anchors>Word anchors</a></h2><p>The third type of restriction is word anchors. Alphabets (irrespective of case), digits and the underscore character qualify as word characters. You might wonder why there are digits and underscores as well, why not only alphabets? This comes from variable and function naming conventions — typically alphabets, digits and underscores are allowed. So, the definition is more oriented to programming languages than natural ones.<p>The escape sequence <code>\b</code> denotes a word boundary. This works for both the start of word and end of word anchoring. Start of word means either the character prior to the word is a non-word character or there is no character (start of string). Similarly, end of word means the character after the word is a non-word character or no character (end of string). This implies that you cannot have word boundary <code>\b</code> without a word character.<pre><code class=language-js>> let sample = 'par spar apparent spare part'
 
 // replace 'par' irrespective of where it occurs
-&gt; sample.replace(/par/g, 'X')
-&lt; &quot;X sX apXent sXe Xt&quot;
+> sample.replace(/par/g, 'X')
+< "X sX apXent sXe Xt"
 // replace 'par' only at the start of word
-&gt; sample.replace(/\bpar/g, 'X')
-&lt; &quot;X spar apparent spare Xt&quot;
+> sample.replace(/\bpar/g, 'X')
+< "X spar apparent spare Xt"
 // replace 'par' only at the end of word
-&gt; sample.replace(/par\b/g, 'X')
-&lt; &quot;X sX apparent spare part&quot;
+> sample.replace(/par\b/g, 'X')
+< "X sX apparent spare part"
 // replace 'par' only if it is not part of another word
-&gt; sample.replace(/\bpar\b/g, 'X')
-&lt; &quot;X spar apparent spare part&quot;
-</code></pre>
-<p>You can get lot more creative with using word boundary as a pattern by itself.</p>
-<pre><code class="language-js">// space separated words to double quoted csv
+> sample.replace(/\bpar\b/g, 'X')
+< "X spar apparent spare part"
+</code></pre><p>You can get lot more creative with using word boundary as a pattern by itself.<pre><code class=language-js>// space separated words to double quoted csv
 // note that 'replace' method is used twice here
-&gt; let sample = 'par spar apparent spare part'
-&gt; console.log(sample.replace(/\b/g, '&quot;').replace(/ /g, ','))
-&lt; &quot;par&quot;,&quot;spar&quot;,&quot;apparent&quot;,&quot;spare&quot;,&quot;part&quot;
+> let sample = 'par spar apparent spare part'
+> console.log(sample.replace(/\b/g, '"').replace(/ /g, ','))
+< "par","spar","apparent","spare","part"
 
 // make a programming statement more readable
 // shown for illustration purpose only, won't work for all cases
-&gt; 'foo_baz=num1+35*42/num2'.replace(/\b/g, ' ')
-&lt; &quot; foo_baz = num1 + 35 * 42 / num2 &quot;
+> 'foo_baz=num1+35*42/num2'.replace(/\b/g, ' ')
+< " foo_baz = num1 + 35 * 42 / num2 "
 // excess space at start/end of string can be trimmed off
 // later you'll learn how to add a qualifier so that trim is not needed
-&gt; 'foo_baz=num1+35*42/num2'.replace(/\b/g, ' ').trim()
-&lt; &quot;foo_baz = num1 + 35 * 42 / num2&quot;
-</code></pre>
-<p>The word boundary has an opposite anchor too. <code>\B</code> matches wherever <code>\b</code> doesn't match. This duality will be seen later with some other escape sequences too.</p>
-<pre><code class="language-js">&gt; let sample = 'par spar apparent spare part'
+> 'foo_baz=num1+35*42/num2'.replace(/\b/g, ' ').trim()
+< "foo_baz = num1 + 35 * 42 / num2"
+</code></pre><p>The word boundary has an opposite anchor too. <code>\B</code> matches wherever <code>\b</code> doesn't match. This duality will be seen later with some other escape sequences too.<pre><code class=language-js>> let sample = 'par spar apparent spare part'
 
 // replace 'par' if it is not start of word
-&gt; sample.replace(/\Bpar/g, 'X')
-&lt; &quot;par sX apXent sXe part&quot;
+> sample.replace(/\Bpar/g, 'X')
+< "par sX apXent sXe part"
 // replace 'par' at the end of word but not whole word 'par'
-&gt; sample.replace(/\Bpar\b/g, 'X')
-&lt; &quot;par sX apparent spare part&quot;
+> sample.replace(/\Bpar\b/g, 'X')
+< "par sX apparent spare part"
 // replace 'par' if it is not end of word
-&gt; sample.replace(/par\B/g, 'X')
-&lt; &quot;par spar apXent sXe Xt&quot;
+> sample.replace(/par\B/g, 'X')
+< "par spar apXent sXe Xt"
 // replace 'par' if it is surrounded by word characters
-&gt; sample.replace(/\Bpar\B/g, 'X')
-&lt; &quot;par spar apXent sXe part&quot;
-</code></pre>
-<p>Here's some standalone pattern usage to compare and contrast the two word anchors.</p>
-<pre><code class="language-js">&gt; 'copper'.replace(/\b/g, ':')
-&lt; &quot;:copper:&quot;
-&gt; 'copper'.replace(/\B/g, ':')
-&lt; &quot;c:o:p:p:e:r&quot;
+> sample.replace(/\Bpar\B/g, 'X')
+< "par spar apXent sXe part"
+</code></pre><p>Here's some standalone pattern usage to compare and contrast the two word anchors.<pre><code class=language-js>> 'copper'.replace(/\b/g, ':')
+< ":copper:"
+> 'copper'.replace(/\B/g, ':')
+< "c:o:p:p:e:r"
 
-&gt; '-----hello-----'.replace(/\b/g, ' ')
-&lt; &quot;----- hello -----&quot;
-&gt; '-----hello-----'.replace(/\B/g, ' ')
-&lt; &quot; - - - - -h e l l o- - - - - &quot;
-</code></pre>
-<blockquote>
-<p><img src="images/warning.svg" alt="warning" /> Negative logic is handy in many text processing situations. But use it with care as you might end up matching things you didn't intend!</p>
-</blockquote>
-<h2><a class="header" href="#cheatsheet-and-summary" id="cheatsheet-and-summary">Cheatsheet and Summary</a></h2>
-<table><thead><tr><th>Note</th><th>Description</th></tr></thead><tbody>
-<tr><td>metacharacter</td><td>characters with special meaning in regexp</td></tr>
-<tr><td><code>^</code></td><td>restricts the match to the start of string</td></tr>
-<tr><td><code>$</code></td><td>restricts the match to the end of string</td></tr>
-<tr><td><code>m</code></td><td>flag to match the start/end of line with <code>^</code> and <code>$</code> anchors</td></tr>
-<tr><td></td><td><code>\r</code>, <code>\n</code>, <code>\u2028</code> and <code>\u2029</code> are line separators</td></tr>
-<tr><td></td><td>dos-style files use <code>\r\n</code>, may need special attention</td></tr>
-<tr><td><code>\b</code></td><td>restricts the match to the start/end of words</td></tr>
-<tr><td></td><td>word characters: alphabets, digits, underscore</td></tr>
-<tr><td><code>\B</code></td><td>matches wherever <code>\b</code> doesn't match</td></tr>
-</tbody></table>
-<p>In this chapter, you've begun to see building blocks of regular expressions and how they can be used in interesting ways. But at the same time, regular expression is but another tool in the land of text processing. Often, you'd get simpler solution by combining regular expressions with normal string methods. Practice, experience and imagination would help you construct creative solutions. In coming chapters, you'll see more applications of anchors in combination with other regexp features.</p>
-<h2><a class="header" href="#exercises" id="exercises">Exercises</a></h2>
-<p><strong>a)</strong> Check if the given input strings contain <code>is</code> or <code>the</code> as whole words.</p>
-<pre><code class="language-js">&gt; let str1 = 'is; (this)'
-&gt; let str2 = &quot;The food isn't good&quot;
-&gt; let str3 = 'the2 cats'
-&gt; let str4 = 'switch on the light'
+> '-----hello-----'.replace(/\b/g, ' ')
+< "----- hello -----"
+> '-----hello-----'.replace(/\B/g, ' ')
+< " - - - - -h e l l o- - - - - "
+</code></pre><blockquote><p><img src=images/warning.svg alt=warning> Negative logic is handy in many text processing situations. But use it with care as you might end up matching things you didn't intend!</blockquote><h2><a class=header href=#cheatsheet-and-summary id=cheatsheet-and-summary>Cheatsheet and Summary</a></h2><table><thead><tr><th>Note<th>Description<tbody><tr><td>metacharacter<td>characters with special meaning in regexp<tr><td><code>^</code><td>restricts the match to the start of string<tr><td><code>$</code><td>restricts the match to the end of string<tr><td><code>m</code><td>flag to match the start/end of line with <code>^</code> and <code>$</code> anchors<tr><td><td><code>\r</code>, <code>\n</code>, <code>\u2028</code> and <code>\u2029</code> are line separators<tr><td><td>dos-style files use <code>\r\n</code>, may need special attention<tr><td><code>\b</code><td>restricts the match to the start/end of words<tr><td><td>word characters: alphabets, digits, underscore<tr><td><code>\B</code><td>matches wherever <code>\b</code> doesn't match</table><p>In this chapter, you've begun to see building blocks of regular expressions and how they can be used in interesting ways. But at the same time, regular expression is but another tool in the land of text processing. Often, you'd get simpler solution by combining regular expressions with normal string methods. Practice, experience and imagination would help you construct creative solutions. In coming chapters, you'll see more applications of anchors in combination with other regexp features.<h2><a class=header href=#exercises id=exercises>Exercises</a></h2><p><strong>a)</strong> Check if the given input strings contain <code>is</code> or <code>the</code> as whole words.<pre><code class=language-js>> let str1 = 'is; (this)'
+> let str2 = "The food isn't good"
+> let str3 = 'the2 cats'
+> let str4 = 'switch on the light'
 
-&gt; const pat1 =      // add your solution here
-&gt; const pat2 =      // add your solution here
+> const pat1 =      // add your solution here
+> const pat2 =      // add your solution here
 
-&gt; pat1.test(str1) || pat2.test(str1)
-&lt; true
-&gt; pat1.test(str2) || pat2.test(str2)
-&lt; false
-&gt; pat1.test(str3) || pat2.test(str3)
-&lt; false
-&gt; pat1.test(str4) || pat2.test(str4)
-&lt; true
-</code></pre>
-<p><strong>b)</strong> For the given input string, change only whole word <code>red</code> to <code>brown</code></p>
-<pre><code class="language-js">&gt; let ip = 'bred red spread credible red;'
+> pat1.test(str1) || pat2.test(str1)
+< true
+> pat1.test(str2) || pat2.test(str2)
+< false
+> pat1.test(str3) || pat2.test(str3)
+< false
+> pat1.test(str4) || pat2.test(str4)
+< true
+</code></pre><p><strong>b)</strong> For the given input string, change only whole word <code>red</code> to <code>brown</code><pre><code class=language-js>> let ip = 'bred red spread credible red;'
 
-&gt; ip.replace()       // add your solution here
-&lt; &quot;bred brown spread credible brown;&quot;
-</code></pre>
-<p><strong>c)</strong> For the given array, filter all elements that contains <code>42</code> surrounded by word characters.</p>
-<pre><code class="language-js">&gt; let items = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', 'fake4b']
+> ip.replace()       // add your solution here
+< "bred brown spread credible brown;"
+</code></pre><p><strong>c)</strong> For the given array, filter all elements that contains <code>42</code> surrounded by word characters.<pre><code class=language-js>> let items = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', 'fake4b']
 
-&gt; items.filter(e =&gt; test(e))       // add your solution here
-&lt; [&quot;hi42bye&quot;, &quot;nice1423&quot;, &quot;cool_42a&quot;]
-</code></pre>
-<p><strong>d)</strong> For the given input array, filter all elements that start with <code>den</code> or end with <code>ly</code></p>
-<pre><code class="language-js">&gt; let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
+> items.filter(e => test(e))       // add your solution here
+< ["hi42bye", "nice1423", "cool_42a"]
+</code></pre><p><strong>d)</strong> For the given input array, filter all elements that start with <code>den</code> or end with <code>ly</code><pre><code class=language-js>> let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
 
-&gt; items.filter(e =&gt; test(e) || test(e))        // add your solution here
-&lt; [&quot;lovely&quot;, &quot;2 lonely&quot;, &quot;dent&quot;]
-</code></pre>
-<p><strong>e)</strong> For the given input string, change whole word <code>mall</code> to <code>1234</code> only if it is at the start of line.</p>
-<pre><code class="language-js">&gt; let para = `ball fall wall tall
+> items.filter(e => test(e) || test(e))        // add your solution here
+< ["lovely", "2 lonely", "dent"]
+</code></pre><p><strong>e)</strong> For the given input string, change whole word <code>mall</code> to <code>1234</code> only if it is at the start of line.<pre><code class=language-js>> let para = `ball fall wall tall
 mall call ball pall
 wall mall ball fall
 mallet wallet malls`
 
-&gt; console.log(para.replace())        // add your solution here
-&lt; ball fall wall tall
+> console.log(para.replace())        // add your solution here
+< ball fall wall tall
   1234 call ball pall
   wall mall ball fall
   mallet wallet malls
-</code></pre>
-<p><strong>f)</strong> For the given array, filter all elements having a line starting with <code>den</code> or ending with <code>ly</code>.</p>
-<pre><code class="language-js">&gt; let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
+</code></pre><p><strong>f)</strong> For the given array, filter all elements having a line starting with <code>den</code> or ending with <code>ly</code>.<pre><code class=language-js>> let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
 
-&gt; items.filter(e =&gt; test(e) || test(e))      // add your solution here
-&lt; [&quot;lovely&quot;, &quot;1\ndentist&quot;, &quot;2 lonely&quot;, &quot;fly\nfar&quot;, &quot;dent&quot;]
-</code></pre>
-<p><strong>g)</strong> For the given input array, filter all whole elements <code>12\nthree</code> irrespective of case.</p>
-<pre><code class="language-js">&gt; let items = ['12\nthree\n', '12\nThree', '12\nthree\n4', '12\nthree']
+> items.filter(e => test(e) || test(e))      // add your solution here
+< ["lovely", "1\ndentist", "2 lonely", "fly\nfar", "dent"]
+</code></pre><p><strong>g)</strong> For the given input array, filter all whole elements <code>12\nthree</code> irrespective of case.<pre><code class=language-js>> let items = ['12\nthree\n', '12\nThree', '12\nthree\n4', '12\nthree']
 
-&gt; items.filter(e =&gt; test(e))     // add your solution here
-&lt; [&quot;12\nThree&quot;, &quot;12\nthree&quot;]
-</code></pre>
-<p><strong>h)</strong> For the given input array, replace <code>hand</code> with <code>X</code> for all words that start with <code>hand</code> followed by at least one word character.</p>
-<pre><code class="language-js">&gt; let items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
+> items.filter(e => test(e))     // add your solution here
+< ["12\nThree", "12\nthree"]
+</code></pre><p><strong>h)</strong> For the given input array, replace <code>hand</code> with <code>X</code> for all words that start with <code>hand</code> followed by at least one word character.<pre><code class=language-js>> let items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
 
-&gt; items.map(w =&gt; w.replace())        // add your solution here
-&lt; [&quot;Xed&quot;, &quot;hand&quot;, &quot;Xy&quot;, &quot;unhanded&quot;, &quot;Xle&quot;, &quot;hand-2&quot;]
-</code></pre>
-<p><strong>i)</strong> For the given input array, filter all elements starting with <code>h</code>. Additionally, replace <code>e</code> with <code>X</code> for these filtered elements.</p>
-<pre><code class="language-js">&gt; let items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
+> items.map(w => w.replace())        // add your solution here
+< ["Xed", "hand", "Xy", "unhanded", "Xle", "hand-2"]
+</code></pre><p><strong>i)</strong> For the given input array, filter all elements starting with <code>h</code>. Additionally, replace <code>e</code> with <code>X</code> for these filtered elements.<pre><code class=language-js>> let items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
 
-&gt; items.filter(w =&gt; test(w)).map(w =&gt; w.replace())        // add your solution here
-&lt; [&quot;handXd&quot;, &quot;hand&quot;, &quot;handy&quot;, &quot;handlX&quot;, &quot;hand-2&quot;]
-</code></pre>
-<p><strong>j)</strong> Why does the following code show <code>false</code> instead of <code>true</code>?</p>
-<pre><code class="language-js">&gt; /end$/.test('bend it\nand send\n')
-&lt; false
-</code></pre>
-
-                    </main>
-
-                    <nav class="nav-wrapper" aria-label="Page navigation">
-                        <!-- Mobile navigation buttons -->
-                        
-                            <a rel="prev" href="regexp-introduction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                        
-
-                        
-                            <a rel="next" href="alternation-and-grouping.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        
-
-                        <div style="clear: both"></div>
-                    </nav>
-                </div>
-            </div>
-
-            <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
-                    <a rel="prev" href="regexp-introduction.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                
-
-                
-                    <a rel="next" href="alternation-and-grouping.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                
-            </nav>
-
-        </div>
-
-        
-
-        
-
-        
-
-        
-        <script type="text/javascript">
+> items.filter(w => test(w)).map(w => w.replace())        // add your solution here
+< ["handXd", "hand", "handy", "handlX", "hand-2"]
+</code></pre><p><strong>j)</strong> Why does the following code show <code>false</code> instead of <code>true</code>?<pre><code class=language-js>> /end$/.test('bend it\nand send\n')
+< false
+</code></pre></main><nav class=nav-wrapper aria-label="Page navigation"><a rel=prev href=regexp-introduction.html class="mobile-nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=alternation-and-grouping.html class="mobile-nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav class=nav-wide-wrapper aria-label="Page navigation"><a rel=prev href=regexp-introduction.html class="nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=alternation-and-grouping.html class="nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a></nav></div><script>
             window.playground_copyable = true;
-        </script>
-        
-
-        
-
-        
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
-
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
-
-        <!-- Custom JS scripts -->
-        
-
-        
-
-    </body>
-</html>
+        </script><script src=elasticlunr.min.js charset=utf-8></script><script src=mark.min.js charset=utf-8></script><script src=searcher.js charset=utf-8></script><script src=clipboard.min.js charset=utf-8></script><script src=highlight.js charset=utf-8></script><script src=book.js charset=utf-8></script><script src=sidebar.js></script>

@@ -1,60 +1,7 @@
-<!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
-    <head>
-        <!-- Book generated using mdBook -->
-        <meta charset="UTF-8">
-        <title>Lookarounds - JavaScript RegExp</title>
-        
-        
-
-
-        <!-- Custom HTML head -->
-        
-
-
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="Example based guide to mastering JavaScript regexp">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
-
-        
-        <link rel="icon" href="favicon.svg">
-        
-        
-        <link rel="shortcut icon" href="favicon.png">
-        
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        
-        <link rel="stylesheet" href="fonts/fonts.css">
-        
-
-        <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
-
-        <!-- Custom theme stylesheets -->
-        
-        <link rel="stylesheet" href="custom.css">
-        
-
-        
-    </head>
-    <body>
-        <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+<!DOCTYPE HTML><html lang=en class="sidebar-visible no-js light"><head><meta charset=UTF-8><title>Lookarounds - JavaScript RegExp</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta name=description content="Example based guide to mastering JavaScript regexp"><meta name=viewport content="width=device-width, initial-scale=1"><meta name=theme-color content=#ffffff><link rel=icon href=favicon.svg><link rel="shortcut icon"href=favicon.png><link rel=stylesheet href=css/variables.css><link rel=stylesheet href=css/general.css><link rel=stylesheet href=css/chrome.css><link rel=stylesheet href=FontAwesome/css/font-awesome.css><link rel=stylesheet href=fonts/fonts.css><link rel=stylesheet href=highlight.css><link rel=stylesheet href=tomorrow-night.css><link rel=stylesheet href=ayu-highlight.css><link rel=stylesheet href=style.css><body><script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script>
-
-        <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        </script><script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -67,10 +14,7 @@
                     localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
             } catch (e) { }
-        </script>
-
-        <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        </script><script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -79,10 +23,7 @@
             html.classList.remove('light')
             html.classList.add(theme);
             html.classList.add('js');
-        </script>
-
-        <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        </script><script>
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
@@ -91,508 +32,272 @@
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
-        </script>
-
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover.html">Cover</a></li><li class="chapter-item expanded affix "><a href="buy.html">Buy PDF/EPUB versions</a></li><li class="chapter-item expanded "><a href="preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="whats-so-special-about-regular-expressions.html"><strong aria-hidden="true">2.</strong> What's so special about Regular Expressions?</a></li><li class="chapter-item expanded "><a href="regexp-introduction.html"><strong aria-hidden="true">3.</strong> RegExp introduction</a></li><li class="chapter-item expanded "><a href="anchors.html"><strong aria-hidden="true">4.</strong> Anchors</a></li><li class="chapter-item expanded "><a href="alternation-and-grouping.html"><strong aria-hidden="true">5.</strong> Alternation and Grouping</a></li><li class="chapter-item expanded "><a href="escaping-metacharacters.html"><strong aria-hidden="true">6.</strong> Escaping metacharacters</a></li><li class="chapter-item expanded "><a href="dot-metacharacter-and-quantifiers.html"><strong aria-hidden="true">7.</strong> Dot metacharacter and Quantifiers</a></li><li class="chapter-item expanded "><a href="interlude-tools-for-debugging-and-visualization.html"><strong aria-hidden="true">8.</strong> Interlude: Tools for debugging and visualization</a></li><li class="chapter-item expanded "><a href="working-with-matched-portions.html"><strong aria-hidden="true">9.</strong> Working with matched portions</a></li><li class="chapter-item expanded "><a href="character-class.html"><strong aria-hidden="true">10.</strong> Character class</a></li><li class="chapter-item expanded "><a href="groupings-and-backreferences.html"><strong aria-hidden="true">11.</strong> Groupings and backreferences</a></li><li class="chapter-item expanded "><a href="interlude-common-tasks.html"><strong aria-hidden="true">12.</strong> Interlude: Common tasks</a></li><li class="chapter-item expanded "><a href="lookarounds.html" class="active"><strong aria-hidden="true">13.</strong> Lookarounds</a></li><li class="chapter-item expanded "><a href="unicode.html"><strong aria-hidden="true">14.</strong> Unicode</a></li><li class="chapter-item expanded "><a href="further-reading.html"><strong aria-hidden="true">15.</strong> Further Reading</a></li><li class="chapter-item expanded "><a href="Exercise_solutions.html"><strong aria-hidden="true">16.</strong> Exercise Solutions</a></li></ol>
-            </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
-        </nav>
-
-        <div id="page-wrapper" class="page-wrapper">
-
-            <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
-                    <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
-                        </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                        </ul>
-                        
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
-                        </button>
-                        
-                    </div>
-
-                    <h1 class="menu-title">JavaScript RegExp</h1>
-
-                    <div class="right-buttons">
-                        
-                        <a href="https://github.com/learnbyexample/learn_js_regexp" title="Git repository" aria-label="Git repository">
-                            <i id="git-repository-button" class="fa fa-github"></i>
-                        </a>
-                        
-                    </div>
-                </div>
-
-                
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                    </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
-                        </ul>
-                    </div>
-                </div>
-                
-
-                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+        </script><nav id=sidebar class=sidebar aria-label="Table of contents"><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=whats-so-special-about-regular-expressions.html><strong aria-hidden=true>2.</strong> What's so special about Regular Expressions?</a><li class="chapter-item expanded"><a href=regexp-introduction.html><strong aria-hidden=true>3.</strong> RegExp introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html class=active><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>14.</strong> Unicode</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>15.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>16.</strong> Exercise Solutions</a></ol></div><div id=sidebar-resize-handle class=sidebar-resize-handle></div></nav><div id=page-wrapper class=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div id=menu-bar class="menu-bar sticky bordered"><div class=left-buttons><button id=sidebar-toggle class=icon-button type=button title="Toggle Table of Contents"aria-label="Toggle Table of Contents"aria-controls=sidebar><i class="fa fa-bars"></i></button><button id=theme-toggle class=icon-button type=button title="Change theme"aria-label="Change theme"aria-haspopup=true aria-expanded=false aria-controls=theme-list><i class="fa fa-paint-brush"></i></button><ul id=theme-list class=theme-popup aria-label=Themes role=menu><li role=none><button role=menuitem class=theme id=light>Light (default)</button><li role=none><button role=menuitem class=theme id=rust>Rust</button><li role=none><button role=menuitem class=theme id=coal>Coal</button><li role=none><button role=menuitem class=theme id=navy>Navy</button><li role=none><button role=menuitem class=theme id=ayu>Ayu</button></ul><button id=search-toggle class=icon-button type=button title="Search. (Shortkey: s)"aria-label="Toggle Searchbar"aria-expanded=false aria-keyshortcuts=S aria-controls=searchbar><i class="fa fa-search"></i></button></div><h1 class=menu-title>JavaScript RegExp</h1><div class=right-buttons><a href=https://github.com/learnbyexample/learn_js_regexp title="Git repository"aria-label="Git repository"> <i id=git-repository-button class="fa fa-github"></i> </a></div></div><div id=search-wrapper class=hidden><form id=searchbar-outer class=searchbar-outer><input type=search name=search id=searchbar name=searchbar placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header></form><div id=searchresults-outer class="searchresults-outer hidden"><div id=searchresults-header class=searchresults-header></div><ul id=searchresults></ul></div></div><script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
-                </script>
-
-                <div id="content" class="content">
-                    <main>
-                        <h1><a class="header" href="#lookarounds" id="lookarounds">Lookarounds</a></h1>
-<p>You've already seen how to create custom character classes and various avatars of special groupings. In this chapter you'll learn more groupings, known as lookarounds, that help to create custom anchors and add conditions within regexp definition. These assertions are also known as <strong>zero-width patterns</strong> because they add restrictions similar to anchors and are not part of the matched portions. Also, you will learn how to negate a grouping similar to negated character sets.</p>
-<h2><a class="header" href="#conditional-expressions" id="conditional-expressions">Conditional expressions</a></h2>
-<p>Before you get used to lookarounds too much, it is good to remember that JavaScript is a programming language. You have control structures and you can combine multiple conditions using logical operators, methods like <code>every/some</code>, etc. Also, do not forget that regexp is only one of the tools available for string processing.</p>
-<pre><code class="language-js">&gt; let items = ['1,2,3,4', 'a,b,c,d', '#foo 123']
+                </script><div id=content class=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1><a class=header href=#lookarounds id=lookarounds>Lookarounds</a></h1><p>You've already seen how to create custom character classes and various avatars of special groupings. In this chapter you'll learn more groupings, known as lookarounds, that help to create custom anchors and add conditions within regexp definition. These assertions are also known as <strong>zero-width patterns</strong> because they add restrictions similar to anchors and are not part of the matched portions. Also, you will learn how to negate a grouping similar to negated character sets.<h2><a class=header href=#conditional-expressions id=conditional-expressions>Conditional expressions</a></h2><p>Before you get used to lookarounds too much, it is good to remember that JavaScript is a programming language. You have control structures and you can combine multiple conditions using logical operators, methods like <code>every/some</code>, etc. Also, do not forget that regexp is only one of the tools available for string processing.<pre><code class=language-js>> let items = ['1,2,3,4', 'a,b,c,d', '#foo 123']
 
 // filter elements containing digit and '#' characters
-&gt; items.filter(s =&gt; /\d/.test(s) &amp;&amp; s.includes('#'))
-&lt; [&quot;#foo 123&quot;]
+> items.filter(s => /\d/.test(s) && s.includes('#'))
+< ["#foo 123"]
 
 // modify elements only if it doesn't start with '#'
-&gt; items.filter(s =&gt; s[0] != '#').map(s =&gt; s.replace(/,.+,/, ' '))
-&lt; [&quot;1 4&quot;, &quot;a d&quot;]
-</code></pre>
-<h2><a class="header" href="#negative-lookarounds" id="negative-lookarounds">Negative lookarounds</a></h2>
-<p>Lookaround assertions can be added in two ways — <strong>lookbehind</strong> and <strong>lookahead</strong>. Each of these can be a <strong>positive</strong> or a <strong>negative</strong> assertion. Syntax wise, lookbehind has an extra <code>&lt;</code> compared to the lookahead version. Negative lookarounds can be identified by the use of <code>!</code> whereas <code>=</code> is used for positive lookarounds. This section is about negative lookarounds, whose complete syntax is shown below.</p>
-<ul>
-<li><code>(?!pat)</code> for negative lookahead assertion</li>
-<li><code>(?&lt;!pat)</code> for negative lookbehind assertion</li>
-</ul>
-<p>As mentioned earlier, lookarounds are not part of matched portions and do not capture the matched text.</p>
-<pre><code class="language-js">// change 'foo' only if it is not followed by a digit character
+> items.filter(s => s[0] != '#').map(s => s.replace(/,.+,/, ' '))
+< ["1 4", "a d"]
+</code></pre><h2><a class=header href=#negative-lookarounds id=negative-lookarounds>Negative lookarounds</a></h2><p>Lookaround assertions can be added in two ways — <strong>lookbehind</strong> and <strong>lookahead</strong>. Each of these can be a <strong>positive</strong> or a <strong>negative</strong> assertion. Syntax wise, lookbehind has an extra <code><</code> compared to the lookahead version. Negative lookarounds can be identified by the use of <code>!</code> whereas <code>=</code> is used for positive lookarounds. This section is about negative lookarounds, whose complete syntax is shown below.<ul><li><code>(?!pat)</code> for negative lookahead assertion<li><code>(?&LT!pat)</code> for negative lookbehind assertion</ul><p>As mentioned earlier, lookarounds are not part of matched portions and do not capture the matched text.<pre><code class=language-js>// change 'foo' only if it is not followed by a digit character
 // note that end of string satisfies the given assertion
 // 'foofoo' has two matches as the assertion doesn't consume characters
-&gt; 'hey food! foo42 foot5 foofoo'.replace(/foo(?!\d)/g, 'baz')
-&lt; &quot;hey bazd! foo42 bazt5 bazbaz&quot;
+> 'hey food! foo42 foot5 foofoo'.replace(/foo(?!\d)/g, 'baz')
+< "hey bazd! foo42 bazt5 bazbaz"
 
 // change 'foo' only if it is not preceded by _
 // note how 'foo' at start of string is matched as well
-&gt; 'foo _foo 42foofoo'.replace(/(?&lt;!_)foo/g, 'baz')
-&lt; &quot;baz _foo 42bazbaz&quot;
+> 'foo _foo 42foofoo'.replace(/(?&LT!_)foo/g, 'baz')
+< "baz _foo 42bazbaz"
 
 // overlap example
 // 'foot' doesn't match because it is preceded by '_'
 // the '_' before 'foot' was considered even though it got replaced
-&gt; 'food _fool 42foo_foot'.replace(/(?&lt;!_)foo./g, 'baz')
-&lt; &quot;baz _fool 42bazfoot&quot;
-</code></pre>
-<p>Can be mixed with anchors and other regexp features to define truly powerful restrictions.</p>
-<pre><code class="language-js">// change whole word only if it is not preceded by : or --
-&gt; ':cart apple --rest ;tea'.replace(/(?&lt;!:|--)\b\w+/g, 'X')
-&lt; &quot;:cart X --rest ;X&quot;
+> 'food _fool 42foo_foot'.replace(/(?&LT!_)foo./g, 'baz')
+< "baz _fool 42bazfoot"
+</code></pre><p>Can be mixed with anchors and other regexp features to define truly powerful restrictions.<pre><code class=language-js>// change whole word only if it is not preceded by : or --
+> ':cart apple --rest ;tea'.replace(/(?&LT!:|--)\b\w+/g, 'X')
+< ":cart X --rest ;X"
 
 // add space to word boundaries, but not at start or end of string
 // similar to: replace(/\b/g, ' ').trim()
-&gt; 'foo_baz=num1+35*42/num2'.replace(/(?&lt;!^)\b(?!$)/g, ' ')
-&lt; &quot;foo_baz = num1 + 35 * 42 / num2&quot;
-</code></pre>
-<p>In all the examples so far, lookahead grouping was placed as a suffix and lookbehind as a prefix. This is how they are used most of the time, but not the only way to use them. Lookarounds can be placed anywhere and multiple lookarounds can be combined in any order. They do not consume characters nor do they play a role in matched portions. They just let you know whether the condition you want to test is satisfied from the current location in the input string.</p>
-<pre><code class="language-js">// these two are equivalent
+> 'foo_baz=num1+35*42/num2'.replace(/(?&LT!^)\b(?!$)/g, ' ')
+< "foo_baz = num1 + 35 * 42 / num2"
+</code></pre><p>In all the examples so far, lookahead grouping was placed as a suffix and lookbehind as a prefix. This is how they are used most of the time, but not the only way to use them. Lookarounds can be placed anywhere and multiple lookarounds can be combined in any order. They do not consume characters nor do they play a role in matched portions. They just let you know whether the condition you want to test is satisfied from the current location in the input string.<pre><code class=language-js>// these two are equivalent
 // replace a character as long as it is not preceded by 'p' or 'r'
-&gt; 'spare'.replace(/(?&lt;![pr])./g, '*')
-&lt; &quot;**a*e&quot;
-&gt; 'spare'.replace(/.(?&lt;![pr].)/g, '*')
-&lt; &quot;**a*e&quot;
+> 'spare'.replace(/(?&LT![pr])./g, '*')
+< "**a*e"
+> 'spare'.replace(/.(?&LT![pr].)/g, '*')
+< "**a*e"
 
 // replace 'par' as long as 's' is not present later in the input
 // this assumes that the lookaround doesn't conflict with search pattern
 // i.e. 's' will not conflict 'par' but would affect if it was 'r' and 'par'
-&gt; 'par spare part party'.replace(/par(?!.*s)/g, 'X')
-&lt; &quot;par sXe Xt Xty&quot;
-&gt; 'par spare part party'.replace(/(?!.*s)par/g, 'X')
-&lt; &quot;par sXe Xt Xty&quot;
+> 'par spare part party'.replace(/par(?!.*s)/g, 'X')
+< "par sXe Xt Xty"
+> 'par spare part party'.replace(/(?!.*s)par/g, 'X')
+< "par sXe Xt Xty"
 
 // since the three assertions used here are all zero-width,
 // all of the 6 possible combinations will be equivalent
-&gt; 'foo_baz=num1+35*42/num2'.replace(/(?!$)\b(?&lt;!^)/g, ' ')
-&lt; &quot;foo_baz = num1 + 35 * 42 / num2&quot;
-</code></pre>
-<blockquote>
-<p><img src="images/info.svg" alt="info" /> See <a href="https://stackoverflow.com/questions/50011366/javascript-regex-negative-lookbehind-not-working-in-firefox">this stackoverflow Q&amp;A</a> for a workaround if lookbehind isn't supported.</p>
-</blockquote>
-<h2><a class="header" href="#positive-lookarounds" id="positive-lookarounds">Positive lookarounds</a></h2>
-<p>Unlike negative lookarounds, absence of the pattern will not satisfy positive lookarounds. Instead, for the condition to satisfy, the pattern has to match actual characters and/or zero-width assertions. Positive lookaround can be identified by use of <code>=</code> in the grouping. The complete syntax looks like:</p>
-<ul>
-<li><code>(?=pat)</code> for positive lookahead assertion</li>
-<li><code>(?&lt;=pat)</code> for positive lookbehind assertion</li>
-</ul>
-<pre><code class="language-js">// extract digits only if it is followed by ,
+> 'foo_baz=num1+35*42/num2'.replace(/(?!$)\b(?&LT!^)/g, ' ')
+< "foo_baz = num1 + 35 * 42 / num2"
+</code></pre><blockquote><p><img src=images/info.svg alt=info> See <a href=https://stackoverflow.com/questions/50011366/javascript-regex-negative-lookbehind-not-working-in-firefox>this stackoverflow Q&A</a> for a workaround if lookbehind isn't supported.</blockquote><h2><a class=header href=#positive-lookarounds id=positive-lookarounds>Positive lookarounds</a></h2><p>Unlike negative lookarounds, absence of the pattern will not satisfy positive lookarounds. Instead, for the condition to satisfy, the pattern has to match actual characters and/or zero-width assertions. Positive lookaround can be identified by use of <code>=</code> in the grouping. The complete syntax looks like:<ul><li><code>(?=pat)</code> for positive lookahead assertion<li><code>(?<=pat)</code> for positive lookbehind assertion</ul><pre><code class=language-js>// extract digits only if it is followed by ,
 // note that end of string doesn't qualify as this is positive assertion
-&gt; '42 foo-5, baz3; x83, y-20; f12'.match(/\d+(?=,)/g)
-&lt; [&quot;5&quot;, &quot;83&quot;]
+> '42 foo-5, baz3; x83, y-20; f12'.match(/\d+(?=,)/g)
+< ["5", "83"]
 // extract digits only if it is preceded by - and followed by , or ;
-&gt; '42 foo-5, baz3; x83, y-20; f12'.match(/(?&lt;=-)\d+(?=[;,])/g)
-&lt; [&quot;5&quot;, &quot;20&quot;]
+> '42 foo-5, baz3; x83, y-20; f12'.match(/(?<=-)\d+(?=[;,])/g)
+< ["5", "20"]
 
 // same as: match(/\b\w/g).join('')
-&gt; 'sea eat car rat eel tea'.replace(/(?&lt;=\b\w)\w*\W*/g, '')
-&lt; &quot;secret&quot;
+> 'sea eat car rat eel tea'.replace(/(?<=\b\w)\w*\W*/g, '')
+< "secret"
 
 // replace 'par' as long as 'part' occurs as a whole word later in the line
-&gt; 'par spare part party'.replace(/par(?=.*\bpart\b)/g, 'X')
-&lt; &quot;X sXe part party&quot;
-</code></pre>
-<p>Lookarounds are quite handy in dealing with field based processing.</p>
-<pre><code class="language-js">// except first and last fields
-&gt; '1,two,3,four,5'.match(/(?&lt;=,)[^,]+(?=,)/g)
-&lt; [&quot;two&quot;, &quot;3&quot;, &quot;four&quot;]
+> 'par spare part party'.replace(/par(?=.*\bpart\b)/g, 'X')
+< "X sXe part party"
+</code></pre><p>Lookarounds are quite handy in dealing with field based processing.<pre><code class=language-js>// except first and last fields
+> '1,two,3,four,5'.match(/(?<=,)[^,]+(?=,)/g)
+< ["two", "3", "four"]
 
 // replace empty fields with NA
 // note that in this example, order of lookbehind and lookahead doesn't matter
-&gt; ',1,,,two,3,,'.replace(/(?&lt;=^|,)(?=,|$)/g, 'NA')
-&lt; &quot;NA,1,NA,NA,two,3,NA,NA&quot;
+> ',1,,,two,3,,'.replace(/(?<=^|,)(?=,|$)/g, 'NA')
+< "NA,1,NA,NA,two,3,NA,NA"
 // same thing with negative lookarounds
-&gt; ',1,,,two,3,,'.replace(/(?![^,])(?&lt;![^,])/g, 'NA')
-&lt; &quot;NA,1,NA,NA,two,3,NA,NA&quot;
+> ',1,,,two,3,,'.replace(/(?![^,])(?&LT![^,])/g, 'NA')
+< "NA,1,NA,NA,two,3,NA,NA"
 
 // there is an extra empty string match at end of non-empty columns
-&gt; ',cat,tiger'.replace(/[^,]*/g, '{$&amp;}')
-&lt; &quot;{},{cat}{},{tiger}{}&quot;
+> ',cat,tiger'.replace(/[^,]*/g, '{$&}')
+< "{},{cat}{},{tiger}{}"
 // lookarounds to the rescue
-&gt; ',cat,tiger'.replace(/(?&lt;=^|,)[^,]*/g, '{$&amp;}')
-&lt; &quot;{},{cat},{tiger}&quot;
-</code></pre>
-<h2><a class="header" href="#capture-groups-inside-positive-lookarounds" id="capture-groups-inside-positive-lookarounds">Capture groups inside positive lookarounds</a></h2>
-<p>Even though lookarounds are not part of matched portions, capture groups can be used inside positive lookarounds. Can you reason out why it won't work for negative lookarounds?</p>
-<pre><code class="language-js">&gt; console.log('a b c d e'.replace(/(\S+\s+)(?=(\S+)\s)/g, '$1$2\n'))
-&lt; a b
+> ',cat,tiger'.replace(/(?<=^|,)[^,]*/g, '{$&}')
+< "{},{cat},{tiger}"
+</code></pre><h2><a class=header href=#capture-groups-inside-positive-lookarounds id=capture-groups-inside-positive-lookarounds>Capture groups inside positive lookarounds</a></h2><p>Even though lookarounds are not part of matched portions, capture groups can be used inside positive lookarounds. Can you reason out why it won't work for negative lookarounds?<pre><code class=language-js>> console.log('a b c d e'.replace(/(\S+\s+)(?=(\S+)\s)/g, '$1$2\n'))
+< a b
   b c
   c d
   d e
-</code></pre>
-<h2><a class="header" href="#and-conditional-with-lookarounds" id="and-conditional-with-lookarounds">AND conditional with lookarounds</a></h2>
-<p>As promised earlier, here's how lookarounds make it simpler to construct AND conditionals.</p>
-<pre><code class="language-js">&gt; let words = ['sequoia', 'subtle', 'questionable', 'exhibit', 'equation']
+</code></pre><h2><a class=header href=#and-conditional-with-lookarounds id=and-conditional-with-lookarounds>AND conditional with lookarounds</a></h2><p>As promised earlier, here's how lookarounds make it simpler to construct AND conditionals.<pre><code class=language-js>> let words = ['sequoia', 'subtle', 'questionable', 'exhibit', 'equation']
 
 // words containing 'b' and 'e' and 't' in any order
 // same as: /b.*e.*t|b.*t.*e|e.*b.*t|e.*t.*b|t.*b.*e|t.*e.*b/
-&gt; words.filter(w =&gt; /(?=.*b)(?=.*e).*t/.test(w))
-&lt; [&quot;subtle&quot;, &quot;questionable&quot;, &quot;exhibit&quot;]
+> words.filter(w => /(?=.*b)(?=.*e).*t/.test(w))
+< ["subtle", "questionable", "exhibit"]
 
 // words containing all vowels in any order
-&gt; words.filter(w =&gt; /(?=.*a)(?=.*e)(?=.*i)(?=.*o).*u/.test(w))
-&lt; [&quot;sequoia&quot;, &quot;questionable&quot;, &quot;equation&quot;]
+> words.filter(w => /(?=.*a)(?=.*e)(?=.*i)(?=.*o).*u/.test(w))
+< ["sequoia", "questionable", "equation"]
 
 // words containing 'a' and 'q' but not 'n' at the end of the element
-&gt; words.filter(w =&gt; /(?=.*a)(?=.*q)(?!.*n$)/.test(w))
-&lt; [&quot;sequoia&quot;, &quot;questionable&quot;]
-</code></pre>
-<h2><a class="header" href="#variable-length-lookbehind" id="variable-length-lookbehind">Variable length lookbehind</a></h2>
-<p>In some of the implementations of regular expressions, lookbehind doesn't work if the pattern can match varying number of characters. For example, <code>(?&lt;=foo\d+)</code> is looking behind for <code>foo</code> followed by one or more of digit characters. As far as I've tested on the console, there's no such restriction in JavaScript. Here's some examples that were tested.</p>
-<pre><code class="language-js">// positive lookbehind examples
-&gt; '=314not :,2irk ,:3cool =42,error'.match(/(?&lt;=[:=]\d+)[a-z]+/g)
-&lt; [&quot;not&quot;, &quot;cool&quot;]
+> words.filter(w => /(?=.*a)(?=.*q)(?!.*n$)/.test(w))
+< ["sequoia", "questionable"]
+</code></pre><h2><a class=header href=#variable-length-lookbehind id=variable-length-lookbehind>Variable length lookbehind</a></h2><p>In some of the implementations of regular expressions, lookbehind doesn't work if the pattern can match varying number of characters. For example, <code>(?<=foo\d+)</code> is looking behind for <code>foo</code> followed by one or more of digit characters. As far as I've tested on the console, there's no such restriction in JavaScript. Here's some examples that were tested.<pre><code class=language-js>// positive lookbehind examples
+> '=314not :,2irk ,:3cool =42,error'.match(/(?<=[:=]\d+)[a-z]+/g)
+< ["not", "cool"]
 // replace only 3rd occurrence of 'cat'
-&gt; 'cat scatter cater scat'.replace(/(?&lt;=(cat.*?){2})cat/, 'X')
-&lt; &quot;cat scatter Xer scat&quot;
+> 'cat scatter cater scat'.replace(/(?<=(cat.*?){2})cat/, 'X')
+< "cat scatter Xer scat"
 
 // negative lookbehind examples
 // match only if 'cat' doesn't occur before 'dog'
-&gt; /(?&lt;!cat.*)dog/.test('fox,cat,dog,parrot')
-&lt; false
+> /(?&LT!cat.*)dog/.test('fox,cat,dog,parrot')
+< false
 // match only if 'parrot' doesn't occur before 'dog'
-&gt; /(?&lt;!parrot.*)dog/.test('fox,cat,dog,parrot')
-&lt; true
-</code></pre>
-<h2><a class="header" href="#negated-grouping" id="negated-grouping">Negated grouping</a></h2>
-<p>You've seen a few cases where negated character class was useful than a positive set. For example, in field based processing, it is needed to match the field contents by creating a negated character set of the delimiter character. In a similar manner, there are cases where you need to negate a regexp pattern. This is made possible by using negative lookahead and advancing one character at a time as shown below.</p>
-<pre><code class="language-js">// cannot use /at(?&lt;!go)par/ as lookarounds do not consume characters
+> /(?&LT!parrot.*)dog/.test('fox,cat,dog,parrot')
+< true
+</code></pre><h2><a class=header href=#negated-grouping id=negated-grouping>Negated grouping</a></h2><p>You've seen a few cases where negated character class was useful than a positive set. For example, in field based processing, it is needed to match the field contents by creating a negated character set of the delimiter character. In a similar manner, there are cases where you need to negate a regexp pattern. This is made possible by using negative lookahead and advancing one character at a time as shown below.<pre><code class=language-js>// cannot use /at(?&LT!go)par/ as lookarounds do not consume characters
 // match if 'go' is not there between 'at' and 'par'
-&gt; /at((?!go).)*par/.test('fox,cat,dog,parrot')
-&lt; true
+> /at((?!go).)*par/.test('fox,cat,dog,parrot')
+< true
 // match if 'do' is not there between 'at' and 'par'
-&gt; /at((?!do).)*par/.test('fox,cat,dog,parrot')
-&lt; false
+> /at((?!do).)*par/.test('fox,cat,dog,parrot')
+< false
 
 // if it gets confusing, use 'match' method to see the matching portions
-&gt; 'fox,cat,dog,parrot'.match(/at((?!go).)*par/)[0]
-&lt; &quot;at,dog,par&quot;
-&gt; 'at,baz,a2z,bad-zoo'.match(/a((?!\d).)*z/g)
-&lt; [&quot;at,baz&quot;, &quot;ad-z&quot;]
-</code></pre>
-<h2><a class="header" href="#cheatsheet-and-summary" id="cheatsheet-and-summary">Cheatsheet and Summary</a></h2>
-<table><thead><tr><th>Note</th><th>Description</th></tr></thead><tbody>
-<tr><td>lookarounds</td><td>allows to create custom positive/negative assertions</td></tr>
-<tr><td></td><td>zero-width like anchors and not part of matching portions</td></tr>
-<tr><td><code>(?!pat)</code></td><td>negative lookahead assertion</td></tr>
-<tr><td><code>(?&lt;!pat)</code></td><td>negative lookbehind assertion</td></tr>
-<tr><td><code>(?=pat)</code></td><td>positive lookahead assertion</td></tr>
-<tr><td><code>(?&lt;=pat)</code></td><td>positive lookbehind assertion</td></tr>
-<tr><td></td><td>variable length lookbehind is allowed</td></tr>
-<tr><td><code>(?!pat1)(?=pat2)</code></td><td>multiple assertions can be specified next to each other in any order</td></tr>
-<tr><td></td><td>as they mark a matching location without consuming characters</td></tr>
-<tr><td><code>((?!pat).)*</code></td><td>Negates a regexp pattern</td></tr>
-</tbody></table>
-<p>In this chapter, you learnt how to use lookarounds to create custom restrictions and also how to use negated grouping. With this, most of the powerful features of regexp have been covered. The next chapter will give a brief introduction to working with unicode characters.</p>
-<h2><a class="header" href="#exercises" id="exercises">Exercises</a></h2>
-<blockquote>
-<p><img src="images/info.svg" alt="info" /> Please use lookarounds for solving the following exercises even if you can do it without lookarounds.</p>
-</blockquote>
-<p><strong>a)</strong> Replace all whole words with <code>X</code> unless it is preceded by <code>(</code> character.</p>
-<pre><code class="language-js">&gt; let ip = '(apple) guava berry) apple (mango) (grape'
+> 'fox,cat,dog,parrot'.match(/at((?!go).)*par/)[0]
+< "at,dog,par"
+> 'at,baz,a2z,bad-zoo'.match(/a((?!\d).)*z/g)
+< ["at,baz", "ad-z"]
+</code></pre><h2><a class=header href=#cheatsheet-and-summary id=cheatsheet-and-summary>Cheatsheet and Summary</a></h2><table><thead><tr><th>Note<th>Description<tbody><tr><td>lookarounds<td>allows to create custom positive/negative assertions<tr><td><td>zero-width like anchors and not part of matching portions<tr><td><code>(?!pat)</code><td>negative lookahead assertion<tr><td><code>(?&LT!pat)</code><td>negative lookbehind assertion<tr><td><code>(?=pat)</code><td>positive lookahead assertion<tr><td><code>(?<=pat)</code><td>positive lookbehind assertion<tr><td><td>variable length lookbehind is allowed<tr><td><code>(?!pat1)(?=pat2)</code><td>multiple assertions can be specified next to each other in any order<tr><td><td>as they mark a matching location without consuming characters<tr><td><code>((?!pat).)*</code><td>Negates a regexp pattern</table><p>In this chapter, you learnt how to use lookarounds to create custom restrictions and also how to use negated grouping. With this, most of the powerful features of regexp have been covered. The next chapter will give a brief introduction to working with unicode characters.<h2><a class=header href=#exercises id=exercises>Exercises</a></h2><blockquote><p><img src=images/info.svg alt=info> Please use lookarounds for solving the following exercises even if you can do it without lookarounds.</blockquote><p><strong>a)</strong> Replace all whole words with <code>X</code> unless it is preceded by <code>(</code> character.<pre><code class=language-js>> let ip = '(apple) guava berry) apple (mango) (grape'
 
 // add your solution here
-&lt; &quot;(apple) X X) X (mango) (grape&quot;
-</code></pre>
-<p><strong>b)</strong> Replace all whole words with <code>X</code> unless it is followed by <code>)</code> character.</p>
-<pre><code class="language-js">&gt; let ip = '(apple) guava berry) apple (mango) (grape'
+< "(apple) X X) X (mango) (grape"
+</code></pre><p><strong>b)</strong> Replace all whole words with <code>X</code> unless it is followed by <code>)</code> character.<pre><code class=language-js>> let ip = '(apple) guava berry) apple (mango) (grape'
 
 // add your solution here
-&lt; &quot;(apple) X berry) X (mango) (X&quot;
-</code></pre>
-<p><strong>c)</strong> Replace all whole words with <code>X</code> unless it is preceded by <code>(</code> or followed by <code>)</code> characters.</p>
-<pre><code class="language-js">&gt; let ip = '(apple) guava berry) apple (mango) (grape'
+< "(apple) X berry) X (mango) (X"
+</code></pre><p><strong>c)</strong> Replace all whole words with <code>X</code> unless it is preceded by <code>(</code> or followed by <code>)</code> characters.<pre><code class=language-js>> let ip = '(apple) guava berry) apple (mango) (grape'
 
 // add your solution here
-&lt; &quot;(apple) X berry) X (mango) (grape&quot;
-</code></pre>
-<p><strong>d)</strong> Extract all whole words that do not end with <code>e</code> or <code>n</code>.</p>
-<pre><code class="language-js">&gt; let ip = 'at row on urn e note dust n'
+< "(apple) X berry) X (mango) (grape"
+</code></pre><p><strong>d)</strong> Extract all whole words that do not end with <code>e</code> or <code>n</code>.<pre><code class=language-js>> let ip = 'at row on urn e note dust n'
 
 // add your solution here
-&lt; [&quot;at&quot;, &quot;row&quot;, &quot;dust&quot;]
-</code></pre>
-<p><strong>e)</strong> Extract all whole words that do not start with <code>a</code> or <code>d</code> or <code>n</code>.</p>
-<pre><code class="language-js">&gt; let ip = 'at row on urn e note dust n'
+< ["at", "row", "dust"]
+</code></pre><p><strong>e)</strong> Extract all whole words that do not start with <code>a</code> or <code>d</code> or <code>n</code>.<pre><code class=language-js>> let ip = 'at row on urn e note dust n'
 
 // add your solution here
-&lt; [&quot;row&quot;, &quot;on&quot;, &quot;urn&quot;, &quot;e&quot;]
-</code></pre>
-<p><strong>f)</strong> Extract all whole words only if they are followed by <code>:</code> or <code>,</code> or <code>-</code>.</p>
-<pre><code class="language-js">&gt; let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+< ["row", "on", "urn", "e"]
+</code></pre><p><strong>f)</strong> Extract all whole words only if they are followed by <code>:</code> or <code>,</code> or <code>-</code>.<pre><code class=language-js>> let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
 
 // add your solution here
-&lt; [&quot;poke&quot;, &quot;so&quot;, &quot;ever&quot;]
-</code></pre>
-<p><strong>g)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>/</code> or <code>-</code>.</p>
-<pre><code class="language-js">&gt; let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+< ["poke", "so", "ever"]
+</code></pre><p><strong>g)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>/</code> or <code>-</code>.<pre><code class=language-js>> let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
 
 // add your solution here
-&lt; [&quot;so&quot;, &quot;is&quot;, &quot;sit&quot;]
-</code></pre>
-<p><strong>h)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>:</code> and followed by <code>:</code> or <code>.</code>.</p>
-<pre><code class="language-js">&gt; let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+< ["so", "is", "sit"]
+</code></pre><p><strong>h)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>:</code> and followed by <code>:</code> or <code>.</code>.<pre><code class=language-js>> let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
 
 // add your solution here
-&lt; [&quot;so&quot;, &quot;ink&quot;]
-</code></pre>
-<p><strong>i)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>:</code> or <code>.</code> or <code>(</code> or <code>-</code> and not followed by <code>.</code> or <code>/</code>.</p>
-<pre><code class="language-js">&gt; let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+< ["so", "ink"]
+</code></pre><p><strong>i)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>:</code> or <code>.</code> or <code>(</code> or <code>-</code> and not followed by <code>.</code> or <code>/</code>.<pre><code class=language-js>> let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
 
 // add your solution here
-&lt; [&quot;so&quot;, &quot;vast&quot;, &quot;sit&quot;]
-</code></pre>
-<p><strong>j)</strong> Remove leading and trailing whitespaces from all the individual fields where <code>,</code> is the field separator.</p>
-<pre><code class="language-js">&gt; let csv1 = ' comma  ,separated ,values '
-&gt; let csv2 = 'good bad,nice  ice  , 42 , ,   stall   small'
+< ["so", "vast", "sit"]
+</code></pre><p><strong>j)</strong> Remove leading and trailing whitespaces from all the individual fields where <code>,</code> is the field separator.<pre><code class=language-js>> let csv1 = ' comma  ,separated ,values '
+> let csv2 = 'good bad,nice  ice  , 42 , ,   stall   small'
 
-&gt; const trim_whitespace =       // add your solution here
+> const trim_whitespace =       // add your solution here
 
-&gt; csv1.replace(trim_whitespace, '')
-&lt; &quot;comma,separated,values&quot;
-&gt; csv2.replace(trim_whitespace, '')
-&lt; &quot;good bad,nice  ice,42,,stall   small&quot;
-</code></pre>
-<p><strong>k)</strong> Filter all elements that satisfy all of these rules:</p>
-<ul>
-<li>should have at least two alphabets</li>
-<li>should have at least 3 digits</li>
-<li>should have at least one special character among <code>%</code> or <code>*</code> or <code>#</code> or <code>$</code></li>
-<li>should not end with a whitespace character</li>
-</ul>
-<pre><code class="language-js">&gt; let pwds = ['hunter2', 'F2h3u%9', '*X3Yz3.14\t', 'r2_d2_42', 'A $B C1234']
+> csv1.replace(trim_whitespace, '')
+< "comma,separated,values"
+> csv2.replace(trim_whitespace, '')
+< "good bad,nice  ice,42,,stall   small"
+</code></pre><p><strong>k)</strong> Filter all elements that satisfy all of these rules:<ul><li>should have at least two alphabets<li>should have at least 3 digits<li>should have at least one special character among <code>%</code> or <code>*</code> or <code>#</code> or <code>$</code><li>should not end with a whitespace character</ul><pre><code class=language-js>> let pwds = ['hunter2', 'F2h3u%9', '*X3Yz3.14\t', 'r2_d2_42', 'A $B C1234']
 
 // add your solution here
-&lt; [&quot;F2h3u%9&quot;, &quot;A $B C1234&quot;]
-</code></pre>
-<p><strong>l)</strong> For the given string, surround all whole words with <code>{}</code> except for whole words <code>par</code> and <code>cat</code> and <code>apple</code>.</p>
-<pre><code class="language-js">&gt; let ip = 'part; cat {super} rest_42 par scatter apple spar'
+< ["F2h3u%9", "A $B C1234"]
+</code></pre><p><strong>l)</strong> For the given string, surround all whole words with <code>{}</code> except for whole words <code>par</code> and <code>cat</code> and <code>apple</code>.<pre><code class=language-js>> let ip = 'part; cat {super} rest_42 par scatter apple spar'
 
 // add your solution here
-&lt; &quot;{part}; cat {{super}} {rest_42} par {scatter} apple {spar}&quot;
-</code></pre>
-<p><strong>m)</strong> Extract integer portion of floating-point numbers for the given string. A number ending with <code>.</code> and no further digits should not be considered.</p>
-<pre><code class="language-js">&gt; let ip = '12 ab32.4 go 5 2. 46.42 5'
+< "{part}; cat {{super}} {rest_42} par {scatter} apple {spar}"
+</code></pre><p><strong>m)</strong> Extract integer portion of floating-point numbers for the given string. A number ending with <code>.</code> and no further digits should not be considered.<pre><code class=language-js>> let ip = '12 ab32.4 go 5 2. 46.42 5'
 
 // add your solution here
-&lt; [&quot;32&quot;, &quot;46&quot;]
-</code></pre>
-<p><strong>n)</strong> For the given input strings, extract all overlapping two character sequences.</p>
-<pre><code class="language-js">&gt; let s1 = 'apple'
-&gt; let s2 = '1.2-3:4'
+< ["32", "46"]
+</code></pre><p><strong>n)</strong> For the given input strings, extract all overlapping two character sequences.<pre><code class=language-js>> let s1 = 'apple'
+> let s2 = '1.2-3:4'
 
-&gt; const pat1 =      // add your solution here
+> const pat1 =      // add your solution here
 
 // add your solution here for s1
-&lt; [&quot;ap&quot;, &quot;pp&quot;, &quot;pl&quot;, &quot;le&quot;]
+< ["ap", "pp", "pl", "le"]
 // add your solution here for s2
-&lt; [&quot;1.&quot;, &quot;.2&quot;, &quot;2-&quot;, &quot;-3&quot;, &quot;3:&quot;, &quot;:4&quot;]
-</code></pre>
-<p><strong>o)</strong> The given input strings contain fields separated by <code>:</code> character. Delete <code>:</code> and the last field if there is a digit character anywhere before the last field.</p>
-<pre><code class="language-js">&gt; let s1 = '42:cat'
-&gt; let s2 = 'twelve:a2b'
-&gt; let s3 = 'we:be:he:0:a:b:bother'
+< ["1.", ".2", "2-", "-3", "3:", ":4"]
+</code></pre><p><strong>o)</strong> The given input strings contain fields separated by <code>:</code> character. Delete <code>:</code> and the last field if there is a digit character anywhere before the last field.<pre><code class=language-js>> let s1 = '42:cat'
+> let s2 = 'twelve:a2b'
+> let s3 = 'we:be:he:0:a:b:bother'
 
-&gt; const pat2 =      // add your solution here
+> const pat2 =      // add your solution here
 
-&gt; s1.replace(pat2, '')
-&lt; &quot;42&quot;
-&gt; s2.replace(pat2, '')
-&lt; &quot;twelve:a2b&quot;
-&gt; s3.replace(pat2, '')
-&lt; &quot;we:be:he:0:a:b&quot;
-</code></pre>
-<p><strong>p)</strong> Extract all whole words unless they are preceded by <code>:</code> or <code>&lt;=&gt;</code> or <code>----</code> or <code>#</code>.</p>
-<pre><code class="language-js">&gt; let ip = '::very--at&lt;=&gt;row|in.a_b#b2c=&gt;lion----east'
+> s1.replace(pat2, '')
+< "42"
+> s2.replace(pat2, '')
+< "twelve:a2b"
+> s3.replace(pat2, '')
+< "we:be:he:0:a:b"
+</code></pre><p><strong>p)</strong> Extract all whole words unless they are preceded by <code>:</code> or <code><=></code> or <code>----</code> or <code>#</code>.<pre><code class=language-js>> let ip = '::very--at<=>row|in.a_b#b2c=>lion----east'
 
 // add your solution here
-&lt; [&quot;at&quot;, &quot;in&quot;, &quot;a_b&quot;, &quot;lion&quot;]
-</code></pre>
-<p><strong>q)</strong> Match strings if it contains <code>qty</code> followed by <code>price</code> but not if there is <strong>whitespace</strong> or the string <code>error</code> between them.</p>
-<pre><code class="language-js">&gt; let str1 = '23,qty,price,42'
-&gt; let str2 = 'qty price,oh'
-&gt; let str3 = '3.14,qty,6,errors,9,price,3'
-&gt; let str4 = '42\nqty-6,apple-56,price-234,error'
-&gt; let str5 = '4,price,3.14,qty,4'
+< ["at", "in", "a_b", "lion"]
+</code></pre><p><strong>q)</strong> Match strings if it contains <code>qty</code> followed by <code>price</code> but not if there is <strong>whitespace</strong> or the string <code>error</code> between them.<pre><code class=language-js>> let str1 = '23,qty,price,42'
+> let str2 = 'qty price,oh'
+> let str3 = '3.14,qty,6,errors,9,price,3'
+> let str4 = '42\nqty-6,apple-56,price-234,error'
+> let str5 = '4,price,3.14,qty,4'
 
-&gt; const neg =       // add your solution here
+> const neg =       // add your solution here
 
-&gt; neg.test(str1)
-&lt; true
-&gt; neg.test(str2)
-&lt; false
-&gt; neg.test(str3)
-&lt; false
-&gt; neg.test(str4)
-&lt; true
-&gt; neg.test(str5)
-&lt; false
-</code></pre>
-<p><strong>r)</strong> Can you reason out why the output shown is different for these two regular expressions?</p>
-<pre><code class="language-js">&gt; let ip = 'I have 12, he has 2!'
+> neg.test(str1)
+< true
+> neg.test(str2)
+< false
+> neg.test(str3)
+< false
+> neg.test(str4)
+< true
+> neg.test(str5)
+< false
+</code></pre><p><strong>r)</strong> Can you reason out why the output shown is different for these two regular expressions?<pre><code class=language-js>> let ip = 'I have 12, he has 2!'
 
-&gt; ip.replace(/\b..\b/g, '{$&amp;}')
-&lt; &quot;{I }have {12}{, }{he} has{ 2}!&quot;
+> ip.replace(/\b..\b/g, '{$&}')
+< "{I }have {12}{, }{he} has{ 2}!"
 
-&gt; ip.replace(/(?&lt;!\w)..(?!\w)/g, '{$&amp;}')
-&lt; &quot;I have {12}, {he} has {2!}&quot;
-</code></pre>
-<p><strong>s)</strong> Simulate string partitioning to get an array of three elements — string before separator, portion matched by separator and string after separator. For the first case, split the given input string on first occurrence of digits. For the second case, split based on last occurrence of digits.</p>
-<pre><code class="language-js">&gt; let w2 = 'Sample123string42with777numbers'
+> ip.replace(/(?&LT!\w)..(?!\w)/g, '{$&}')
+< "I have {12}, {he} has {2!}"
+</code></pre><p><strong>s)</strong> Simulate string partitioning to get an array of three elements — string before separator, portion matched by separator and string after separator. For the first case, split the given input string on first occurrence of digits. For the second case, split based on last occurrence of digits.<pre><code class=language-js>> let w2 = 'Sample123string42with777numbers'
 
 // add your solution here for splitting based on first occurrence
-&lt; [&quot;Sample&quot;, &quot;123&quot;, &quot;string42with777numbers&quot;]
+< ["Sample", "123", "string42with777numbers"]
 
 // add your solution here for splitting based on last occurrence
-&lt; [&quot;Sample123string42with&quot;, &quot;777&quot;, &quot;numbers&quot;]
-</code></pre>
-<p><strong>t)</strong> Find the starting index of last occurrence of <code>is</code> or <code>the</code> or <code>was</code> or <code>to</code> for the given input strings using <code>search</code> method. Assume that there will be at least one match for each input string.</p>
-<pre><code class="language-js">&gt; let s1 = 'match after the last newline character'
-&gt; let s2 = 'and then you want to test'
-&gt; let s3 = 'this is good bye then'
-&gt; let s4 = 'who was there to see?'
+< ["Sample123string42with", "777", "numbers"]
+</code></pre><p><strong>t)</strong> Find the starting index of last occurrence of <code>is</code> or <code>the</code> or <code>was</code> or <code>to</code> for the given input strings using <code>search</code> method. Assume that there will be at least one match for each input string.<pre><code class=language-js>> let s1 = 'match after the last newline character'
+> let s2 = 'and then you want to test'
+> let s3 = 'this is good bye then'
+> let s4 = 'who was there to see?'
 
-&gt; const pat3 =      // add your solution here
+> const pat3 =      // add your solution here
 
-&gt; s1.search(pat3)
-&lt; 12
-&gt; s2.search(pat3)
-&lt; 18
-&gt; s3.search(pat3)
-&lt; 17
-&gt; s4.search(pat3)
-&lt; 14
-</code></pre>
-
-                    </main>
-
-                    <nav class="nav-wrapper" aria-label="Page navigation">
-                        <!-- Mobile navigation buttons -->
-                        
-                            <a rel="prev" href="interlude-common-tasks.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                        
-
-                        
-                            <a rel="next" href="unicode.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        
-
-                        <div style="clear: both"></div>
-                    </nav>
-                </div>
-            </div>
-
-            <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
-                    <a rel="prev" href="interlude-common-tasks.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                
-
-                
-                    <a rel="next" href="unicode.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                
-            </nav>
-
-        </div>
-
-        
-
-        
-
-        
-
-        
-        <script type="text/javascript">
+> s1.search(pat3)
+< 12
+> s2.search(pat3)
+< 18
+> s3.search(pat3)
+< 17
+> s4.search(pat3)
+< 14
+</code></pre></main><nav class=nav-wrapper aria-label="Page navigation"><a rel=prev href=interlude-common-tasks.html class="mobile-nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=unicode.html class="mobile-nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav class=nav-wide-wrapper aria-label="Page navigation"><a rel=prev href=interlude-common-tasks.html class="nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=unicode.html class="nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a></nav></div><script>
             window.playground_copyable = true;
-        </script>
-        
-
-        
-
-        
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
-
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
-
-        <!-- Custom JS scripts -->
-        
-
-        
-
-    </body>
-</html>
+        </script><script src=elasticlunr.min.js charset=utf-8></script><script src=mark.min.js charset=utf-8></script><script src=searcher.js charset=utf-8></script><script src=clipboard.min.js charset=utf-8></script><script src=highlight.js charset=utf-8></script><script src=book.js charset=utf-8></script><script src=sidebar.js></script>

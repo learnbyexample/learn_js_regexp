@@ -1,60 +1,7 @@
-<!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
-    <head>
-        <!-- Book generated using mdBook -->
-        <meta charset="UTF-8">
-        <title>Working with matched portions - JavaScript RegExp</title>
-        
-        
-
-
-        <!-- Custom HTML head -->
-        
-
-
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="Example based guide to mastering JavaScript regexp">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
-
-        
-        <link rel="icon" href="favicon.svg">
-        
-        
-        <link rel="shortcut icon" href="favicon.png">
-        
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        
-        <link rel="stylesheet" href="fonts/fonts.css">
-        
-
-        <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
-
-        <!-- Custom theme stylesheets -->
-        
-        <link rel="stylesheet" href="custom.css">
-        
-
-        
-    </head>
-    <body>
-        <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+<!DOCTYPE HTML><html lang=en class="sidebar-visible no-js light"><head><meta charset=UTF-8><title>Working with matched portions - JavaScript RegExp</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta name=description content="Example based guide to mastering JavaScript regexp"><meta name=viewport content="width=device-width, initial-scale=1"><meta name=theme-color content=#ffffff><link rel=icon href=favicon.svg><link rel="shortcut icon"href=favicon.png><link rel=stylesheet href=css/variables.css><link rel=stylesheet href=css/general.css><link rel=stylesheet href=css/chrome.css><link rel=stylesheet href=FontAwesome/css/font-awesome.css><link rel=stylesheet href=fonts/fonts.css><link rel=stylesheet href=highlight.css><link rel=stylesheet href=tomorrow-night.css><link rel=stylesheet href=ayu-highlight.css><link rel=stylesheet href=style.css><body><script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script>
-
-        <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        </script><script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -67,10 +14,7 @@
                     localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
             } catch (e) { }
-        </script>
-
-        <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        </script><script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -79,10 +23,7 @@
             html.classList.remove('light')
             html.classList.add(theme);
             html.classList.add('js');
-        </script>
-
-        <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        </script><script>
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
@@ -91,507 +32,279 @@
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
-        </script>
-
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover.html">Cover</a></li><li class="chapter-item expanded affix "><a href="buy.html">Buy PDF/EPUB versions</a></li><li class="chapter-item expanded "><a href="preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="whats-so-special-about-regular-expressions.html"><strong aria-hidden="true">2.</strong> What's so special about Regular Expressions?</a></li><li class="chapter-item expanded "><a href="regexp-introduction.html"><strong aria-hidden="true">3.</strong> RegExp introduction</a></li><li class="chapter-item expanded "><a href="anchors.html"><strong aria-hidden="true">4.</strong> Anchors</a></li><li class="chapter-item expanded "><a href="alternation-and-grouping.html"><strong aria-hidden="true">5.</strong> Alternation and Grouping</a></li><li class="chapter-item expanded "><a href="escaping-metacharacters.html"><strong aria-hidden="true">6.</strong> Escaping metacharacters</a></li><li class="chapter-item expanded "><a href="dot-metacharacter-and-quantifiers.html"><strong aria-hidden="true">7.</strong> Dot metacharacter and Quantifiers</a></li><li class="chapter-item expanded "><a href="interlude-tools-for-debugging-and-visualization.html"><strong aria-hidden="true">8.</strong> Interlude: Tools for debugging and visualization</a></li><li class="chapter-item expanded "><a href="working-with-matched-portions.html" class="active"><strong aria-hidden="true">9.</strong> Working with matched portions</a></li><li class="chapter-item expanded "><a href="character-class.html"><strong aria-hidden="true">10.</strong> Character class</a></li><li class="chapter-item expanded "><a href="groupings-and-backreferences.html"><strong aria-hidden="true">11.</strong> Groupings and backreferences</a></li><li class="chapter-item expanded "><a href="interlude-common-tasks.html"><strong aria-hidden="true">12.</strong> Interlude: Common tasks</a></li><li class="chapter-item expanded "><a href="lookarounds.html"><strong aria-hidden="true">13.</strong> Lookarounds</a></li><li class="chapter-item expanded "><a href="unicode.html"><strong aria-hidden="true">14.</strong> Unicode</a></li><li class="chapter-item expanded "><a href="further-reading.html"><strong aria-hidden="true">15.</strong> Further Reading</a></li><li class="chapter-item expanded "><a href="Exercise_solutions.html"><strong aria-hidden="true">16.</strong> Exercise Solutions</a></li></ol>
-            </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
-        </nav>
-
-        <div id="page-wrapper" class="page-wrapper">
-
-            <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
-                    <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
-                        </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                        </ul>
-                        
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
-                        </button>
-                        
-                    </div>
-
-                    <h1 class="menu-title">JavaScript RegExp</h1>
-
-                    <div class="right-buttons">
-                        
-                        <a href="https://github.com/learnbyexample/learn_js_regexp" title="Git repository" aria-label="Git repository">
-                            <i id="git-repository-button" class="fa fa-github"></i>
-                        </a>
-                        
-                    </div>
-                </div>
-
-                
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                    </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
-                        </ul>
-                    </div>
-                </div>
-                
-
-                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+        </script><nav id=sidebar class=sidebar aria-label="Table of contents"><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=whats-so-special-about-regular-expressions.html><strong aria-hidden=true>2.</strong> What's so special about Regular Expressions?</a><li class="chapter-item expanded"><a href=regexp-introduction.html><strong aria-hidden=true>3.</strong> RegExp introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html class=active><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>14.</strong> Unicode</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>15.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>16.</strong> Exercise Solutions</a></ol></div><div id=sidebar-resize-handle class=sidebar-resize-handle></div></nav><div id=page-wrapper class=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div id=menu-bar class="menu-bar sticky bordered"><div class=left-buttons><button id=sidebar-toggle class=icon-button type=button title="Toggle Table of Contents"aria-label="Toggle Table of Contents"aria-controls=sidebar><i class="fa fa-bars"></i></button><button id=theme-toggle class=icon-button type=button title="Change theme"aria-label="Change theme"aria-haspopup=true aria-expanded=false aria-controls=theme-list><i class="fa fa-paint-brush"></i></button><ul id=theme-list class=theme-popup aria-label=Themes role=menu><li role=none><button role=menuitem class=theme id=light>Light (default)</button><li role=none><button role=menuitem class=theme id=rust>Rust</button><li role=none><button role=menuitem class=theme id=coal>Coal</button><li role=none><button role=menuitem class=theme id=navy>Navy</button><li role=none><button role=menuitem class=theme id=ayu>Ayu</button></ul><button id=search-toggle class=icon-button type=button title="Search. (Shortkey: s)"aria-label="Toggle Searchbar"aria-expanded=false aria-keyshortcuts=S aria-controls=searchbar><i class="fa fa-search"></i></button></div><h1 class=menu-title>JavaScript RegExp</h1><div class=right-buttons><a href=https://github.com/learnbyexample/learn_js_regexp title="Git repository"aria-label="Git repository"> <i id=git-repository-button class="fa fa-github"></i> </a></div></div><div id=search-wrapper class=hidden><form id=searchbar-outer class=searchbar-outer><input type=search name=search id=searchbar name=searchbar placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header></form><div id=searchresults-outer class="searchresults-outer hidden"><div id=searchresults-header class=searchresults-header></div><ul id=searchresults></ul></div></div><script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
-                </script>
-
-                <div id="content" class="content">
-                    <main>
-                        <h1><a class="header" href="#working-with-matched-portions" id="working-with-matched-portions">Working with matched portions</a></h1>
-<p>Having seen a few regexp features that can match varying text, you'll learn how to extract and work with those matching portions in this chapter. Three new methods are introduced. You'll also learn a few tricks like using functions and dictionaries in replacement section of <code>replace</code> method.</p>
-<h2><a class="header" href="#match-method" id="match-method">match method</a></h2>
-<p>The <code>match</code> method can be used in different ways. When <code>g</code> flag isn't used and the regexp succeeds, you get an array object containing various details of the first matching portion.</p>
-<pre><code class="language-js">// note that 'g' flag isn't used
-&gt; 'abc ac adc abbbc'.match(/ab*c/)
-&lt; [&quot;abc&quot;, index: 0, input: &quot;abc ac adc abbbc&quot;, groups: undefined]
+                </script><div id=content class=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1><a class=header href=#working-with-matched-portions id=working-with-matched-portions>Working with matched portions</a></h1><p>Having seen a few regexp features that can match varying text, you'll learn how to extract and work with those matching portions in this chapter. Three new methods are introduced. You'll also learn a few tricks like using functions and dictionaries in replacement section of <code>replace</code> method.<h2><a class=header href=#match-method id=match-method>match method</a></h2><p>The <code>match</code> method can be used in different ways. When <code>g</code> flag isn't used and the regexp succeeds, you get an array object containing various details of the first matching portion.<pre><code class=language-js>// note that 'g' flag isn't used
+> 'abc ac adc abbbc'.match(/ab*c/)
+< ["abc", index: 0, input: "abc ac adc abbbc", groups: undefined]
 
 // to get only the matching portion
-&gt; 'abc ac adc abbbc'.match(/ab*c/)[0]
-&lt; &quot;abc&quot;
+> 'abc ac adc abbbc'.match(/ab*c/)[0]
+< "abc"
 
 // non-regexp object will get processed as: RegExp(object)
-&gt; 'abc ac adc abbbc'.match('ab*c')
-&lt; [&quot;abc&quot;, index: 0, input: &quot;abc ac adc abbbc&quot;, groups: undefined]
-</code></pre>
-<p>The <code>index</code> property gives the starting location of matched portion. The <code>input</code> property gives the input string on which the <code>match</code> method was used. If the given regexp fails, the output is <code>null</code> and not an empty array. The <code>groups</code> property will be discussed in <a href="./groupings-and-backreferences.html#named-capture-groups">Named capture groups</a> section. See <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match">MDN: match</a> for more details and examples.</p>
-<pre><code class="language-js">&gt; let s1 = 'cat and dog'
+> 'abc ac adc abbbc'.match('ab*c')
+< ["abc", index: 0, input: "abc ac adc abbbc", groups: undefined]
+</code></pre><p>The <code>index</code> property gives the starting location of matched portion. The <code>input</code> property gives the input string on which the <code>match</code> method was used. If the given regexp fails, the output is <code>null</code> and not an empty array. The <code>groups</code> property will be discussed in <a href=./groupings-and-backreferences.html#named-capture-groups>Named capture groups</a> section. See <a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match>MDN: match</a> for more details and examples.<pre><code class=language-js>> let s1 = 'cat and dog'
 
-&gt; s1.match(/dog/).index
-&lt; 8
-&gt; s1.match(/dog/).input
-&lt; &quot;cat and dog&quot;
+> s1.match(/dog/).index
+< 8
+> s1.match(/dog/).input
+< "cat and dog"
 
-&gt; s1.match(/xyz/)
-&lt; null
-</code></pre>
-<h2><a class="header" href="#search-method" id="search-method">search method</a></h2>
-<p>The <code>search</code> method gives the index of first matching portion. If the regexp fails, it returns <code>-1</code> as output.</p>
-<pre><code class="language-js">// same as: match(/dog/).index
-&gt; 'cat and dog'.search(/dog/)
-&lt; 8
+> s1.match(/xyz/)
+< null
+</code></pre><h2><a class=header href=#search-method id=search-method>search method</a></h2><p>The <code>search</code> method gives the index of first matching portion. If the regexp fails, it returns <code>-1</code> as output.<pre><code class=language-js>// same as: match(/dog/).index
+> 'cat and dog'.search(/dog/)
+< 8
 // cannot use match(/xyz/).index here
 // as 'match' returns 'null' if regexp doesn't match
-&gt; 'cat and dog'.search(/xyz/)
-&lt; -1
-</code></pre>
-<h2><a class="header" href="#capture-groups" id="capture-groups">Capture groups</a></h2>
-<p>The regexp grouping inside <code>()</code> is also known as a <strong>capture group</strong>. It has multiple uses, one of which is the ability to work with matched portions of those groups. When capture groups are used with <code>match</code> method, the matched portions of those groups will also be part of the array output. The first element is always the entire matched portion followed by portions of capture groups. The leftmost <code>(</code> will get group number <code>1</code>, second leftmost <code>(</code> will get group number <code>2</code> and so on.</p>
-<pre><code class="language-js">// there are two capture groups used here
-&gt; 'abc ac adc abbbc'.match(/a(.*)d(.*a)/)
-&lt; [&quot;abc ac adc a&quot;, &quot;bc ac a&quot;, &quot;c a&quot;, index: 0,
-   input: &quot;abc ac adc abbbc&quot;, groups: undefined]
+> 'cat and dog'.search(/xyz/)
+< -1
+</code></pre><h2><a class=header href=#capture-groups id=capture-groups>Capture groups</a></h2><p>The regexp grouping inside <code>()</code> is also known as a <strong>capture group</strong>. It has multiple uses, one of which is the ability to work with matched portions of those groups. When capture groups are used with <code>match</code> method, the matched portions of those groups will also be part of the array output. The first element is always the entire matched portion followed by portions of capture groups. The leftmost <code>(</code> will get group number <code>1</code>, second leftmost <code>(</code> will get group number <code>2</code> and so on.<pre><code class=language-js>// there are two capture groups used here
+> 'abc ac adc abbbc'.match(/a(.*)d(.*a)/)
+< ["abc ac adc a", "bc ac a", "c a", index: 0,
+   input: "abc ac adc abbbc", groups: undefined]
 
 // entire matched portion
-&gt; 'abc ac adc abbbc'.match(/a(.*)d(.*a)/)[0]
-&lt; &quot;abc ac adc a&quot;
+> 'abc ac adc abbbc'.match(/a(.*)d(.*a)/)[0]
+< "abc ac adc a"
 
 // capture group portions
-&gt; 'abc ac adc abbbc'.match(/a(.*)d(.*a)/)[1]
-&lt; &quot;bc ac a&quot;
-&gt; 'abc ac adc abbbc'.match(/a(.*)d(.*a)/)[2]
-&lt; &quot;c a&quot;
-</code></pre>
-<h2><a class="header" href="#getting-all-matched-portions" id="getting-all-matched-portions">Getting all matched portions</a></h2>
-<p>The <code>match</code> method returns all the matched portions when the <code>g</code> flag is used. Capture group portions and the three properties won't be part of the output.</p>
-<pre><code class="language-js">&gt; 'abc ac adc abbbc'.match(/ab*c/g)
-&lt; [&quot;abc&quot;, &quot;ac&quot;, &quot;abbbc&quot;]
+> 'abc ac adc abbbc'.match(/a(.*)d(.*a)/)[1]
+< "bc ac a"
+> 'abc ac adc abbbc'.match(/a(.*)d(.*a)/)[2]
+< "c a"
+</code></pre><h2><a class=header href=#getting-all-matched-portions id=getting-all-matched-portions>Getting all matched portions</a></h2><p>The <code>match</code> method returns all the matched portions when the <code>g</code> flag is used. Capture group portions and the three properties won't be part of the output.<pre><code class=language-js>> 'abc ac adc abbbc'.match(/ab*c/g)
+< ["abc", "ac", "abbbc"]
 
-&gt; 'abc ac adc abbbc'.match(/ab+c/g)
-&lt; [&quot;abc&quot;, &quot;abbbc&quot;]
+> 'abc ac adc abbbc'.match(/ab+c/g)
+< ["abc", "abbbc"]
 
-&gt; 'par spar apparent spare part'.match(/\bs?pare?\b/g)
-&lt; [&quot;par&quot;, &quot;spar&quot;, &quot;spare&quot;]
+> 'par spar apparent spare part'.match(/\bs?pare?\b/g)
+< ["par", "spar", "spare"]
 
 // entire matching portion is returned even if capture group is used
-&gt; 'par spar apparent spare part'.match(/\bs?par(e|t)\b/g)
-&lt; [&quot;spare&quot;, &quot;part&quot;]
-</code></pre>
-<p>It is a useful method for debugging purposes as well, for example to see what is going on under the hood before using <code>replace</code> method.</p>
-<pre><code class="language-js">&gt; 'that is quite a fabricated tale'.match(/t.*a/g)
-&lt; [&quot;that is quite a fabricated ta&quot;]
-&gt; 'that is quite a fabricated tale'.match(/t.*?a/g)
-&lt; [&quot;tha&quot;, &quot;t is quite a&quot;, &quot;ted ta&quot;]
-</code></pre>
-<h2><a class="header" href="#matchall-method" id="matchall-method">matchAll method</a></h2>
-<p>If you need capture group portions and properties for every match with <code>g</code> flag active, use the <code>matchAll</code> method. The return value is an iterator.</p>
-<pre><code class="language-js">&gt; 'abc ac adc abbbc'.matchAll(/ab*c/g)
-&lt; RegExpStringIterator {}
+> 'par spar apparent spare part'.match(/\bs?par(e|t)\b/g)
+< ["spare", "part"]
+</code></pre><p>It is a useful method for debugging purposes as well, for example to see what is going on under the hood before using <code>replace</code> method.<pre><code class=language-js>> 'that is quite a fabricated tale'.match(/t.*a/g)
+< ["that is quite a fabricated ta"]
+> 'that is quite a fabricated tale'.match(/t.*?a/g)
+< ["tha", "t is quite a", "ted ta"]
+</code></pre><h2><a class=header href=#matchall-method id=matchall-method>matchAll method</a></h2><p>If you need capture group portions and properties for every match with <code>g</code> flag active, use the <code>matchAll</code> method. The return value is an iterator.<pre><code class=language-js>> 'abc ac adc abbbc'.matchAll(/ab*c/g)
+< RegExpStringIterator {}
 
 // convert the iterator result to array of arrays
-&gt; let arr = [...'abc ac adc abbbc'.matchAll(/ab*c/g)]
-&gt; arr
-&lt; (3) [Array(1), Array(1), Array(1)]
-  0: [&quot;abc&quot;, index: 0, input: &quot;abc ac adc abbbc&quot;, groups: undefined]
-  1: [&quot;ac&quot;, index: 4, input: &quot;abc ac adc abbbc&quot;, groups: undefined]
-  2: [&quot;abbbc&quot;, index: 11, input: &quot;abc ac adc abbbc&quot;, groups: undefined]
+> let arr = [...'abc ac adc abbbc'.matchAll(/ab*c/g)]
+> arr
+< (3) [Array(1), Array(1), Array(1)]
+  0: ["abc", index: 0, input: "abc ac adc abbbc", groups: undefined]
+  1: ["ac", index: 4, input: "abc ac adc abbbc", groups: undefined]
+  2: ["abbbc", index: 11, input: "abc ac adc abbbc", groups: undefined]
   length: 3
   __proto__: Array(0)
 
 // get array with details for first match
-&gt; arr[0]
-&lt; [&quot;abc&quot;, index: 0, input: &quot;abc ac adc abbbc&quot;, groups: undefined]
+> arr[0]
+< ["abc", index: 0, input: "abc ac adc abbbc", groups: undefined]
 // get index for second match
-&gt; arr[1].index
-&lt; 4
-</code></pre>
-<p>You can also use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from">Array.from()</a> to convert the iterator to array object. <code>Array.from</code> allows you to provide a mapping function as second argument.</p>
-<pre><code class="language-js">// same as: match(/ab*c/g)
-&gt; Array.from('abc ac adc abbbc'.matchAll(/ab*c/g), m =&gt; m[0])
-&lt; [&quot;abc&quot;, &quot;ac&quot;, &quot;abbbc&quot;]
+> arr[1].index
+< 4
+</code></pre><p>You can also use <a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from>Array.from()</a> to convert the iterator to array object. <code>Array.from</code> allows you to provide a mapping function as second argument.<pre><code class=language-js>// same as: match(/ab*c/g)
+> Array.from('abc ac adc abbbc'.matchAll(/ab*c/g), m => m[0])
+< ["abc", "ac", "abbbc"]
 // get index for each match
-&gt; Array.from('abc ac adc abbbc'.matchAll(/ab*c/g), m =&gt; m.index)
-&lt; [0, 4, 11]
+> Array.from('abc ac adc abbbc'.matchAll(/ab*c/g), m => m.index)
+< [0, 4, 11]
 
 // get only capture group portions as an array for each match
-&gt; Array.from('xx:yyy x: x:yy :y'.matchAll(/(x*):(y*)/g), m =&gt; m.slice(1))
-&lt; (4) [Array(2), Array(2), Array(2), Array(2)]
-  0: (2) [&quot;xx&quot;, &quot;yyy&quot;]
-  1: (2) [&quot;x&quot;, &quot;&quot;]
-  2: (2) [&quot;x&quot;, &quot;yy&quot;]
-  3: (2) [&quot;&quot;, &quot;y&quot;]
+> Array.from('xx:yyy x: x:yy :y'.matchAll(/(x*):(y*)/g), m => m.slice(1))
+< (4) [Array(2), Array(2), Array(2), Array(2)]
+  0: (2) ["xx", "yyy"]
+  1: (2) ["x", ""]
+  2: (2) ["x", "yy"]
+  3: (2) ["", "y"]
   length: 4
   __proto__: Array(0)
-</code></pre>
-<blockquote>
-<p><img src="images/info.svg" alt="info" /> Before the introduction of <code>matchAll</code> method, <code>exec</code> method had to be used. See <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec">MDN: exec</a> details and examples.</p>
-</blockquote>
-<h2><a class="header" href="#split-with-capture-groups" id="split-with-capture-groups">split with capture groups</a></h2>
-<p>Capture groups affects <code>split</code> method as well. If the pattern used to split contains capture groups, the portions matched by those groups will also be a part of the output array.</p>
-<pre><code class="language-js">// without capture group
-&gt; '31111111111251111426'.split(/1*4?2/)
-&lt; [&quot;3&quot;, &quot;5&quot;, &quot;6&quot;]
+</code></pre><blockquote><p><img src=images/info.svg alt=info> Before the introduction of <code>matchAll</code> method, <code>exec</code> method had to be used. See <a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec>MDN: exec</a> details and examples.</blockquote><h2><a class=header href=#split-with-capture-groups id=split-with-capture-groups>split with capture groups</a></h2><p>Capture groups affects <code>split</code> method as well. If the pattern used to split contains capture groups, the portions matched by those groups will also be a part of the output array.<pre><code class=language-js>// without capture group
+> '31111111111251111426'.split(/1*4?2/)
+< ["3", "5", "6"]
 
 // to include the matching portions of the pattern as well in the output
-&gt; '31111111111251111426'.split(/(1*4?2)/)
-&lt; [&quot;3&quot;, &quot;11111111112&quot;, &quot;5&quot;, &quot;111142&quot;, &quot;6&quot;]
-</code></pre>
-<p>If part of the pattern is outside a capture group, the text thus matched won't be in the output. If a capture group didn't participate, it will be represented by <code>undefined</code> in the output array.</p>
-<pre><code class="language-js">// here 4?2 is outside capture group, so that portion won't be in output
-&gt; '31111111111251111426'.split(/(1*)4?2/)
-&lt; [&quot;3&quot;, &quot;1111111111&quot;, &quot;5&quot;, &quot;1111&quot;, &quot;6&quot;]
+> '31111111111251111426'.split(/(1*4?2)/)
+< ["3", "11111111112", "5", "111142", "6"]
+</code></pre><p>If part of the pattern is outside a capture group, the text thus matched won't be in the output. If a capture group didn't participate, it will be represented by <code>undefined</code> in the output array.<pre><code class=language-js>// here 4?2 is outside capture group, so that portion won't be in output
+> '31111111111251111426'.split(/(1*)4?2/)
+< ["3", "1111111111", "5", "1111", "6"]
 
 // multiple capture groups example
 // note that the portion matched by b+ isn't present in the output
-&gt; '3.14aabccc42'.split(/(a+)b+(c+)/)
-&lt; [&quot;3.14&quot;, &quot;aa&quot;, &quot;ccc&quot;, &quot;42&quot;]
+> '3.14aabccc42'.split(/(a+)b+(c+)/)
+< ["3.14", "aa", "ccc", "42"]
 
 // here (4)? matches zero times on the first occasion
-&gt; '31111111111251111426'.split(/(1*)(4)?2/)
-&lt; [&quot;3&quot;, &quot;1111111111&quot;, undefined, &quot;5&quot;, &quot;1111&quot;, &quot;4&quot;, &quot;6&quot;]
-</code></pre>
-<p>Use of capture groups and optional <code>limit</code> argument can help you partition an input string into three parts:</p>
-<ul>
-<li>portion before the first match</li>
-<li>portion matched by the pattern itself</li>
-<li>portion after the pattern</li>
-</ul>
-<pre><code class="language-js">// use 's' flag as well if needed
-&gt; '3.14aabccc42abc88'.split(/(a+b+c+)(.*)/, 3)
-&lt; [&quot;3.14&quot;, &quot;aabccc&quot;, &quot;42abc88&quot;]
-</code></pre>
-<h2><a class="header" href="#using-function-in-replacement-section" id="using-function-in-replacement-section">Using function in replacement section</a></h2>
-<p>Sometimes, simple replacement string isn't enough and you need to do some processing on the matched portion. For such cases, you can use function in the replacement section. The arguments available to the function are similar to the details provided by <code>match</code> method. The first one is entire matched portion. If capture groups are used, portions matched by those groups will be next. Then comes index of matched portion and finally the input string. Depending on the complexity, you can use fully defined function or arrow function expressions.</p>
-<pre><code class="language-js">&gt; function titleCase(m) {
+> '31111111111251111426'.split(/(1*)(4)?2/)
+< ["3", "1111111111", undefined, "5", "1111", "4", "6"]
+</code></pre><p>Use of capture groups and optional <code>limit</code> argument can help you partition an input string into three parts:<ul><li>portion before the first match<li>portion matched by the pattern itself<li>portion after the pattern</ul><pre><code class=language-js>// use 's' flag as well if needed
+> '3.14aabccc42abc88'.split(/(a+b+c+)(.*)/, 3)
+< ["3.14", "aabccc", "42abc88"]
+</code></pre><h2><a class=header href=#using-function-in-replacement-section id=using-function-in-replacement-section>Using function in replacement section</a></h2><p>Sometimes, simple replacement string isn't enough and you need to do some processing on the matched portion. For such cases, you can use function in the replacement section. The arguments available to the function are similar to the details provided by <code>match</code> method. The first one is entire matched portion. If capture groups are used, portions matched by those groups will be next. Then comes index of matched portion and finally the input string. Depending on the complexity, you can use fully defined function or arrow function expressions.<pre><code class=language-js>> function titleCase(m) {
       return m[0].toUpperCase() + m.substr(1).toLowerCase()
   }
 
 // only function name is enough as second argument
 // the matched portion details will be passed automatically to the function
 // in this example, 'titleCase' is using only the entire matched portion
-&gt; 'aBc ac ADC aBbBC'.replace(/a.*?c/ig, titleCase)
-&lt; &quot;Abc Ac Adc Abbbc&quot;
+> 'aBc ac ADC aBbBC'.replace(/a.*?c/ig, titleCase)
+< "Abc Ac Adc Abbbc"
 
 // can also use arrow function expressions for simple cases
-&gt; 'abc ac adc abbbc'.replace(/ab*c/g, m =&gt; m.toUpperCase())
-&lt; &quot;ABC AC adc ABBBC&quot;
+> 'abc ac adc abbbc'.replace(/ab*c/g, m => m.toUpperCase())
+< "ABC AC adc ABBBC"
 
 // \d will be covered later
 // for now, it is enough to know that it will match all digit characters
-&gt; '1 42 317'.replace(/\d+/g, m =&gt; m*2)
-&lt; &quot;2 84 634&quot;
-</code></pre>
-<p>Here's an example with capture groups. See also <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace">MDN: replace</a> for more details.</p>
-<pre><code class="language-js">&gt; function titleCase(m, g1, g2) {
+> '1 42 317'.replace(/\d+/g, m => m*2)
+< "2 84 634"
+</code></pre><p>Here's an example with capture groups. See also <a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace>MDN: replace</a> for more details.<pre><code class=language-js>> function titleCase(m, g1, g2) {
         return g1.toUpperCase() + g2.toLowerCase()
   }
-&gt; 'aBc ac ADC aBbBC'.replace(/(a)(.*?c)/ig, titleCase)
-&lt; &quot;Abc Ac Adc Abbbc&quot;
-</code></pre>
-<h2><a class="header" href="#using-dictionary-in-replacement-section" id="using-dictionary-in-replacement-section">Using dictionary in replacement section</a></h2>
-<p>Sometimes, the functionality you need in replacement section can be simplified to using a dictionary. The matched portion acts as the key to get corresponding value from the dictionary.</p>
-<pre><code class="language-js">// one to one mappings
-&gt; let h = { '1': 'one', '2': 'two', '4': 'four' }
+> 'aBc ac ADC aBbBC'.replace(/(a)(.*?c)/ig, titleCase)
+< "Abc Ac Adc Abbbc"
+</code></pre><h2><a class=header href=#using-dictionary-in-replacement-section id=using-dictionary-in-replacement-section>Using dictionary in replacement section</a></h2><p>Sometimes, the functionality you need in replacement section can be simplified to using a dictionary. The matched portion acts as the key to get corresponding value from the dictionary.<pre><code class=language-js>// one to one mappings
+> let h = { '1': 'one', '2': 'two', '4': 'four' }
 
-&gt; '9234012'.replace(/1|2|4/g, k =&gt; h[k])
-&lt; &quot;9two3four0onetwo&quot;
+> '9234012'.replace(/1|2|4/g, k => h[k])
+< "9two3four0onetwo"
 
 // providing a default value if the matched text doesn't exist as a key
-&gt; '9234012'.replace(/\d/g, k =&gt; k in h ? h[k] : 'X')
-&lt; &quot;XtwoXfourXonetwo&quot;
-</code></pre>
-<p>For swapping two or more strings without using intermediate result, using a dictionary is recommended.</p>
-<pre><code class="language-js">&gt; let swap = { 'cat': 'tiger', 'tiger': 'cat' }
+> '9234012'.replace(/\d/g, k => k in h ? h[k] : 'X')
+< "XtwoXfourXonetwo"
+</code></pre><p>For swapping two or more strings without using intermediate result, using a dictionary is recommended.<pre><code class=language-js>> let swap = { 'cat': 'tiger', 'tiger': 'cat' }
 
-&gt; 'cat tiger dog tiger cat'.replace(/cat|tiger/g, k =&gt; swap[k])
-&lt; &quot;tiger cat dog cat tiger&quot;
-</code></pre>
-<p>For a dictionary that has many entries and likely to undergo changes during development, building alternation list manually is not a good choice. Also, recall that as per precedence rules, longest length string should come first. The <code>unionRegExp</code> function, introduced in <a href="./escaping-metacharacters.html#dynamically-building-alternation">Dynamically building alternation</a> section, is helpful here.</p>
-<pre><code class="language-js">&gt; let d = { 'hand': 1, 'handy': 2, 'handful': 3, 'a^b': 4 }
+> 'cat tiger dog tiger cat'.replace(/cat|tiger/g, k => swap[k])
+< "tiger cat dog cat tiger"
+</code></pre><p>For a dictionary that has many entries and likely to undergo changes during development, building alternation list manually is not a good choice. Also, recall that as per precedence rules, longest length string should come first. The <code>unionRegExp</code> function, introduced in <a href=./escaping-metacharacters.html#dynamically-building-alternation>Dynamically building alternation</a> section, is helpful here.<pre><code class=language-js>> let d = { 'hand': 1, 'handy': 2, 'handful': 3, 'a^b': 4 }
 
-&gt; const p = unionRegExp(Object.keys(d).sort((a, b) =&gt; b.length - a.length))
-&gt; console.log(p)
-&lt; handful|handy|hand|a\^b
-&gt; 'handful hand pin handy (a^b)'.replace(new RegExp(p, 'g'), k =&gt; d[k])
-&lt; &quot;3 1 pin 2 (4)&quot;
-</code></pre>
-<h2><a class="header" href="#cheatsheet-and-summary" id="cheatsheet-and-summary">Cheatsheet and Summary</a></h2>
-<table><thead><tr><th>Note</th><th>Description</th></tr></thead><tbody>
-<tr><td><code>m = s.match(/pat/)</code></td><td>assuming <code>g</code> flag isn't used and regexp succeeds,</td></tr>
-<tr><td></td><td>returns an array with matched portion and 3 properties</td></tr>
-<tr><td></td><td><code>index</code> property gives the starting location of the match</td></tr>
-<tr><td></td><td><code>input</code> property gives the input string <code>s</code></td></tr>
-<tr><td></td><td><code>groups</code> property gives dictionary of <a href="./groupings-and-backreferences.html#named-capture-groups">named capture groups</a></td></tr>
-<tr><td><code>m[0]</code></td><td>for above case, gives entire matched portion</td></tr>
-<tr><td><code>m[1]</code></td><td>matched portion of first capture group</td></tr>
-<tr><td><code>m[2]</code></td><td>matched portion of second capture group and so on</td></tr>
-<tr><td><code>s.match(/pat/g)</code></td><td>returns only the matched portions, no properties</td></tr>
-<tr><td></td><td>capture group doesn't affect the output</td></tr>
-<tr><td></td><td><code>match</code> returns <code>null</code> if regexp fails</td></tr>
-<tr><td><code>s.matchAll(/pat/g)</code></td><td>returns an iterator containing details for</td></tr>
-<tr><td></td><td>each matched portion and its properties</td></tr>
-<tr><td></td><td>use <code>[...]</code> or <code>Array.from</code> to convert to array</td></tr>
-<tr><td></td><td><code>Array.from</code> also allows mapping function</td></tr>
-<tr><td><code>s.replace(/pat/, func)</code></td><td>you can use a function to provide replacement string</td></tr>
-<tr><td></td><td>each matched portion details gets passed as arguments</td></tr>
-<tr><td></td><td>similarly, dictionary can be used for replacement</td></tr>
-<tr><td><code>s.search(/pat/)</code></td><td>gives starting location of first match if regexp succeeds</td></tr>
-<tr><td></td><td><code>-1</code> if regexp fails</td></tr>
-</tbody></table>
-<p>This chapter introduced <code>match</code> and <code>matchAll</code> methods, which allows you to work with various matching portions of input string. The <code>search</code> method is handy if you just need the starting location of the first match. The <code>replace</code> method allows you to use a function as replacement, which helps to process the matching portions before being used as replacement string. You can also use a dictionary to provide replacement string based on matched portion as key. You learnt about capture groups and you'll see even more uses of groupings in coming chapters.</p>
-<h2><a class="header" href="#exercises" id="exercises">Exercises</a></h2>
-<p><strong>a)</strong> For the given strings, extract the matching portion from first <code>is</code> to last <code>t</code></p>
-<pre><code class="language-js">&gt; let str1 = 'What is the biggest fruit you have seen?'
-&gt; let str2 = 'Your mission is to read and practice consistently'
+> const p = unionRegExp(Object.keys(d).sort((a, b) => b.length - a.length))
+> console.log(p)
+< handful|handy|hand|a\^b
+> 'handful hand pin handy (a^b)'.replace(new RegExp(p, 'g'), k => d[k])
+< "3 1 pin 2 (4)"
+</code></pre><h2><a class=header href=#cheatsheet-and-summary id=cheatsheet-and-summary>Cheatsheet and Summary</a></h2><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>m = s.match(/pat/)</code><td>assuming <code>g</code> flag isn't used and regexp succeeds,<tr><td><td>returns an array with matched portion and 3 properties<tr><td><td><code>index</code> property gives the starting location of the match<tr><td><td><code>input</code> property gives the input string <code>s</code><tr><td><td><code>groups</code> property gives dictionary of <a href=./groupings-and-backreferences.html#named-capture-groups>named capture groups</a><tr><td><code>m[0]</code><td>for above case, gives entire matched portion<tr><td><code>m[1]</code><td>matched portion of first capture group<tr><td><code>m[2]</code><td>matched portion of second capture group and so on<tr><td><code>s.match(/pat/g)</code><td>returns only the matched portions, no properties<tr><td><td>capture group doesn't affect the output<tr><td><td><code>match</code> returns <code>null</code> if regexp fails<tr><td><code>s.matchAll(/pat/g)</code><td>returns an iterator containing details for<tr><td><td>each matched portion and its properties<tr><td><td>use <code>[...]</code> or <code>Array.from</code> to convert to array<tr><td><td><code>Array.from</code> also allows mapping function<tr><td><code>s.replace(/pat/, func)</code><td>you can use a function to provide replacement string<tr><td><td>each matched portion details gets passed as arguments<tr><td><td>similarly, dictionary can be used for replacement<tr><td><code>s.search(/pat/)</code><td>gives starting location of first match if regexp succeeds<tr><td><td><code>-1</code> if regexp fails</table><p>This chapter introduced <code>match</code> and <code>matchAll</code> methods, which allows you to work with various matching portions of input string. The <code>search</code> method is handy if you just need the starting location of the first match. The <code>replace</code> method allows you to use a function as replacement, which helps to process the matching portions before being used as replacement string. You can also use a dictionary to provide replacement string based on matched portion as key. You learnt about capture groups and you'll see even more uses of groupings in coming chapters.<h2><a class=header href=#exercises id=exercises>Exercises</a></h2><p><strong>a)</strong> For the given strings, extract the matching portion from first <code>is</code> to last <code>t</code><pre><code class=language-js>> let str1 = 'What is the biggest fruit you have seen?'
+> let str2 = 'Your mission is to read and practice consistently'
 
-&gt; const pat1 =      // add your solution here
+> const pat1 =      // add your solution here
 
 // add your solution here for str1
-&lt; &quot;is the biggest fruit&quot;
+< "is the biggest fruit"
 // add your solution here for str2
-&lt; &quot;ission is to read and practice consistent&quot;
-</code></pre>
-<p><strong>b)</strong> Find the starting index of first occurrence of <code>is</code> or <code>the</code> or <code>was</code> or <code>to</code> for the given input strings. Assume that there will be at least one match for each input string.</p>
-<pre><code class="language-js">&gt; let s1 = 'match after the last newline character'
-&gt; let s2 = 'and then you want to test'
-&gt; let s3 = 'this is good bye then'
-&gt; let s4 = 'who was there to see?'
+< "ission is to read and practice consistent"
+</code></pre><p><strong>b)</strong> Find the starting index of first occurrence of <code>is</code> or <code>the</code> or <code>was</code> or <code>to</code> for the given input strings. Assume that there will be at least one match for each input string.<pre><code class=language-js>> let s1 = 'match after the last newline character'
+> let s2 = 'and then you want to test'
+> let s3 = 'this is good bye then'
+> let s4 = 'who was there to see?'
 
-&gt; const pat2 =      // add your solution here
+> const pat2 =      // add your solution here
 
 // add your solution here for s1
-&lt; 12
+< 12
 // add your solution here for s2
-&lt; 4
+< 4
 // add your solution here for s3
-&lt; 2
+< 2
 // add your solution here for s4
-&lt; 4
-</code></pre>
-<p><strong>c)</strong> Find the starting index of last occurrence of <code>is</code> or <code>the</code> or <code>was</code> or <code>to</code> for the given input strings. Assume that there will be at least one match for each input string.</p>
-<pre><code class="language-js">&gt; let s1 = 'match after the last newline character'
-&gt; let s2 = 'and then you want to test'
-&gt; let s3 = 'this is good bye then'
-&gt; let s4 = 'who was there to see?'
+< 4
+</code></pre><p><strong>c)</strong> Find the starting index of last occurrence of <code>is</code> or <code>the</code> or <code>was</code> or <code>to</code> for the given input strings. Assume that there will be at least one match for each input string.<pre><code class=language-js>> let s1 = 'match after the last newline character'
+> let s2 = 'and then you want to test'
+> let s3 = 'this is good bye then'
+> let s4 = 'who was there to see?'
 
-&gt; const pat3 =      // add your solution here
+> const pat3 =      // add your solution here
 
 // add your solution here for s1
-&lt; 12
+< 12
 // add your solution here for s2
-&lt; 18
+< 18
 // add your solution here for s3
-&lt; 17
+< 17
 // add your solution here for s4
-&lt; 14
-</code></pre>
-<p><strong>d)</strong> The given input string contains <code>:</code> exactly once. Extract all characters after the <code>:</code> as output.</p>
-<pre><code class="language-js">&gt; let ip = 'fruits:apple, mango, guava, blueberry'
+< 14
+</code></pre><p><strong>d)</strong> The given input string contains <code>:</code> exactly once. Extract all characters after the <code>:</code> as output.<pre><code class=language-js>> let ip = 'fruits:apple, mango, guava, blueberry'
 
 // add your solution here
-&lt; &quot;apple, mango, guava, blueberry&quot;
-</code></pre>
-<p><strong>e)</strong> Extract all words between <code>(</code> and <code>)</code> from the given input string as an array (including the parentheses). Assume that the input will not contain any broken parentheses.</p>
-<pre><code class="language-js">&gt; let ip = 'another (way) to reuse (portion) matched (by) capture groups'
+< "apple, mango, guava, blueberry"
+</code></pre><p><strong>e)</strong> Extract all words between <code>(</code> and <code>)</code> from the given input string as an array (including the parentheses). Assume that the input will not contain any broken parentheses.<pre><code class=language-js>> let ip = 'another (way) to reuse (portion) matched (by) capture groups'
 
 // add your solution here
-&lt; [&quot;(way)&quot;, &quot;(portion)&quot;, &quot;(by)&quot;]
-</code></pre>
-<p><strong>f)</strong> Extract all occurrences of <code>&lt;</code> up to next occurrence of <code>&gt;</code>, provided there is at least one character in between <code>&lt;</code> and <code>&gt;</code>.</p>
-<pre><code class="language-js">&gt; let ip = 'a&lt;apple&gt; 1&lt;&gt; b&lt;bye&gt; 2&lt;&gt; c&lt;cat&gt;'
+< ["(way)", "(portion)", "(by)"]
+</code></pre><p><strong>f)</strong> Extract all occurrences of <code><</code> up to next occurrence of <code>></code>, provided there is at least one character in between <code><</code> and <code>></code>.<pre><code class=language-js>> let ip = 'a&LTapple> 1<> b&LTbye> 2<> c&LTcat>'
 
 // add your solution here
-&lt; [&quot;&lt;apple&gt;&quot;, &quot;&lt;&gt; b&lt;bye&gt;&quot;, &quot;&lt;&gt; c&lt;cat&gt;&quot;]
-</code></pre>
-<p><strong>g)</strong> Use <code>matchAll</code> to get the output as shown below for the given input strings. Note the characters used in the input strings carefully.</p>
-<pre><code class="language-js">&gt; let row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
-&gt; let row2 = '1.32,-3.14 634,5.63 63.3e3,9907809345343.235 '
+< ["&LTapple>", "<> b&LTbye>", "<> c&LTcat>"]
+</code></pre><p><strong>g)</strong> Use <code>matchAll</code> to get the output as shown below for the given input strings. Note the characters used in the input strings carefully.<pre><code class=language-js>> let row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
+> let row2 = '1.32,-3.14 634,5.63 63.3e3,9907809345343.235 '
 
-&gt; const pat4 =      // add your solution here
+> const pat4 =      // add your solution here
 
 // add your solution here for row1
-&lt; (4) [Array(2), Array(2), Array(2), Array(2)]
-  0: (2) [&quot;-2&quot;, &quot;5&quot;]
-  1: (2) [&quot;4&quot;, &quot;+3&quot;]
-  2: (2) [&quot;+42&quot;, &quot;-53&quot;]
-  3: (2) [&quot;4356246&quot;, &quot;-357532354&quot;]
+< (4) [Array(2), Array(2), Array(2), Array(2)]
+  0: (2) ["-2", "5"]
+  1: (2) ["4", "+3"]
+  2: (2) ["+42", "-53"]
+  3: (2) ["4356246", "-357532354"]
   length: 4
   __proto__: Array(0)
 
 // add your solution here for row2
-&lt; (3) [Array(2), Array(2), Array(2)]
-  0: (2) [&quot;1.32&quot;, &quot;-3.14&quot;]
-  1: (2) [&quot;634&quot;, &quot;5.63&quot;]
-  2: (2) [&quot;63.3e3&quot;, &quot;9907809345343.235&quot;]
+< (3) [Array(2), Array(2), Array(2)]
+  0: (2) ["1.32", "-3.14"]
+  1: (2) ["634", "5.63"]
+  2: (2) ["63.3e3", "9907809345343.235"]
   length: 3
   __proto__: Array(0)
-</code></pre>
-<p><strong>h)</strong> This is an extension to previous question. Sum each pair of numbers that are separated by a comma.</p>
-<pre><code class="language-js">&gt; let row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
-&gt; let row2 = '1.32,-3.14 634,5.63 63.3e3,9907809345343.235 '
+</code></pre><p><strong>h)</strong> This is an extension to previous question. Sum each pair of numbers that are separated by a comma.<pre><code class=language-js>> let row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
+> let row2 = '1.32,-3.14 634,5.63 63.3e3,9907809345343.235 '
 
 // should be same as previous question
-&gt; const pat5 =      // add your solution here
+> const pat5 =      // add your solution here
 
 // add your solution here for row1
-&lt; [3, 7, -11, -353176108]
+< [3, 7, -11, -353176108]
 
 // add your solution here for row2
-&lt; [-1.82, 639.63, 9907809408643.234]
-</code></pre>
-<p><strong>i)</strong> Use <code>split</code> method to get the output as shown below.</p>
-<pre><code class="language-js">&gt; let ip = '42:no-output;1000:car-truck;SQEX49801'
+< [-1.82, 639.63, 9907809408643.234]
+</code></pre><p><strong>i)</strong> Use <code>split</code> method to get the output as shown below.<pre><code class=language-js>> let ip = '42:no-output;1000:car-truck;SQEX49801'
 
 // add your solution here
-&lt; [&quot;42&quot;, &quot;output&quot;, &quot;1000&quot;, &quot;truck&quot;, &quot;SQEX49801&quot;]
-</code></pre>
-<p><strong>j)</strong> Write a string function that changes given input to alternate case. The first alphabet should be changed to lowercase, the next one to uppercase and then lowercase and so on. Characters other than alphabets should be left alone and not affect case changing.</p>
-<pre><code class="language-js">&gt; function aLtErNaTeCaSe(ip) {
+< ["42", "output", "1000", "truck", "SQEX49801"]
+</code></pre><p><strong>j)</strong> Write a string function that changes given input to alternate case. The first alphabet should be changed to lowercase, the next one to uppercase and then lowercase and so on. Characters other than alphabets should be left alone and not affect case changing.<pre><code class=language-js>> function aLtErNaTeCaSe(ip) {
       // add your solution here
   }
 
-&gt; aLtErNaTeCaSe('HI THERE!')
-&lt; &quot;hI tHeRe!&quot;
-&gt; aLtErNaTeCaSe('good morning')
-&lt; &quot;gOoD mOrNiNg&quot;
-&gt; aLtErNaTeCaSe('Sample123string42with777numbers')
-&lt; &quot;sAmPlE123sTrInG42wItH777nUmBeRs&quot;
-</code></pre>
-<p><strong>k)</strong> Replace the string <code>par</code> with <code>spar</code>, <code>spare</code> with <code>extra</code> and <code>park</code> with <code>garden</code></p>
-<pre><code class="language-js">&gt; let s1 = 'apartment has a park'
-&gt; let s2 = 'do you have a spare cable'
-&gt; let s3 = 'write a parser'
+> aLtErNaTeCaSe('HI THERE!')
+< "hI tHeRe!"
+> aLtErNaTeCaSe('good morning')
+< "gOoD mOrNiNg"
+> aLtErNaTeCaSe('Sample123string42with777numbers')
+< "sAmPlE123sTrInG42wItH777nUmBeRs"
+</code></pre><p><strong>k)</strong> Replace the string <code>par</code> with <code>spar</code>, <code>spare</code> with <code>extra</code> and <code>park</code> with <code>garden</code><pre><code class=language-js>> let s1 = 'apartment has a park'
+> let s2 = 'do you have a spare cable'
+> let s3 = 'write a parser'
 
-&gt; let d1 =          // add your solution here
-&gt; const pat6 =      // add your solution here
+> let d1 =          // add your solution here
+> const pat6 =      // add your solution here
 
-&gt; s1.replace(pat6, k =&gt; d1[k])
-&lt; &quot;aspartment has a garden&quot;
-&gt; s2.replace(pat6, k =&gt; d1[k])
-&lt; &quot;do you have a extra cable&quot;
-&gt; s3.replace(pat6, k =&gt; d1[k])
-&lt; &quot;write a sparser&quot;
-</code></pre>
-
-                    </main>
-
-                    <nav class="nav-wrapper" aria-label="Page navigation">
-                        <!-- Mobile navigation buttons -->
-                        
-                            <a rel="prev" href="interlude-tools-for-debugging-and-visualization.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                        
-
-                        
-                            <a rel="next" href="character-class.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        
-
-                        <div style="clear: both"></div>
-                    </nav>
-                </div>
-            </div>
-
-            <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
-                    <a rel="prev" href="interlude-tools-for-debugging-and-visualization.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                
-
-                
-                    <a rel="next" href="character-class.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                
-            </nav>
-
-        </div>
-
-        
-
-        
-
-        
-
-        
-        <script type="text/javascript">
+> s1.replace(pat6, k => d1[k])
+< "aspartment has a garden"
+> s2.replace(pat6, k => d1[k])
+< "do you have a extra cable"
+> s3.replace(pat6, k => d1[k])
+< "write a sparser"
+</code></pre></main><nav class=nav-wrapper aria-label="Page navigation"><a rel=prev href=interlude-tools-for-debugging-and-visualization.html class="mobile-nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=character-class.html class="mobile-nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav class=nav-wide-wrapper aria-label="Page navigation"><a rel=prev href=interlude-tools-for-debugging-and-visualization.html class="nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=character-class.html class="nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a></nav></div><script>
             window.playground_copyable = true;
-        </script>
-        
-
-        
-
-        
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
-
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
-
-        <!-- Custom JS scripts -->
-        
-
-        
-
-    </body>
-</html>
+        </script><script src=elasticlunr.min.js charset=utf-8></script><script src=mark.min.js charset=utf-8></script><script src=searcher.js charset=utf-8></script><script src=clipboard.min.js charset=utf-8></script><script src=highlight.js charset=utf-8></script><script src=book.js charset=utf-8></script><script src=sidebar.js></script>

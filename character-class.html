@@ -1,60 +1,7 @@
-<!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
-    <head>
-        <!-- Book generated using mdBook -->
-        <meta charset="UTF-8">
-        <title>Character class - JavaScript RegExp</title>
-        
-        
-
-
-        <!-- Custom HTML head -->
-        
-
-
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="Example based guide to mastering JavaScript regexp">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
-
-        
-        <link rel="icon" href="favicon.svg">
-        
-        
-        <link rel="shortcut icon" href="favicon.png">
-        
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        
-        <link rel="stylesheet" href="fonts/fonts.css">
-        
-
-        <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
-
-        <!-- Custom theme stylesheets -->
-        
-        <link rel="stylesheet" href="custom.css">
-        
-
-        
-    </head>
-    <body>
-        <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+<!DOCTYPE HTML><html lang=en class="sidebar-visible no-js light"><head><meta charset=UTF-8><title>Character class - JavaScript RegExp</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta name=description content="Example based guide to mastering JavaScript regexp"><meta name=viewport content="width=device-width, initial-scale=1"><meta name=theme-color content=#ffffff><link rel=icon href=favicon.svg><link rel="shortcut icon"href=favicon.png><link rel=stylesheet href=css/variables.css><link rel=stylesheet href=css/general.css><link rel=stylesheet href=css/chrome.css><link rel=stylesheet href=FontAwesome/css/font-awesome.css><link rel=stylesheet href=fonts/fonts.css><link rel=stylesheet href=highlight.css><link rel=stylesheet href=tomorrow-night.css><link rel=stylesheet href=ayu-highlight.css><link rel=stylesheet href=style.css><body><script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script>
-
-        <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        </script><script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -67,10 +14,7 @@
                     localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
             } catch (e) { }
-        </script>
-
-        <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        </script><script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -79,10 +23,7 @@
             html.classList.remove('light')
             html.classList.add(theme);
             html.classList.add('js');
-        </script>
-
-        <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        </script><script>
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
@@ -91,420 +32,199 @@
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
-        </script>
-
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover.html">Cover</a></li><li class="chapter-item expanded affix "><a href="buy.html">Buy PDF/EPUB versions</a></li><li class="chapter-item expanded "><a href="preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="whats-so-special-about-regular-expressions.html"><strong aria-hidden="true">2.</strong> What's so special about Regular Expressions?</a></li><li class="chapter-item expanded "><a href="regexp-introduction.html"><strong aria-hidden="true">3.</strong> RegExp introduction</a></li><li class="chapter-item expanded "><a href="anchors.html"><strong aria-hidden="true">4.</strong> Anchors</a></li><li class="chapter-item expanded "><a href="alternation-and-grouping.html"><strong aria-hidden="true">5.</strong> Alternation and Grouping</a></li><li class="chapter-item expanded "><a href="escaping-metacharacters.html"><strong aria-hidden="true">6.</strong> Escaping metacharacters</a></li><li class="chapter-item expanded "><a href="dot-metacharacter-and-quantifiers.html"><strong aria-hidden="true">7.</strong> Dot metacharacter and Quantifiers</a></li><li class="chapter-item expanded "><a href="interlude-tools-for-debugging-and-visualization.html"><strong aria-hidden="true">8.</strong> Interlude: Tools for debugging and visualization</a></li><li class="chapter-item expanded "><a href="working-with-matched-portions.html"><strong aria-hidden="true">9.</strong> Working with matched portions</a></li><li class="chapter-item expanded "><a href="character-class.html" class="active"><strong aria-hidden="true">10.</strong> Character class</a></li><li class="chapter-item expanded "><a href="groupings-and-backreferences.html"><strong aria-hidden="true">11.</strong> Groupings and backreferences</a></li><li class="chapter-item expanded "><a href="interlude-common-tasks.html"><strong aria-hidden="true">12.</strong> Interlude: Common tasks</a></li><li class="chapter-item expanded "><a href="lookarounds.html"><strong aria-hidden="true">13.</strong> Lookarounds</a></li><li class="chapter-item expanded "><a href="unicode.html"><strong aria-hidden="true">14.</strong> Unicode</a></li><li class="chapter-item expanded "><a href="further-reading.html"><strong aria-hidden="true">15.</strong> Further Reading</a></li><li class="chapter-item expanded "><a href="Exercise_solutions.html"><strong aria-hidden="true">16.</strong> Exercise Solutions</a></li></ol>
-            </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
-        </nav>
-
-        <div id="page-wrapper" class="page-wrapper">
-
-            <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
-                    <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
-                        </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                        </ul>
-                        
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
-                        </button>
-                        
-                    </div>
-
-                    <h1 class="menu-title">JavaScript RegExp</h1>
-
-                    <div class="right-buttons">
-                        
-                        <a href="https://github.com/learnbyexample/learn_js_regexp" title="Git repository" aria-label="Git repository">
-                            <i id="git-repository-button" class="fa fa-github"></i>
-                        </a>
-                        
-                    </div>
-                </div>
-
-                
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                    </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
-                        </ul>
-                    </div>
-                </div>
-                
-
-                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+        </script><nav id=sidebar class=sidebar aria-label="Table of contents"><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=whats-so-special-about-regular-expressions.html><strong aria-hidden=true>2.</strong> What's so special about Regular Expressions?</a><li class="chapter-item expanded"><a href=regexp-introduction.html><strong aria-hidden=true>3.</strong> RegExp introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html class=active><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>14.</strong> Unicode</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>15.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>16.</strong> Exercise Solutions</a></ol></div><div id=sidebar-resize-handle class=sidebar-resize-handle></div></nav><div id=page-wrapper class=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div id=menu-bar class="menu-bar sticky bordered"><div class=left-buttons><button id=sidebar-toggle class=icon-button type=button title="Toggle Table of Contents"aria-label="Toggle Table of Contents"aria-controls=sidebar><i class="fa fa-bars"></i></button><button id=theme-toggle class=icon-button type=button title="Change theme"aria-label="Change theme"aria-haspopup=true aria-expanded=false aria-controls=theme-list><i class="fa fa-paint-brush"></i></button><ul id=theme-list class=theme-popup aria-label=Themes role=menu><li role=none><button role=menuitem class=theme id=light>Light (default)</button><li role=none><button role=menuitem class=theme id=rust>Rust</button><li role=none><button role=menuitem class=theme id=coal>Coal</button><li role=none><button role=menuitem class=theme id=navy>Navy</button><li role=none><button role=menuitem class=theme id=ayu>Ayu</button></ul><button id=search-toggle class=icon-button type=button title="Search. (Shortkey: s)"aria-label="Toggle Searchbar"aria-expanded=false aria-keyshortcuts=S aria-controls=searchbar><i class="fa fa-search"></i></button></div><h1 class=menu-title>JavaScript RegExp</h1><div class=right-buttons><a href=https://github.com/learnbyexample/learn_js_regexp title="Git repository"aria-label="Git repository"> <i id=git-repository-button class="fa fa-github"></i> </a></div></div><div id=search-wrapper class=hidden><form id=searchbar-outer class=searchbar-outer><input type=search name=search id=searchbar name=searchbar placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header></form><div id=searchresults-outer class="searchresults-outer hidden"><div id=searchresults-header class=searchresults-header></div><ul id=searchresults></ul></div></div><script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
-                </script>
-
-                <div id="content" class="content">
-                    <main>
-                        <h1><a class="header" href="#character-class" id="character-class">Character class</a></h1>
-<p>This chapter will discuss how to create your own custom placeholders to match limited set of characters and various metacharacters applicable inside character classes. You'll also learn about escape sequences for predefined character sets.</p>
-<h2><a class="header" href="#custom-character-sets" id="custom-character-sets">Custom character sets</a></h2>
-<p>Characters enclosed inside <code>[]</code> metacharacters is a character class (or set). It will result in matching any one of those characters once. It is similar to using single character alternations inside a grouping, but without the additional effects of a capture group. In addition, character classes have their own versions of metacharacters and provide special predefined sets for common use cases. Quantifiers are applicable to character classes as well.</p>
-<pre><code class="language-js">// same as: /cot|cut/ or /c(o|u)t/
-&gt; ['cute', 'cat', 'cot', 'coat', 'cost'].filter(w =&gt; /c[ou]t/.test(w))
-&lt; [&quot;cute&quot;, &quot;cot&quot;]
+                </script><div id=content class=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1><a class=header href=#character-class id=character-class>Character class</a></h1><p>This chapter will discuss how to create your own custom placeholders to match limited set of characters and various metacharacters applicable inside character classes. You'll also learn about escape sequences for predefined character sets.<h2><a class=header href=#custom-character-sets id=custom-character-sets>Custom character sets</a></h2><p>Characters enclosed inside <code>[]</code> metacharacters is a character class (or set). It will result in matching any one of those characters once. It is similar to using single character alternations inside a grouping, but without the additional effects of a capture group. In addition, character classes have their own versions of metacharacters and provide special predefined sets for common use cases. Quantifiers are applicable to character classes as well.<pre><code class=language-js>// same as: /cot|cut/ or /c(o|u)t/
+> ['cute', 'cat', 'cot', 'coat', 'cost'].filter(w => /c[ou]t/.test(w))
+< ["cute", "cot"]
 
 // same as: /(a|e|o)+t/g
-&gt; 'meeting cute boat site foot'.replace(/[aeo]+t/g, 'X')
-&lt; &quot;mXing cute bX site fX&quot;
+> 'meeting cute boat site foot'.replace(/[aeo]+t/g, 'X')
+< "mXing cute bX site fX"
 
-&gt; 'Sample123string42with777numbers'.match(/[0123456789]+/g)
-&lt; [&quot;123&quot;, &quot;42&quot;, &quot;777&quot;]
-</code></pre>
-<h2><a class="header" href="#range-of-characters" id="range-of-characters">Range of characters</a></h2>
-<p>Character classes have their own metacharacters to help define the sets succinctly. Metacharacters outside of character classes like <code>^</code>, <code>$</code>, <code>()</code> etc either don't have special meaning or have completely different one inside the character classes. First up, the <code>-</code> metacharacter that helps to define a range of characters instead of having to specify them all individually.</p>
-<pre><code class="language-js">// all digits
-&gt; 'Sample123string42with777numbers'.match(/[0-9]+/g)
-&lt; [&quot;123&quot;, &quot;42&quot;, &quot;777&quot;]
+> 'Sample123string42with777numbers'.match(/[0123456789]+/g)
+< ["123", "42", "777"]
+</code></pre><h2><a class=header href=#range-of-characters id=range-of-characters>Range of characters</a></h2><p>Character classes have their own metacharacters to help define the sets succinctly. Metacharacters outside of character classes like <code>^</code>, <code>$</code>, <code>()</code> etc either don't have special meaning or have completely different one inside the character classes. First up, the <code>-</code> metacharacter that helps to define a range of characters instead of having to specify them all individually.<pre><code class=language-js>// all digits
+> 'Sample123string42with777numbers'.match(/[0-9]+/g)
+< ["123", "42", "777"]
 
 // whole words made up of lowercase alphabets and digits only
-&gt; 'coat Bin food tar12 best'.match(/\b[a-z0-9]+\b/g)
-&lt; [&quot;coat&quot;, &quot;food&quot;, &quot;tar12&quot;, &quot;best&quot;]
+> 'coat Bin food tar12 best'.match(/\b[a-z0-9]+\b/g)
+< ["coat", "food", "tar12", "best"]
 
 // whole words made up of lowercase alphabets, but starting with 'p' to 'z'
-&gt; 'coat tin food put stoop best'.match(/\b[p-z][a-z]*\b/g)
-&lt; [&quot;tin&quot;, &quot;put&quot;, &quot;stoop&quot;]
+> 'coat tin food put stoop best'.match(/\b[p-z][a-z]*\b/g)
+< ["tin", "put", "stoop"]
 
 // whole words made up of only 'a' to 'f' and 'p' to 't' lowercase alphabets
-&gt; 'coat tin food put stoop best'.match(/\b[a-fp-t]+\b/g)
-&lt; [&quot;best&quot;]
-</code></pre>
-<h2><a class="header" href="#negating-character-sets" id="negating-character-sets">Negating character sets</a></h2>
-<p>The <code>^</code> metacharacter has to specified as the first character of the character class. It negates the set, so all characters other than those specified will be matched.</p>
-<pre><code class="language-js">// all non-digits
-&gt; 'Sample123string42with777numbers'.match(/[^0-9]+/g)
-&lt; [&quot;Sample&quot;, &quot;string&quot;, &quot;with&quot;, &quot;numbers&quot;]
+> 'coat tin food put stoop best'.match(/\b[a-fp-t]+\b/g)
+< ["best"]
+</code></pre><h2><a class=header href=#negating-character-sets id=negating-character-sets>Negating character sets</a></h2><p>The <code>^</code> metacharacter has to specified as the first character of the character class. It negates the set, so all characters other than those specified will be matched.<pre><code class=language-js>// all non-digits
+> 'Sample123string42with777numbers'.match(/[^0-9]+/g)
+< ["Sample", "string", "with", "numbers"]
 
 // deleting characters from start of string based on a delimiter
-&gt; 'foo=42; baz=123'.replace(/^[^=]+/, '')
-&lt; &quot;=42; baz=123&quot;
-&gt; 'foo:123:bar:baz'.replace(/^([^:]+:){2}/, '')
-&lt; &quot;bar:baz&quot;
+> 'foo=42; baz=123'.replace(/^[^=]+/, '')
+< "=42; baz=123"
+> 'foo:123:bar:baz'.replace(/^([^:]+:){2}/, '')
+< "bar:baz"
 
 // deleting characters at end of string based on a delimiter
-&gt; 'foo=42; baz=123'.replace(/=[^=]+$/, '')
-&lt; &quot;foo=42; baz&quot;
-</code></pre>
-<p>As highlighted earlier, handle negative logic with care, as you might end up matching more than you wanted. Sometimes, it is easier to use positive character class and inverting the test condition instead of using negated character class.</p>
-<pre><code class="language-js">&gt; let words = ['tryst', 'fun', 'glyph', 'pity', 'why']
+> 'foo=42; baz=123'.replace(/=[^=]+$/, '')
+< "foo=42; baz"
+</code></pre><p>As highlighted earlier, handle negative logic with care, as you might end up matching more than you wanted. Sometimes, it is easier to use positive character class and inverting the test condition instead of using negated character class.<pre><code class=language-js>> let words = ['tryst', 'fun', 'glyph', 'pity', 'why']
 
 // elements not containing vowel characters
-&gt; words.filter(w =&gt; /^[^aeiou]+$/.test(w))
-&lt; [&quot;tryst&quot;, &quot;glyph&quot;, &quot;why&quot;]
+> words.filter(w => /^[^aeiou]+$/.test(w))
+< ["tryst", "glyph", "why"]
 
 // easier to write and maintain, note the use of '!' operator
 // but this'll match empty strings too unlike the previous solution
-&gt; words.filter(w =&gt; !/[aeiou]/.test(w))
-&lt; [&quot;tryst&quot;, &quot;glyph&quot;, &quot;why&quot;]
-</code></pre>
-<h2><a class="header" href="#matching-metacharacters-literally" id="matching-metacharacters-literally">Matching metacharacters literally</a></h2>
-<p>Similar to other metacharacters, prefix <code>\</code> to character class metacharacters to match them literally. Some of them can be achieved by different placement as well.</p>
-<p><code>-</code> should be first or last character or escaped using <code>\</code>.</p>
-<pre><code class="language-js">&gt; 'ab-cd gh-c 12-423'.match(/\b[a-z-]{2,}\b/g)
-&lt; [&quot;ab-cd&quot;, &quot;gh-c&quot;]
+> words.filter(w => !/[aeiou]/.test(w))
+< ["tryst", "glyph", "why"]
+</code></pre><h2><a class=header href=#matching-metacharacters-literally id=matching-metacharacters-literally>Matching metacharacters literally</a></h2><p>Similar to other metacharacters, prefix <code>\</code> to character class metacharacters to match them literally. Some of them can be achieved by different placement as well.<p><code>-</code> should be first or last character or escaped using <code>\</code>.<pre><code class=language-js>> 'ab-cd gh-c 12-423'.match(/\b[a-z-]{2,}\b/g)
+< ["ab-cd", "gh-c"]
 
-&gt; 'ab-cd gh-c 12-423'.match(/\b[a-z\-0-9]{2,}\b/g)
-&lt; [&quot;ab-cd&quot;, &quot;gh-c&quot;, &quot;12-423&quot;]
-</code></pre>
-<p><code>^</code> should be other than first character or escaped using <code>\</code>.</p>
-<pre><code class="language-js">&gt; 'f*(a^b) - 3*(a+b)'.match(/a[+^]b/g)
-&lt; [&quot;a^b&quot;, &quot;a+b&quot;]
+> 'ab-cd gh-c 12-423'.match(/\b[a-z\-0-9]{2,}\b/g)
+< ["ab-cd", "gh-c", "12-423"]
+</code></pre><p><code>^</code> should be other than first character or escaped using <code>\</code>.<pre><code class=language-js>> 'f*(a^b) - 3*(a+b)'.match(/a[+^]b/g)
+< ["a^b", "a+b"]
 
-&gt; 'f*(a^b) - 3*(a+b)'.match(/a[\^+]b/g)
-&lt; [&quot;a^b&quot;, &quot;a+b&quot;]
-</code></pre>
-<p><code>[</code> doesn't need escaping, but you can escape it if you wish. <code>]</code> should be escaped with <code>\</code>.</p>
-<pre><code class="language-js">&gt; 'words[5] = tea'.match(/[a-z[\]0-9]+/)[0]
-&lt; &quot;words[5]&quot;
-</code></pre>
-<p><code>\</code> should be escaped using <code>\</code>.</p>
-<pre><code class="language-js">&gt; console.log('5ba\\babc2'.match(/[a\\b]+/)[0])
-&lt; ba\bab
-</code></pre>
-<h2><a class="header" href="#escape-sequence-character-sets" id="escape-sequence-character-sets">Escape sequence character sets</a></h2>
-<p>Commonly used character sets have predefined escape sequences:</p>
-<ul>
-<li><code>\w</code> is similar to <code>[A-Za-z0-9_]</code> for matching word characters (recall the definition for word boundaries)</li>
-<li><code>\d</code> is similar to <code>[0-9]</code> for matching digit characters</li>
-<li><code>\s</code> is similar to <code>[ \t\r\n\f\v]</code> for matching whitespace characters</li>
-</ul>
-<p>These escape sequences can be used as a standalone sequence or inside a character class. As mentioned before, the examples and description will assume that the input is made up of ASCII characters only. Use <code>\W</code>, <code>\D</code> and <code>\S</code> respectively for their negated set.</p>
-<pre><code class="language-js">&gt; 'Sample123string42with777numbers'.split(/\d+/)
-&lt; [&quot;Sample&quot;, &quot;string&quot;, &quot;with&quot;, &quot;numbers&quot;]
+> 'f*(a^b) - 3*(a+b)'.match(/a[\^+]b/g)
+< ["a^b", "a+b"]
+</code></pre><p><code>[</code> doesn't need escaping, but you can escape it if you wish. <code>]</code> should be escaped with <code>\</code>.<pre><code class=language-js>> 'words[5] = tea'.match(/[a-z[\]0-9]+/)[0]
+< "words[5]"
+</code></pre><p><code>\</code> should be escaped using <code>\</code>.<pre><code class=language-js>> console.log('5ba\\babc2'.match(/[a\\b]+/)[0])
+< ba\bab
+</code></pre><h2><a class=header href=#escape-sequence-character-sets id=escape-sequence-character-sets>Escape sequence character sets</a></h2><p>Commonly used character sets have predefined escape sequences:<ul><li><code>\w</code> is similar to <code>[A-Za-z0-9_]</code> for matching word characters (recall the definition for word boundaries)<li><code>\d</code> is similar to <code>[0-9]</code> for matching digit characters<li><code>\s</code> is similar to <code>[ \t\r\n\f\v]</code> for matching whitespace characters</ul><p>These escape sequences can be used as a standalone sequence or inside a character class. As mentioned before, the examples and description will assume that the input is made up of ASCII characters only. Use <code>\W</code>, <code>\D</code> and <code>\S</code> respectively for their negated set.<pre><code class=language-js>> 'Sample123string42with777numbers'.split(/\d+/)
+< ["Sample", "string", "with", "numbers"]
 
-&gt; 'sea eat car rat eel tea'.match(/\b\w/g).join('')
-&lt; &quot;secret&quot;
+> 'sea eat car rat eel tea'.match(/\b\w/g).join('')
+< "secret"
 
-&gt; 'tea sea-pit sit-lean bean'.match(/[\w\s]+/g)
-&lt; [&quot;tea sea&quot;, &quot;pit sit&quot;, &quot;lean bean&quot;]
+> 'tea sea-pit sit-lean bean'.match(/[\w\s]+/g)
+< ["tea sea", "pit sit", "lean bean"]
 
-&gt; 'Sample123string42with777numbers'.replace(/\D+/g, '-')
-&lt; &quot;-123-42-777-&quot;
+> 'Sample123string42with777numbers'.replace(/\D+/g, '-')
+< "-123-42-777-"
 
-&gt; '   1..3  \v\f  foo_baz 42\tzzz   \r\n1-2-3  '.match(/\S+/g)
-&lt; [&quot;1..3&quot;, &quot;foo_baz&quot;, &quot;42&quot;, &quot;zzz&quot;, &quot;1-2-3&quot;]
-</code></pre>
-<h2><a class="header" href="#numeric-ranges" id="numeric-ranges">Numeric ranges</a></h2>
-<p>Character classes can also be used to construct numeric ranges.</p>
-<pre><code class="language-js">// numbers between 10 to 29
-&gt; '23 154 12 26 98234'.match(/\b[12]\d\b/g)
-&lt; [&quot;23&quot;, &quot;12&quot;, &quot;26&quot;]
+> '   1..3  \v\f  foo_baz 42\tzzz   \r\n1-2-3  '.match(/\S+/g)
+< ["1..3", "foo_baz", "42", "zzz", "1-2-3"]
+</code></pre><h2><a class=header href=#numeric-ranges id=numeric-ranges>Numeric ranges</a></h2><p>Character classes can also be used to construct numeric ranges.<pre><code class=language-js>// numbers between 10 to 29
+> '23 154 12 26 98234'.match(/\b[12]\d\b/g)
+< ["23", "12", "26"]
 
-// numbers &gt;= 100
-&gt; '23 154 12 26 98234'.match(/\b\d{3,}\b/g)
-&lt; [&quot;154&quot;, &quot;98234&quot;]
-// numbers &gt;= 100 if there are leading zeros
-&gt; '0501 035 154 12 26 98234'.match(/\b0*[1-9]\d{2,}\b/g)
-&lt; [&quot;0501&quot;, &quot;154&quot;, &quot;98234&quot;]
-</code></pre>
-<p>However, it is easy to miss corner cases and some ranges are complicated to design. In such cases, it is better to match all the numbers and then add code to use actual numeric operations.</p>
-<pre><code class="language-js">// numbers &lt; 350
-&gt; '45 349 651 593 4 204'.match(/\d+/g).filter(n =&gt; n &lt; 350)
-&lt; [&quot;45&quot;, &quot;349&quot;, &quot;4&quot;, &quot;204&quot;]
-&gt; '45 349 651 593 4 204'.replace(/\d+/g, m =&gt; m &lt; 350 ? 0 : 1)
-&lt; &quot;0 0 1 1 0 0&quot;
+// numbers >= 100
+> '23 154 12 26 98234'.match(/\b\d{3,}\b/g)
+< ["154", "98234"]
+// numbers >= 100 if there are leading zeros
+> '0501 035 154 12 26 98234'.match(/\b0*[1-9]\d{2,}\b/g)
+< ["0501", "154", "98234"]
+</code></pre><p>However, it is easy to miss corner cases and some ranges are complicated to design. In such cases, it is better to match all the numbers and then add code to use actual numeric operations.<pre><code class=language-js>// numbers < 350
+> '45 349 651 593 4 204'.match(/\d+/g).filter(n => n < 350)
+< ["45", "349", "4", "204"]
+> '45 349 651 593 4 204'.replace(/\d+/g, m => m < 350 ? 0 : 1)
+< "0 0 1 1 0 0"
 
 // numbers between 200 and 650
-&gt; '45 349 651 593 4 204'.match(/\d+/g).filter(n =&gt; n &gt;= 200 &amp;&amp; n &lt;= 650)
-&lt; [&quot;349&quot;, &quot;593&quot;, &quot;204&quot;]
-</code></pre>
-<blockquote>
-<p><img src="images/info.svg" alt="info" /> See <a href="https://www.regular-expressions.info/numericranges.html">regular-expressions: matching numeric ranges</a> for more examples.</p>
-</blockquote>
-<h2><a class="header" href="#cheatsheet-and-summary" id="cheatsheet-and-summary">Cheatsheet and Summary</a></h2>
-<table><thead><tr><th>Note</th><th>Description</th></tr></thead><tbody>
-<tr><td><code>[ae;o]</code></td><td>match <strong>any</strong> of these characters once</td></tr>
-<tr><td></td><td>quantifiers are applicable to character classes too</td></tr>
-<tr><td><code>[3-7]</code></td><td><strong>range</strong> of characters from <code>3</code> to <code>7</code></td></tr>
-<tr><td><code>[^=b2]</code></td><td><strong>negated set</strong>, match other than <code>=</code> or <code>b</code> or <code>2</code></td></tr>
-<tr><td><code>[a-z-]</code></td><td><code>-</code> should be first/last or escaped using <code>\</code> to match literally</td></tr>
-<tr><td><code>[+^]</code></td><td><code>^</code> shouldn't be first character or escaped using <code>\</code></td></tr>
-<tr><td><code>[\]\\]</code></td><td><code>]</code> and <code>\</code> should be escaped using <code>\</code></td></tr>
-<tr><td></td><td><code>[</code> doesn't need escaping, but <code>\[</code> can also be used</td></tr>
-<tr><td><code>\w</code></td><td>similar to <code>[A-Za-z0-9_]</code> for matching word characters</td></tr>
-<tr><td><code>\d</code></td><td>similar to <code>[0-9]</code> for matching digit characters</td></tr>
-<tr><td><code>\s</code></td><td>similar to <code>[ \t\n\r\f\v]</code> for matching whitespace characters</td></tr>
-<tr><td></td><td>assumes input encoding is ASCII</td></tr>
-<tr><td></td><td>use <code>\W</code>, <code>\D</code>, and <code>\S</code> for their opposites respectively</td></tr>
-</tbody></table>
-<p>This chapter focused on how to create custom placeholders to match limited set of characters. Grouping and character classes can be considered as two levels of abstractions. On the one hand, you can have character sets inside <code>[]</code> and on the other hand, you can have multiple alternations grouped inside <code>()</code> including character classes. As anchoring and quantifiers can be applied to both these abstractions, you can begin to see how regular expressions is considered a mini-programming language. In coming chapters, you'll even see how to negate groupings similar to negated character class in certain scenarios.</p>
-<h2><a class="header" href="#exercises" id="exercises">Exercises</a></h2>
-<p><strong>a)</strong> For the array <code>items</code>, filter all elements starting with <code>hand</code> and ending with <code>s</code> or <code>y</code> or <code>le</code>. No other character in between, for example, <code>hands</code> should match but not <code>hand-has</code>.</p>
-<pre><code class="language-js">&gt; let items = ['-handy', 'hand', 'handy', 'handled', 'hands', 'handle']
+> '45 349 651 593 4 204'.match(/\d+/g).filter(n => n >= 200 && n <= 650)
+< ["349", "593", "204"]
+</code></pre><blockquote><p><img src=images/info.svg alt=info> See <a href=https://www.regular-expressions.info/numericranges.html>regular-expressions: matching numeric ranges</a> for more examples.</blockquote><h2><a class=header href=#cheatsheet-and-summary id=cheatsheet-and-summary>Cheatsheet and Summary</a></h2><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>[ae;o]</code><td>match <strong>any</strong> of these characters once<tr><td><td>quantifiers are applicable to character classes too<tr><td><code>[3-7]</code><td><strong>range</strong> of characters from <code>3</code> to <code>7</code><tr><td><code>[^=b2]</code><td><strong>negated set</strong>, match other than <code>=</code> or <code>b</code> or <code>2</code><tr><td><code>[a-z-]</code><td><code>-</code> should be first/last or escaped using <code>\</code> to match literally<tr><td><code>[+^]</code><td><code>^</code> shouldn't be first character or escaped using <code>\</code><tr><td><code>[\]\\]</code><td><code>]</code> and <code>\</code> should be escaped using <code>\</code><tr><td><td><code>[</code> doesn't need escaping, but <code>\[</code> can also be used<tr><td><code>\w</code><td>similar to <code>[A-Za-z0-9_]</code> for matching word characters<tr><td><code>\d</code><td>similar to <code>[0-9]</code> for matching digit characters<tr><td><code>\s</code><td>similar to <code>[ \t\n\r\f\v]</code> for matching whitespace characters<tr><td><td>assumes input encoding is ASCII<tr><td><td>use <code>\W</code>, <code>\D</code>, and <code>\S</code> for their opposites respectively</table><p>This chapter focused on how to create custom placeholders to match limited set of characters. Grouping and character classes can be considered as two levels of abstractions. On the one hand, you can have character sets inside <code>[]</code> and on the other hand, you can have multiple alternations grouped inside <code>()</code> including character classes. As anchoring and quantifiers can be applied to both these abstractions, you can begin to see how regular expressions is considered a mini-programming language. In coming chapters, you'll even see how to negate groupings similar to negated character class in certain scenarios.<h2><a class=header href=#exercises id=exercises>Exercises</a></h2><p><strong>a)</strong> For the array <code>items</code>, filter all elements starting with <code>hand</code> and ending with <code>s</code> or <code>y</code> or <code>le</code>. No other character in between, for example, <code>hands</code> should match but not <code>hand-has</code>.<pre><code class=language-js>> let items = ['-handy', 'hand', 'handy', 'handled', 'hands', 'handle']
 
 // add your solution here
-&lt; [&quot;handy&quot;, &quot;hands&quot;, &quot;handle&quot;]
-</code></pre>
-<p><strong>b)</strong> Replace all whole words <code>reed</code> or <code>read</code> or <code>red</code> with <code>X</code>.</p>
-<pre><code class="language-js">&gt; let ip = 'redo red credible :read: rod reed bred'
+< ["handy", "hands", "handle"]
+</code></pre><p><strong>b)</strong> Replace all whole words <code>reed</code> or <code>read</code> or <code>red</code> with <code>X</code>.<pre><code class=language-js>> let ip = 'redo red credible :read: rod reed bred'
 
 // add your solution here
-&lt; &quot;redo X credible :X: rod X bred&quot;
-</code></pre>
-<p><strong>c)</strong> For the array <code>words</code>, filter all elements containing <code>e</code> or <code>i</code> followed by <code>l</code> or <code>n</code>. Note that the order mentioned should be followed.</p>
-<pre><code class="language-js">&gt; let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
+< "redo X credible :X: rod X bred"
+</code></pre><p><strong>c)</strong> For the array <code>words</code>, filter all elements containing <code>e</code> or <code>i</code> followed by <code>l</code> or <code>n</code>. Note that the order mentioned should be followed.<pre><code class=language-js>> let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
 
 // add your solution here
-&lt; [&quot;surrender&quot;, &quot;unicorn&quot;, &quot;eel&quot;]
-</code></pre>
-<p><strong>d)</strong> For the array <code>words</code>, filter all elements containing <code>e</code> or <code>i</code> and <code>l</code> or <code>n</code> in any order.</p>
-<pre><code class="language-js">&gt; let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
+< ["surrender", "unicorn", "eel"]
+</code></pre><p><strong>d)</strong> For the array <code>words</code>, filter all elements containing <code>e</code> or <code>i</code> and <code>l</code> or <code>n</code> in any order.<pre><code class=language-js>> let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
 
 // add your solution here
-&lt; [&quot;surrender&quot;, &quot;unicorn&quot;, &quot;newer&quot;, &quot;eel&quot;]
-</code></pre>
-<p><strong>e)</strong> Extract all hex character sequences, with <code>0x</code> optional prefix. Match the characters case insensitively, and the sequences shouldn't be surrounded by other word characters.</p>
-<pre><code class="language-js">&gt; let str1 = '128A foo 0xfe32 34 0xbar'
-&gt; let str2 = '0XDEADBEEF place 0x0ff1ce bad'
+< ["surrender", "unicorn", "newer", "eel"]
+</code></pre><p><strong>e)</strong> Extract all hex character sequences, with <code>0x</code> optional prefix. Match the characters case insensitively, and the sequences shouldn't be surrounded by other word characters.<pre><code class=language-js>> let str1 = '128A foo 0xfe32 34 0xbar'
+> let str2 = '0XDEADBEEF place 0x0ff1ce bad'
 
-&gt; const hex_seq =       // add your solution here
+> const hex_seq =       // add your solution here
 
-&gt; str1.match(hex_seq)
-&lt; [&quot;128A&quot;, &quot;0xfe32&quot;, &quot;34&quot;]
-&gt; str2.match(hex_seq)
-&lt; [&quot;0XDEADBEEF&quot;, &quot;0x0ff1ce&quot;, &quot;bad&quot;]
-</code></pre>
-<p><strong>f)</strong> Delete from <code>(</code> to the next occurrence of <code>)</code> unless they contain parentheses characters in between.</p>
-<pre><code class="language-js">&gt; let str1 = 'def factorial()'
-&gt; let str2 = 'a/b(division) + c%d(#modulo) - (e+(j/k-3)*4)'
-&gt; let str3 = 'Hi there(greeting). Nice day(a(b)'
+> str1.match(hex_seq)
+< ["128A", "0xfe32", "34"]
+> str2.match(hex_seq)
+< ["0XDEADBEEF", "0x0ff1ce", "bad"]
+</code></pre><p><strong>f)</strong> Delete from <code>(</code> to the next occurrence of <code>)</code> unless they contain parentheses characters in between.<pre><code class=language-js>> let str1 = 'def factorial()'
+> let str2 = 'a/b(division) + c%d(#modulo) - (e+(j/k-3)*4)'
+> let str3 = 'Hi there(greeting). Nice day(a(b)'
 
-&gt; const remove_parentheses =        // add your solution here
+> const remove_parentheses =        // add your solution here
 
-&gt; str1.replace(remove_parentheses, '')
-&lt; &quot;def factorial&quot;
-&gt; str2.replace(remove_parentheses, '')
-&lt; &quot;a/b + c%d - (e+*4)&quot;
-&gt; str3.replace(remove_parentheses, '')
-&lt; &quot;Hi there. Nice day(a&quot;
-</code></pre>
-<p><strong>g)</strong> For the array <code>words</code>, filter all elements not starting with <code>e</code> or <code>p</code> or <code>u</code>.</p>
-<pre><code class="language-js">&gt; let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
+> str1.replace(remove_parentheses, '')
+< "def factorial"
+> str2.replace(remove_parentheses, '')
+< "a/b + c%d - (e+*4)"
+> str3.replace(remove_parentheses, '')
+< "Hi there. Nice day(a"
+</code></pre><p><strong>g)</strong> For the array <code>words</code>, filter all elements not starting with <code>e</code> or <code>p</code> or <code>u</code>.<pre><code class=language-js>> let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
 
 // add your solution here
-&lt; [&quot;surrender&quot;, &quot;newer&quot;, &quot;door&quot;]
-</code></pre>
-<p><strong>h)</strong> For the array <code>words</code>, filter all elements not containing <code>u</code> or <code>w</code> or <code>ee</code> or <code>-</code>.</p>
-<pre><code class="language-js">&gt; let words = ['p-t', 'you', 'tea', 'heel', 'owe', 'new', 'reed', 'ear']
+< ["surrender", "newer", "door"]
+</code></pre><p><strong>h)</strong> For the array <code>words</code>, filter all elements not containing <code>u</code> or <code>w</code> or <code>ee</code> or <code>-</code>.<pre><code class=language-js>> let words = ['p-t', 'you', 'tea', 'heel', 'owe', 'new', 'reed', 'ear']
 
 // add your solution here
-&lt; [&quot;tea&quot;, &quot;ear&quot;]
-</code></pre>
-<p><strong>i)</strong> The given input strings contain fields separated by <code>,</code> and fields can be empty too. Replace last three fields with <code>WHTSZ323</code>.</p>
-<pre><code class="language-js">&gt; let row1 = '(2),kite,12,,D,C,,'
-&gt; let row2 = 'hi,bye,sun,moon'
+< ["tea", "ear"]
+</code></pre><p><strong>i)</strong> The given input strings contain fields separated by <code>,</code> and fields can be empty too. Replace last three fields with <code>WHTSZ323</code>.<pre><code class=language-js>> let row1 = '(2),kite,12,,D,C,,'
+> let row2 = 'hi,bye,sun,moon'
 
-&gt; const pat1 =      // add your solution here
+> const pat1 =      // add your solution here
 
 // add your solution here for row1
-&lt; &quot;(2),kite,12,,D,WHTSZ323&quot;
+< "(2),kite,12,,D,WHTSZ323"
 // add your solution here for row2
-&lt; &quot;hi,WHTSZ323&quot;
-</code></pre>
-<p><strong>j)</strong> Split the given strings based on consecutive sequence of digit or whitespace characters.</p>
-<pre><code class="language-js">&gt; let s1 = 'lion \t Ink32onion Nice'
-&gt; let s2 = '**1\f2\n3star\t7 77\r**'
+< "hi,WHTSZ323"
+</code></pre><p><strong>j)</strong> Split the given strings based on consecutive sequence of digit or whitespace characters.<pre><code class=language-js>> let s1 = 'lion \t Ink32onion Nice'
+> let s2 = '**1\f2\n3star\t7 77\r**'
 
-&gt; const pat2 =      // add your solution here
+> const pat2 =      // add your solution here
 
-&gt; s1.split(pat2)
-&lt; [&quot;lion&quot;, &quot;Ink&quot;, &quot;onion&quot;, &quot;Nice&quot;]
-&gt; s2.split(pat2)
-&lt; [&quot;**&quot;, &quot;star&quot;, &quot;**&quot;]
-</code></pre>
-<p><strong>k)</strong> Delete all occurrences of the sequence <code>&lt;characters&gt;</code> where <code>characters</code> is one or more non <code>&gt;</code> characters and cannot be empty.</p>
-<pre><code class="language-js">&gt; let ip = 'a&lt;apple&gt; 1&lt;&gt; b&lt;bye&gt; 2&lt;&gt; c&lt;cat&gt;'
+> s1.split(pat2)
+< ["lion", "Ink", "onion", "Nice"]
+> s2.split(pat2)
+< ["**", "star", "**"]
+</code></pre><p><strong>k)</strong> Delete all occurrences of the sequence <code>&LTcharacters></code> where <code>characters</code> is one or more non <code>></code> characters and cannot be empty.<pre><code class=language-js>> let ip = 'a&LTapple> 1<> b&LTbye> 2<> c&LTcat>'
 
 // add your solution here
-&lt; &quot;a 1&lt;&gt; b 2&lt;&gt; c&quot;
-</code></pre>
-<p><strong>l)</strong> <code>\b[a-z](on|no)[a-z]\b</code> is same as <code>\b[a-z][on]{2}[a-z]\b</code>. True or False? Sample input lines shown below might help to understand the differences, if any.</p>
-<pre><code class="language-js">&gt; console.log('known\nmood\nknow\npony\ninns')
+< "a 1<> b 2<> c"
+</code></pre><p><strong>l)</strong> <code>\b[a-z](on|no)[a-z]\b</code> is same as <code>\b[a-z][on]{2}[a-z]\b</code>. True or False? Sample input lines shown below might help to understand the differences, if any.<pre><code class=language-js>> console.log('known\nmood\nknow\npony\ninns')
   known
   mood
   know
   pony
   inns
-</code></pre>
-<p><strong>m)</strong> For the given array, filter all elements containing any number sequence greater than <code>624</code>.</p>
-<pre><code class="language-js">&gt; let items = ['h0000432ab', 'car00625', '42_624 0512', '3.14 96 2 foo1234baz']
+</code></pre><p><strong>m)</strong> For the given array, filter all elements containing any number sequence greater than <code>624</code>.<pre><code class=language-js>> let items = ['h0000432ab', 'car00625', '42_624 0512', '3.14 96 2 foo1234baz']
 
 // add your solution here
-&lt; [&quot;car00625&quot;, &quot;3.14 96 2 foo1234baz&quot;]
-</code></pre>
-<p><strong>n)</strong> Convert the given input string to two different arrays as shown below.</p>
-<pre><code class="language-js">&gt; let ip = 'price_42 roast^\t\n^-ice==cat\neast'
+< ["car00625", "3.14 96 2 foo1234baz"]
+</code></pre><p><strong>n)</strong> Convert the given input string to two different arrays as shown below.<pre><code class=language-js>> let ip = 'price_42 roast^\t\n^-ice==cat\neast'
 
 // add your solution here
-&lt; [&quot;price_42&quot;, &quot;roast&quot;, &quot;ice&quot;, &quot;cat&quot;, &quot;east&quot;]
+< ["price_42", "roast", "ice", "cat", "east"]
 
 // add your solution here
-&lt; [&quot;price_42&quot;, &quot; &quot;, &quot;roast&quot;, &quot;^	\n^-&quot;, &quot;ice&quot;, &quot;==&quot;, &quot;cat&quot;, &quot;\n&quot;, &quot;east&quot;]
-</code></pre>
-<p><strong>o)</strong> Filter all elements whose first non-whitespace character is not a <code>#</code> character. Any element made up of only whitespace characters should be ignored as well.</p>
-<pre><code class="language-js">&gt; let items = ['    #comment', '\t\napple #42', '#oops', 'sure', 'no#1', '\t\r\f']
+< ["price_42", " ", "roast", "^	\n^-", "ice", "==", "cat", "\n", "east"]
+</code></pre><p><strong>o)</strong> Filter all elements whose first non-whitespace character is not a <code>#</code> character. Any element made up of only whitespace characters should be ignored as well.<pre><code class=language-js>> let items = ['    #comment', '\t\napple #42', '#oops', 'sure', 'no#1', '\t\r\f']
 
 // add your solution here
-&lt; [&quot;	\napple #42&quot;, &quot;sure&quot;, &quot;no#1&quot;]
-</code></pre>
-<p><strong>p)</strong> For the given string, surround all whole words with <code>{}</code> except for whole words <code>par</code> and <code>cat</code>.</p>
-<pre><code class="language-js">&gt; let ip = 'part; cat {super} rest_42 par scatter'
+< ["	\napple #42", "sure", "no#1"]
+</code></pre><p><strong>p)</strong> For the given string, surround all whole words with <code>{}</code> except for whole words <code>par</code> and <code>cat</code>.<pre><code class=language-js>> let ip = 'part; cat {super} rest_42 par scatter'
 
 // add your solution here
-&lt; &quot;{part}; cat {{super}} {rest_42} par {scatter}&quot;
-</code></pre>
-
-                    </main>
-
-                    <nav class="nav-wrapper" aria-label="Page navigation">
-                        <!-- Mobile navigation buttons -->
-                        
-                            <a rel="prev" href="working-with-matched-portions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                        
-
-                        
-                            <a rel="next" href="groupings-and-backreferences.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        
-
-                        <div style="clear: both"></div>
-                    </nav>
-                </div>
-            </div>
-
-            <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
-                    <a rel="prev" href="working-with-matched-portions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                
-
-                
-                    <a rel="next" href="groupings-and-backreferences.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                
-            </nav>
-
-        </div>
-
-        
-
-        
-
-        
-
-        
-        <script type="text/javascript">
+< "{part}; cat {{super}} {rest_42} par {scatter}"
+</code></pre></main><nav class=nav-wrapper aria-label="Page navigation"><a rel=prev href=working-with-matched-portions.html class="mobile-nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=groupings-and-backreferences.html class="mobile-nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav class=nav-wide-wrapper aria-label="Page navigation"><a rel=prev href=working-with-matched-portions.html class="nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=groupings-and-backreferences.html class="nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a></nav></div><script>
             window.playground_copyable = true;
-        </script>
-        
-
-        
-
-        
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
-
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
-
-        <!-- Custom JS scripts -->
-        
-
-        
-
-    </body>
-</html>
+        </script><script src=elasticlunr.min.js charset=utf-8></script><script src=mark.min.js charset=utf-8></script><script src=searcher.js charset=utf-8></script><script src=clipboard.min.js charset=utf-8></script><script src=highlight.js charset=utf-8></script><script src=book.js charset=utf-8></script><script src=sidebar.js></script>
