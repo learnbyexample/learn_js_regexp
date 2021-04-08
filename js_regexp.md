@@ -10,28 +10,27 @@ A good understanding of basic-level programming concepts and prior experience wo
 
 ## Conventions
 
-* The examples presented here have been tested on Chrome/Chromium console (version 81+) and includes features not available in other browsers and platforms.
+* The examples presented here have been tested on Chrome/Chromium console (version 89+) and includes features not available in other browsers and platforms.
 * Code snippets shown are copy pasted from the console and modified for presentation purposes. Some of the commands are preceded by comments to provide context and explanations. Blank lines have been added to improve readability and output is skipped when it is `undefined` or otherwise unnecessary to be shown.
 * Unless otherwise noted, all examples and explanations are meant for *ASCII* characters.
 * External links are provided for further reading throughout the book. Not necessary to immediately visit them. They have been chosen with care and would help, especially during rereads.
-* The [learn_js_regexp](https://github.com/learnbyexample/learn_js_regexp) repo has all the code snippets and exercises and other details related to the book. Click the **Clone** button to get the files.
+* The [learn_js_regexp](https://github.com/learnbyexample/learn_js_regexp) repo has all the code snippets, exercises and other details related to the book. Click the **Code** button to get the files.
 
 ## Acknowledgements
 
 * [MDN: Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) — documentation and examples
 * [/r/learnjavascript/](https://www.reddit.com/r/learnjavascript/) and [/r/regex/](https://www.reddit.com/r/regex/) — helpful forums for beginners and experienced programmers alike
 * [stackoverflow](https://stackoverflow.com/) — for getting answers to pertinent questions on JavaScript and regular expressions
-* [tex.stackexchange](https://tex.stackexchange.com/) — for help on `pandoc` and `tex` related questions
+* [tex.stackexchange](https://tex.stackexchange.com/) — for help on [pandoc](https://github.com/jgm/pandoc/) and `tex` related questions
 * Cover image: [LibreOffice Draw](https://www.libreoffice.org/discover/draw/) and [regulex](https://jex.im/regulex)
 * [Warning](https://commons.wikimedia.org/wiki/File:Warning_icon.svg) and [Info](https://commons.wikimedia.org/wiki/File:Info_icon_002.svg) icons by [Amada44](https://commons.wikimedia.org/wiki/User:Amada44) under public domain
+* [pngquant](https://pngquant.org/) and [svgcleaner](https://github.com/RazrFalcon/svgcleaner) for optimizing images
 
 ## Feedback and Errata
 
 I would highly appreciate if you'd let me know how you felt about this book, it would help to improve this book as well as my future attempts. Also, please do let me know if you spot any error or typo.
 
 Issue Manager: [https://github.com/learnbyexample/learn_js_regexp/issues](https://github.com/learnbyexample/learn_js_regexp/issues)
-
-Goodreads: https://www.goodreads.com/book/show/49090622-javascript-regexp
 
 E-mail: learnbyexample.net@gmail.com
 
@@ -53,7 +52,7 @@ Resources mentioned in Acknowledgements section above are available under origin
 
 ## Book version
 
-1.5
+1.6
 
 See [Version_changes.md](https://github.com/learnbyexample/learn_js_regexp/blob/master/Version_changes.md) to track changes across book versions.
 
@@ -130,7 +129,7 @@ First up, a simple example to test whether a string is part of another string or
 > sentence.includes('z')
 < false
 
-// check if 'sentence' matches the pattern as described by the regexp
+// check if 'sentence' matches the pattern as described by the RegExp object
 > /is/.test(sentence)
 < true
 > /z/.test(sentence)
@@ -194,7 +193,7 @@ Examples for `i` flag is shown below. `g` flag will be discussed in [replace met
 
 ## RegExp constructor and reuse
 
-The RegExp object can be saved in a variable. This helps to improve code clarity, enable reuse, etc.
+The RegExp object can be saved in a variable. This helps to improve code clarity, enables reuse, etc.
 
 ```js
 > const pet = /dog/
@@ -225,7 +224,6 @@ The main advantage of the constructor over `//` literal is the ability to dynami
 > const pat1 = new RegExp(`${greeting} there`)
 > pat1
 < /hi there/
-
 > new RegExp(`${greeting.toUpperCase()} there`)
 < /HI there/
 ```
@@ -397,7 +395,7 @@ water 10`
 
 # Anchors
 
-In this chapter, you'll be learning about qualifying a pattern. Instead of matching anywhere in the given input string, restrictions can be specified. For now, you'll see the ones that are already part of regular expression features. In later chapters, you'll learn how to define your own rules for restriction.
+In this chapter, you'll be learning about qualifying a pattern. Instead of matching anywhere in the given string, restrictions can be specified. For now, you'll see the ones that are already part of regexp features. In later chapters, you'll learn how to define your own rules for restriction.
 
 These restrictions are made possible by assigning special meaning to certain characters and escape sequences. The characters with special meaning are known as **metacharacters** in regexp parlance. In case you need to match those characters literally, you need to escape them with a `\` character (discussed in [Escaping metacharacters](#escaping-metacharacters) chapter).
 
@@ -730,7 +728,6 @@ In a conditional expression, you can use the logical operators to combine multip
 // replace either 'cat' at start of string or 'cat' at end of word
 > 'catapults concatenate cat scat'.replace(/^cat|cat\b/g, 'X')
 < "Xapults concatenate X sX"
-
 // replace either 'cat' or 'dog' or 'fox' with 'mammal'
 > 'cat dog bee parrot fox'.replace(/cat|dog|fox/g, 'mammal')
 < "mammal mammal bee parrot mammal"
@@ -900,7 +897,7 @@ When you are defining the regexp yourself, you can manually escape the metachara
 
 ```js
 > function escapeRegExp(string) {
-    return string.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&')
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   }
 ```
 
@@ -925,7 +922,7 @@ There are many things in the above regexp that you haven't learnt yet. They'll b
 "f*(a^b) - 3*c"
 ```
 
->![info](images/info.svg) Note that the `/` delimiter character isn't escaped in the above function. Use `[.*+\-?^${}()|[\]\\\/]` to escape the delimiter as well.
+>![info](images/info.svg) Note that the `/` delimiter character isn't escaped in the above function. Use `[.*+?^${}()|[\]\\\/]` to escape the delimiter as well.
 
 ## Dynamically building alternation
 
@@ -1286,7 +1283,6 @@ Next up, how to construct AND conditional using dot metacharacter and quantifier
 // match 'Error' followed by zero or more characters followed by 'valid'
 > /Error.*valid/.test('Error: not a valid input')
 < true
-
 > /Error.*valid/.test('Error: key not found')
 < false
 ```
@@ -2170,7 +2166,6 @@ As highlighted earlier, handle negative logic with care, as you might end up mat
 // elements not containing vowel characters
 > words.filter(w => /^[^aeiou]+$/.test(w))
 < ["tryst", "glyph", "why"]
-
 // easier to write and maintain, note the use of '!' operator
 // but this'll match empty strings too unlike the previous solution
 > words.filter(w => !/[aeiou]/.test(w))
@@ -2610,6 +2605,7 @@ When backreferencing is not required, you can use a non-capturing group to avoid
 // but using capture group will not give expected output
 > '123hand42handy777handful500'.split(/hand(y|ful)?/)
 < ["123", undefined, "42", "y", "777", "ful", "500"]
+
 // non-capturing group to the rescue
 > '123hand42handy777handful500'.split(/hand(?:y|ful)?/)
 < ["123", "42", "777", "500"]
@@ -2877,7 +2873,7 @@ Make sure to test these patterns for your use case. For example, the below data 
 
 ## Summary
 
-Some patterns are quite complex and not easy to build and validate from scratch. Libraries like **CommonRegexJS** are helpful to reduce your time and effort needed for commonly known tasks. However, you do need to **test** the solution for *your* use case. See also [stackoverflow: validating email addresses](https://stackoverflow.com/questions/201323/how-to-validate-an-email-address-using-a-regular-expression).
+Some patterns are quite complex and not easy to build and validate from scratch. Libraries like **CommonRegexJS** are helpful to reduce your time and effort needed for commonly known tasks. However, you do need to **test** the solution for *your* use case. See also [stackoverflow: validating email addresses](https://stackoverflow.com/q/201323/4082052).
 
 # Lookarounds
 
@@ -2893,7 +2889,6 @@ Before you get used to lookarounds too much, it is good to remember that JavaScr
 // filter elements containing digit and '#' characters
 > items.filter(s => /\d/.test(s) && s.includes('#'))
 < ["#foo 123"]
-
 // modify elements only if it doesn't start with '#'
 > items.filter(s => s[0] != '#').map(s => s.replace(/,.+,/, ' '))
 < ["1 4", "a d"]
@@ -2964,7 +2959,7 @@ In all the examples so far, lookahead grouping was placed as a suffix and lookbe
 < "foo_baz = num1 + 35 * 42 / num2"
 ```
 
->![info](images/info.svg) See [this stackoverflow Q&A](https://stackoverflow.com/questions/50011366/javascript-regex-negative-lookbehind-not-working-in-firefox) for a workaround if lookbehind isn't supported.
+>![info](images/info.svg) See [this stackoverflow Q&A](https://stackoverflow.com/q/50011366/4082052) for a workaround if lookbehind isn't supported.
 
 ## Positive lookarounds
 
@@ -3386,7 +3381,7 @@ You can also use codepoints inside `\u{}` construct to specify unicode character
 < ["fox", "eagle"]
 ```
 
->![info](images/info.svg) See also [stackoverflow: Unicode string to hex](https://stackoverflow.com/questions/21647928/javascript-unicode-string-to-hex).
+>![info](images/info.svg) See also [stackoverflow: Unicode string to hex](https://stackoverflow.com/q/21647928/4082052).
 
 ## Cheatsheet and Summary
 
@@ -3447,7 +3442,7 @@ Note that some of these resources are not specific to JavaScript, so use them wi
 * [Awesome Regex](https://github.com/aloisdg/awesome-regex) — curated collection of libraries, tools, frameworks and software
 * [randexp.js](https://github.com/fent/randexp.js) — Generate strings that match a given regular expression
 * [stackoverflow: JavaScript regexp](https://stackoverflow.com/questions/tagged/javascript+regex?sort=votes&pageSize=15)
-* [stackoverflow: regex FAQ](https://stackoverflow.com/questions/22937618/reference-what-does-this-regex-mean)
+* [stackoverflow: regex FAQ](https://stackoverflow.com/q/22937618/4082052)
     * [stackoverflow: regex tag](https://stackoverflow.com/questions/tagged/regex) is a good source of exercise questions
 * [rexegg](https://www.rexegg.com/) — tutorials, tricks and more
 * [regular-expressions](https://www.regular-expressions.info/) — tutorials and tools
@@ -3460,6 +3455,6 @@ Here's some links for specific topics:
 * [rexegg: best regex trick](https://www.rexegg.com/regex-best-trick.html)
 * [regular-expressions: matching numeric ranges](https://www.regular-expressions.info/numericranges.html)
 * [regular-expressions: Zero-Length Matches](https://www.regular-expressions.info/zerolength.html)
-* [stackoverflow: Greedy vs Reluctant vs Possessive Quantifiers](https://stackoverflow.com/questions/5319840/greedy-vs-reluctant-vs-possessive-quantifiers)
+* [stackoverflow: Greedy vs Reluctant vs Possessive Quantifiers](https://stackoverflow.com/q/5319840/4082052)
 * [cloudflare: Details of the Cloudflare outage on July 2, 2019](https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/) — see appendix for details about CPU exhaustion caused due to regular expression backtracking
 

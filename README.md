@@ -20,10 +20,10 @@ You can purchase the book using these links:
 
 * https://gumroad.com/l/js_regexp
 * https://leanpub.com/js_regexp
-* You can also get the book as part of **Awesome Regex** bundle from https://leanpub.com/b/regex or https://gumroad.com/l/regex
+* You can also get the book as part of **Awesome Regex** bundle from https://gumroad.com/l/regex or https://leanpub.com/b/regex
 * See https://learnbyexample.github.io/books/ for list of other books
 
-For a preview of the book, see [sample chapters](https://github.com/learnbyexample/learn_js_regexp/blob/master/sample_chapters/js_regexp_sample_chapters.pdf)
+For a preview of the book, see [sample chapters](https://github.com/learnbyexample/learn_js_regexp/blob/master/sample_chapters/js_regexp_sample.pdf)
 
 The book can also be [viewed as a single markdown file in this repo](./js_regexp.md). See my blogpost on [generating pdf from markdown using pandoc](https://learnbyexample.github.io/tutorial/ebook-generation/customizing-pandoc/) if you are interested in the ebook creation process.
 
@@ -33,11 +33,11 @@ For web version of the book, visit https://learnbyexample.github.io/learn_js_reg
 
 # Feedback
 
-Please open an issue if you spot any typo/errors.
+[Open an issue](https://github.com/learnbyexample/learn_js_regexp/issues) if you spot any typo/errors.
+
+:warning: :warning: Please DO NOT submit pull requests. Main reason being any modification requires changes in multiple places.
 
 I'd also highly appreciate your feedback about the book.
-
-Goodreads: https://www.goodreads.com/book/show/49090622-javascript-regexp
 
 Twitter: https://twitter.com/learn_byexample
 
@@ -68,9 +68,10 @@ Twitter: https://twitter.com/learn_byexample
 * [MDN: Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) — documentation and examples
 * [/r/learnjavascript/](https://www.reddit.com/r/learnjavascript/) and [/r/regex/](https://www.reddit.com/r/regex/) — helpful forums for beginners and experienced programmers alike
 * [stackoverflow](https://stackoverflow.com/) — for getting answers to pertinent questions on JavaScript and regular expressions
-* [tex.stackexchange](https://tex.stackexchange.com/) — for help on `pandoc` and `tex` related questions
+* [tex.stackexchange](https://tex.stackexchange.com/) — for help on [pandoc](https://github.com/jgm/pandoc/) and `tex` related questions
 * Cover image: [LibreOffice Draw](https://www.libreoffice.org/discover/draw/) and [regulex](https://jex.im/regulex)
 * [Warning](https://commons.wikimedia.org/wiki/File:Warning_icon.svg) and [Info](https://commons.wikimedia.org/wiki/File:Info_icon_002.svg) icons by [Amada44](https://commons.wikimedia.org/wiki/User:Amada44) under public domain
+* [pngquant](https://pngquant.org/) and [svgcleaner](https://github.com/RazrFalcon/svgcleaner) for optimizing images
 * [mdBook](https://github.com/rust-lang/mdBook) — for web version of the book
     * [mdBook-pagetoc](https://github.com/JorelAli/mdBook-pagetoc) — for adding table of contents for each chapter
     * [minify-html](https://github.com/wilsonzlin/minify-html) — for minifying html files

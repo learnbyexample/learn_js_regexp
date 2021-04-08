@@ -1,5 +1,13 @@
 <br>
 
+### 1.6
+
+* Code snippets checked to work with Chrome/Chromium console version 89+
+* Updated `escapeRegExp` function as per [MDN: Regular Expressions doc](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
+* Typo and miscellaneous changes
+
+<br>
+
 ### 1.5
 
 * Added **epub** version of the book

@@ -11,7 +11,7 @@
 // Dynamically escaping metacharacters
 
 function escapeRegExp(string) {
-  return string.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&')
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 }
 
 let eqn = 'f*(a^b) - 3*(a^b)'
