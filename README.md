@@ -37,6 +37,14 @@ For web version of the book, visit https://learnbyexample.github.io/learn_js_reg
 
 <br>
 
+# Testimonials
+
+>Literally was having a mini-breakdown about not understanding Regex in algorithm solutions the other day and now I'm feeling so much better, so thank YOU! I genuinely feel like I'm developing the skill for spotting when and where to use them after so much practice!
+>
+> — [feedback on twitter](https://twitter.com/codingwithlucy/status/1450668315635036160)
+
+<br>
+
 # Feedback
 
 [Open an issue](https://github.com/learnbyexample/learn_js_regexp/issues) if you spot any typo/errors.
