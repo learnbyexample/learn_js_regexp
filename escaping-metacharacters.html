@@ -1,8 +1,5 @@
-<!DOCTYPE HTML><html lang=en class="sidebar-visible no-js light"><head><meta charset=UTF-8><title>Escaping metacharacters - JavaScript RegExp</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta name=description content="Example based guide to mastering JavaScript regexp"><meta name=viewport content="width=device-width, initial-scale=1"><meta name=theme-color content=#ffffff><link rel=icon href=favicon.svg><link rel="shortcut icon"href=favicon.png><link rel=stylesheet href=css/variables.css><link rel=stylesheet href=css/general.css><link rel=stylesheet href=css/chrome.css><link rel=stylesheet href=FontAwesome/css/font-awesome.css><link rel=stylesheet href=fonts/fonts.css><link rel=stylesheet href=highlight.css><link rel=stylesheet href=tomorrow-night.css><link rel=stylesheet href=ayu-highlight.css><link rel=stylesheet href=style.css><body><script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script><script>
-            try {
+<!doctypehtml><html class="sidebar-visible no-js light"lang=en><head><meta charset=UTF-8><title>Escaping metacharacters - Understanding JavaScript RegExp</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta content="Learn JavaScript Regular Expressions step-by-step from beginner to advanced levels with hundreds of examples and exercises"name=description><meta content=width=device-width,initial-scale=1 name=viewport><meta content=#ffffff name=theme-color><meta content="Understanding JavaScript RegExp"property=og:title><meta content=website property=og:type><meta content="Learn JavaScript Regular Expressions step-by-step from beginner to advanced levels with hundreds of examples and exercises"property=og:description><meta content=https://learnbyexample.github.io/learn_js_regexp/ property=og:url><meta content=https://raw.githubusercontent.com/learnbyexample/learn_js_regexp/master/images/js_regexp_ls.png property=og:image><meta content=1280 property=og:image:width><meta content=720 property=og:image:height><meta content=summary_large_image property=twitter:card><meta content=@learn_byexample property=twitter:site><link href=favicon.svg rel=icon><link rel="shortcut icon"href=favicon.png><link href=css/variables.css rel=stylesheet><link href=css/general.css rel=stylesheet><link href=css/chrome.css rel=stylesheet><link href=FontAwesome/css/font-awesome.css rel=stylesheet><link href=fonts/fonts.css rel=stylesheet><link href=highlight.css rel=stylesheet><link href=tomorrow-night.css rel=stylesheet><link href=ayu-highlight.css rel=stylesheet><link href=style.css rel=stylesheet><body><script>var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";</script><script>try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
 
@@ -13,87 +10,81 @@
                 if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
                     localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
-            } catch (e) { }
-        </script><script>
-            var theme;
+            } catch (e) { }</script><script>var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
-        </script><script>
-            var html = document.querySelector('html');
+            html.classList.add('js');</script><script>var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             }
             html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
-        </script><nav id=sidebar class=sidebar aria-label="Table of contents"><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=whats-so-special-about-regular-expressions.html><strong aria-hidden=true>2.</strong> What's so special about Regular Expressions?</a><li class="chapter-item expanded"><a href=regexp-introduction.html><strong aria-hidden=true>3.</strong> RegExp introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html class=active><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>14.</strong> Unicode</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>15.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>16.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i id=git-repository-button class="fa fa-github"></i><a href=https://github.com/learnbyexample/learn_js_regexp>   Source code</a><li class="chapter-item expanded"><i id=home-button class="fa fa-home"></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i id=book-button class="fa fa-book"></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i id=mail-button class="fa fa-envelope"></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a></ol></div><div id=sidebar-resize-handle class=sidebar-resize-handle></div></nav><div id=page-wrapper class=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div id=menu-bar class="menu-bar sticky bordered"><div class=left-buttons><button id=sidebar-toggle class=icon-button type=button title="Toggle Table of Contents"aria-label="Toggle Table of Contents"aria-controls=sidebar><i class="fa fa-bars"></i></button><button id=theme-toggle class=icon-button type=button title="Change theme"aria-label="Change theme"aria-haspopup=true aria-expanded=false aria-controls=theme-list><i class="fa fa-paint-brush"></i></button><ul id=theme-list class=theme-popup aria-label=Themes role=menu><li role=none><button role=menuitem class=theme id=light>Light (default)</button><li role=none><button role=menuitem class=theme id=rust>Rust</button><li role=none><button role=menuitem class=theme id=coal>Coal</button><li role=none><button role=menuitem class=theme id=navy>Navy</button><li role=none><button role=menuitem class=theme id=ayu>Ayu</button></ul><button id=search-toggle class=icon-button type=button title="Search. (Shortkey: s)"aria-label="Toggle Searchbar"aria-expanded=false aria-keyshortcuts=S aria-controls=searchbar><i class="fa fa-search"></i></button></div><h1 class=menu-title>JavaScript RegExp</h1><div class=right-buttons><a href=https://learnbyexample.github.io title=Blog aria-label=Blog> <i id=home-button class="fa fa-home"></i> </a><a href=https://github.com/learnbyexample/learn_js_regexp title="Git repository"aria-label="Git repository"> <i id=git-repository-button class="fa fa-github"></i> </a></div></div><div id=search-wrapper class=hidden><form id=searchbar-outer class=searchbar-outer><input type=search id=searchbar name=searchbar placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header></form><div id=searchresults-outer class="searchresults-outer hidden"><div id=searchresults-header class=searchresults-header></div><ul id=searchresults></ul></div></div><script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+            html.classList.add("sidebar-" + sidebar);</script><nav aria-label="Table of contents"class=sidebar id=sidebar><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=regexp-introduction.html><strong aria-hidden=true>3.</strong> RegExp introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a class=active href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>14.</strong> Unicode</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>15.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>16.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i class="fa fa-github"id=git-repository-button></i><a href=https://github.com/learnbyexample/learn_js_regexp>   Source code</a><li class="chapter-item expanded"><i class="fa fa-home"id=home-button></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i class="fa fa-book"id=book-button></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i class="fa fa-envelope"id=mail-button></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a><li class="chapter-item expanded"><i class="fa fa-twitter"id=twitter-button></i><a href=https://twitter.com/learn_byexample>   Twitter</a></ol></div><div class=sidebar-resize-handle id=sidebar-resize-handle></div></nav><div class=page-wrapper id=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div class="menu-bar sticky bordered"id=menu-bar><div class=left-buttons><button aria-label="Toggle Table of Contents"title="Toggle Table of Contents"aria-controls=sidebar class=icon-button id=sidebar-toggle type=button><i class="fa fa-bars"></i></button><button aria-label="Change theme"title="Change theme"aria-controls=theme-list aria-expanded=false aria-haspopup=true class=icon-button id=theme-toggle type=button><i class="fa fa-paint-brush"></i></button><ul aria-label=Themes class=theme-popup id=theme-list role=menu><li role=none><button class=theme id=light role=menuitem>Light (default)</button><li role=none><button class=theme id=rust role=menuitem>Rust</button><li role=none><button class=theme id=coal role=menuitem>Coal</button><li role=none><button class=theme id=navy role=menuitem>Navy</button><li role=none><button class=theme id=ayu role=menuitem>Ayu</button></ul><button aria-label="Toggle Searchbar"title="Search. (Shortkey: s)"aria-controls=searchbar aria-expanded=false aria-keyshortcuts=S class=icon-button id=search-toggle type=button><i class="fa fa-search"></i></button></div><h1 class=menu-title>Understanding JavaScript RegExp</h1><div class=right-buttons><a aria-label=Blog href=https://learnbyexample.github.io title=Blog> <i class="fa fa-home"id=home-button></i> </a><a aria-label=Twitter href=https://twitter.com/learn_byexample title=Twitter> <i class="fa fa-twitter"id=twitter-button></i> </a><a aria-label="Git repository"title="Git repository"href=https://github.com/learnbyexample/learn_js_regexp> <i class="fa fa-github"id=git-repository-button></i> </a></div></div><div class=hidden id=search-wrapper><form class=searchbar-outer id=searchbar-outer><input placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header id=searchbar name=searchbar type=search></form><div class="searchresults-outer hidden"id=searchresults-outer><div class=searchresults-header id=searchresults-header></div><ul id=searchresults></ul></div></div><script>document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
-                    });
-                </script><div id=content class=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=escaping-metacharacters><a class=header href=#escaping-metacharacters>Escaping metacharacters</a></h1><p>You have seen a few metacharacters and escape sequences that help to compose a RegExp literal. There's also the <code>/</code> character used as a delimiter for RegExp objects. This chapter will discuss how to remove the special meaning of such constructs. Also, you'll learn how to take care of special characters when you are building a RegExp literal from normal strings.<h2 id=escaping-with-><a class=header href=#escaping-with->Escaping with \</a></h2><p>To match the metacharacters literally, i.e. to remove their special meaning, prefix those characters with a <code>\</code> character. To indicate a literal <code>\</code> character, use <code>\\</code>.<pre><code class=language-js>// even though ^ is not being used as anchor, it won't be matched literally
+                    });</script><div class=content id=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=escaping-metacharacters><a class=header href=#escaping-metacharacters>Escaping metacharacters</a></h1><p>You have seen a few metacharacters and escape sequences that help compose a RegExp literal. There's also the <code>/</code> character used as a delimiter for RegExp objects. This chapter will show how to remove the special meaning of such constructs. Also, you'll learn how to take care of these special characters when you are building a RegExp literal from normal strings.<h2 id=escaping-with-backslash><a class=header href=#escaping-with-backslash>Escaping with backslash</a></h2><p>To match the metacharacters literally, i.e. to remove their special meaning, prefix those characters with a <code>\</code> (backslash) character. To indicate a literal <code>\</code> character, use <code>\\</code>.<pre><code class=language-js>// even though ^ is not being used as an anchor, it won't be matched literally
 > /b^2/.test('a^2 + b^2 - C*3')
 < false
 // escaping will work
 > /b\^2/.test('a^2 + b^2 - C*3')
 < true
 
+// match ( or ) literally
 > '(a*b) + c'.replace(/\(|\)/g, '')
-< "a*b + c"
+< 'a*b + c'
 
 > '\\learn\\by\\example'.replace(/\\/g, '/')
-< "/learn/by/example"
-</code></pre><h2 id=dynamically-escaping-metacharacters><a class=header href=#dynamically-escaping-metacharacters>Dynamically escaping metacharacters</a></h2><p>When you are defining the regexp yourself, you can manually escape the metacharacters where needed. However, if you have strings obtained from elsewhere and need to match the contents literally, you'll have to somehow escape all the metacharacters while constructing the regexp. The solution of course is to use regular expressions! Usually, the programming language itself would provide an in-built method for such cases. JavaScript doesn't, but <a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions>MDN: Regular Expressions doc</a> has it covered in the form of a function as shown below.<pre><code class=language-js>> function escapeRegExp(string) {
+< '/learn/by/example'
+</code></pre><h2 id=dynamically-escaping-metacharacters><a class=header href=#dynamically-escaping-metacharacters>Dynamically escaping metacharacters</a></h2><p>When you are defining the regexp yourself, you can manually escape the metacharacters where needed. However, if you have strings obtained from elsewhere and need to match the contents literally, you'll have to somehow escape all the metacharacters while constructing the regexp. The solution of course is to use regular expressions! Usually, the programming language itself would provide a builtin method for such cases. JavaScript doesn't, but <a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#escaping>MDN: Regular Expressions Guide</a> has it covered in the form of a function as shown below.<pre><code class=language-js>> function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   }
-</code></pre><p>There are many things in the above regexp that you haven't learnt yet. They'll be discussed in coming chapters. For now, it is enough to know that this function will automatically escape all the metacharacters. Examples are shown below.<pre><code class=language-js>// sample input on which regexp will be applied
+</code></pre><p>There are many things in the above regexp that you haven't learnt yet. They'll be discussed in the coming chapters. For now, it is enough to know that this function will automatically escape all the metacharacters. Examples are shown below.<pre><code class=language-js>// sample input on which the regexp will be applied
 > let eqn = 'f*(a^b) - 3*(a^b)'
 // sample string obtained from elsewhere which needs to be matched literally
 > const usr_str = '(a^b)'
 
 // case 1: replace all matches
-// escaping metacharacters using 'escapeRegExp' function
+// escaping metacharacters using the 'escapeRegExp' function
 > const pat = new RegExp(escapeRegExp(usr_str), 'g')
 > pat
 < /\(a\^b\)/g
 > eqn.replace(pat, 'c')
-< "f*c - 3*c"
+< 'f*c - 3*c'
 
-// case 2: replace only at the end of string
+// case 2: replace only at the end of the input string
 > eqn.replace(new RegExp(escapeRegExp(usr_str) + '$'), 'c')
 "f*(a^b) - 3*c"
-</code></pre><blockquote><p><img src=images/info.svg alt=info> Note that the <code>/</code> delimiter character isn't escaped in the above function. Use <code>[.*+?^${}()|[\]\\\/]</code> to escape the delimiter as well.</blockquote><h2 id=dynamically-building-alternation><a class=header href=#dynamically-building-alternation>Dynamically building alternation</a></h2><p>Examples in previous chapter showed cases where a single regexp can contain multiple patterns combined using <code>|</code> metacharacter. Often, you have an array of strings and you need to match any of their content literally. To do so, you need to escape all the metacharacters before combining the strings with <code>|</code> metacharacter. The function shown below uses the <code>escapeRegExp</code> function introduced in the previous section.<pre><code class=language-js>> function unionRegExp(arr) {
+</code></pre><blockquote><p><img alt=info src=images/info.svg> Note that the <code>/</code> delimiter character isn't escaped in the above function. You can use <code>[.*+?^${}()|[\]\\\/]</code> to escape the delimiter as well.</blockquote><h2 id=dynamically-building-alternation><a class=header href=#dynamically-building-alternation>Dynamically building alternation</a></h2><p>Examples in the <a href=./alternation-and-grouping.html#alternation-and-grouping>previous chapter</a> showed cases where a single regexp can contain multiple patterns combined using the <code>|</code> metacharacter. Often, you have an array of strings and the requirement is to match any of the elements literally. To do so, you need to escape all the metacharacters before combining the strings with the <code>|</code> metacharacter. The function shown below uses the <code>escapeRegExp()</code> function introduced in the previous section.<pre><code class=language-js>> function unionRegExp(arr) {
     return arr.map(w => escapeRegExp(w)).join('|')
   }
-</code></pre><p>And here's some examples with <code>unionRegExp</code> function used to construct the required regexp.<pre><code class=language-js>// here, order of alternation wouldn't matter
+</code></pre><p>And here are some examples with the <code>unionRegExp()</code> function used to construct the required regexp.<pre><code class=language-js>// here, the order of alternation wouldn't matter
 // and assume that other regexp features aren't needed
 > let w1 = ['c^t', 'dog$', 'f|x']
 > const p1 = new RegExp(unionRegExp(w1), 'g')
 > p1
 < /c\^t|dog\$|f\|x/g
 > 'c^t dog$ bee parrot f|x'.replace(p1, 'mammal')
-< "mammal mammal bee parrot mammal"
+< 'mammal mammal bee parrot mammal'
 
 // here, alternation precedence rules needs to be applied first
 // and assume that the terms have to be matched as whole words
 > let w2 = ['hand', 'handy', 'handful']
-// sort by string length, longest first
+// sort by the string length, longest first
 > w2.sort((a, b) => b.length - a.length)
-< ["handful", "handy", "hand"]
+< ['handful', 'handy', 'hand']
 > const p2 = new RegExp(`\\b(${unionRegExp(w2)})\\b`, 'g')
 > p2
 < /\b(handful|handy|hand)\b/g
 // note that 'hands' and 'handed' aren't replaced
 > 'handful handed handy hands hand'.replace(p2, 'X')
-< "X handed X hands X"
-</code></pre><blockquote><p><img src=images/info.svg alt=info> The <a href=https://github.com/slevithan/xregexp>XRegExp</a> utility provides <a href=http://xregexp.com/api/#escape>XRegExp.escape</a> and <a href=http://xregexp.com/api/#union>XRegExp.union</a> methods. The union method has additional functionality of allowing a mix of string and RegExp literals and also takes care of renumbering <a href=./groupings-and-backreferences.html#groupings-and-backreferences>backreferences</a>.</blockquote><h2 id=source-and-flags-properties><a class=header href=#source-and-flags-properties>source and flags properties</a></h2><p>If you need the contents of a RegExp object, you can use <code>source</code> and <code>flags</code> properties to get the pattern string and flags respectively. These methods will help you to build a RegExp object using contents of another RegExp object.<pre><code class=language-js>> const p3 = /\bpar\b/
+< 'X handed X hands X'
+</code></pre><blockquote><p><img alt=info src=images/info.svg> The <a href=https://github.com/slevithan/xregexp>XRegExp</a> utility provides handy methods like <a href=https://xregexp.com/api/#escape>XRegExp.escape()</a> and <a href=https://xregexp.com/api/#union>XRegExp.union()</a>. The union method has additional functionality of allowing a mix of string and RegExp literals and also takes care of renumbering <a href=./groupings-and-backreferences.html#groupings-and-backreferences>backreferences</a>.</blockquote><h2 id=source-and-flags-properties><a class=header href=#source-and-flags-properties>source and flags properties</a></h2><p>If you need the contents of a RegExp object, you can use the <code>source</code> and <code>flags</code> properties to get the pattern string and flags respectively. These methods will help you to build a RegExp object using the contents of another RegExp object.<pre><code class=language-js>> const p3 = /\bpar\b/
 > const p4 = new RegExp(p3.source + '|cat', 'g')
 
 > p4
@@ -101,90 +92,89 @@
 > console.log(p4.source)
 < \bpar\b|cat
 > p4.flags
-< "g"
+< 'g'
 
 > 'cater cat concatenate par spare'.replace(p4, 'X')
-< "Xer X conXenate X spare"
-</code></pre><h2 id=escaping-delimiter><a class=header href=#escaping-delimiter>Escaping delimiter</a></h2><p>Another character to keep track for escaping is the delimiter used to define the RegExp literal. Or depending upon the pattern, you can use the <code>new RegExp</code> constructor to avoid escaping.<pre><code class=language-js>> let path = '/abc/123/foo/baz/ip.txt'
+< 'Xer X conXenate X spare'
+</code></pre><h2 id=escaping-the-delimiter><a class=header href=#escaping-the-delimiter>Escaping the delimiter</a></h2><p>Another character to keep track for escaping is the delimiter used to define the RegExp literal. Or depending upon the pattern, you can use the <code>new RegExp</code> constructor to avoid escaping.<pre><code class=language-js>> let path = '/home/joe/report/sales/ip.txt'
 
 // this is known as 'leaning toothpick syndrome'
-> path.replace(/^\/abc\/123\//, '~/')
-< "~/foo/baz/ip.txt"
+> path.replace(/^\/home\/joe\//, '~/')
+< '~/report/sales/ip.txt'
 
 // using 'new RegExp' improves readability and can reduce typos
-> path.replace(new RegExp(`^/abc/123/`), '~/')
-< "~/foo/baz/ip.txt"
-</code></pre><h2 id=escape-sequences><a class=header href=#escape-sequences>Escape sequences</a></h2><p>Certain characters like tab and newline can be expressed using escape sequences as <code>\t</code> and <code>\n</code> respectively. These are similar to how they are treated in normal string literals. However, <code>\b</code> is for word boundaries as seen earlier, whereas it stands for backspace character in normal string literals. Additionally, there are several sequences that are specific to regexps.<p>The full list is mentioned in the <strong>Using special characters</strong> section of <a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions>MDN documentation</a>. These are <code>\b \B \cX \d \D \f \n \p \P \r \s \S \t \uhhhh \uhhhhh \v \w \W \xhh \0</code>.<pre><code class=language-js>> 'a\tb\tc'.replace(/\t/g, ':')
-< "a:b:c"
+> path.replace(new RegExp(`^/home/joe/`), '~/')
+< '~/report/sales/ip.txt'
+</code></pre><h2 id=escape-sequences><a class=header href=#escape-sequences>Escape sequences</a></h2><p>Certain characters like tab and newline can be expressed using escape sequences as <code>\t</code> and <code>\n</code> respectively. These are similar to how they are treated in normal string literals. However, <code>\b</code> is for word boundaries as seen earlier, whereas it stands for the backspace character in normal string literals.<p>Additionally, there are several sequences that are specific to regexps. The full list is mentioned in the <strong>Using special characters</strong> section of <a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#using_special_characters>MDN documentation</a>. These are <code>\b \B \cX \d \D \f \k&LTname> \n \p \P \r \s \S \t \uhhhh \u{hhhh} \v \w \W \xhh \0</code>. Here are some examples:<pre><code class=language-js>> 'a\tb\tc'.replace(/\t/g, ':')
+< 'a:b:c'
 
 > '1\n2\n3'.replace(/\n/g, ' ')
-< "1 2 3"
+< '1 2 3'
 
 // use \\ instead of \ when constructing regexp from string literals
+// when you need to represent a single backslash character literally
 > new RegExp('123\tabc')
 < /123    abc/
 > new RegExp('123\\tabc')
 < /123\tabc/
-</code></pre><p>Here's a console screenshot of another example.<p><img src=images/backslash_in_RegExp.png alt="Backslash in RegExp"><p>If an escape sequence is not defined, it will be treated as the character it escapes.<pre><code class=language-js>// here \e is treated as e
+</code></pre><p>Here's a console screenshot of another example.<p align=center><img alt="Backslash in RegExp"src=images/backslash_in_RegExp.png><p>If an escape sequence is not defined, it will be treated as the character it escapes.<pre><code class=language-js>// here \e is treated as e
 > /\e/.test('hello')
 < true
-</code></pre><p>You can also represent a character using hexadecimal escape of the format <code>\xhh</code> where <code>hh</code> are exactly two hexadecimal characters. If you represent a metacharacter using escapes, it will be treated literally instead of its metacharacter feature. <a href=./unicode.html#codepoints>Codepoints</a> section will discuss escapes for unicode characters.<pre><code class=language-js>// \x20 is space character
+</code></pre><p>You can also represent a character using hexadecimal escape of the format <code>\xhh</code> where <code>hh</code> are exactly two hexadecimal characters. If you represent a metacharacter using escapes, it will be treated literally instead of its metacharacter feature. The <a href=./unicode.html#codepoints>Codepoints</a> section will discuss escapes for unicode characters.<pre><code class=language-js>// \x20 is the space character
 > 'h e l l o'.replace(/\x20/g, '')
-< "hello"
+< 'hello'
 
-// \x7c is '|' character
+// \x7c is the '|' character
+// but it won't be treated as the alternation metacharacter
 > '12|30'.replace(/2\x7c3/g, '5')
-< "150"
+< '150'
 > '12|30'.replace(/2|3/g, '5')
-< "15|50"
-</code></pre><blockquote><p><img src=images/info.svg alt=info> See <a href=https://ascii.cl/>ASCII code table</a> for a handy cheatsheet with all the ASCII characters and their hexadecimal representation.</blockquote><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>\</code><td>prefix metacharacters with <code>\</code> to match them literally<tr><td><code>\\</code><td>to match <code>\</code> literally<tr><td><code>source</code><td>property to convert RegExp object to string<tr><td><td>helps to insert a RegExp inside another RegExp<tr><td><code>flags</code><td>property to get flags of a RegExp object<tr><td><code>RegExp(`pat`)</code><td>helps to avoid or reduce escaping the <code>/</code> delimiter character<tr><td>Alternation precedence<td>tie-breaker is left to right if matches have same starting location<tr><td><td>robust solution: sort the alternations based on length, longest first</table><h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>a)</strong> Transform given input strings to expected output using same logic on both strings.<pre><code class=language-js>> let str1 = '(9-2)*5+qty/3'
+< '15|50'
+</code></pre><blockquote><p><img alt=info src=images/info.svg> See <a href=https://ascii.cl/>ASCII code table</a> for a handy cheatsheet with all the ASCII characters and their hexadecimal representations.</blockquote><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>\</code><td>prefix metacharacters with <code>\</code> to match them literally<tr><td><code>\\</code><td>to match <code>\</code> literally<tr><td><code>source</code><td>property to convert a RegExp object to a string<tr><td><td>helps to insert a RegExp inside another RegExp<tr><td><code>flags</code><td>property to get flags of a RegExp object<tr><td><code>RegExp(`pat`)</code><td>helps to avoid or reduce escaping the <code>/</code> delimiter character<tr><td>Alternation precedence<td>tie-breaker is left-to-right if matches have the same starting location<tr><td><td>robust solution: sort the alternations based on length, longest first<tr><td><code>\t</code><td>escape sequences like those supported in string literals<tr><td><code>\b</code><td>word boundary in regexps but backspace in string literals<tr><td><code>\e</code><td>undefined escapes will match the character it escapes<tr><td><code>\xhh</code><td>represent a character using hexadecimal values<tr><td><code>\x7c</code><td>matches <code>|</code> literally</table></div><h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>1)</strong> Transform the given input strings to the expected output using the same logic on both strings.<pre><code class=language-js>> let str1 = '(9-2)*5+qty/3-(9-2)*7'
 > let str2 = '(qty+4)/2-(9-2)*5+pq/4'
 
 > const pat1 =      // add your solution here
 > str1.replace()        // add your solution here
-< "35+qty/3"
+< '35+qty/3-(9-2)*7'
 > str2.replace()        // add your solution here
-< "(qty+4)/2-35+pq/4"
-</code></pre><p><strong>b)</strong> Replace <code>(4)\|</code> with <code>2</code> only at the start or end of given input strings.<pre><code class=language-js>> let s1 = '2.3/(4)\\|6 foo 5.3-(4)\\|'
+< '(qty+4)/2-35+pq/4'
+</code></pre><p><strong>2)</strong> Replace <code>(4)\|</code> with <code>2</code> only at the start or end of the given input strings.<pre><code class=language-js>> let s1 = '2.3/(4)\\|6 fig 5.3-(4)\\|'
 > let s2 = '(4)\\|42 - (4)\\|3'
 > let s3 = 'two - (4)\\|\n'
 
 > const pat2 =      // add your solution here
 
 > s1.replace()      // add your solution here
-< "2.3/(4)\|6 foo 5.3-2"
+< '2.3/(4)\\|6 fig 5.3-2'
 > s2.replace()      // add your solution here
-< "242 - (4)\|3"
+< '242 - (4)\\|3'
 > s3.replace()      // add your solution here
-< "two - (4)\|
-  "
-</code></pre><p><strong>c)</strong> Replace any matching item from given array with <code>X</code> for the given input strings.<pre><code class=language-js>> let items = ['a.b', '3+n', 'x\\y\\z', 'qty||price', '{n}']
+< 'two - (4)\\|\n'
+</code></pre><p><strong>3)</strong> Replace any matching element from the array <code>items</code> with <code>X</code> for given the input strings. Match the elements from <code>items</code> literally. Assume no two elements of <code>items</code> will result in any matching conflict.<pre><code class=language-js>> let items = ['a.b', '3+n', 'x\\y\\z', 'qty||price', '{n}']
 
 // add your solution here
 > const pat3 =      // add your solution here
 
 > '0a.bcd'.replace(pat3, 'X')
-< "0Xcd"
+< '0Xcd'
 > 'E{n}AMPLE'.replace(pat3, 'X')
-< "EXAMPLE"
+< 'EXAMPLE'
 > '43+n2 ax\\y\\ze'.replace(pat3, 'X')
-< "4X2 aXe"
-</code></pre><p><strong>d)</strong> Replace backspace character <code>\b</code> with a single space character for the given input string.<pre><code class=language-js>> let ip = '123\b456'
+< '4X2 aXe'
+</code></pre><p><strong>4)</strong> Replace the backspace character <code>\b</code> with a single space character for the given input string.<pre><code class=language-js>> let ip = '123\b456'
 
 > ip.replace()      // add your solution here
-< "123 456"
-</code></pre><p><strong>e)</strong> Replace all occurrences of <code>\e</code> with <code>e</code>.<pre><code class=language-js>> let ip = 'th\\er\\e ar\\e common asp\\ects among th\\e alt\\ernations'
+< '123 456'
+</code></pre><p><strong>5)</strong> Replace all occurrences of <code>\e</code> with <code>e</code>.<pre><code class=language-js>> let ip = 'th\\er\\e ar\\e common asp\\ects among th\\e alt\\ernations'
 
 > ip.replace()      // add your solution here
-< "there are common aspects among the alternations"
-</code></pre><p><strong>f)</strong> Replace any matching item from the array <code>eqns</code> with <code>X</code> for given the string <code>ip</code>. Match the items from <code>eqns</code> literally.<pre><code class=language-js>> let ip = '3-(a^b)+2*(a^b)-(a/b)+3'
+< 'there are common aspects among the alternations'
+</code></pre><p><strong>6)</strong> Replace any matching item from the array <code>eqns</code> with <code>X</code> for given the string <code>ip</code>. Match the items from <code>eqns</code> literally.<pre><code class=language-js>> let ip = '3-(a^b)+2*(a^b)-(a/b)+3'
 > let eqns = ['(a^b)', '(a/b)', '(a^b)+2']
 
 // add your solution here
 > const pat4 =      // add your solution here
 
 > ip.replace(pat4, 'X')
-< "3-X*X-X+3"
-</code></pre></main><nav class=nav-wrapper aria-label="Page navigation"><a rel=prev href=alternation-and-grouping.html class="mobile-nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=dot-metacharacter-and-quantifiers.html class="mobile-nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav class=nav-wide-wrapper aria-label="Page navigation"><a rel=prev href=alternation-and-grouping.html class="nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=dot-metacharacter-and-quantifiers.html class="nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a></nav></div><script>
-            window.playground_copyable = true;
-        </script><script src=elasticlunr.min.js charset=utf-8></script><script src=mark.min.js charset=utf-8></script><script src=searcher.js charset=utf-8></script><script src=clipboard.min.js charset=utf-8></script><script src=highlight.js charset=utf-8></script><script src=book.js charset=utf-8></script><script src=sidebar.js></script>
+< '3-X*X-X+3'
+</code></pre></main><nav aria-label="Page navigation"class=nav-wrapper><a aria-label="Previous chapter"class="mobile-nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=alternation-and-grouping.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="mobile-nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=dot-metacharacter-and-quantifiers.html rel=next> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav aria-label="Page navigation"class=nav-wide-wrapper><a aria-label="Previous chapter"class="nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=alternation-and-grouping.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=dot-metacharacter-and-quantifiers.html rel=next> <i class="fa fa-angle-right"></i> </a></nav></div><script>window.playground_copyable = true;</script><script charset=utf-8 src=elasticlunr.min.js></script><script charset=utf-8 src=mark.min.js></script><script charset=utf-8 src=searcher.js></script><script charset=utf-8 src=clipboard.min.js></script><script charset=utf-8 src=highlight.js></script><script charset=utf-8 src=book.js></script><script src=sidebar.js></script>

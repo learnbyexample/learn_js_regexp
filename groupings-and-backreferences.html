@@ -1,8 +1,5 @@
-<!DOCTYPE HTML><html lang=en class="sidebar-visible no-js light"><head><meta charset=UTF-8><title>Groupings and backreferences - JavaScript RegExp</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta name=description content="Example based guide to mastering JavaScript regexp"><meta name=viewport content="width=device-width, initial-scale=1"><meta name=theme-color content=#ffffff><link rel=icon href=favicon.svg><link rel="shortcut icon"href=favicon.png><link rel=stylesheet href=css/variables.css><link rel=stylesheet href=css/general.css><link rel=stylesheet href=css/chrome.css><link rel=stylesheet href=FontAwesome/css/font-awesome.css><link rel=stylesheet href=fonts/fonts.css><link rel=stylesheet href=highlight.css><link rel=stylesheet href=tomorrow-night.css><link rel=stylesheet href=ayu-highlight.css><link rel=stylesheet href=style.css><body><script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script><script>
-            try {
+<!doctypehtml><html class="sidebar-visible no-js light"lang=en><head><meta charset=UTF-8><title>Groupings and backreferences - Understanding JavaScript RegExp</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta content="Learn JavaScript Regular Expressions step-by-step from beginner to advanced levels with hundreds of examples and exercises"name=description><meta content=width=device-width,initial-scale=1 name=viewport><meta content=#ffffff name=theme-color><meta content="Understanding JavaScript RegExp"property=og:title><meta content=website property=og:type><meta content="Learn JavaScript Regular Expressions step-by-step from beginner to advanced levels with hundreds of examples and exercises"property=og:description><meta content=https://learnbyexample.github.io/learn_js_regexp/ property=og:url><meta content=https://raw.githubusercontent.com/learnbyexample/learn_js_regexp/master/images/js_regexp_ls.png property=og:image><meta content=1280 property=og:image:width><meta content=720 property=og:image:height><meta content=summary_large_image property=twitter:card><meta content=@learn_byexample property=twitter:site><link href=favicon.svg rel=icon><link rel="shortcut icon"href=favicon.png><link href=css/variables.css rel=stylesheet><link href=css/general.css rel=stylesheet><link href=css/chrome.css rel=stylesheet><link href=FontAwesome/css/font-awesome.css rel=stylesheet><link href=fonts/fonts.css rel=stylesheet><link href=highlight.css rel=stylesheet><link href=tomorrow-night.css rel=stylesheet><link href=ayu-highlight.css rel=stylesheet><link href=style.css rel=stylesheet><body><script>var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";</script><script>try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
 
@@ -13,165 +10,157 @@
                 if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
                     localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
-            } catch (e) { }
-        </script><script>
-            var theme;
+            } catch (e) { }</script><script>var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
-        </script><script>
-            var html = document.querySelector('html');
+            html.classList.add('js');</script><script>var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             }
             html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
-        </script><nav id=sidebar class=sidebar aria-label="Table of contents"><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=whats-so-special-about-regular-expressions.html><strong aria-hidden=true>2.</strong> What's so special about Regular Expressions?</a><li class="chapter-item expanded"><a href=regexp-introduction.html><strong aria-hidden=true>3.</strong> RegExp introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html class=active><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>14.</strong> Unicode</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>15.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>16.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i id=git-repository-button class="fa fa-github"></i><a href=https://github.com/learnbyexample/learn_js_regexp>   Source code</a><li class="chapter-item expanded"><i id=home-button class="fa fa-home"></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i id=book-button class="fa fa-book"></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i id=mail-button class="fa fa-envelope"></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a></ol></div><div id=sidebar-resize-handle class=sidebar-resize-handle></div></nav><div id=page-wrapper class=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div id=menu-bar class="menu-bar sticky bordered"><div class=left-buttons><button id=sidebar-toggle class=icon-button type=button title="Toggle Table of Contents"aria-label="Toggle Table of Contents"aria-controls=sidebar><i class="fa fa-bars"></i></button><button id=theme-toggle class=icon-button type=button title="Change theme"aria-label="Change theme"aria-haspopup=true aria-expanded=false aria-controls=theme-list><i class="fa fa-paint-brush"></i></button><ul id=theme-list class=theme-popup aria-label=Themes role=menu><li role=none><button role=menuitem class=theme id=light>Light (default)</button><li role=none><button role=menuitem class=theme id=rust>Rust</button><li role=none><button role=menuitem class=theme id=coal>Coal</button><li role=none><button role=menuitem class=theme id=navy>Navy</button><li role=none><button role=menuitem class=theme id=ayu>Ayu</button></ul><button id=search-toggle class=icon-button type=button title="Search. (Shortkey: s)"aria-label="Toggle Searchbar"aria-expanded=false aria-keyshortcuts=S aria-controls=searchbar><i class="fa fa-search"></i></button></div><h1 class=menu-title>JavaScript RegExp</h1><div class=right-buttons><a href=https://learnbyexample.github.io title=Blog aria-label=Blog> <i id=home-button class="fa fa-home"></i> </a><a href=https://github.com/learnbyexample/learn_js_regexp title="Git repository"aria-label="Git repository"> <i id=git-repository-button class="fa fa-github"></i> </a></div></div><div id=search-wrapper class=hidden><form id=searchbar-outer class=searchbar-outer><input type=search id=searchbar name=searchbar placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header></form><div id=searchresults-outer class="searchresults-outer hidden"><div id=searchresults-header class=searchresults-header></div><ul id=searchresults></ul></div></div><script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+            html.classList.add("sidebar-" + sidebar);</script><nav aria-label="Table of contents"class=sidebar id=sidebar><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=regexp-introduction.html><strong aria-hidden=true>3.</strong> RegExp introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a class=active href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>14.</strong> Unicode</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>15.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>16.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i class="fa fa-github"id=git-repository-button></i><a href=https://github.com/learnbyexample/learn_js_regexp>   Source code</a><li class="chapter-item expanded"><i class="fa fa-home"id=home-button></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i class="fa fa-book"id=book-button></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i class="fa fa-envelope"id=mail-button></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a><li class="chapter-item expanded"><i class="fa fa-twitter"id=twitter-button></i><a href=https://twitter.com/learn_byexample>   Twitter</a></ol></div><div class=sidebar-resize-handle id=sidebar-resize-handle></div></nav><div class=page-wrapper id=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div class="menu-bar sticky bordered"id=menu-bar><div class=left-buttons><button aria-label="Toggle Table of Contents"title="Toggle Table of Contents"aria-controls=sidebar class=icon-button id=sidebar-toggle type=button><i class="fa fa-bars"></i></button><button aria-label="Change theme"title="Change theme"aria-controls=theme-list aria-expanded=false aria-haspopup=true class=icon-button id=theme-toggle type=button><i class="fa fa-paint-brush"></i></button><ul aria-label=Themes class=theme-popup id=theme-list role=menu><li role=none><button class=theme id=light role=menuitem>Light (default)</button><li role=none><button class=theme id=rust role=menuitem>Rust</button><li role=none><button class=theme id=coal role=menuitem>Coal</button><li role=none><button class=theme id=navy role=menuitem>Navy</button><li role=none><button class=theme id=ayu role=menuitem>Ayu</button></ul><button aria-label="Toggle Searchbar"title="Search. (Shortkey: s)"aria-controls=searchbar aria-expanded=false aria-keyshortcuts=S class=icon-button id=search-toggle type=button><i class="fa fa-search"></i></button></div><h1 class=menu-title>Understanding JavaScript RegExp</h1><div class=right-buttons><a aria-label=Blog href=https://learnbyexample.github.io title=Blog> <i class="fa fa-home"id=home-button></i> </a><a aria-label=Twitter href=https://twitter.com/learn_byexample title=Twitter> <i class="fa fa-twitter"id=twitter-button></i> </a><a aria-label="Git repository"title="Git repository"href=https://github.com/learnbyexample/learn_js_regexp> <i class="fa fa-github"id=git-repository-button></i> </a></div></div><div class=hidden id=search-wrapper><form class=searchbar-outer id=searchbar-outer><input placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header id=searchbar name=searchbar type=search></form><div class="searchresults-outer hidden"id=searchresults-outer><div class=searchresults-header id=searchresults-header></div><ul id=searchresults></ul></div></div><script>document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
-                    });
-                </script><div id=content class=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=groupings-and-backreferences><a class=header href=#groupings-and-backreferences>Groupings and backreferences</a></h1><p>This chapter will show how to reuse portion matched by capture groups via backreferences within regexp definition and replacement section. You'll also learn some special grouping syntax for cases where plain capture groups isn't enough.<h2 id=backreferences><a class=header href=#backreferences>Backreferences</a></h2><p>First up, how to refer to capture group portions directly in regexp definition and replacement section. You have already seen how to refer to text captured by groups with <code>match</code> and <code>matchAll</code> methods. You've also seen how to pass captured portions to a function in <code>replace</code> method. More directly, you can use backreference <code>\N</code> (within the regexp definition) and <code>$N</code> (replacement section), where <code>N</code> is the capture group you want. What's more, you can also apply quantifiers to backreferences when used in regexp definition. All the various forms is listed below:<ul><li>in replacement section, use <code>$1</code>, <code>$2</code>, etc to refer to the corresponding capture group<li>in replacement section, use <code>$&</code> to refer to entire matched portion <ul><li><code>$`</code> gives string before the matched portion<li><code>$'</code> gives string after the matched portion</ul><li>within regexp definition, use <code>\1</code>, <code>\2</code>, etc to refer to the corresponding capture group</ul><pre><code class=language-js>// remove square brackets that surround digit characters
+                    });</script><div class=content id=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=groupings-and-backreferences><a class=header href=#groupings-and-backreferences>Groupings and backreferences</a></h1><p>This chapter will show how to reuse portions matched by capture groups via backreferences. These can be used within the regexp definition as well as the replacement section. You'll also learn some special grouping syntax for cases where plain capture groups aren't enough.<h2 id=backreferences><a class=header href=#backreferences>Backreferences</a></h2><p>First up, how to refer to capture group portions directly in the regexp definition and the replacement section. You have already seen how to refer to text captured by groups with the <code>match()</code> and <code>matchAll()</code> methods. You've also seen how to pass the captured portions to a function in the <code>replace()</code> method.<p>More directly, you can use a backreference <code>\N</code> (within the regexp definition) and <code>$N</code> (replacement section), where <code>N</code> is the capture group you want. What's more, you can also apply quantifiers to backreferences when used in the regexp definition. All the various forms are listed below:<ul><li>in the replacement section, use <code>$1</code>, <code>$2</code>, etc to refer to the corresponding capture group<li>in the replacement section, use <code>$&</code> to refer to the entire matched portion <ul><li><code>$`</code> gives the string before the matched portion<li><code>$'</code> gives the string after the matched portion</ul><li>within the regexp definition, use <code>\1</code>, <code>\2</code>, etc to refer to the corresponding capture group</ul><pre><code class=language-js>// remove square brackets that surround digit characters
 > '[52] apples [and] [31] mangoes'.replace(/\[(\d+)\]/g, '$1')
-< "52 apples [and] 31 mangoes"
+< '52 apples [and] 31 mangoes'
 
 // replace __ with _ and delete _ if it is alone
-> '_foo_ __123__ _baz_'.replace(/(_)?_/g, '$1')
-< "foo _123_ baz"
+> '_apple_ __123__ _banana_'.replace(/(_)?_/g, '$1')
+< 'apple _123_ banana'
 
 // swap words that are separated by a comma
-> 'good,bad 42,24'.replace(/(\w+),(\w+)/g, '$2,$1')
-< "bad,good 24,42"
-</code></pre><p>Here's some examples for using backreferences available by default without needing capture groups.<pre><code class=language-js>// add something around the entire matched portion
+> 'good,bad 42,24 x,y'.replace(/(\w+),(\w+)/g, '$2,$1')
+< 'bad,good 24,42 y,x'
+</code></pre><p>Here are some examples for using backreferences available by default without needing capture groups.<pre><code class=language-js>// add something around the entire matched portion
 > '52 apples and 31 mangoes'.replace(/\d+/g, '($&)')
-< "(52) apples and (31) mangoes"
+< '(52) apples and (31) mangoes'
 > 'Hello world'.replace(/.*/, 'Hi. $&. Have a nice day')
-< "Hi. Hello world. Have a nice day"
+< 'Hi. Hello world. Have a nice day'
 
-// duplicate first field and add it as last field
+// capture the first field and duplicate it as the last field
 > 'fork,42,nice,3.14'.replace(/,.+/, '$&,$`')
-< "fork,42,nice,3.14,fork"
-</code></pre><p>And here's some examples for using backreferences within regexp definition.<pre><code class=language-js>// elements that have at least one consecutive repeated word character
-> let words = ['moon', 'mono', 'excellent', 'poll']
+< 'fork,42,nice,3.14,fork'
+</code></pre><p>And here are some examples for using backreferences within the regexp definition.<pre><code class=language-js>// elements that have at least one consecutive repeated word character
+> let words = ['moon', 'mono', 'excellent', 'POLL', 'a22b']
 > words.filter(w => /(\w)\1/.test(w))
-< ["moon", "excellent", "poll"]
+< ['moon', 'excellent', 'POLL', 'a22b']
 
 // remove any number of consecutive duplicate words separated by space
-// note the use of quantifier on backreference
+// note the use of quantifier on backreferences
 // use \W+ instead of space to cover cases like 'a;a&LT-;a'
 > 'aa a a a 42 f_1 f_1 f_13.14'.replace(/\b(\w+)( \1)+\b/g, '$1')
-< "aa a 42 f_1 f_13.14"
-</code></pre><h2 id=backreference-oddities><a class=header href=#backreference-oddities>Backreference oddities</a></h2><p>Since <code>$</code> is special in replacement section, there's an issue to place it literally if followed by numbers. Usually, escaping is used for such purposes, but here you need to use <code>$$</code>.<pre><code class=language-js>// no capture group used, so '$1' is inserted literally
+< 'aa a 42 f_1 f_13.14'
+</code></pre><h2 id=backreference-oddities><a class=header href=#backreference-oddities>Backreference oddities</a></h2><p>Since <code>$</code> is special in the replacement section, there's an issue to represent it literally if followed by numbers. Usually, escaping is used for such purposes, but here you need to use <code>$$</code>.<pre><code class=language-js>// no capture group used, so '$1' is inserted literally
 > 'cat'.replace(/a/, '{$1}')
-< "c{$1}t"
+< 'c{$1}t'
 // capture group used, '\$1' is same as '$1' here
 > 'cat'.replace(/(a)/, '{\$1}')
-< "c{a}t"
+< 'c{a}t'
 
-// use '$$' to avoid backreference and insert '$' literally
+// use '$$' to insert '$' literally
 > 'cat'.replace(/(a)/, '{$$1}')
-< "c{$1}t"
-</code></pre><p>Another issue is how to avoid ambiguity when you have normal digits immediately following a backreference? It'll depend on how many backreferences are present in the pattern and whether you need to avoid ambiguity in regexp definition or replacement section. For example, if there are less than 10 groups, then something like <code>$12</code> will refer to first capture group and <code>2</code> as a character. If there are no capture groups, then something like <code>$5</code> will get inserted literally as <code>$</code> and <code>5</code>.<pre><code class=language-js>// $15 here will backreference 1st group and use 5 as a character
+< 'c{$1}t'
+</code></pre><p>Another issue is how to avoid ambiguity when you have normal digits immediately following a backreference? It'll depend on how many backreferences are present in the pattern and whether you need to avoid ambiguity in the regexp definition or the replacement section. For example, if there are less than 10 groups, then something like <code>$12</code> will refer to the first capture group and <code>2</code> as a character. If there are no capture groups, then something like <code>$5</code> will get inserted literally as <code>$</code> and <code>5</code>.<pre><code class=language-js>// $15 here will backreference the 1st group and use 5 as a character
 > '[52] apples and [31] mangoes'.replace(/\[(\d+)\]/g, '($15)')
-< "(525) apples and (315) mangoes"
+< '(525) apples and (315) mangoes'
 
 // $3 will be inserted literally since there is only one capture group
 > '[52] apples and [31] mangoes'.replace(/\[(\d+)\]/g, '$3')
-< "$3 apples and $3 mangoes"
+< '$3 apples and $3 mangoes'
 
 // $1 will be inserted literally since there are no capture groups
 > '[52] apples and [31] mangoes'.replace(/\[\d+\]/g, '$1')
-< "$1 apples and $1 mangoes"
-</code></pre><p>On the other hand, if you have more than <code>9</code> but less than <code>100</code> groups, then there would be an issue if you want to refer to single digit group followed by literal digit characters. The workaround is to prefix <code>0</code> such that number of digits after <code>$</code> equals the number of digits required for the highest capture group. So, if you have more than <code>9</code> but less than <code>100</code> groups, <code>$05</code> will refer to 5th capture group and any digit after that will be treated literally.<pre><code class=language-js>// for illustration purposes, 12 capture groups have been defined here
+< '$1 apples and $1 mangoes'
+</code></pre><p>On the other hand, if you have more than <code>9</code> but less than <code>100</code> groups, then there would be an issue if you want to refer to a single digit group followed by literal digit characters. The workaround is to prefix <code>0</code> such that the number of digits after <code>$</code> equals the number of digits required for the highest capture group. So, if you have more than <code>9</code> but less than <code>100</code> groups, <code>$05</code> will refer to the 5th capture group and any digit after that will be treated literally.<pre><code class=language-js>// for illustration purposes, 12 capture groups have been defined here
 // if you want to reference 2-digit group, there's no issue
 > 'abcdefghijklmn'.replace(/(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)/, '$11')
-< "kmn"
+< 'kmn'
 
 // what if you wanted to reference 1st group followed by '1' as a character?
 // using \x31 wouldn't work as it still results in $11
 > 'abcdefghijklmn'.replace(/(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)/, '$1\x31')
-< "kmn"
+< 'kmn'
 // prefix a '0' so that '$01' becomes the reference and '1' becomes character
 > 'abcdefghijklmn'.replace(/(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)/, '$011')
-< "a1mn"
-</code></pre><p>The workaround is simpler in regexp definition. The <code>0</code> prefix trick doesn't work, but using ASCII code with <code>\xhh</code> works. For example, <code>\1\x31</code> will refer to first capture group followed by <code>1</code> as a character.<pre><code class=language-js>> 'abcdefghijklmna1d'.replace(/(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.).*\1\x31/, 'X')
-< "Xd"
-</code></pre><h2 id=non-capturing-groups><a class=header href=#non-capturing-groups>Non-capturing groups</a></h2><p>Grouping has many uses like applying quantifier on a regexp portion, creating terse regexp by factoring common portions and so on. It also affects the output of <code>split</code> method as seen in <a href=./working-with-matched-portions.html#split-with-capture-groups>split with capture groups</a> section. Unlike similar methods in other languages, <code>match</code> method with <code>g</code> flag isn't affected by capture groups and returns entire matched portions.<pre><code class=language-js>// split method without capture group
+< 'a1mn'
+</code></pre><p>The workaround is simpler in the regexp definition. The <code>0</code> prefix trick doesn't work, but using an ASCII code with <code>\xhh</code> works. For example, <code>\1\x31</code> will refer to the first capture group followed by <code>1</code> as a character.<pre><code class=language-js>> 'abcdefghijklmna1d'.replace(/(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.).*\1\x31/, 'X')
+< 'Xd'
+</code></pre><h2 id=non-capturing-groups><a class=header href=#non-capturing-groups>Non-capturing groups</a></h2><p>Grouping has many uses like applying quantifiers on a regexp portion, creating terse regexp by factoring common portions and so on. It also affects the behavior of the <code>split()</code> method as seen in the <a href=./working-with-matched-portions.html#split-with-capture-groups>split() with capture groups</a> section. Unlike similar methods in other languages, the <code>match()</code> method with the <code>g</code> flag isn't affected by capture groups and returns the entire matched portions.<pre><code class=language-js>// split method without capture group
 > 'Sample123string42with777numbers'.split(/\d+/)
-< ["Sample", "string", "with", "numbers"]
+< ['Sample', 'string', 'with', 'numbers']
 // split method with capture group
 > 'Sample123string42with777numbers'.split(/(\d+)/)
-< ["Sample", "123", "string", "42", "with", "777", "numbers"]
+< ['Sample', '123', 'string', '42', 'with', '777', 'numbers']
 
-// match method example with 'g' flag and capture groups
+// match method example with the 'g' flag and capture groups
 > 'effort flee facade oddball rat tool'.match(/\b\w*(\w)\1\w*\b/g)
-< ["effort", "flee", "oddball", "tool"]
+< ['effort', 'flee', 'oddball', 'tool']
 // here's another example
 > 'hi 123123123 bye 456123456'.match(/(123)+/g)
-< ["123123123", "123"]
-</code></pre><p>When backreferencing is not required, you can use a non-capturing group to avoid behavior change of <code>split</code> method. It also helps to avoid keeping a track of capture group numbers when that particular group is not needed for backreferencing. The syntax is <code>(?:pat)</code> to define a non-capturing group, where <code>pat</code> is an abbreviation for a portion of regular expression pattern. More such special groups starting with <code>(?</code> syntax will be discussed later on.<pre><code class=language-js>// here, grouping is needed to take out common portion and apply quantifier
+< ['123123123', '123']
+</code></pre><p>When backreferencing is not required, you can use a non-capturing group to avoid the behavior change of <code>split()</code> method. It also helps to avoid keeping a track of capture group numbers when that particular group is not needed for backreferencing. The syntax is <code>(?:pat)</code> to define a non-capturing group, where <code>pat</code> is an abbreviation for a portion of the regular expression pattern. More such special groups starting with <code>(?</code> syntax will be discussed later on.<pre><code class=language-js>// here, grouping is needed to take out common portion and apply quantifier
 // but using capture group will not give expected output
 > '123hand42handy777handful500'.split(/hand(y|ful)?/)
-< ["123", undefined, "42", "y", "777", "ful", "500"]
-
+< ['123', undefined, '42', 'y', '777', 'ful', '500']
 // non-capturing group to the rescue
 > '123hand42handy777handful500'.split(/hand(?:y|ful)?/)
-< ["123", "42", "777", "500"]
+< ['123', '42', '777', '500']
 
 // with normal grouping, need to keep track of all the groups
 > '1,2,3,4,5,6,7'.replace(/^(([^,]+,){3})([^,]+)/, '$1($3)')
-< "1,2,3,(4),5,6,7"
-// using non-capturing groups, only relevant groups have to be tracked
+< '1,2,3,(4),5,6,7'
+// using non-capturing groups, only the relevant groups have to be tracked
 > '1,2,3,4,5,6,7'.replace(/^((?:[^,]+,){3})([^,]+)/, '$1($2)')
-< "1,2,3,(4),5,6,7"
-</code></pre><p>Referring to text matched by a capture group with a quantifier will give only the last match, not entire match. Use a capture group around the grouping and quantifier together to get the entire matching portion. In such cases, the inner grouping is an ideal candidate to use non-capturing group.<pre><code class=language-js>// '$1' here contains only the fourth field
+< '1,2,3,(4),5,6,7'
+</code></pre><p>Referring to the text matched by a capture group with a quantifier will give only the last match, not the entire match. Use a capture group around the grouping and quantifier together to get the entire matching portion. In such cases, the inner grouping is an ideal candidate to be specified as non-capturing.<pre><code class=language-js>// '$1' here contains only the fourth field
 > 'so:cat:rest:in:put:to'.replace(/^([^:]+:){4}/, '($1)')
-< "(in:)put:to"
+< '(in:)put:to'
 
 // '$1' will now contain the entire matching portion
 > 'so:cat:rest:in:put:to'.replace(/^((?:[^:]+:){4})/, '($1)')
-< "(so:cat:rest:in:)put:to"
-</code></pre><h2 id=named-capture-groups><a class=header href=#named-capture-groups>Named capture groups</a></h2><p>Regexp can get cryptic and difficult to maintain, even for seasoned programmers. There are a few constructs to help add clarity. One such is naming the capture groups and using that name for backreferencing instead of plain numbers. In addition, the named capture group portions can be extracted as key-value pairs using the <code>groups</code> property. The syntax is:<ul><li><code>(?&LTname>pat)</code> for naming the capture groups<li><code>\k&LTname></code> for backreferencing in regexp definition<li><code>$&LTname></code> for backreferencing in replacement section</ul><pre><code class=language-js>> let row = 'today,2008-03-24,food,2008-03-24,nice,2018-10-25,5632'
+< '(so:cat:rest:in:)put:to'
+</code></pre><h2 id=named-capture-groups><a class=header href=#named-capture-groups>Named capture groups</a></h2><p>Regexp can get cryptic and difficult to maintain, even for seasoned programmers. There are a few constructs to help add clarity. One such is naming the capture groups and using that name for backreferencing instead of plain numbers. In addition, the named capture group portions can be extracted as key-value pairs using the <code>groups</code> property. The syntax is:<ul><li><code>(?&LTname>pat)</code> for naming the capture groups<li><code>\k&LTname></code> for backreferencing in the regexp definition<li><code>$&LTname></code> for backreferencing in the replacement section</ul><pre><code class=language-js>> let row = 'today,2008-03-24,food,2008-03-24,nice,2018-10-25,5632'
 
 // same as: /(\d{4}-\d{2}-\d{2}).*\1/
 > row.match(/(?&LTdate>\d{4}-\d{2}-\d{2}).*\k&LTdate>/)[0]
-< "2008-03-24,food,2008-03-24"
+< '2008-03-24,food,2008-03-24'
 
-// giving names to first and second captured words
+// giving names to the first and second captured words
 // same as: replace(/(\w+),(\w+)/g, '$2,$1')
-> 'good,bad 42,24'.replace(/(?&LTfw>\w+),(?&LTsw>\w+)/g, '$&LTsw>,$&LTfw>')
-< "bad,good 24,42"
-</code></pre><p>Here's an example with <code>groups</code> property.<pre><code class=language-js>> let m = '2018-10-25,car'.match(/(?&LTdate>[^,]+),(?&LTproduct>[^,]+)/)
+> 'good,bad 42,24 x,y'.replace(/(?&LTfw>\w+),(?&LTsw>\w+)/g, '$&LTsw>,$&LTfw>')
+< 'bad,good 24,42 y,x'
+</code></pre><p>Here's an example with the <code>groups</code> property.<pre><code class=language-js>> let m = '2018-10-25,car,2346'.match(/(?&LTdate>[^,]+),(?&LTproduct>[^,]+)/)
 
 > m.groups
-< {date: "2018-10-25", product: "car"}
+< {date: '2018-10-25', product: 'car'}
 > m.groups.date
-< "2018-10-25"
+< '2018-10-25'
 > m.groups.product
-< "car"
-</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><table><thead><tr><th>Note<th>Description<tbody><tr><td>Backreference<td>gives matched portion of Nth capture group<tr><td><td>use <code>$1</code>, <code>$2</code>, <code>$3</code>, etc in replacement section<tr><td><td><code>$&</code> gives entire matched portion<tr><td><td><code>$`</code> gives string before the matched portion<tr><td><td><code>$'</code> gives string after the matched portion<tr><td><td>use <code>\1</code>, <code>\2</code>, <code>\3</code>, etc within regexp definition<tr><td><code>$$</code><td>insert <code>$</code> literally in replacement section<tr><td><code>$0N</code><td>same as <code>$N</code>, allows to separate backreference and other digits<tr><td><code>\N\xhh</code><td>allows to separate backreference and digits in regexp definition<tr><td><code>(?:pat)</code><td>non-capturing group<tr><td><code>(?&LTname>pat)</code><td>named capture group<tr><td><td>use <code>\k&LTname></code> for backreferencing in regexp definition<tr><td><td>use <code>$&LTname></code> for backreferencing in replacement section<tr><td><td>named captures are also accessible via <code>groups</code> property</table><p>This chapter covered many more features related to grouping — backreferencing to get matched portion of capture groups and naming the groups to add clarity. When capture groups results in unwanted behavior change (ex: <code>split</code> method), you can use non-capturing groups instead. You'll see more such special groups in <a href=./lookarounds.html#lookarounds>Lookarounds</a> chapter.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>a)</strong> Replace the space character that occurs after a word ending with <code>a</code> or <code>r</code> with a newline character.<pre><code class=language-js>> let ip = 'area not a _a2_ roar took 22'
+< 'car'
+</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td>Backreference<td>gives the matched portion of the Nth capture group<tr><td><td>use <code>$1</code>, <code>$2</code>, <code>$3</code>, etc in the replacement section<tr><td><td><code>$&</code> gives the entire matched portion<tr><td><td><code>$`</code> gives the string before the matched portion<tr><td><td><code>$'</code> gives the string after the matched portion<tr><td><td>use <code>\1</code>, <code>\2</code>, <code>\3</code>, etc within the regexp definition<tr><td><code>$$</code><td>insert <code>$</code> literally in the replacement section<tr><td><code>$0N</code><td>same as <code>$N</code>, allows to separate backreference and other digits<tr><td><code>\N\xhh</code><td>allows to separate backreference and digits in the regexp definition<tr><td><code>(?:pat)</code><td>non-capturing group<tr><td><code>(?&LTname>pat)</code><td>named capture group<tr><td><td>use <code>\k&LTname></code> for backreferencing in the regexp definition<tr><td><td>use <code>$&LTname></code> for backreferencing in the replacement section<tr><td><td>named captures are also accessible via <code>groups</code> property</table></div><p>This chapter covered many more features related to grouping — backreferencing to get the matched portion of capture groups and naming the groups to add clarity. When capture groups result in unwanted behavior change (for ex: <code>split()</code> method), you can use non-capturing groups instead. You'll see more such special groups in the <a href=./lookarounds.html#lookarounds>Lookarounds</a> chapter.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>1)</strong> Replace the space character that occurs after a word ending with <code>a</code> or <code>r</code> with a newline character.<pre><code class=language-js>> let ip = 'area not a _a2_ roar took 22'
 
 > console.log()     // add your solution here
   area
   not a
   _a2_ roar
   took 22
-</code></pre><p><strong>b)</strong> Add <code>[]</code> around words starting with <code>s</code> and containing <code>e</code> and <code>t</code> in any order.<pre><code class=language-js>> let ip = 'sequoia subtle exhibit asset sets tests site'
+</code></pre><p><strong>2)</strong> Add <code>[]</code> around words starting with <code>s</code> and containing <code>e</code> and <code>t</code> in any order.<pre><code class=language-js>> let ip = 'sequoia subtle exhibit asset sets2 tests si_te'
 
 // add your solution here
-< "sequoia [subtle] exhibit asset [sets] tests [site]"
-</code></pre><p><strong>c)</strong> Replace all whole words with <code>X</code> that start and end with the same word character. Single character word should get replaced with <code>X</code> too, as it satisfies the stated condition.<pre><code class=language-js>> let ip = 'oreo not a _a2_ roar took 22'
+< 'sequoia [subtle] exhibit asset [sets2] tests [si_te]'
+</code></pre><p><strong>3)</strong> Replace all whole words with <code>X</code> that start and end with the same word character (irrespective of case). Single character word should get replaced with <code>X</code> too, as it satisfies the stated condition.<pre><code class=language-js>> let ip = 'oreo not a _a2_ Roar took 22'
 
 // add your solution here
-< "X not X X X took X"
-</code></pre><p><strong>d)</strong> Convert the given <strong>markdown</strong> headers to corresponding <strong>anchor</strong> tag. Consider the input to start with one or more <code>#</code> characters followed by space and word characters. The <code>name</code> attribute is constructed by converting the header to lowercase and replacing spaces with hyphens. Can you do it without using a capture group?<pre><code class=language-js>> let header1 = '# Regular Expressions'
+< 'X not X X X took X'
+</code></pre><p><strong>4)</strong> Convert the given <em>markdown</em> headers to corresponding <em>anchor</em> tags. Consider the input to start with one or more <code>#</code> characters followed by space and word characters. The <code>name</code> attribute is constructed by converting the header to lowercase and replacing spaces with hyphens. Can you do it without using a capture group?<pre><code class=language-js>> let header1 = '# Regular Expressions'
 > let header2 = '## Named capture groups'
 
 > function hyphenify(m) {
@@ -182,16 +171,16 @@
 < "# &LTa name='regular-expressions'>&LT/a>Regular Expressions"
 > header2.replace()     // add your solution here
 < "## &LTa name='named-capture-groups'>&LT/a>Named capture groups"
-</code></pre><p><strong>e)</strong> Convert the given <strong>markdown</strong> anchors to corresponding <strong>hyperlinks</strong>.<pre><code class=language-js>> let anchor1 = "# &LTa name='regular-expressions'>&LT/a>Regular Expressions"
+</code></pre><p><strong>5)</strong> Convert the given <em>markdown</em> anchors to corresponding <em>hyperlinks</em>.<pre><code class=language-js>> let anchor1 = "# &LTa name='regular-expressions'>&LT/a>Regular Expressions"
 > let anchor2 = "## &LTa name='subexpression-calls'>&LT/a>Subexpression calls"
 
 > const hyperlink =         // add your solution here
 
 > anchor1.replace()         // add your solution here
-< "[Regular Expressions](#regular-expressions)"
+< '[Regular Expressions](#regular-expressions)'
 > anchor2.replace()         // add your solution here
-< "[Subexpression calls](#subexpression-calls)"
-</code></pre><p><strong>f)</strong> Check if given input strings have words with at least two consecutive repeated alphabets irrespective of case. For example, words like <code>stillnesS</code> and <code>Committee</code> should return <code>true</code> but words like <code>root</code> or <code>readable</code> or <code>rotational</code> should return <code>false</code>. Consider word to be as defined in regular expression parlance.<pre><code class=language-js>> let s1 = 'readable COMMItTEe'
+< '[Subexpression calls](#subexpression-calls)'
+</code></pre><p><strong>6)</strong> Check if the given input strings have words with at least two consecutive repeated alphabets irrespective of case. For example, words like <code>stillnesS</code> and <code>Committee</code> should return <code>true</code> but words like <code>root</code> or <code>readable</code> or <code>rotational</code> should return <code>false</code>. Consider word to be as defined in regular expression parlance.<pre><code class=language-js>> let s1 = 'readable COMMItTEe'
 > let s2 = 'rotational sti1lness _foot_'
 > let s3 = 'needed repeated'
 > let s4 = 'offsh00t'
@@ -206,47 +195,45 @@ false
 false
 > pat1.test(s4)
 true
-</code></pre><p><strong>g)</strong> For the given input string, replace all occurrences of digit sequences with only the unique non-repeating sequence. For example, <code>232323</code> should be changed to <code>23</code> and <code>897897</code> should be changed to <code>897</code>. If there no repeats (for example <code>1234</code>) or if the repeats end prematurely (for example <code>12121</code>), it should not be changed.<pre><code class=language-js>> let ip = '1234 2323 453545354535 9339 11 60260260'
+</code></pre><p><strong>7)</strong> For the given input string, replace all occurrences of digit sequences with only the unique non-repeating sequence. For example, <code>232323</code> should be changed to <code>23</code> and <code>897897</code> should be changed to <code>897</code>. If there are no repeats (for example <code>1234</code>) or if the repeats end prematurely (for example <code>12121</code>), it should not be changed.<pre><code class=language-js>> let ip = '1234 2323 453545354535 9339 11 60260260'
 
 // add your solution here
-< "1234 23 4535 9339 1 60260260"
-</code></pre><p><strong>h)</strong> Replace sequences made up of words separated by <code>:</code> or <code>.</code> by the first word of the sequence. Such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character.<pre><code class=language-js>> let ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
+< '1234 23 4535 9339 1 60260260'
+</code></pre><p><strong>8)</strong> Replace sequences made up of words separated by <code>:</code> or <code>.</code> by the first word of the sequence. Such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character.<pre><code class=language-js>> let ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
 
 // add your solution here
-< "wow hi-2 bye kite"
-</code></pre><p><strong>i)</strong> Replace sequences made up of words separated by <code>:</code> or <code>.</code> by the last word of the sequence. Such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character.<pre><code class=language-js>> let ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
+< 'wow hi-2 bye kite'
+</code></pre><p><strong>9)</strong> Replace sequences made up of words separated by <code>:</code> or <code>.</code> by the last word of the sequence. Such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character.<pre><code class=language-js>> let ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
 
 // add your solution here
-< "five hi-2 bye water"
-</code></pre><p><strong>j)</strong> Split the given input string on one or more repeated sequence of <code>cat</code>.<pre><code class=language-js>> let ip = 'firecatlioncatcatcatbearcatcatparrot'
+< 'five hi-2 bye water'
+</code></pre><p><strong>10)</strong> Split the given input string on one or more repeated sequence of <code>cat</code>.<pre><code class=language-js>> let ip = 'firecatlioncatcatcatbearcatcatparrot'
 
 // add your solution here
-< ["fire", "lion", "bear", "parrot"]
-</code></pre><p><strong>k)</strong> For the given input string, find all occurrences of digit sequences with at least one repeating sequence. For example, <code>232323</code> and <code>897897</code>. If the repeats end prematurely, for example <code>12121</code>, it should not be matched.<pre><code class=language-js>> let ip = '1234 2323 453545354535 9339 11 60260260'
+< ['fire', 'lion', 'bear', 'parrot']
+</code></pre><p><strong>11)</strong> For the given input string, find all occurrences of digit sequences with at least one repeating sequence. For example, <code>232323</code> and <code>897897</code>. If the repeats end prematurely, for example <code>12121</code>, it should not be matched.<pre><code class=language-js>> let ip = '1234 2323 453545354535 9339 11 60260260'
 
 > const pat2 =      // add your solution here
 
 // entire sequences in the output
 // add your solution here
-< ["2323", "453545354535", "11"]
+< ['2323', '453545354535', '11']
 
 // only the unique sequence in the output
 // add your solution here
-< ["23", "4535", "1"]
-</code></pre><p><strong>l)</strong> Convert the comma separated strings to corresponding key-value pair mapping as shown below. The keys are <code>name</code>, <code>maths</code> and <code>phy</code> for the three fields in the input strings.<pre><code class=language-js>> let row1 = 'rohan,75,89'
+< ['23', '4535', '1']
+</code></pre><p><strong>12)</strong> Convert the comma separated strings to corresponding key-value pair mapping as shown below. The keys are <code>name</code>, <code>maths</code> and <code>phy</code> for the three fields in the input strings.<pre><code class=language-js>> let row1 = 'rohan,75,89'
 > let row2 = 'rose,88,92'
 
 > const pat3 =      // add your solution here
 
 // add your solution here for row1
-< {name: "rohan", maths: "75", phy: "89"}
+< {name: 'rohan', maths: '75', phy: '89'}
 
 // add your solution here for row2
-< {name: "rose", maths: "88", phy: "92"}
-</code></pre><p><strong>m)</strong> Surround all whole words with <code>()</code>. Additionally, if the whole word is <code>imp</code> or <code>ant</code>, delete them. Can you do it with single substitution?<pre><code class=language-js>> let ip = 'tiger imp goat eagle ant important'
+< {name: 'rose', maths: '88', phy: '92'}
+</code></pre><p><strong>13)</strong> Surround all whole words with <code>()</code>. Additionally, if the whole word is <code>imp</code> or <code>ant</code>, delete them. Can you do it with just a single substitution?<pre><code class=language-js>> let ip = 'tiger imp goat eagle ant important'
 
 // add your solution here
-< "(tiger) () (goat) (eagle) () (important)"
-</code></pre></main><nav class=nav-wrapper aria-label="Page navigation"><a rel=prev href=character-class.html class="mobile-nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=interlude-common-tasks.html class="mobile-nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav class=nav-wide-wrapper aria-label="Page navigation"><a rel=prev href=character-class.html class="nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=interlude-common-tasks.html class="nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a></nav></div><script>
-            window.playground_copyable = true;
-        </script><script src=elasticlunr.min.js charset=utf-8></script><script src=mark.min.js charset=utf-8></script><script src=searcher.js charset=utf-8></script><script src=clipboard.min.js charset=utf-8></script><script src=highlight.js charset=utf-8></script><script src=book.js charset=utf-8></script><script src=sidebar.js></script>
+< '(tiger) () (goat) (eagle) () (important)'
+</code></pre></main><nav aria-label="Page navigation"class=nav-wrapper><a aria-label="Previous chapter"class="mobile-nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=character-class.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="mobile-nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=interlude-common-tasks.html rel=next> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav aria-label="Page navigation"class=nav-wide-wrapper><a aria-label="Previous chapter"class="nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=character-class.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=interlude-common-tasks.html rel=next> <i class="fa fa-angle-right"></i> </a></nav></div><script>window.playground_copyable = true;</script><script charset=utf-8 src=elasticlunr.min.js></script><script charset=utf-8 src=mark.min.js></script><script charset=utf-8 src=searcher.js></script><script charset=utf-8 src=clipboard.min.js></script><script charset=utf-8 src=highlight.js></script><script charset=utf-8 src=book.js></script><script src=sidebar.js></script>
