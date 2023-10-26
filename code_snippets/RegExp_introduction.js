@@ -1,4 +1,4 @@
-// test method
+// test() method
 
 let sentence = 'This is a sample string'
 
@@ -58,7 +58,7 @@ pat1
 
 new RegExp(`${greeting.toUpperCase()} there`)
 
-// replace method
+// replace() method
 
 '1,2,3,4'.replace(/,/, '-')
 

@@ -1,6 +1,6 @@
 // Conditional expressions
 
-let items = ['1,2,3,4', 'a,b,c,d', '#foo 123']
+let items = ['1,2,3,4', 'a,b,c,d', '#apple 123']
 
 items.filter(s => /\d/.test(s) && s.includes('#'))
 
@@ -8,35 +8,35 @@ items.filter(s => s[0] != '#').map(s => s.replace(/,.+,/, ' '))
 
 // Negative lookarounds
 
-'hey food! foo42 foot5 foofoo'.replace(/foo(?!\d)/g, 'baz')
+'hey cats! cat42 cat_5 catcat'.replace(/cat(?!\d)/g, 'dog')
 
-'foo _foo 42foofoo'.replace(/(?<!_)foo/g, 'baz')
+'cat _cat 42catcat'.replace(/(?<!_)cat/g, 'dog')
 
-'food _fool 42foo_foot'.replace(/(?<!_)foo./g, 'baz')
+'cats _cater 42cat_cats'.replace(/(?<!_)cat./g, 'dog')
 
 ':cart apple --rest ;tea'.replace(/(?<!:|--)\b\w+/g, 'X')
 
-'foo_baz=num1+35*42/num2'.replace(/(?<!^)\b(?!$)/g, ' ')
+'output=num1+35*42/num2'.replace(/(?<!^)\b(?!$)/g, ' ')
 
 'spare'.replace(/(?<![pr])./g, '*')
 
 'spare'.replace(/.(?<![pr].)/g, '*')
 
-'par spare part party'.replace(/par(?!.*s)/g, 'X')
+'par spare part party'.replace(/par(?!.*s)/g, '[$&]')
 
-'par spare part party'.replace(/(?!.*s)par/g, 'X')
+'par spare part party'.replace(/(?!.*s)par/g, '[$&]')
 
-'foo_baz=num1+35*42/num2'.replace(/(?!$)\b(?<!^)/g, ' ')
+'output=num1+35*42/num2'.replace(/(?!$)\b(?<!^)/g, ' ')
 
 // Positive lookarounds
 
-'42 foo-5, baz3; x83, y-20; f12'.match(/\d+(?=,)/g)
+'42 apple-5, fig3; x83, y-20; f12'.match(/\d+(?=,)/g)
 
-'42 foo-5, baz3; x83, y-20; f12'.match(/(?<=-)\d+(?=[;,])/g)
+'42 apple-5, fig3; x-83, y-20: f12'.match(/(?<=-)\d+(?=[;:])/g)
 
 'sea eat car rat eel tea'.replace(/(?<=\b\w)\w*\W*/g, '')
 
-'par spare part party'.replace(/par(?=.*\bpart\b)/g, 'X')
+'par spare part party'.replace(/par(?=.*\bpart\b)/g, '[$&]')
 
 '1,two,3,four,5'.match(/(?<=,)[^,]+(?=,)/g)
 
@@ -60,7 +60,7 @@ words.filter(w => /(?=.*b)(?=.*e).*t/.test(w))
 
 words.filter(w => /(?=.*a)(?=.*e)(?=.*i)(?=.*o).*u/.test(w))
 
-words.filter(w => /(?=.*a)(?=.*q)(?!.*n$)/.test(w))
+words.filter(w => /(?!.*n$)(?=.*a[bt]).*q/.test(w))
 
 // Variable length lookbehind
 
@@ -72,7 +72,7 @@ words.filter(w => /(?=.*a)(?=.*q)(?!.*n$)/.test(w))
 
 /(?<!parrot.*)dog/.test('fox,cat,dog,parrot')
 
-// Negated grouping
+// Negated groups
 
 /at((?!go).)*par/.test('fox,cat,dog,parrot')
 

@@ -1,10 +1,10 @@
-// match method
+// match() method
 
-'abc ac adc abbbc'.match(/ab*c/)
+'too soon a song snatch'.match(/so+n/)
 
-'abc ac adc abbbc'.match(/ab*c/)[0]
+'too soon a song snatch'.match(/so+n/)[0]
 
-'abc ac adc abbbc'.match('ab*c')
+'too soon a song snatch'.match('so+n')
 
 let s1 = 'cat and dog'
 
@@ -14,7 +14,7 @@ s1.match(/dog/).input
 
 s1.match(/xyz/)
 
-// search method
+// search() method
 
 'cat and dog'.search(/dog/)
 
@@ -22,33 +22,53 @@ s1.match(/xyz/)
 
 // Capture groups
 
-'abc ac adc abbbc'.match(/a(.*)d(.*a)/)
+let motivation = 'improve yourself.'
 
-'abc ac adc abbbc'.match(/a(.*)d(.*a)/)[0]
+motivation.match(/pr.*our/)
 
-'abc ac adc abbbc'.match(/a(.*)d(.*a)/)[1]
+motivation.match(/pr.*our/)[0]
 
-'abc ac adc abbbc'.match(/a(.*)d(.*a)/)[2]
+let purchase = 'coffee:100g tea:250g sugar:75g chocolate:50g'
 
-// Getting all matched portions
+let m = purchase.match(/:(.*?)g.*?:(.*?)g.*?chocolate:(.*?)g/)
 
-'abc ac adc abbbc'.match(/ab*c/g)
+m
 
-'abc ac adc abbbc'.match(/ab+c/g)
+m[1]
 
-'par spar apparent spare part'.match(/\bs?pare?\b/g)
+m[3]
+
+// d flag
+
+'awesome'.match(/so/d)
+
+'awesome'.match(/so/d).indices[0]
+
+'coffee:100g tea:250g'.match(/:(.*?)g/d)
+
+'coffee:100g tea:250g'.match(/:(.*?)g/d).indices[0]
+
+'coffee:100g tea:250g'.match(/:(.*?)g/d).indices[1]
+
+// Getting all the matched portions
+
+'too soon a song snatch'.match(/so*n/g)
+
+'too soon a song snatch'.match(/so+n/g)
+
+'PAR spar apparent SpArE part pare'.match(/\bs?pare?\b/ig)
 
 'par spar apparent spare part'.match(/\bs?par(e|t)\b/g)
 
-'that is quite a fabricated tale'.match(/t.*a/g)
+'green:3.14:teal::brown:oh!:blue'.match(/:.*:/g)
 
-'that is quite a fabricated tale'.match(/t.*?a/g)
+'green:3.14:teal::brown:oh!:blue'.match(/:.*?:/g)
 
-// matchAll method
+// matchAll() method
 
-'abc ac adc abbbc'.matchAll(/ab*c/g)
+'song too soon snatch'.matchAll(/so*n/g)
 
-let arr = [...'abc ac adc abbbc'.matchAll(/ab*c/g)]
+let arr = [...'song too soon snatch'.matchAll(/so*n/g)]
 
 arr
 
@@ -56,13 +76,13 @@ arr[0]
 
 arr[1].index
 
-Array.from('abc ac adc abbbc'.matchAll(/ab*c/g), m => m[0])
+Array.from('song too soon snatch'.matchAll(/so*n/g), m => m[0])
 
-Array.from('abc ac adc abbbc'.matchAll(/ab*c/g), m => m.index)
+Array.from('song too soon snatch'.matchAll(/so*n/g), m => m.index)
 
-Array.from('xx:yyy x: x:yy :y'.matchAll(/(x*):(y*)/g), m => m.slice(1))
+Array.from('2023/04,1986/Mar,'.matchAll(/(.*?)\/(.*?),/g), m => m.slice(1))
 
-// split with capture groups
+// split() with capture groups
 
 '31111111111251111426'.split(/1*4?2/)
 
@@ -76,7 +96,7 @@ Array.from('xx:yyy x: x:yy :y'.matchAll(/(x*):(y*)/g), m => m.slice(1))
 
 '3.14aabccc42abc88'.split(/(a+b+c+)(.*)/, 3)
 
-// Using function in replacement section
+// Using functions in the replacement section
 
 function titleCase(m) {
     return m[0].toUpperCase() + m.substr(1).toLowerCase()
@@ -94,7 +114,7 @@ function titleCase(m, g1, g2) {
 
 'aBc ac ADC aBbBC'.replace(/(a)(.*?c)/ig, titleCase)
 
-// Using dictionary in replacement section
+// Using dictionary in the replacement section
 
 let h = { '1': 'one', '2': 'two', '4': 'four' }
 

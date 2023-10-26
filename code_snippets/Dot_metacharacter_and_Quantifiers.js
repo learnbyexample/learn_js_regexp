@@ -4,15 +4,19 @@
 
 'breadth markedly reported overrides'.replace(/r..d/g, 'X')
 
-'42\t33'.replace(/2.3/, '8')
+'42\t35'.replace(/2.3/, '8')
 
-// split method
+'cag̈ed'.replace(/a.e/, 'o')
+
+'cag̈ed'.replace(/a..e/, 'o')
+
+// split() method
 
 'apple-85-mango-70'.split(/-/)
 
 'apple-85-mango-70'.split(/-/, 2)
 
-'bus:3:car:5:van'.split(/:.:/)
+'bus:3:car:-:van'.split(/:.:/)
 
 // Greedy quantifiers
 
@@ -44,15 +48,19 @@
 
 '3111111111125111142'.split(/1+/)
 
-let demo = ['abc', 'ac', 'abbc', 'xabbbcz', 'bc', 'abbbbbc']
+let repeats = ['abc', 'ac', 'abbc', 'xabbbcz', 'bc', 'abbbbbc']
 
-demo.filter(w => /ab{1,4}c/.test(w))
+repeats.filter(w => /ab{1,4}c/.test(w))
 
-demo.filter(w => /ab{0,2}c/.test(w))
+repeats.filter(w => /ab{0,2}c/.test(w))
 
-demo.filter(w => /ab{3,}c/.test(w))
+repeats.filter(w => /ab{3,}c/.test(w))
 
-demo.filter(w => /ab{3}c/.test(w))
+repeats.filter(w => /ab{3}c/.test(w))
+
+'a{5} = 10'.replace(/a\{5}/g, 'a{6}')
+
+'report_{a,b}.txt'.replace(/_{a,b}/g, '-{c,d}')
 
 // AND Conditional
 
@@ -74,7 +82,7 @@ patterns.every(p => p.test('dog and cat'))
 
 'foot'.replace(/f.?o/, 'X')
 
-console.log('blah < foo \\< bar < baz'.replace(/\\?</g, '\\<'))
+console.log('table < fig \\< bat < cake'.replace(/\\?</g, '\\<'))
 
 'hand handy handful'.replace(/hand(y|ful)?/g, 'X')
 
@@ -96,19 +104,13 @@ sentence.replace(/t.*a.*u/, 'X')
 
 '123456789'.replace(/.{2,5}?/, 'X')
 
+'green:3.14:teal::brown:oh!:blue'.split(/:.*:/)
+
 'green:3.14:teal::brown:oh!:blue'.split(/:.*?:/)
-
-let sentence = 'that is quite a fabricated tale'
-
-sentence.replace(/t.*?a/, 'X')
-
-'star'.replace(/t.*?a/, 'X')
-
-sentence.replace(/t.*?a.*?f/, 'X')
 
 // s flag
 
-'Hi there\nHave a Nice Day'.replace(/the.*ice/, 'X')
+console.log('Hi there\nHave a Nice Day'.replace(/the.*ice/, 'X'))
 
-'Hi there\nHave a Nice Day'.replace(/the.*ice/s, 'X')
+console.log('Hi there\nHave a Nice Day'.replace(/the.*ice/s, 'X'))
 

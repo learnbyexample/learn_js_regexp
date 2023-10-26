@@ -2,9 +2,9 @@
 
 '[52] apples [and] [31] mangoes'.replace(/\[(\d+)\]/g, '$1')
 
-'_foo_ __123__ _baz_'.replace(/(_)?_/g, '$1')
+'_apple_ __123__ _banana_'.replace(/(_)?_/g, '$1')
 
-'good,bad 42,24'.replace(/(\w+),(\w+)/g, '$2,$1')
+'good,bad 42,24 x,y'.replace(/(\w+),(\w+)/g, '$2,$1')
 
 '52 apples and 31 mangoes'.replace(/\d+/g, '($&)')
 
@@ -12,7 +12,7 @@
 
 'fork,42,nice,3.14'.replace(/,.+/, '$&,$`')
 
-let words = ['moon', 'mono', 'excellent', 'poll']
+let words = ['moon', 'mono', 'excellent', 'POLL', 'a22b']
 
 words.filter(w => /(\w)\1/.test(w))
 
@@ -68,9 +68,9 @@ let row = 'today,2008-03-24,food,2008-03-24,nice,2018-10-25,5632'
 
 row.match(/(?<date>\d{4}-\d{2}-\d{2}).*\k<date>/)[0]
 
-'good,bad 42,24'.replace(/(?<fw>\w+),(?<sw>\w+)/g, '$<sw>,$<fw>')
+'good,bad 42,24 x,y'.replace(/(?<fw>\w+),(?<sw>\w+)/g, '$<sw>,$<fw>')
 
-let m = '2018-10-25,car'.match(/(?<date>[^,]+),(?<product>[^,]+)/)
+let m = '2018-10-25,car,2346'.match(/(?<date>[^,]+),(?<product>[^,]+)/)
 
 m.groups
 

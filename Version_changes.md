@@ -1,5 +1,18 @@
 <br>
 
+### 2.0
+
+* Examples and exercises added for `d` and `v` flags
+* Strings in code snippets changed to be uniformly represented in single quotes
+* In general, many of the examples, exercises, solutions, descriptions and external links were updated/corrected
+* Updated Acknowledgements section
+* Code snippets related to info/warning sections will now appear as a single block
+* Book title changed to **Understanding JavaScript RegExp**
+* New cover image
+* Images centered for EPUB format
+
+<br>
+
 ### 1.6
 
 * Code snippets checked to work with Chrome/Chromium console version 89+

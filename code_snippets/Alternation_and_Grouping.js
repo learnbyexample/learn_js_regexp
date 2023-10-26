@@ -1,4 +1,4 @@
-// OR conditional
+// Alternation
 
 const pets = /cat|dog/
 
@@ -8,7 +8,7 @@ pets.test('I like dogs')
 
 pets.test('I like parrots')
 
-'catapults concatenate cat scat'.replace(/^cat|cat\b/g, 'X')
+'catapults concatenate cat scat cater'.replace(/^cat|cat\b/g, 'X')
 
 'cat dog bee parrot fox'.replace(/cat|dog|fox/g, 'mammal')
 

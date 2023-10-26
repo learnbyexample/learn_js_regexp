@@ -36,6 +36,10 @@ words.filter(w => /t$/.test(w))
 
 /er$/m.test('spare\npar\nera\ndare')
 
+let elements = ['spare\ntool', 'par\n', 'dare', 'spared']
+
+elements.filter(e => /are$/m.test(e))
+
 /^par$/m.test('spare\npar\nera\ndare')
 
 let items = 'catapults\nconcatenate\ncat'
@@ -44,39 +48,41 @@ console.log(items.replace(/^/gm, '* '))
 
 console.log(items.replace(/$/gm, '.'))
 
-'1\n2\n'.replace(/^/mg, 'foo ')
+console.log('1\n2\n'.replace(/^/mg, 'fig '))
 
-'1\n2\n'.replace(/$/mg, ' baz')
+console.log('1\n2\n'.replace(/$/mg, ' apple'))
 
 // Word anchors
 
-let sample = 'par spar apparent spare part'
+let words = 'par spar apparent spare part'
 
-sample.replace(/par/g, 'X')
+words.replace(/par/g, 'X')
 
-sample.replace(/\bpar/g, 'X')
+words.replace(/\bpar/g, 'X')
 
-sample.replace(/par\b/g, 'X')
+words.replace(/par\b/g, 'X')
 
-sample.replace(/\bpar\b/g, 'X')
+words.replace(/\bpar\b/g, 'X')
 
-let sample = 'par spar apparent spare part'
+let words = 'par spar apparent spare part'
 
-console.log(sample.replace(/\b/g, '"').replace(/ /g, ','))
+console.log(words.replace(/\b/g, '"').replace(/ /g, ','))
 
-'foo_baz=num1+35*42/num2'.replace(/\b/g, ' ')
+'output=num1+35*42/num2'.replace(/\b/g, ' ')
 
-'foo_baz=num1+35*42/num2'.replace(/\b/g, ' ').trim()
+'output=num1+35*42/num2'.replace(/\b/g, ' ').trim()
 
-let sample = 'par spar apparent spare part'
+// Opposite Word Anchor
 
-sample.replace(/\Bpar/g, 'X')
+let words = 'par spar apparent spare part'
 
-sample.replace(/\Bpar\b/g, 'X')
+words.replace(/\Bpar/g, 'X')
 
-sample.replace(/par\B/g, 'X')
+words.replace(/\Bpar\b/g, 'X')
 
-sample.replace(/\Bpar\B/g, 'X')
+words.replace(/par\B/g, 'X')
+
+words.replace(/\Bpar\B/g, 'X')
 
 'copper'.replace(/\b/g, ':')
 

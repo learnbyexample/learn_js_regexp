@@ -1,4 +1,4 @@
-// Escaping with \
+// Escaping with backslash
 
 /b^2/.test('a^2 + b^2 - C*3')
 
@@ -64,13 +64,13 @@ p4.flags
 
 'cater cat concatenate par spare'.replace(p4, 'X')
 
-// Escaping delimiter
+// Escaping the delimiter
 
-let path = '/abc/123/foo/baz/ip.txt'
+let path = '/home/joe/report/sales/ip.txt'
 
-path.replace(/^\/abc\/123\//, '~/')
+path.replace(/^\/home\/joe\//, '~/')
 
-path.replace(new RegExp(`^/abc/123/`), '~/')
+path.replace(new RegExp(`^/home/joe/`), '~/')
 
 // Escape sequences
 

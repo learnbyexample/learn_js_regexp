@@ -1,10 +1,12 @@
 # Exercise solutions
 
+>![info](images/info.svg) Try to solve the exercises in every chapter using only the features discussed until that chapter. Some of the exercises will be easier to solve with techniques presented in the later chapters, but the aim of these exercises is to explore the features presented so far.
+
 <br>
 
 # RegExp introduction
 
-**a)** Check if the given input strings contain `two` irrespective of case.
+**1)** Check if the given input strings contain `two` irrespective of case.
 
 ```js
 > let s1 = 'Their artwork is exceptional'
@@ -21,43 +23,43 @@
 < true
 ```
 
-**b)** For the given array, filter all elements that do *not* contain `e`.
+**2)** For the given array, filter all elements that do *not* contain `e`.
 
 ```js
 > let items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
 
 > items.filter(w => !/e/.test(w))
-< ["goal", "sit"]
+< ['goal', 'sit']
 ```
 
-**c)** Replace first occurrence of `5` with `five` for the given string.
+**3)** Replace only the first occurrence of `5` with `five` for the given string.
 
 ```js
 > let ip = 'They ate 5 apples and 5 oranges'
 
 > ip.replace(/5/, 'five')
-< "They ate five apples and 5 oranges"
+< 'They ate five apples and 5 oranges'
 ```
 
-**d)** Replace all occurrences of `5` with `five` for the given string.
+**4)** Replace all occurrences of `5` with `five` for the given string.
 
 ```js
 > let ip = 'They ate 5 apples and 5 oranges'
 
 > ip.replace(/5/g, 'five')
-< "They ate five apples and five oranges"
+< 'They ate five apples and five oranges'
 ```
 
-**e)** Replace all occurrences of `note` irrespective of case with `X`.
+**5)** Replace all occurrences of `note` irrespective of case with `X`.
 
 ```js
 > let ip = 'This note should not be NoTeD'
 
 > ip.replace(/note/ig, 'X')
-< "This X should not be XD"
+< 'This X should not be XD'
 ```
 
-**f)** For the given multiline input string, filter all lines NOT containing the string `2`.
+**6)** For the given multiline input string, filter all lines NOT containing the string `2`.
 
 ```js
 > let purchases = `items qty
@@ -78,40 +80,40 @@ water 10`
   water 10
 ```
 
->![info](images/info.svg) You'd be able to solve this using just `replace` method by the end of [Dot metacharacter and Quantifiers](#dot-metacharacter-and-quantifiers) chapter.
+>![info](images/info.svg) You'd be able to solve this using just the `replace()` method by the end of the [Dot metacharacter and Quantifiers](#dot-metacharacter-and-quantifiers) chapter.
 
-**g)** For the given array, filter all elements that contains either `a` or `w`.
+**7)** For the given array, filter all elements that contain either `a` or `w`.
 
 ```js
 > let items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
 
 > items.filter(w => /a/.test(w) || /w/.test(w))
-< ["goal", "new", "eat"]
+< ['goal', 'new', 'eat']
 ```
 
-**h)** For the given array, filter all elements that contains both `e` and `n`.
+**8)** For the given array, filter all elements that contain both `e` and `n`.
 
 ```js
 > let items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
 
 > items.filter(w => /e/.test(w) && /n/.test(w))
-< ["new", "dinner"]
+< ['new', 'dinner']
 ```
 
-**i)** For the given string, replace `0xA0` with `0x7F` and `0xC0` with `0x1F`.
+**9)** For the given string, replace `0xA0` with `0x7F` and `0xC0` with `0x1F`.
 
 ```js
 > let ip = 'start address: 0xA0, func1 address: 0xC0'
 
 > ip.replace(/0xA0/, '0x7F').replace(/0xC0/, '0x1F')
-< "start address: 0x7F, func1 address: 0x1F"
+< 'start address: 0x7F, func1 address: 0x1F'
 ```
 
 <br>
 
 # Anchors
 
-**a)** Check if the given input strings contain `is` or `the` as whole words.
+**1)** Check if the given input strings contain `is` or `the` as whole words.
 
 ```js
 > let str1 = 'is; (this)'
@@ -132,87 +134,91 @@ water 10`
 < true
 ```
 
-**b)** For the given input string, change only whole word `red` to `brown`
+**2)** For the given input string, change only the whole word `red` to `brown`.
 
 ```js
 > let ip = 'bred red spread credible red;'
 
 > ip.replace(/\bred\b/g, 'brown')
-< "bred brown spread credible brown;"
+< 'bred brown spread credible brown;'
 ```
 
-**c)** For the given array, filter all elements that contains `42` surrounded by word characters.
+**3)** For the given array, filter all elements that contain `42` surrounded by word characters.
 
 ```js
 > let items = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', 'fake4b']
 
 > items.filter(e => /\B42\B/.test(e))
-< ["hi42bye", "nice1423", "cool_42a"]
+< ['hi42bye', 'nice1423', 'cool_42a']
 ```
 
-**d)** For the given input array, filter all elements that start with `den` or end with `ly`
+**4)** For the given input array, filter all elements that start with `den` or end with `ly`.
 
 ```js
 > let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
 
 > items.filter(e => /^den/.test(e) || /ly$/.test(e))
-< ["lovely", "2 lonely", "dent"]
+< ['lovely', '2 lonely', 'dent']
 ```
 
-**e)** For the given input string, change whole word `mall` to `1234` only if it is at the start of line.
+**5)** For the given input string, change whole word `mall` to `1234` only if it is at the start of a line.
 
 ```js
-> let para = `ball fall wall tall
+> let para = `(mall) call ball pall
+ball fall wall tall
 mall call ball pall
 wall mall ball fall
-mallet wallet malls`
+mallet wallet malls
+mall:call:ball:pall`
 
 > console.log(para.replace(/^mall\b/gm, '1234'))
-< ball fall wall tall
+< (mall) call ball pall
+  ball fall wall tall
   1234 call ball pall
   wall mall ball fall
   mallet wallet malls
+  1234:call:ball:pall
 ```
 
-**f)** For the given array, filter all elements having a line starting with `den` or ending with `ly`.
+**6)** For the given array, filter all elements having a line starting with `den` or ending with `ly`.
 
 ```js
 > let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
 
 > items.filter(e => /^den/m.test(e) || /ly$/m.test(e))
-< ["lovely", "1\ndentist", "2 lonely", "fly\nfar", "dent"]
+< ['lovely', '1\ndentist', '2 lonely', 'fly\nfar', 'dent']
 ```
 
-**g)** For the given input array, filter all whole elements `12\nthree` irrespective of case.
+**7)** For the given input array, filter all whole elements `12\nthree` irrespective of case.
 
 ```js
 > let items = ['12\nthree\n', '12\nThree', '12\nthree\n4', '12\nthree']
 
 > items.filter(e => /^12\nthree$/i.test(e))
-< ["12\nThree", "12\nthree"]
+< ['12\nThree', '12\nthree']
 ```
 
-**h)** For the given input array, replace `hand` with `X` for all words that start with `hand` followed by at least one word character.
+**8)** For the given input array, replace `hand` with `X` for all elements that start with `hand` followed by at least one word character.
 
 ```js
-> let items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
+> let items = ['handed', 'hand', 'handy', 'un-handed', 'handle', 'hand-2']
 
-> items.map(w => w.replace(/\bhand\B/, 'X'))
-< ["Xed", "hand", "Xy", "unhanded", "Xle", "hand-2"]
+> items.map(w => w.replace(/^hand\B/, 'X'))
+< ['Xed', 'hand', 'Xy', 'un-handed', 'Xle', 'hand-2']
 ```
 
-**i)** For the given input array, filter all elements starting with `h`. Additionally, replace `e` with `X` for these filtered elements.
+**9)** For the given input array, filter all elements starting with `h`. Additionally, replace `e` with `X` for these filtered elements.
 
 ```js
 > let items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
 
 > items.filter(w => /^h/.test(w)).map(w => w.replace(/e/g, 'X'))
-< ["handXd", "hand", "handy", "handlX", "hand-2"]
+< ['handXd', 'hand', 'handy', 'handlX', 'hand-2']
 ```
 
-**j)** Why does the following code show `false` instead of `true`?
+**10)** Why does the following code show `false` instead of `true`?
 
-Because `$` matches only the end of string. You'll have to use the `m` flag to enable matching at the end of line separators. Some regular expression engines do allow `$` to match just before `\n` if it is the last character in the string, not but JavaScript.
+Because `$` matches only the end of string. You'll have to use the `m` flag to enable matching at the end of line separators. Some regular expression engines do allow `$` to match just before `\n` if it is the last character in the string, but not JavaScript.
 
 ```js
 > /end$/.test('bend it\nand send\n')
@@ -226,25 +232,25 @@ Because `$` matches only the end of string. You'll have to use the `m` flag to e
 
 # Alternation and Grouping
 
-**a)** For the given input array, filter all elements that start with `den` or end with `ly`
+**1)** For the given input array, filter all elements that start with `den` or end with `ly`.
 
 ```js
 > let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
 
 > items.filter(e => /^den|ly$/.test(e))
-< ["lovely", "2 lonely", "dent"]
+< ['lovely', '2 lonely', 'dent']
 ```
 
-**b)** For the given array, filter all elements having a line starting with `den` or ending with `ly`
+**2)** For the given array, filter all elements having a line starting with `den` or ending with `ly`.
 
 ```js
 > let items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
 
 > items.filter(e => /^den|ly$/m.test(e))
-< ["lovely", "1\ndentist", "2 lonely", "fly\nfar", "dent"]
+< ['lovely', '1\ndentist', '2 lonely', 'fly\nfar', 'dent']
 ```
 
-**c)** For the given input strings, replace all occurrences of `removed` or `reed` or `received` or `refused` with `X`.
+**3)** For the given input strings, replace all occurrences of `removed` or `reed` or `received` or `refused` with `X`.
 
 ```js
 > let s1 = 'creed refuse removed read'
@@ -253,12 +259,12 @@ Because `$` matches only the end of string. You'll have to use the `m` flag to e
 > const pat1 = /re(mov|ceiv|fus|)ed/g
 
 > s1.replace(pat1, 'X')
-< "cX refuse X read"
+< 'cX refuse X read'
 > s2.replace(pat1, 'X')
-< "X X redo X"
+< 'X X redo X'
 ```
 
-**d)** For the given input strings, replace `late` or `later` or `slated` with `A`.
+**4)** For the given input strings, replace `late` or `later` or `slated` with `A`.
 
 ```js
 > let str1 = 'plate full of slate'
@@ -267,7 +273,7 @@ Because `$` matches only the end of string. You'll have to use the `m` flag to e
 > const pat2 = /slated|late(r|)/g
 
 > str1.replace(pat2, 'A')
-< "pA full of sA"
+< 'pA full of sA'
 > str2.replace(pat2, 'A')
 < "A for A, don't be A"
 ```
@@ -276,38 +282,37 @@ Because `$` matches only the end of string. You'll have to use the `m` flag to e
 
 # Escaping metacharacters
 
-**a)** Transform given input strings to expected output using same logic on both strings.
+**1)** Transform the given input strings to the expected output using the same logic on both strings.
 
 ```js
-> let str1 = '(9-2)*5+qty/3'
+> let str1 = '(9-2)*5+qty/3-(9-2)*7'
 > let str2 = '(qty+4)/2-(9-2)*5+pq/4'
 
 > const pat1 = /\(9-2\)\*5/g
 > str1.replace(pat1, '35')
-< "35+qty/3"
+< '35+qty/3-(9-2)*7'
 > str2.replace(pat1, '35')
-< "(qty+4)/2-35+pq/4"
+< '(qty+4)/2-35+pq/4'
 ```
 
-**b)** Replace `(4)\|` with `2` only at the start or end of given input strings.
+**2)** Replace `(4)\|` with `2` only at the start or end of the given input strings.
 
 ```js
-> let s1 = '2.3/(4)\\|6 foo 5.3-(4)\\|'
+> let s1 = '2.3/(4)\\|6 fig 5.3-(4)\\|'
 > let s2 = '(4)\\|42 - (4)\\|3'
 > let s3 = 'two - (4)\\|\n'
 
 > const pat2 = /^\(4\)\\\||\(4\)\\\|$/g
 
 > s1.replace(pat2, '2')
-< "2.3/(4)\|6 foo 5.3-2"
+< '2.3/(4)\\|6 fig 5.3-2'
 > s2.replace(pat2, '2')
-< "242 - (4)\|3"
+< '242 - (4)\\|3'
 > s3.replace(pat2, '2')
-< "two - (4)\|
-  "
+< 'two - (4)\\|\n'
 ```
 
-**c)** Replace any matching item from given array with `X` for the given input strings.
+**3)** Replace any matching element from the array `items` with `X` for given the input strings. Match the elements from `items` literally. Assume no two elements of `items` will result in any matching conflict.
 
 ```js
 > let items = ['a.b', '3+n', 'x\\y\\z', 'qty||price', '{n}']
@@ -323,32 +328,32 @@ Because `$` matches only the end of string. You'll have to use the `m` flag to e
 > const pat3 = new RegExp(unionRegExp(items), 'g')
 
 > '0a.bcd'.replace(pat3, 'X')
-< "0Xcd"
+< '0Xcd'
 > 'E{n}AMPLE'.replace(pat3, 'X')
-< "EXAMPLE"
+< 'EXAMPLE'
 > '43+n2 ax\\y\\ze'.replace(pat3, 'X')
-< "4X2 aXe"
+< '4X2 aXe'
 ```
 
-**d)** Replace backspace character `\b` with a single space character for the given input string.
+**4)** Replace the backspace character `\b` with a single space character for the given input string.
 
 ```js
 > let ip = '123\b456'
 
 > ip.replace(/\x08/, ' ')
-< "123 456"
+< '123 456'
 ```
 
-**e)** Replace all occurrences of `\e` with `e`.
+**5)** Replace all occurrences of `\e` with `e`.
 
 ```js
 > let ip = 'th\\er\\e ar\\e common asp\\ects among th\\e alt\\ernations'
 
 > ip.replace(/\\e/g, 'e')
-< "there are common aspects among the alternations"
+< 'there are common aspects among the alternations'
 ```
 
-**f)** Replace any matching item from the array `eqns` with `X` for given the string `ip`. Match the items from `eqns` literally.
+**6)** Replace any matching item from the array `eqns` with `X` for given the string `ip`. Match the items from `eqns` literally.
 
 ```js
 > let ip = '3-(a^b)+2*(a^b)-(a/b)+3'
@@ -364,41 +369,41 @@ Because `$` matches only the end of string. You'll have to use the `m` flag to e
   }
 
 > eqns.sort((a, b) => b.length - a.length)
-< ["(a^b)+2", "(a^b)", "(a/b)"]
+< ['(a^b)+2', '(a^b)', '(a/b)']
 
 > const pat4 = new RegExp(unionRegExp(eqns), 'g')
 > pat4
 < /\(a\^b\)\+2|\(a\^b\)|\(a\/b\)/g
 
 > ip.replace(pat4, 'X')
-< "3-X*X-X+3"
+< '3-X*X-X+3'
 ```
 
 <br>
 
 # Dot metacharacter and Quantifiers
 
->![info](images/info.svg) Use `s` flag for these exercises depending upon the contents of input strings.
+>![info](images/info.svg) Use `s` flag for these exercises depending upon the contents of the input strings.
 
-**a)** Replace `42//5` or `42/5` with `8` for the given input.
+**1)** Replace `42//5` or `42/5` with `8` for the given input.
 
 ```js
 > let ip = 'a+42//5-c pressure*3+42/5-14256'
 
 > ip.replace(/42\/\/?5/g, '8')
-< "a+8-c pressure*3+8-14256"
+< 'a+8-c pressure*3+8-14256'
 ```
 
-**b)** For the array `items`, filter all elements starting with `hand` and ending with at most one more character or `le`.
+**2)** For the array `items`, filter all elements starting with `hand` and ending immediately with at most one more character or `le`.
 
 ```js
 > let items = ['handed', 'hand', 'handled', 'handy', 'unhand', 'hands', 'handle']
 
 > items.filter(w => /^hand(.|le)?$/.test(w))
-< ["hand", "handy", "hands", "handle"]
+< ['hand', 'handy', 'hands', 'handle']
 ```
 
-**c)** Use `split` method to get the output as shown for the given input strings.
+**3)** Use the `split()` method to get the output as shown for the given input strings.
 
 ```js
 > let eqn1 = 'a+42//5-c'
@@ -408,28 +413,31 @@ Because `$` matches only the end of string. You'll have to use the `m` flag to e
 > const pat1 = new RegExp(`42//?5`)
 
 > eqn1.split(pat1)
-< ["a+", "-c"]
+< ['a+', '-c']
 > eqn2.split(pat1)
-< ["pressure*3+", "-14256"]
+< ['pressure*3+', '-14256']
 > eqn3.split(pat1)
-< ["r*42-5/3+42///5-", "3+a"]
+< ['r*42-5/3+42///5-', '3+a']
 ```
 
-**d)** For the given input strings, remove everything from the first occurrence of `i` till end of the string.
+**4)** For the given input strings, remove everything from the first occurrence of `i` till the end of the string.
 
 ```js
 > let s1 = 'remove the special meaning of such constructs'
 > let s2 = 'characters while constructing'
+> let s3 = 'input output'
 
 > const pat2 = /i.*/
 
 > s1.replace(pat2, '')
-< "remove the spec"
+< 'remove the spec'
 > s2.replace(pat2, '')
-< "characters wh"
+< 'characters wh'
+> s3.replace(pat2, '')
+< ''
 ```
 
-**e)** For the given strings, construct a regexp to get output as shown.
+**5)** For the given strings, construct a regexp to get the output as shown.
 
 ```js
 > let str1 = 'a+b(addition)'
@@ -439,14 +447,14 @@ Because `$` matches only the end of string. You'll have to use the `m` flag to e
 > const remove_parentheses = /\(.*?\)/g
 
 > str1.replace(remove_parentheses, '')
-< "a+b"
+< 'a+b'
 > str2.replace(remove_parentheses, '')
-< "a/b + c%d"
+< 'a/b + c%d'
 > str3.replace(remove_parentheses, '')
-< "Hi there. Nice day"
+< 'Hi there. Nice day'
 ```
 
-**f)** Correct the given regexp to get the expected output.
+**6)** Correct the given regexp to get the expected output.
 
 ```js
 > let words = 'plink incoming tint winter in caution sentient'
@@ -462,17 +470,17 @@ Because `$` matches only the end of string. You'll have to use the `m` flag to e
 "plX XmX tX wX X cautX sentient"
 ```
 
-**g)** For the given greedy quantifiers, what would be the equivalent form using `{m,n}` representation?
+**7)** For the given greedy quantifiers, what would be the equivalent form using the `{m,n}` representation?
 
 * `?` is same as `{0,1}`
 * `*` is same as `{0,}`
 * `+` is same as `{1,}`
 
-**h)** `(a*|b*)` is same as `(a|b)*` — true or false?
+**8)** `(a*|b*)` is same as `(a|b)*` — true or false?
 
-False. Because `(a*|b*)` will match only sequences like `a`, `aaa`, `bb`, `bbbbbbbb`. But `(a|b)*` can match a mixed sequence like `ababbba` too.
+False. Because `(a*|b*)` will match only sequences like `a`, `aaa`, `bb`, `bbbbbbbb`. But `(a|b)*` can match mixed sequences like `ababbba` too.
 
-**i)** For the given input strings, remove everything from the first occurrence of `test` (irrespective of case) till end of the string, provided `test` isn't at the end of the string.
+**9)** For the given input strings, remove everything from the first occurrence of `test` (irrespective of case) till the end of the string, provided `test` isn't at the end of the string.
 
 ```js
 > let s1 = 'this is a Test'
@@ -482,41 +490,41 @@ False. Because `(a*|b*)` will match only sequences like `a`, `aaa`, `bb`, `bbbbb
 > let pat3 = /test.+/is
 
 > s1.replace(pat3, '')
-< "this is a Test"
+< 'this is a Test'
 > s2.replace(pat3, '')
-< "always "
+< 'always '
 > s3.replace(pat3, '')
-< "a "
+< 'a '
 ```
 
-**j)** For the input array `words`, filter all elements starting with `s` and containing `e` and `t` in any order.
+**10)** For the input array `words`, filter all elements starting with `s` and containing `e` and `t` in any order.
 
 ```js
-> let words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
+> let words = ['sequoia', 'subtle', 'exhibit', 'a set', 'sets', 'tests', 'site']
 
 > words.filter(w => /^s.*(e.*t|t.*e)/.test(w))
-< ["subtle", "sets", "site"]
+< ['subtle', 'sets', 'site']
 ```
 
-**k)** For the input array `words`, remove all elements having less than `6` characters.
+**11)** For the input array `words`, remove all elements having less than `6` characters.
 
 ```js
 > let words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
 
 > words.filter(w => /.{6,}/.test(w))
-< ["sequoia", "subtle", "exhibit"]
+< ['sequoia', 'subtle', 'exhibit']
 ```
 
-**l)** For the input array `words`, filter all elements starting with `s` or `t` and having a maximum of `6` characters.
+**12)** For the input array `words`, filter all elements starting with `s` or `t` and having a maximum of `6` characters.
 
 ```js
-> let words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
+> let words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 't set', 'site']
 
 > words.filter(w => /^(s|t).{0,5}$/.test(w))
-< ["subtle", "sets", "tests", "site"]
+< ['subtle', 'sets', 't set', 'site']
 ```
 
-**m)** Delete from the string `start` if it is at beginning of a line up to the next occurrence of the string `end` at end of a line. Match these keywords irrespective of case.
+**13)** Delete from the string `start` if it is at the beginning of a line up to the next occurrence of the string `end` at the end of a line. Match these keywords irrespective of case.
 
 ```js
 > let para = `good start
@@ -530,8 +538,8 @@ Start and try to
 finish the End
 bye`
 
-> const pat3 = /^start.*?end$/igms
-> console.log(para.replace(pat3, ''))
+> const mpat = /^start.*?end$/igms
+> console.log(para.replace(mpat, ''))
 < good start
   
   hi there
@@ -541,18 +549,17 @@ bye`
   bye
 ```
 
-**n)** Can you reason out why this code results in the output shown? The aim was to remove all `<characters>` patterns but not the `<>` ones. The expected result was `'a 1<> b 2<> c'`.
+**14)** Can you reason out why this code results in the output shown? The aim was to remove all `<characters>` patterns but not the `<>` ones. The expected result was `'a 1<> b 2<> c'`.
 
-The use of `.+` quantifier after `<` means that `<>` cannot be a possible match to satisfy `<.+?>`. So, after matching `<` (which occurs after `1` and `2` in the given input string) the regular expression engine will look for next occurrence of `>` character to satisfy the given pattern. To solve such cases, you need to use character classes, which is discussed in a later chapter, to specify which particular set of characters should be matched by the `+` quantifier instead of `.` metacharacter.
+The use of `.+` quantifier after `<` means that `<>` cannot be a possible match to satisfy `<.+?>`. So, after matching `<` (which occurs after `1` and `2` in the given input string) the regular expression engine will look for next occurrence of `>` character to satisfy the given pattern. To solve such cases, you need to use character classes (discussed in a later chapter) to specify which particular set of characters should be matched by the `+` quantifier (instead of the `.` metacharacter).
 
 ```js
 > let ip = 'a<apple> 1<> b<bye> 2<> c<cat>'
-
 > ip.replace(/<.+?>/g, '')
-< "a 1 2"
+< 'a 1 2'
 ```
 
-**o)** Use `split` method to get the output as shown below for given input strings.
+**15)** Use the `split()` method to get the output as shown below for the given input strings.
 
 ```js
 > let s1 = 'go there  ::   this :: that'
@@ -562,18 +569,18 @@ The use of `.+` quantifier after `<` means that `<>` cannot be a possible match 
 > const pat4 = / +:: +(.+)/
 
 > s1.split(pat4, 2)
-< ["go there", "this :: that"]
+< ['go there', 'this :: that']
 > s2.split(pat4, 2)
-< ["a::b", "c::d e::f :: 4::5"]
+< ['a::b', 'c::d e::f :: 4::5']
 > s3.split(pat4, 2)
-< ["42:: hi::bye::see", "carefully"]
+< ['42:: hi::bye::see', 'carefully']
 ```
 
 <br>
 
 # Working with matched portions
 
-**a)** For the given strings, extract the matching portion from first `is` to last `t`
+**1)** For the given strings, extract the matching portion from the first `is` to the last `t`.
 
 ```js
 > let str1 = 'What is the biggest fruit you have seen?'
@@ -582,12 +589,12 @@ The use of `.+` quantifier after `<` means that `<>` cannot be a possible match 
 > const pat1 = /is.*t/
 
 > str1.match(pat1)[0]
-< "is the biggest fruit"
+< 'is the biggest fruit'
 > str2.match(pat1)[0]
-< "ission is to read and practice consistent"
+< 'ission is to read and practice consistent'
 ```
 
-**b)** Find the starting index of first occurrence of `is` or `the` or `was` or `to` for the given input strings. Assume that there will be at least one match for each input string.
+**2)** Find the starting index of the first occurrence of `is` or `the` or `was` or `to` for the given input strings. Assume that there will be at least one match for each input string.
 
 ```js
 > let s1 = 'match after the last newline character'
@@ -607,7 +614,7 @@ The use of `.+` quantifier after `<` means that `<>` cannot be a possible match 
 < 4
 ```
 
-**c)** Find the starting index of last occurrence of `is` or `the` or `was` or `to` for the given input strings. Assume that there will be at least one match for each input string.
+**3)** Find the starting index of the last occurrence of `is` or `the` or `was` or `to` for the given input strings. Assume that there will be at least one match for each input string.
 
 ```js
 > let s1 = 'match after the last newline character'
@@ -615,46 +622,46 @@ The use of `.+` quantifier after `<` means that `<>` cannot be a possible match 
 > let s3 = 'this is good bye then'
 > let s4 = 'who was there to see?'
 
-> const pat3 = /is|the|was|to/g
+> const pat3 = /.*(is|the|was|to)/d
 
-> Array.from(s1.matchAll(pat3), m => m.index).pop()
+> s1.match(pat3).indices[1][0]
 < 12
-> Array.from(s2.matchAll(pat3), m => m.index).pop()
+> s2.match(pat3).indices[1][0]
 < 18
-> Array.from(s3.matchAll(pat3), m => m.index).pop()
+> s3.match(pat3).indices[1][0]
 < 17
-> Array.from(s4.matchAll(pat3), m => m.index).pop()
+> s4.match(pat3).indices[1][0]
 < 14
 ```
 
-**d)** The given input string contains `:` exactly once. Extract all characters after the `:` as output.
+**4)** The given input string contains `:` exactly once. Extract all characters after the `:` as output.
 
 ```js
 > let ip = 'fruits:apple, mango, guava, blueberry'
 
 > ip.match(/:(.*)/)[1]
-< "apple, mango, guava, blueberry"
+< 'apple, mango, guava, blueberry'
 ```
 
-**e)** Extract all words between `(` and `)` from the given input string as an array (including the parentheses). Assume that the input will not contain any broken parentheses.
+**5)** Extract all words between `(` and `)` from the given input string as an array (including the parentheses). Assume that the input will not contain any broken parentheses.
 
 ```js
 > let ip = 'another (way) to reuse (portion) matched (by) capture groups'
 
 > ip.match(/\(.*?\)/g)
-< ["(way)", "(portion)", "(by)"]
+< ['(way)', '(portion)', '(by)']
 ```
 
-**f)** Extract all occurrences of `<` up to next occurrence of `>`, provided there is at least one character in between `<` and `>`.
+**6)** Extract all occurrences of `<` up to the next occurrence of `>`, provided there is at least one character in between `<` and `>`.
 
 ```js
 > let ip = 'a<apple> 1<> b<bye> 2<> c<cat>'
 
 > ip.match(/<.+?>/g)
-< ["<apple>", "<> b<bye>", "<> c<cat>"]
+< ['<apple>', '<> b<bye>', '<> c<cat>']
 ```
 
-**g)** Use `matchAll` to get the output as shown below for the given input strings. Note the characters used in the input strings carefully.
+**7)** Use `matchAll()` to get the output as shown below for the given input strings. Note the characters used in the input strings carefully.
 
 ```js
 > let row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
@@ -664,29 +671,32 @@ The use of `.+` quantifier after `<` means that `<>` cannot be a possible match 
 
 > Array.from(row1.matchAll(pat4), m => [m[1], m[2]])
 < (4) [Array(2), Array(2), Array(2), Array(2)]
-  0: (2) ["-2", "5"]
-  1: (2) ["4", "+3"]
-  2: (2) ["+42", "-53"]
-  3: (2) ["4356246", "-357532354"]
+  0: (2) ['-2', '5']
+  1: (2) ['4', '+3']
+  2: (2) ['+42', '-53']
+  3: (2) ['4356246', '-357532354']
   length: 4
-  __proto__: Array(0)
+  [[Prototype]]: Array(0)
 
 > Array.from(row2.matchAll(pat4), m => [m[1], m[2]])
 < (3) [Array(2), Array(2), Array(2)]
-  0: (2) ["1.32", "-3.14"]
-  1: (2) ["634", "5.63"]
-  2: (2) ["63.3e3", "9907809345343.235"]
+  0: (2) ['1.32', '-3.14']
+  1: (2) ['634', '5.63']
+  2: (2) ['63.3e3', '9907809345343.235']
   length: 3
-  __proto__: Array(0)
+  [[Prototype]]: Array(0)
 ```
 
-**h)** This is an extension to previous question. Sum each pair of numbers that are separated by a comma.
+**8)** This is an extension to the previous question. Sum each pair of numbers that are separated by a comma.
+
+* For `row1`, find the sum of integers. For example, sum of `-2` and `5` is `3`.
+* For `row2`, find the sum of floating-point numbers. For example, sum of `1.32` and `-3.14` is `-1.82`.
 
 ```js
 > let row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
 > let row2 = '1.32,-3.14 634,5.63 63.3e3,9907809345343.235 '
 
-// should be same as previous question
+// should be same as the previous question
 > const pat5 = /(.+?),(.+?) /g
 
 > Array.from(row1.matchAll(pat5), m => +m[1] + +m[2])
@@ -696,16 +706,16 @@ The use of `.+` quantifier after `<` means that `<>` cannot be a possible match 
 < [-1.82, 639.63, 9907809408643.234]
 ```
 
-**i)** Use `split` method to get the output as shown below.
+**9)** Use the `split()` method to get the output as shown below.
 
 ```js
-> let ip = '42:no-output;1000:car-truck;SQEX49801'
+> let ip = '42:no-output;1000:car-tr:u-ck;SQEX49801'
 
 > ip.split(/:.+?-(.+?);/)
-< ["42", "output", "1000", "truck", "SQEX49801"]
+< ['42', 'output', '1000', 'tr:u-ck', 'SQEX49801']
 ```
 
-**j)** Write a string function that changes given input to alternate case. The first alphabet should be changed to lowercase, the next one to uppercase and then lowercase and so on. Characters other than alphabets should be left alone and not affect case changing.
+**10)** Write a string function that changes the given input to alternate case. The first alphabet should be changed to lowercase, the next one to uppercase and then lowercase and so on. Characters other than alphabets should be left alone and not affect case changing.
 
 ```js
 > function aLtErNaTeCaSe(ip) {
@@ -714,14 +724,14 @@ The use of `.+` quantifier after `<` means that `<>` cannot be a possible match 
   }
 
 > aLtErNaTeCaSe('HI THERE!')
-< "hI tHeRe!"
+< 'hI tHeRe!'
 > aLtErNaTeCaSe('good morning')
-< "gOoD mOrNiNg"
+< 'gOoD mOrNiNg'
 > aLtErNaTeCaSe('Sample123string42with777numbers')
-< "sAmPlE123sTrInG42wItH777nUmBeRs"
+< 'sAmPlE123sTrInG42wItH777nUmBeRs'
 ```
 
-**k)** Replace the string `par` with `spar`, `spare` with `extra` and `park` with `garden`
+**11)** Replace all occurrences of `par` with `spar`, `spare` with `extra` and `park` with `garden`.
 
 ```js
 > let s1 = 'apartment has a park'
@@ -732,54 +742,72 @@ The use of `.+` quantifier after `<` means that `<>` cannot be a possible match 
 > const pat6 = /spare|park?/g
 
 > s1.replace(pat6, k => d1[k])
-< "aspartment has a garden"
+< 'aspartment has a garden'
 > s2.replace(pat6, k => d1[k])
-< "do you have a extra cable"
+< 'do you have a extra cable'
 > s3.replace(pat6, k => d1[k])
-< "write a sparser"
+< 'write a sparser'
+```
+
+**12)** Name the flag and property you can use with the `match()` method to get both the starting and ending locations of the matched portions.
+
+The `d` flag and `indices` property can be used to get both the starting and ending locations of the matched portions. Here's an example:
+
+```js
+> 'coffee:100g tea:250g'.match(/:(.*?)g/d)
+< [':100g', '100', index: 6, input: 'coffee:100g tea:250g',
+   groups: undefined, indices: Array(2)]
+
+// locations for the entire match
+> 'coffee:100g tea:250g'.match(/:(.*?)g/d).indices[0]
+< [6, 11]
+
+// locations for the first capture group
+> 'coffee:100g tea:250g'.match(/:(.*?)g/d).indices[1]
+< [7, 10]
 ```
 
 <br>
 
 # Character class
 
-**a)** For the array `items`, filter all elements starting with `hand` and ending with `s` or `y` or `le`. No other character in between, for example, `hands` should match but not `hand-has`.
+**1)** For the array `items`, filter all elements starting with `hand` and ending with `s` or `y` or `le`. No other character in between, for example, `hands` should match but not `hand-has`.
 
 ```js
-> let items = ['-handy', 'hand', 'handy', 'handled', 'hands', 'handle']
+> let items = ['-handy', 'hand', 'handy', 'unhand', 'hands', 'hand-icy', 'handle']
 
 > items.filter(w => /^hand([sy]|le)$/.test(w))
-< ["handy", "hands", "handle"]
+< ['handy', 'hands', 'handle']
 ```
 
-**b)** Replace all whole words `reed` or `read` or `red` with `X`.
+**2)** Replace all whole words `reed` or `read` or `red` with `X`.
 
 ```js
 > let ip = 'redo red credible :read: rod reed bred'
 
 > ip.replace(/\bre[ae]?d\b/g, 'X')
-< "redo X credible :X: rod X bred"
+< 'redo X credible :X: rod X bred'
 ```
 
-**c)** For the array `words`, filter all elements containing `e` or `i` followed by `l` or `n`. Note that the order mentioned should be followed.
+**3)** For the array `words`, filter all elements containing `e` or `i` followed by `l` or `n`. Note that the order mentioned should be followed.
 
 ```js
 > let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
 
 > words.filter(w => /[ei].*[ln]/.test(w))
-< ["surrender", "unicorn", "eel"]
+< ['surrender', 'unicorn', 'eel']
 ```
 
-**d)** For the array `words`, filter all elements containing `e` or `i` and `l` or `n` in any order.
+**4)** For the array `words`, filter all elements containing `e` or `i` and `l` or `n` in any order.
 
 ```js
 > let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
 
 > words.filter(w => /[ei].*[ln]|[ln].*[ei]/.test(w))
-< ["surrender", "unicorn", "newer", "eel"]
+< ['surrender', 'unicorn', 'newer', 'eel']
 ```
 
-**e)** Extract all hex character sequences, with `0x` optional prefix. Match the characters case insensitively, and the sequences shouldn't be surrounded by other word characters.
+**5)** Extract all hex character sequences, with `0x` optional prefix. Match the characters case insensitively, and the sequences shouldn't be surrounded by other word characters.
 
 ```js
 > let str1 = '128A foo 0xfe32 34 0xbar'
@@ -788,12 +816,12 @@ The use of `.+` quantifier after `<` means that `<>` cannot be a possible match 
 > const hex_seq = /\b(0x)?[\da-f]+\b/ig
 
 > str1.match(hex_seq)
-< ["128A", "0xfe32", "34"]
+< ['128A', '0xfe32', '34']
 > str2.match(hex_seq)
-< ["0XDEADBEEF", "0x0ff1ce", "bad"]
+< ['0XDEADBEEF', '0x0ff1ce', 'bad']
 ```
 
-**f)** Delete from `(` to the next occurrence of `)` unless they contain parentheses characters in between.
+**6)** Delete from `(` to the next occurrence of `)` unless they contain parentheses characters in between.
 
 ```js
 > let str1 = 'def factorial()'
@@ -803,32 +831,32 @@ The use of `.+` quantifier after `<` means that `<>` cannot be a possible match 
 > const remove_parentheses = /\([^()]*\)/g
 
 > str1.replace(remove_parentheses, '')
-< "def factorial"
+< 'def factorial'
 > str2.replace(remove_parentheses, '')
-< "a/b + c%d - (e+*4)"
+< 'a/b + c%d - (e+*4)'
 > str3.replace(remove_parentheses, '')
-< "Hi there. Nice day(a"
+< 'Hi there. Nice day(a'
 ```
 
-**g)** For the array `words`, filter all elements not starting with `e` or `p` or `u`.
+**7)** For the array `words`, filter all elements not starting with `e` or `p` or `u`.
 
 ```js
-> let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
+> let words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', '(pest)']
 
 > words.filter(w => /^[^epu]/.test(w))
-< ["surrender", "newer", "door"]
+< ['surrender', 'newer', 'door', '(pest)']
 ```
 
-**h)** For the array `words`, filter all elements not containing `u` or `w` or `ee` or `-`.
+**8)** For the array `words`, filter all elements not containing `u` or `w` or `ee` or `-`.
 
 ```js
 > let words = ['p-t', 'you', 'tea', 'heel', 'owe', 'new', 'reed', 'ear']
 
 > words.filter(w => !/[uw-]|ee/.test(w))
-< ["tea", "ear"]
+< ['tea', 'ear']
 ```
 
-**i)** The given input strings contain fields separated by `,` and fields can be empty too. Replace last three fields with `WHTSZ323`.
+**9)** The given input strings contain fields separated by `,` and fields can be empty too. Replace the last three fields with `WHTSZ323`.
 
 ```js
 > let row1 = '(2),kite,12,,D,C,,'
@@ -837,12 +865,12 @@ The use of `.+` quantifier after `<` means that `<>` cannot be a possible match 
 > const pat1 = /(,[^,]*){3}$/g
 
 > row1.replace(pat1, ',WHTSZ323')
-< "(2),kite,12,,D,WHTSZ323"
+< '(2),kite,12,,D,WHTSZ323'
 > row2.replace(pat1, ',WHTSZ323')
-< "hi,WHTSZ323"
+< 'hi,WHTSZ323'
 ```
 
-**j)** Split the given strings based on consecutive sequence of digit or whitespace characters.
+**10)** Split the given strings based on consecutive sequence of digit or whitespace characters.
 
 ```js
 > let s1 = 'lion \t Ink32onion Nice'
@@ -851,21 +879,21 @@ The use of `.+` quantifier after `<` means that `<>` cannot be a possible match 
 > const pat2 = /[\d\s]+/
 
 > s1.split(pat2)
-< ["lion", "Ink", "onion", "Nice"]
+< ['lion', 'Ink', 'onion', 'Nice']
 > s2.split(pat2)
-< ["**", "star", "**"]
+< ['**', 'star', '**']
 ```
 
-**k)** Delete all occurrences of the sequence `<characters>` where `characters` is one or more non `>` characters and cannot be empty.
+**11)** Delete all occurrences of the sequence `<characters>` where `characters` is one or more non `>` characters and cannot be empty.
 
 ```js
 > let ip = 'a<apple> 1<> b<bye> 2<> c<cat>'
 
 > ip.replace(/<[^>]+>/g, '')
-< "a 1<> b 2<> c"
+< 'a 1<> b 2<> c'
 ```
 
-**l)** `\b[a-z](on|no)[a-z]\b` is same as `\b[a-z][on]{2}[a-z]\b`. True or False? Sample input lines shown below might help to understand the differences, if any.
+**12)** `\b[a-z](on|no)[a-z]\b` is same as `\b[a-z][on]{2}[a-z]\b`. True or False? Sample input lines shown below might help to understand the differences, if any.
 
 False. `[on]{2}` will also match `oo` and `nn`.
 
@@ -878,50 +906,50 @@ False. `[on]{2}` will also match `oo` and `nn`.
   inns
 ```
 
-**m)** For the given array, filter all elements containing any number sequence greater than `624`.
+**13)** For the given array, filter elements containing any number sequence greater than `624`.
 
 ```js
-> let items = ['h0000432ab', 'car00625', '42_624 0512', '3.14 96 2 foo1234baz']
+> let items = ['hi0000432abcd', 'car00625', '42_624 0512', '3.14 96 2 foo1234baz']
 
 > items.filter(e => e.match(/\d+/g).some(m => m > 624))
-< ["car00625", "3.14 96 2 foo1234baz"]
+< ['car00625', '3.14 96 2 foo1234baz']
 ```
 
-**n)** Convert the given input string to two different arrays as shown below.
+**14)** Convert the given input string to two different arrays as shown below.
 
 ```js
 > let ip = 'price_42 roast^\t\n^-ice==cat\neast'
 
-> ip.split(/[\s^=-]+/)
-< ["price_42", "roast", "ice", "cat", "east"]
+> ip.split(/\W+/)
+< ['price_42', 'roast', 'ice', 'cat', 'east']
 
-> ip.split(/([\s^=-]+)/)
-< ["price_42", " ", "roast", "^	\n^-", "ice", "==", "cat", "\n", "east"]
+> ip.split(/(\W+)/)
+< ['price_42', ' ', 'roast', '^\t\n^-', 'ice', '==', 'cat', '\n', 'east']
 ```
 
-**o)** Filter all elements whose first non-whitespace character is not a `#` character. Any element made up of only whitespace characters should be ignored as well.
+**15)** Filter all elements whose first non-whitespace character is not a `#` character. Any element made up of only whitespace characters should be ignored as well.
 
 ```js
 > let items = ['    #comment', '\t\napple #42', '#oops', 'sure', 'no#1', '\t\r\f']
 
 > items.filter(e => /^\s*[^#\s]/.test(e))
-< ["	\napple #42", "sure", "no#1"]
+< ['\t\napple #42', 'sure', 'no#1']
 ```
 
-**p)** For the given string, surround all whole words with `{}` except for whole words `par` and `cat`.
+**16)** For the given string, surround all whole words with `{}` except `par` and `cat`.
 
 ```js
 > let ip = 'part; cat {super} rest_42 par scatter'
 
 > ip.replace(/\w+/g, w => /\b(par|cat)\b/.test(w) ? w : `{${w}}`)
-< "{part}; cat {{super}} {rest_42} par {scatter}"
+< '{part}; cat {{super}} {rest_42} par {scatter}'
 ```
 
 <br>
 
 # Groupings and backreferences
 
-**a)** Replace the space character that occurs after a word ending with `a` or `r` with a newline character.
+**1)** Replace the space character that occurs after a word ending with `a` or `r` with a newline character.
 
 ```js
 > let ip = 'area not a _a2_ roar took 22'
@@ -933,32 +961,33 @@ False. `[on]{2}` will also match `oo` and `nn`.
   took 22
 ```
 
-**b)** Add `[]` around words starting with `s` and containing `e` and `t` in any order.
+**2)** Add `[]` around words starting with `s` and containing `e` and `t` in any order.
 
 ```js
-> let ip = 'sequoia subtle exhibit asset sets tests site'
+> let ip = 'sequoia subtle exhibit asset sets2 tests si_te'
 
 > ip.replace(/\bs\w*(t\w*e|e\w*t)\w*/g, '[$&]')
-< "sequoia [subtle] exhibit asset [sets] tests [site]"
+< 'sequoia [subtle] exhibit asset [sets2] tests [si_te]'
 ```
 
-**c)** Replace all whole words with `X` that start and end with the same word character. Single character word should get replaced with `X` too, as it satisfies the stated condition.
+**3)** Replace all whole words with `X` that start and end with the same word character (irrespective of case). Single character word should get replaced with `X` too, as it satisfies the stated condition.
 
 ```js
-> let ip = 'oreo not a _a2_ roar took 22'
+> let ip = 'oreo not a _a2_ Roar took 22'
 
-> ip.replace(/\b(\w|(\w)\w*\2)\b/g, 'X')
-< "X not X X X took X"
+// can also use: ip.replace(/\b(\w|(\w)\w*\2)\b/ig, 'X')
+> ip.replace(/\b(\w)(\w*\1)?\b/ig, 'X')
+< 'X not X X X took X'
 ```
 
-**d)** Convert the given **markdown** headers to corresponding **anchor** tag. Consider the input to start with one or more `#` characters followed by space and word characters. The `name` attribute is constructed by converting the header to lowercase and replacing spaces with hyphens. Can you do it without using a capture group?
+**4)** Convert the given *markdown* headers to corresponding *anchor* tags. Consider the input to start with one or more `#` characters followed by space and word characters. The `name` attribute is constructed by converting the header to lowercase and replacing spaces with hyphens. Can you do it without using a capture group?
 
 ```js
 > let header1 = '# Regular Expressions'
 > let header2 = '## Named capture groups'
 
 > function hyphenify(m) {
-      return `<a name='${m.toLowerCase().replace(/ /g, '-')}'></a>${m}`
+      return `<a name='${m.toLowerCase().replace(/ /g, "-")}'></a>${m}`
   }
 
 > header1.replace(/\w.*/, hyphenify)
@@ -967,21 +996,21 @@ False. `[on]{2}` will also match `oo` and `nn`.
 < "## <a name='named-capture-groups'></a>Named capture groups"
 ```
 
-**e)** Convert the given **markdown** anchors to corresponding **hyperlinks**.
+**5)** Convert the given *markdown* anchors to corresponding *hyperlinks*.
 
 ```js
 > let anchor1 = "# <a name='regular-expressions'></a>Regular Expressions"
 > let anchor2 = "## <a name='subexpression-calls'></a>Subexpression calls"
 
-> const hyperlink = /[^']+'([^']+)'><\/a>(.*)/
+> const hyperlink = /[^']+'([^']+)'><\/a>(.+)/
 
 > anchor1.replace(hyperlink, '[$2](#$1)')
-< "[Regular Expressions](#regular-expressions)"
+< '[Regular Expressions](#regular-expressions)'
 > anchor2.replace(hyperlink, '[$2](#$1)')
-< "[Subexpression calls](#subexpression-calls)"
+< '[Subexpression calls](#subexpression-calls)'
 ```
 
-**f)** Check if given input strings have words with at least two consecutive repeated alphabets irrespective of case. For example, words like `stillnesS` and `Committee` should return `true` but words like `root` or `readable` or `rotational` should return `false`. Consider word to be as defined in regular expression parlance.
+**6)** Check if the given input strings have words with at least two consecutive repeated alphabets irrespective of case. For example, words like `stillnesS` and `Committee` should return `true` but words like `root` or `readable` or `rotational` should return `false`. Consider word to be as defined in regular expression parlance.
 
 ```js
 > let s1 = 'readable COMMItTEe'
@@ -1001,43 +1030,43 @@ false
 true
 ```
 
-**g)** For the given input string, replace all occurrences of digit sequences with only the unique non-repeating sequence. For example, `232323` should be changed to `23` and `897897` should be changed to `897`. If there no repeats (for example `1234`) or if the repeats end prematurely (for example `12121`), it should not be changed.
+**7)** For the given input string, replace all occurrences of digit sequences with only the unique non-repeating sequence. For example, `232323` should be changed to `23` and `897897` should be changed to `897`. If there are no repeats (for example `1234`) or if the repeats end prematurely (for example `12121`), it should not be changed.
 
 ```js
 > let ip = '1234 2323 453545354535 9339 11 60260260'
 
 > ip.replace(/\b(\d+)\1+\b/g, '$1')
-< "1234 23 4535 9339 1 60260260"
+< '1234 23 4535 9339 1 60260260'
 ```
 
-**h)** Replace sequences made up of words separated by `:` or `.` by the first word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.
+**8)** Replace sequences made up of words separated by `:` or `.` by the first word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.
 
 ```js
-> let ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
+> let ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
 
-> ip.replace(/(\w+)[:.](\w+[:.])+/g, '$1')
-< "wow hi-2 bye kite"
+> ip.replace(/([:.]\w*)+/g, '')
+< 'wow hi-2 bye kite'
 ```
 
-**i)** Replace sequences made up of words separated by `:` or `.` by the last word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.
+**9)** Replace sequences made up of words separated by `:` or `.` by the last word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.
 
 ```js
-> let ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
+> let ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
 
 > ip.replace(/((\w+)[:.])+/g, '$2')
-< "five hi-2 bye water"
+< 'five hi-2 bye water'
 ```
 
-**j)** Split the given input string on one or more repeated sequence of `cat`.
+**10)** Split the given input string on one or more repeated sequence of `cat`.
 
 ```js
 > let ip = 'firecatlioncatcatcatbearcatcatparrot'
 
 > ip.split(/(?:cat)+/)
-< ["fire", "lion", "bear", "parrot"]
+< ['fire', 'lion', 'bear', 'parrot']
 ```
 
-**k)** For the given input string, find all occurrences of digit sequences with at least one repeating sequence. For example, `232323` and `897897`. If the repeats end prematurely, for example `12121`, it should not be matched.
+**11)** For the given input string, find all occurrences of digit sequences with at least one repeating sequence. For example, `232323` and `897897`. If the repeats end prematurely, for example `12121`, it should not be matched.
 
 ```js
 > let ip = '1234 2323 453545354535 9339 11 60260260'
@@ -1046,14 +1075,14 @@ true
 
 // entire sequences in the output
 > ip.match(pat2)
-< ["2323", "453545354535", "11"]
+< ['2323', '453545354535', '11']
 
 // only the unique sequence in the output
 > Array.from(ip.matchAll(pat2), m => m[1])
-< ["23", "4535", "1"]
+< ['23', '4535', '1']
 ```
 
-**l)** Convert the comma separated strings to corresponding key-value pair mapping as shown below. The keys are `name`, `maths` and `phy` for the three fields in the input strings.
+**12)** Convert the comma separated strings to corresponding key-value pair mapping as shown below. The keys are `name`, `maths` and `phy` for the three fields in the input strings.
 
 ```js
 > let row1 = 'rohan,75,89'
@@ -1062,126 +1091,126 @@ true
 > const pat3 = /(?<name>[^,]+),(?<maths>[^,]+),(?<phy>[^,]+)/
 
 > row1.match(pat3).groups
-< {name: "rohan", maths: "75", phy: "89"}
+< {name: 'rohan', maths: '75', phy: '89'}
 
 > row2.match(pat3).groups
-< {name: "rose", maths: "88", phy: "92"}
+< {name: 'rose', maths: '88', phy: '92'}
 ```
 
-**m)** Surround all whole words with `()`. Additionally, if the whole word is `imp` or `ant`, delete them. Can you do it with single substitution?
+**13)** Surround all whole words with `()`. Additionally, if the whole word is `imp` or `ant`, delete them. Can you do it with just a single substitution?
 
 ```js
 > let ip = 'tiger imp goat eagle ant important'
 
 > ip.replace(/\b(?:imp|ant|(\w+))\b/g, '($1)')
-< "(tiger) () (goat) (eagle) () (important)"
+< '(tiger) () (goat) (eagle) () (important)'
 ```
 
 <br>
 
 # Lookarounds
 
->![info](images/info.svg) Please use lookarounds for solving the following exercises even if you can do it without lookarounds.
+>![info](images/info.svg) Use lookarounds for solving the following exercises even if they are not required.
 
-**a)** Replace all whole words with `X` unless it is preceded by `(` character.
+**1)** Replace all whole words with `X` unless it is preceded by a `(` character.
 
 ```js
 > let ip = '(apple) guava berry) apple (mango) (grape'
 
 > ip.replace(/(?<!\()\b\w+/g, 'X')
-< "(apple) X X) X (mango) (grape"
+< '(apple) X X) X (mango) (grape'
 ```
 
-**b)** Replace all whole words with `X` unless it is followed by `)` character.
+**2)** Replace all whole words with `X` unless it is followed by a `)` character.
 
 ```js
 > let ip = '(apple) guava berry) apple (mango) (grape'
 
-> ip.replace(/\b\w+\b(?!\))/g, 'X')
-< "(apple) X berry) X (mango) (X"
+> ip.replace(/\w+\b(?!\))/g, 'X')
+< '(apple) X berry) X (mango) (X'
 ```
 
-**c)** Replace all whole words with `X` unless it is preceded by `(` or followed by `)` characters.
+**3)** Replace all whole words with `X` unless it is preceded by `(` or followed by `)` characters.
 
 ```js
 > let ip = '(apple) guava berry) apple (mango) (grape'
 
 > ip.replace(/(?<!\()\b\w+\b(?!\))/g, 'X')
-< "(apple) X berry) X (mango) (grape"
+< '(apple) X berry) X (mango) (grape'
 ```
 
-**d)** Extract all whole words that do not end with `e` or `n`.
+**4)** Extract all whole words that do not end with `e` or `n`.
 
 ```js
-> let ip = 'at row on urn e note dust n'
+> let ip = 'a_t row on Urn e note Dust n end a2-e|u'
 
 > ip.match(/\b\w+\b(?<![en])/g)
-< ["at", "row", "dust"]
+< ['a_t', 'row', 'Dust', 'end', 'a2', 'u']
 ```
 
-**e)** Extract all whole words that do not start with `a` or `d` or `n`.
+**5)** Extract all whole words that do not start with `a` or `d` or `n`.
 
 ```js
-> let ip = 'at row on urn e note dust n'
+> let ip = 'a_t row on Urn e note Dust n end a2-e|u'
 
-> ip.match(/(?![adn])\b\w+\b/g)
-< ["row", "on", "urn", "e"]
+> ip.match(/(?![adn])\b\w+/g)
+< ['row', 'on', 'Urn', 'e', 'Dust', 'end', 'e', 'u']
 ```
 
-**f)** Extract all whole words only if they are followed by `:` or `,` or `-`.
+**6)** Extract all whole words only if they are followed by `:` or `,` or `-`.
 
 ```js
-> let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+> let ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
 
 > ip.match(/\w+(?=[:,-])/g)
-< ["poke", "so", "ever"]
+< ['Poke', 'so_good', 'ever2']
 ```
 
-**g)** Extract all whole words only if they are preceded by `=` or `/` or `-`.
+**7)** Extract all whole words only if they are preceded by `=` or `/` or `-`.
 
 ```js
-> let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+> let ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
 
 > ip.match(/(?<=[=\/-])\w+/g)
-< ["so", "is", "sit"]
+< ['so_good', 'is', 'sit']
 ```
 
-**h)** Extract all whole words only if they are preceded by `=` or `:` and followed by `:` or `.`.
+**8)** Extract all whole words only if they are preceded by `=` or `:` and followed by `:` or `.`.
 
 ```js
-> let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+> let ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
 
 > ip.match(/(?<=[=:])\w+(?=[:.])/g)
-< ["so", "ink"]
+< ['so_good', 'ink']
 ```
 
-**i)** Extract all whole words only if they are preceded by `=` or `:` or `.` or `(` or `-` and not followed by `.` or `/`.
+**9)** Extract all whole words only if they are preceded by `=` or `:` or `.` or `(` or `-` and not followed by `.` or `/`.
 
 ```js
-> let ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+> let ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
 
 > ip.match(/(?<=[=:.(-])\w+\b(?![\/.])/g)
-< ["so", "vast", "sit"]
+< ['so_good', 'vast', 'sit']
 ```
 
-**j)** Remove leading and trailing whitespaces from all the individual fields where `,` is the field separator.
+**10)** Remove the leading and trailing whitespaces from all the individual fields where `,` is the field separator.
 
 ```js
-> let csv1 = ' comma  ,separated ,values '
+> let csv1 = ' comma  ,separated ,values \t\r '
 > let csv2 = 'good bad,nice  ice  , 42 , ,   stall   small'
 
 > const trim_whitespace = /(?<=^|,)\s+|\s+(?=,|$)/g
 
 > csv1.replace(trim_whitespace, '')
-< "comma,separated,values"
+< 'comma,separated,values'
 > csv2.replace(trim_whitespace, '')
-< "good bad,nice  ice,42,,stall   small"
+< 'good bad,nice  ice,42,,stall   small'
 ```
 
-**k)** Filter all elements that satisfy all of these rules:
+**11)** Filter elements that satisfy all of these rules:
 
 * should have at least two alphabets
-* should have at least 3 digits
+* should have at least three digits
 * should have at least one special character among `%` or `*` or `#` or `$`
 * should not end with a whitespace character
 
@@ -1189,28 +1218,28 @@ true
 > let pwds = ['hunter2', 'F2h3u%9', '*X3Yz3.14\t', 'r2_d2_42', 'A $B C1234']
 
 > pwds.filter(p => /(?!.*\s$)(?=(.*[a-z]){2})(?=(.*\d){3}).*[%*#$]/i.test(p))
-< ["F2h3u%9", "A $B C1234"]
+< ['F2h3u%9', 'A $B C1234']
 ```
 
-**l)** For the given string, surround all whole words with `{}` except for whole words `par` and `cat` and `apple`.
+**12)** For the given string, surround all whole words with `{}` except for whole words `par` and `cat` and `apple`.
 
 ```js
 > let ip = 'part; cat {super} rest_42 par scatter apple spar'
 
-> ip.replace(/\b(?!(?:par|cat|apple)\b)\w+\b/g, '{$&}')
-< "{part}; cat {{super}} {rest_42} par {scatter} apple {spar}"
+> ip.replace(/\b(?!(?:par|cat|apple)\b)\w+/g, '{$&}')
+< '{part}; cat {{super}} {rest_42} par {scatter} apple {spar}'
 ```
 
-**m)** Extract integer portion of floating-point numbers for the given string. A number ending with `.` and no further digits should not be considered.
+**13)** Extract the integer portion of floating-point numbers for the given string. A number ending with `.` and no further digits should not be considered.
 
 ```js
 > let ip = '12 ab32.4 go 5 2. 46.42 5'
 
-> ip.match(/\d+(?=\.\d+)/g)
-< ["32", "46"]
+> ip.match(/\d+(?=\.\d)/g)
+< ['32', '46']
 ```
 
-**n)** For the given input strings, extract all overlapping two character sequences.
+**14)** For the given input strings, extract all overlapping two character sequences.
 
 ```js
 > let s1 = 'apple'
@@ -1219,38 +1248,44 @@ true
 > const pat1 = /.(?=(.))/g
 
 > Array.from(s1.matchAll(pat1), m => m[0] + m[1])
-< ["ap", "pp", "pl", "le"]
+< ['ap', 'pp', 'pl', 'le']
 > Array.from(s2.matchAll(pat1), m => m[0] + m[1])
-< ["1.", ".2", "2-", "-3", "3:", ":4"]
+< ['1.', '.2', '2-', '-3', '3:', ':4']
 ```
 
-**o)** The given input strings contain fields separated by `:` character. Delete `:` and the last field if there is a digit character anywhere before the last field.
+**15)** The given input strings contain fields separated by the `:` character. Delete `:` and the last field if there is a digit character anywhere before the last field.
 
 ```js
 > let s1 = '42:cat'
 > let s2 = 'twelve:a2b'
 > let s3 = 'we:be:he:0:a:b:bother'
+> let s4 = 'apple:banana-42:cherry:'
+> let s5 = 'dragon:unicorn:centaur'
 
 > const pat2 = /(?<=\d.*):[^:]*$/
 
 > s1.replace(pat2, '')
-< "42"
+< '42'
 > s2.replace(pat2, '')
-< "twelve:a2b"
+< 'twelve:a2b'
 > s3.replace(pat2, '')
-< "we:be:he:0:a:b"
+< 'we:be:he:0:a:b'
+> s4.replace(pat2, '')
+< 'apple:banana-42:cherry'
+> s5.replace(pat2, '')
+< 'dragon:unicorn:centaur'
 ```
 
-**p)** Extract all whole words unless they are preceded by `:` or `<=>` or `----` or `#`.
+**16)** Extract all whole words unless they are preceded by `:` or `<=>` or `----` or `#`.
 
 ```js
 > let ip = '::very--at<=>row|in.a_b#b2c=>lion----east'
 
 > ip.match(/(?<![:#]|<=>|-{4})\b\w+/g)
-< ["at", "in", "a_b", "lion"]
+< ['at', 'in', 'a_b', 'lion']
 ```
 
-**q)** Match strings if it contains `qty` followed by `price` but not if there is **whitespace** or the string `error` between them.
+**17)** Match strings if it contains `qty` followed by `price` but not if there is any whitespace character or the string `error` between them.
 
 ```js
 > let str1 = '23,qty,price,42'
@@ -1258,6 +1293,7 @@ true
 > let str3 = '3.14,qty,6,errors,9,price,3'
 > let str4 = '42\nqty-6,apple-56,price-234,error'
 > let str5 = '4,price,3.14,qty,4'
+> let str6 = '(qtyprice) (hi-there)'
 
 > const neg = /qty((?!\s|error).)*price/
 
@@ -1271,37 +1307,39 @@ true
 < true
 > neg.test(str5)
 < false
+> neg.test(str6)
+< true
 ```
 
-**r)** Can you reason out why the output shown is different for these two regular expressions?
+**18)** Can you reason out why the following regular expressions behave differently?
 
-`\b` matches both the start and end of word locations. In the below example, `\b..\b` doesn't necessarily mean that first `\b` will match only the start of word location and second `\b` will match only the end of word location. They can be any combination! For example, `I` followed by space in the input string here is using start of word location for both whereas space followed by `2` is using end of word location for both.
+`\b` matches both the start and end of word locations. In the below example, `\b..\b` doesn't necessarily mean that the first `\b` will match only the start of word location and the second `\b` will match only the end of word location. They can be any combination! For example, `I` followed by space in the input string here is using the start of word location for both the conditions. Similarly, space followed by `2` is using the end of word location for both the conditions.
 
-In contrast, the negative lookarounds only ensure that there are no word characters around any two characters. And these assertions will always be satisfied at the start of string and the end of string respectively. But `\b` depends on the presence of word characters. So, `!` at the end of the input string here matches the lookaround assertion but not word boundary.
+In contrast, the negative lookarounds version ensures that there are no word characters around any two characters. Also, such assertions will always be satisfied at the start of string and the end of string respectively. But `\b` depends on the presence of word characters. For example, `!` at the end of the input string here matches the lookaround assertion but not word boundary.
 
 ```js
 > let ip = 'I have 12, he has 2!'
 
 > ip.replace(/\b..\b/g, '{$&}')
-< "{I }have {12}{, }{he} has{ 2}!"
+< '{I }have {12}{, }{he} has{ 2}!'
 
 > ip.replace(/(?<!\w)..(?!\w)/g, '{$&}')
-< "I have {12}, {he} has {2!}"
+< 'I have {12}, {he} has {2!}'
 ```
 
-**s)** Simulate string partitioning to get an array of three elements — string before separator, portion matched by separator and string after separator. For the first case, split the given input string on first occurrence of digits. For the second case, split based on last occurrence of digits.
+**19)** Simulate string partitioning to get an array of three elements — string before the separator, portion matched by the separator and string after the separator. For the first case, split the given input string on the first occurrence of digits. For the second case, split based on the last occurrence of digits.
 
 ```js
 > let w2 = 'Sample123string42with777numbers'
 
 > w2.split(/(?<!\d.*)(\d+)/)
-< ["Sample", "123", "string42with777numbers"]
+< ['Sample', '123', 'string42with777numbers']
 
 > w2.split(/(\d+)(?!.*\d)/)
-< ["Sample123string42with", "777", "numbers"]
+< ['Sample123string42with', '777', 'numbers']
 ```
 
-**t)** Find the starting index of last occurrence of `is` or `the` or `was` or `to` for the given input strings using `search` method. Assume that there will be at least one match for each input string.
+**20)** Find the starting index of the last occurrence of `is` or `the` or `was` or `to` for the given input strings using the `search()` method. Assume that there will be at least one match for each input string.
 
 ```js
 > let s1 = 'match after the last newline character'
@@ -1325,14 +1363,14 @@ In contrast, the negative lookarounds only ensure that there are no word charact
 
 # Unicode
 
-**a)** Check if given input strings are made up of ASCII characters only. Consider the input to be non-empty strings and any character that isn't part of 7-bit ASCII set should result in `false` as output.
+**1)** Check if the given input strings are made up of ASCII characters only. Consider the input to be non-empty strings and any character that isn't part of the 7-bit ASCII set should result in `false`.
 
 ```js
 > let str1 = '123 × 456'
 > let str2 = 'good fοοd'
 > let str3 = 'happy learning!'
 
-// const pat1 = /^[\x00-\x7f]+$/
+// can also use: const pat1 = /^[\x00-\x7f]+$/
 > const pat1 = /^\p{ASCII}+$/u
 
 > pat1.test(str1)
@@ -1343,21 +1381,56 @@ In contrast, the negative lookarounds only ensure that there are no word charact
 < true
 ```
 
-**b)** Retain only punctuation characters for the given string.
+**2)** Retain only the punctuation characters for the given string.
 
 ```js
 > let ip = '❨a❩❪1❫❬b❭❮2❯❰c❱❲3❳❴xyz❵⟅123⟆⟦⟧⟨like⟩⟪3.14⟫'
 
 > ip.replace(/\P{P}+/gu, '')
-< "❨❩❪❫❬❭❮❯❰❱❲❳❴❵⟅⟆⟦⟧⟨⟩⟪.⟫"
+< '❨❩❪❫❬❭❮❯❰❱❲❳❴❵⟅⟆⟦⟧⟨⟩⟪.⟫'
 ```
 
-**c)** Is the following code snippet showing the correct output?
+**3)** Is the following code snippet showing the correct output?
 
-Yes. Some regular expression engines allow escape sequences like `\d`, `\b`, `\s`, `\w`, etc to be Unicode aware.
+Yes. Some regular expression engines allow escape sequences like `\d`, `\b`, `\s`, `\w`, etc to be Unicode aware, but not JavaScript.
 
 ```js
 > 'fox:αλεπού'.match(/\w+/g)
-< ["fox"]
+< ['fox']
+```
+
+**4)** Name the set operations enabled by the `v` flag.
+
+The following set operations are enabled by the `v` flag inside character classes:
+
+* `&&` intersection
+* `--` difference
+
+To aid in such definitions, you can use `[]` in nested fashion.
+
+**5)** Extract all whole words from the given strings. However, do not match words if they contain any character present in the `ignore` variable.
+
+```js
+> let s1 = 'match after the last new_line character A2'
+> let s2 = 'and then you want to test'
+
+> let ignore = 'aty'
+> const ign1 = new RegExp(`\\b[\\w--[${ignore}]]+\\b`, 'gv')
+> ign1
+< /\b[\w--[aty]]+\b/gv
+> s1.match(ign1)
+< ['new_line', 'A2']
+> s2.match(ign1)
+< null
+
+> let ignore = 'esw'
+// should be the same solution used above
+> const ign2 = new RegExp(`\\b[\\w--[${ignore}]]+\\b`, 'gv')
+> ign2
+< /\b[\w--[esw]]+\b/gv
+> s1.match(ign2)
+< ['match', 'A2']
+> s2.match(ign2)
+< ['and', 'you', 'to']
 ```
 
